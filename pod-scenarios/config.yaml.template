@@ -8,8 +8,8 @@ kraken:
         -   pod_scenarios:
             - -    scenarios/pod_scenario.yaml
 cerberus:
-    cerberus_enabled: False                                # Enable it when cerberus is previously installed
-    cerberus_url:                                          # When cerberus_enabled is set to True, provide the url where cerberus publishes go/no-go signal
+    cerberus_enabled: $CERBERUS_ENABLED                    # Enable it when cerberus is previously installed
+    cerberus_url: $CERBERUS_URL                            # When cerberus_enabled is set to True, provide the url where cerberus publishes go/no-go signal
     check_applicaton_routes: False                         # When enabled will look for application unavailability using the routes specified in the cerberus config and fails the run
 
 performance_monitoring:

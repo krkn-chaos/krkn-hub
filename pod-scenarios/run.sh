@@ -38,6 +38,7 @@ fi
 
 # Substitute config with environment vars defined
 envsubst < /root/kraken/scenarios/pod_scenario.yaml.template > /root/kraken/scenarios/pod_scenario.yaml
+envsubst < /root/kraken/config/config.yaml.template > /root/kraken/config/config.yaml
 
 # Run Kraken
 cd /root/kraken
