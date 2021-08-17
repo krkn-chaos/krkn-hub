@@ -5,3 +5,4 @@ Hosts container images for running scenarios supported by [Kraken](https://githu
 ### Supported chaos scenarios
 
 - [Pod Scenarios](docs/pod-scenarios.md)
+- [Container Scenarios](docs/container-scenarios.md)

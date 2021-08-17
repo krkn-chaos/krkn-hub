@@ -1,0 +1,7 @@
+scenarios:
+- name: "kill container"
+  namespace: $NAMESPACE
+  label_selector: $LABEL_SELECTOR
+  container_name: $CONTAINER_NAME
+  action: $ACTION
+  count: $DISRUPTION_COUNT
