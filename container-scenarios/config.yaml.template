@@ -26,6 +26,6 @@ performance_monitoring:
     alert_profile: config/alerts                          # Path to alert profile with the prometheus queries
 
 tunings:
-    wait_duration: 60                                      # Duration to wait between each chaos scenario
-    iterations: 1                                          # Number of times to execute the scenarios
-    daemon_mode: False                                     # Iterations are set to infinity which means that the kraken will cause chaos forever
+    wait_duration: $WAIT_DURATION                          # Duration to wait between each chaos scenario
+    iterations: $ITERATIONS                                # Number of times to execute the scenarios
+    daemon_mode: $DAEMON_MODE                              # Iterations are set to infinity which means that the kraken will cause chaos forever

@@ -25,3 +25,6 @@ EXPECTED_POD_COUNT      | Total pod count matching the label to verify post disr
 TIMEOUT                 | Time in seconds to wait for the target pods to match EXPECTED_POD_COUNT | 180                                |
 CERBERUS_ENABLED        | Set this to true if cerberus is running and monitoring the cluster    | False                                |
 CERBERUS_URL            | URL to poll for the go/no-go signal                                   | http://0.0.0.0:8080                  |
+WAIT_DURATION           | Duration in seconds to wait between each chaos scenario               | 60                                   |
+ITERATIONS              | Number of times to execute the scenarios                              | 1                                    |
+DAEMON_MODE             | Iterations are set to infinity which means that the kraken will cause chaos forever | False                  |
