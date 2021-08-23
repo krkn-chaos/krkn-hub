@@ -1,10 +1,10 @@
-### Node Scenarios
-This scenario disrupts the node(s) matching the label on a Kubernetes/OpenShift cluster. Actions/disruptions supported are listed [here](https://github.com/cloud-bulldozer/kraken/blob/master/docs/node_scenarios.md)
+### Cluster Shutdown Scenarios
+This scenario shuts down Kubernetes/OpenShift cluster for the specified duration, brings it back online and checks if it's healthy. More information can be found [here](https://github.com/cloud-bulldozer/kraken/blob/master/docs/cluster_shut_down_scenarios.md)
 
 #### Run
 
 ```
-$ podman run --name=<container_name> --net=host --env-host=true -v <kube_config_path>:/root/.kube/config:Z -d quay.io/openshift-scale/kraken:node-scenarios
+$ podman run --name=<container_name> --net=host --env-host=true -v <kube_config_path>:/root/.kube/config:Z -d quay.io/openshift-scale/kraken:cluster-shutdown
 # podman logs -f <container_name or container_id> # Streams Kraken logs
 $ podman inspect <container-name or container-id> --format "{{.State.ExitCode}}" # Outputs exit code which can considered as pass/fail for the scenario
 ```
@@ -16,17 +16,15 @@ The following environment variables can be set on the host running the container
 Parameter               | Description                                                           | Default
 ----------------------- | -----------------------------------------------------------------     | ------------------------------------ |
 KUBECONFIG              | Path to the kubeconfig to access the cluster API                      | /root/.kube/config                   |                                   
-ACTION                  | Action can be one of the [following](https://github.com/cloud-bulldozer/kraken/blob/master/docs/node_scenarios.md) | node_stop_start_scenario |
-LABEL_SELECTOR          | Node label to target                                                  | node-role.kubernetes.io/worker       |
-NODE_NAME               | Node name to inject faults in case of targeting a specific node       | ""                                   |
-INSTANCE_COUNT          | Targeted instance count matching the label selector                   | 1                                    |
+SHUTDOWN_DURATION       | Duration in seconds to shut down the cluster                          | 1200                                 |
 CLOUD_TYPE              | Cloud platform on top of which cluster is running, [supported cloud platforms](https://github.com/cloud-bulldozer/kraken/blob/master/docs/node_scenarios.md)                     | aws |
-TIMEOUT                 | Duration to wait for completion of node scenario injection             | 180                                |
+TIMEOUT                 | Time in seconds to wait for each node to be stopped or running after the cluster comes back | 600                                |
 CERBERUS_ENABLED        | Set this to true if cerberus is running and monitoring the cluster    | False                                |
 CERBERUS_URL            | URL to poll for the go/no-go signal                                   | http://0.0.0.0:8080                  |
 WAIT_DURATION           | Duration in seconds to wait between each chaos scenario               | 60                                   |
 ITERATIONS              | Number of times to execute the scenarios                              | 1                                    |
 DAEMON_MODE             | Iterations are set to infinity which means that the kraken will cause chaos forever | False                  |
+
 
 The following environment variables need to be set for the scenarios that requires intereacting with the cloud platform API to perform the actions:
 
