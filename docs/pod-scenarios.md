@@ -28,3 +28,6 @@ CERBERUS_URL            | URL to poll for the go/no-go signal                   
 WAIT_DURATION           | Duration in seconds to wait between each chaos scenario               | 60                                   |
 ITERATIONS              | Number of times to execute the scenarios                              | 1                                    |
 DAEMON_MODE             | Iterations are set to infinity which means that the kraken will cause chaos forever | False                  |
+
+
+**NOTE** Set NAMESPACE environment variable to `openshift-.*` to pick and disrupt pods randomly in openshift system namespaces, the DAEMON_MODE can also be enabled to disrupt the pods every x seconds in the background to check the reliability.
