@@ -7,3 +7,6 @@ Hosts container images and wrapper for running scenarios supported by [Kraken](h
 
 - [Pod Scenarios](docs/pod-scenarios.md)
 - [Container Scenarios](docs/container-scenarios.md)
+- [Node Scenarios](docs/node-scenarios.md)
+- [zone_outages](docs/zone-outages.md)
+
