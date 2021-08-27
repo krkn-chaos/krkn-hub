@@ -2,9 +2,10 @@
 This scenario disrupts the node(s) matching the label on a Kubernetes/OpenShift cluster. Actions/disruptions supported are listed [here](https://github.com/cloud-bulldozer/kraken/blob/master/docs/node_scenarios.md)
 
 #### Run
+If enabling [Cerberus](https://github.com/cloud-bulldozer/kraken#kraken-scenario-passfail-criteria-and-report) to monitor the cluster and pass/fail the scenario post chaos, refer [docs](https://github.com/cloud-bulldozer/kraken-hub/tree/main/docs/cerberus.md). Make sure to start it before injecting the chaos and set `CERBERUS_ENABLED` environment variable for the chaos injection container to autoconnect.
 
 ```
-$ podman run --name=<container_name> --net=host --env-host=true -v <kube_config_path>:/root/.kube/config:Z -d quay.io/openshift-scale/kraken:node-scenarios
+$ podman run --name=<container_name> --net=host --env-host=true -v $KUBECONFIG:/root/.kube/config:Z -d quay.io/openshift-scale/kraken:node-scenarios
 # podman logs -f <container_name or container_id> # Streams Kraken logs
 $ podman inspect <container-name or container-id> --format "{{.State.ExitCode}}" # Outputs exit code which can considered as pass/fail for the scenario
 ```
