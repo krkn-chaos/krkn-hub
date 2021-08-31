@@ -1,0 +1,6 @@
+time_scenarios:
+  - action: $ACTION
+    object_type: $OBJECT_TYPE
+    object_name:
+    namespace: 
+    label_selector: $LABEL_SELECTOR
