@@ -9,4 +9,7 @@ Hosts container images and wrapper for running scenarios supported by [Kraken](h
 - [Container Scenarios](docs/container-scenarios.md)
 - [Node Scenarios](docs/node-scenarios.md)
 - [zone_outages](docs/zone-outages.md)
-
+- [time_skew](docs/time-scenarios.md)
+- [Node_cpu_hog](docs/node-cpu-hog.md)
+- [Node_memory_hog](docs/node-memory-hog.md)
+- [Node_io_hog](docs/node-io-hog.md)
