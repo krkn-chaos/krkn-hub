@@ -28,7 +28,3 @@ CERBERUS_URL            | URL to poll for the go/no-go signal                   
 WAIT_DURATION           | Duration in seconds to wait between each chaos scenario               | 60                                   |
 ITERATIONS              | Number of times to execute the scenarios                              | 1                                    |
 DAEMON_MODE             | Iterations are set to infinity which means that the kraken will cause chaos forever | False                  |
-
-export FILESYSTEM_UTILIZATION_PERCENTAGE=${FILESYSTEM_UTILIZATION_PERCENTAGE:="90"}
-export NUMBER_OF_WORKERS=${NUMBER_OF_WORKERS:=""}
-export CPU=${CPU:=1}
