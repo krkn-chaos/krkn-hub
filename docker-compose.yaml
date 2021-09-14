@@ -1,0 +1,52 @@
+version: '3'
+services:
+    pod-scenarios:
+      build:
+          context: ./
+          dockerfile: ./pod-scenarios/Dockerfile
+      image: quay.io/openshift-scale/kraken:pod-scenarios
+    node-scenarios:
+        build:
+            context: ./
+            dockerfile: ./node-scenarios/Dockerfile
+        image: quay.io/openshift-scale/kraken:node-scenarios
+    zone-outages:
+      build:
+        context: ./
+        dockerfile: ./zone-outages/Dockerfile
+      image: quay.io/openshift-scale/kraken:zone-outages
+    time-scenarios:
+      build:
+        context: ./
+        dockerfile: ./time-scenarios/Dockerfile
+      image: quay.io/openshift-scale/kraken:time-scenarios
+    cerberus:
+      build:
+        context: ./
+        dockerfile: ./cerberus/Dockerfile
+      image: quay.io/openshift-scale/kraken:cerberus
+    cluster-shutdown:
+      build:
+        context: ./
+        dockerfile: ./cluster-shutdown/Dockerfile
+      image: quay.io/openshift-scale/kraken:cluster-shutdown
+    container-scenarios:
+      build:
+        context: ./
+        dockerfile: ./container-scenarios/Dockerfile
+      image: quay.io/openshift-scale/kraken:container-scenarios
+    node-cpu-hog:
+      build:
+        context: ./
+        dockerfile: ./node-cpu-hog/Dockerfile
+      image: quay.io/openshift-scale/kraken:node-cpu-hog
+    node-io-hog:
+      build:
+        context: ./
+        dockerfile: ./node-io-hog/Dockerfile
+      image: quay.io/openshift-scale/kraken:node-io-hog
+    node-memory-hog:
+      build:
+        context: ./
+        dockerfile: ./node-memory-hog/Dockerfile
+      image: quay.io/openshift-scale/kraken:node-memory-hog

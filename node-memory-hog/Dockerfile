@@ -10,9 +10,10 @@ ENV KUBECONFIG /root/.kube/config
 RUN yum install -y which
 
 # Copy configurations
-COPY config.yaml.template /root/kraken/config/config.yaml.template
-COPY env.sh /root/env.sh
-COPY run.sh /root/run.sh
-COPY memory_hog.yaml.template /root/kraken/scenarios/memory_hog.yaml.template
+COPY node-memory-hog/config.yaml.template /root/kraken/config/config.yaml.template
+COPY node-memory-hog/env.sh /root/env.sh
+COPY node-memory-hog/run.sh /root/run.sh
+COPY node-memory-hog/memory_hog.yaml.template /root/kraken/scenarios/memory_hog.yaml.template
+COPY common_run.sh /root/common_run.sh
 
 ENTRYPOINT /root/run.sh

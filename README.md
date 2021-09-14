@@ -13,3 +13,11 @@ Hosts container images and wrapper for running scenarios supported by [Kraken](h
 - [Node_cpu_hog](docs/node-cpu-hog.md)
 - [Node_memory_hog](docs/node-memory-hog.md)
 - [Node_io_hog](docs/node-io-hog.md)
+
+
+### Adding New Scenarios/Testing Changes
+
+Refer to the 2 docs below to be able to test your own images with any changes and be able to contribute them to the repository
+
+- [Testing Your Changes](docs/test_your_changes.md)
+- [Contribute](docs/contribute.md)
