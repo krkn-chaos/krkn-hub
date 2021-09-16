@@ -10,9 +10,10 @@ ENV KUBECONFIG /root/.kube/config
 RUN yum install -y which
 
 # Copy configurations
-COPY config.yaml.template /root/kraken/config/config.yaml.template
-COPY env.sh /root/env.sh
-COPY run.sh /root/run.sh
-COPY time_scenario.yaml.template /root/kraken/scenarios/time_scenario.yaml.template
+COPY time-scenarios/config.yaml.template /root/kraken/config/config.yaml.template
+COPY time-scenarios/env.sh /root/env.sh
+COPY time-scenarios/run.sh /root/run.sh
+COPY time-scenarios/time_scenario.yaml.template /root/kraken/scenarios/time_scenario.yaml.template
+COPY common_run.sh /root/common_run.sh
 
 ENTRYPOINT /root/run.sh
