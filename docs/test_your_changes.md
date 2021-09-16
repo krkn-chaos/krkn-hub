@@ -1,7 +1,7 @@
 # How to Test Your Changes/Additions 
 
 ## Install Podman/Docker Compose
-You can use either podman or docker for this step
+You can use either podman-compose or docker-compose for this step
 
 **NOTE:** Podman might not work on Mac's
 
@@ -9,7 +9,9 @@ You can use either podman or docker for this step
 
 OR 
 
-`pip3 install podman-compose`
+To get latest podman-compose features we need, use this installation command
+
+`pip3 install https://github.com/containers/podman-compose/archive/devel.tar.gz`
 
 ## Current list of Scenario Types
 
