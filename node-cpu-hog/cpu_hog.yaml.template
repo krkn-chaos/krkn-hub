@@ -8,7 +8,7 @@ spec:
   annotationCheck: 'false'
   # It can be active/stop
   engineState: 'active'
-  chaosServiceAccount: node-cpu-hog-sa
+  chaosServiceAccount: litmus-sa
   monitoring: false
   # It can be delete/retain
   jobCleanUpPolicy: '$JOB_CLEANUP_POLICY'

@@ -8,7 +8,7 @@ spec:
   jobCleanUpPolicy: 'retain'
   # It can be active/stop
   engineState: 'active'
-  chaosServiceAccount: node-io-stress-sa
+  chaosServiceAccount: litmus-sa
   experiments:
     - name: node-io-stress
       spec:
@@ -16,7 +16,7 @@ spec:
           env:
             # set chaos duration (in sec) as desired
             - name: TOTAL_CHAOS_DURATION
-              value: '40'
+              value: '$TOTAL_CHAOS_DURATION'
 
             ## specify the size as percentage of free space on the file system
             - name: FILESYSTEM_UTILIZATION_PERCENTAGE

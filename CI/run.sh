@@ -1,6 +1,9 @@
 set -x
 
 rm -rf results.markdown
+# Clean up our created directories
+rm -rf test_* ci_results gold outputs/*
+
 test_rc=0
 
 sed 's/.sh//g' CI/tests/all_tests > CI/tests/my_tests
@@ -45,6 +48,14 @@ if [ `grep -c Failed ci_results` -gt 0 ]
 then
   test_rc=1
 fi
+
+test_folders=$(ls | grep "test_")
+
+for test_folder in $test_folders;
+do
+  cp $test_folder/test_*.out outputs/
+done
+
 
 # Clean up our created directories
 rm -rf test_* ci_results

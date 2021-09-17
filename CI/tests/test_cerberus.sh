@@ -16,16 +16,15 @@ function functional_test_cerberus {
   export CERBERUS_DAEMON_MODE=False
   export CERBERUS_ITERATIONS=1
   container_name="cerberus_test"
-  . ./get_docker_params.sh
   $command-compose build cerberus
-  image_id=$($command images --all --format "{{.ID}}" | head -n 1)
-  $command run --name=$container_name --net=host $PARAMS -v $KUBECONFIG:/root/.kube/config:Z -d $image_id
+  . ./get_docker_params.sh
+  image_id=$($command images --format "{{.ID}}" | head -n 1)
+  $command run --name=$container_name --net=host $PARAMS -v /root/.kube/config:/root/.kube/config:Z -d $image_id
   $command logs -f $container_name
-  get_exit_code $command $container_name
-  final_get_exit_code=$?
-  echo "exit code: $final_get_exit_code"
-  $command rm -f $container_name
-  exit $final_get_exit_code
+  final_exit_code=$(get_exit_code $command $container_name)
+  echo "exit code final: $final_exit_code"
+  delete_containers_and_images $command
+  exit $final_exit_code
 }
 
 functional_test_cerberus
