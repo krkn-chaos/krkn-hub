@@ -10,9 +10,18 @@ $ podman run --name=<container_name> --net=host --env-host=true -v $KUBECONFIG:/
 $ podman inspect <container-name or container-id> --format "{{.State.ExitCode}}" # Outputs exit code which can considered as pass/fail for the scenario
 ```
 
+```
+$ docker run --name=<container_name> --net=host -v $KUBECONFIG:/root/.kube/config:Z -d quay.io/openshift-scale/kraken:time-scenarios
+# docker logs -f <container_name or container_id> # Streams Kraken logs
+$ docker inspect <container-name or container-id> --format "{{.State.ExitCode}}" # Outputs exit code which can considered as pass/fail for the scenario
+```
+
 #### Supported parameters
 
 The following environment variables can be set on the host running the container to tweak the scenario/faults being injected:
+
+ex.) 
+`export <parameter_name>=<value>`
 
 Parameter               | Description                                                           | Default
 ----------------------- | -----------------------------------------------------------------     | ------------------------------------ |

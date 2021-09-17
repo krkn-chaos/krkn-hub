@@ -1,5 +1,10 @@
 version: '3'
 services:
+    cerberus:
+      build:
+        context: ./
+        dockerfile: ./cerberus/Dockerfile
+      image: quay.io/openshift-scale/cerberus:kraken-hub
     pod-scenarios:
       build:
           context: ./
@@ -20,11 +25,6 @@ services:
         context: ./
         dockerfile: ./time-scenarios/Dockerfile
       image: quay.io/openshift-scale/kraken:time-scenarios
-    cerberus:
-      build:
-        context: ./
-        dockerfile: ./cerberus/Dockerfile
-      image: quay.io/openshift-scale/kraken:cerberus
     cluster-shutdown:
       build:
         context: ./

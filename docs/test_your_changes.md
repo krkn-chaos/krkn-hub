@@ -63,10 +63,7 @@ Single image
 
 OR
 
-All Images 
-`podman image push --all-tags quay.io/<username>/kraken-hub`
-
-Single Image
+Single Image (have to go one by one to push images through podman)
 `podman image push quay.io/<username>/kraken-hub:<scenario_type>`
 
 ## Run your scenario
