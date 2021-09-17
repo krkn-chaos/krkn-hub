@@ -11,8 +11,14 @@ checks
 
 # Substitute config with environment vars defined
 envsubst < /root/kraken/scenarios/container_scenario.yaml.template > /root/kraken/scenarios/container_scenario.yaml
-envsubst < /root/kraken/config/config.yaml.template > /root/kraken/config/config.yaml
+envsubst < /root/kraken/config/config.yaml.template > /root/kraken/config/container_scenario_config.yaml
 
 # Run Kraken
 cd /root/kraken
-python3 run_kraken.py --config=config/config.yaml
+
+cat config/container_scenario_config.yaml
+
+cat scenarios/container_scenario.yaml
+
+
+python3 run_kraken.py --config=config/container_scenario_config.yaml

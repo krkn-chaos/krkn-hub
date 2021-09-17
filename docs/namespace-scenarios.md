@@ -32,10 +32,11 @@ ACTION                  | Action to take on the namespace                       
 LABEL_SELECTOR          | Label of the namspace to target                                       |                          |
 OBJECT_NAME             | List of the names of pods or nodes you want to skew ( optional parameter )                   | []                                   |
 NAMESPACE               | Namespace of the pods you want to skew, need to be set only if setting a specific pod name | ""                   |
+SLEEP                   | Number of seconds to wait before polling to see if namespace exists again         | 15                                    |
+RUNS                    | Number of namespaces to take the action on in each scenario           | 1                                    |
 CERBERUS_ENABLED        | Set this to true if cerberus is running and monitoring the cluster    | False                                |
 CERBERUS_URL            | URL to poll for the go/no-go signal                                   | http://0.0.0.0:8080                  |
 WAIT_DURATION           | Duration in seconds to wait between each chaos scenario               | 60                                   |
-RUNS                    | Number of namespaces to take the action on in each scenario           | 1                                    |
 ITERATIONS              | Number of times to execute the scenarios                              | 1                                    |
 DAEMON_MODE             | Iterations are set to infinity which means that the kraken will cause chaos forever | False                  |
 PUBLISH_KRAKEN_STATUS              | If you want                         | True                                    |

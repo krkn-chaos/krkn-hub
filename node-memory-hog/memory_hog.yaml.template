@@ -8,7 +8,7 @@ spec:
   jobCleanUpPolicy: 'retain'
   # It can be active/stop
   engineState: 'active'
-  chaosServiceAccount: node-memory-hog-sa
+  chaosServiceAccount: litmus-sa
   experiments:
     - name: node-memory-hog
       spec:

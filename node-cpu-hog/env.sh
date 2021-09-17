@@ -7,5 +7,5 @@ export NODE_CPU_CORE=${NODE_CPU_CORE:="2"}
 export NODES_AFFECTED_PERC=${NODES_AFFECTED_PERC:=""}
 export TARGET_NODES=${TARGET_NODES:=""}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=litmus_scenarios}
-export SCENARIO_FILE=${SCENARIO_FILE:=- "https://raw.githubusercontent.com/cloud-bulldozer/kraken/master/scenarios/templates/litmus-rbac.yaml"}
+export SCENARIO_FILE=${SCENARIO_FILE:=- https://raw.githubusercontent.com/cloud-bulldozer/kraken/master/scenarios/templates/litmus-rbac.yaml}
 export SCENARIO_POST_ACTION=${SCENARIO_POST_ACTION:=- scenarios/node_hog_engine.yaml}

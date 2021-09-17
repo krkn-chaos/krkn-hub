@@ -28,7 +28,4 @@ else
   echo "$ci_dir: Failed"
   echo "$ci_dir: Failed" > ci_results
   echo "$ci_test | Fail | $duration" > results.markdown
-  echo "Logs for "$ci_dir
-  # Display the error log since we have failed to pass
-  cat $ci_test.out
 fi
