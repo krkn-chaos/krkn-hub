@@ -50,3 +50,8 @@ services:
         context: ./
         dockerfile: ./node-memory-hog/Dockerfile
       image: quay.io/openshift-scale/kraken:node-memory-hog
+    namespace-scenarios:
+      build:
+        context: ./
+        dockerfile: ./namespace-scenarios/Dockerfile
+      image: quay.io/openshift-scale/kraken:namespace-scenarios
