@@ -13,7 +13,7 @@ Hosts container images and wrapper for running scenarios supported by [Kraken](h
 - [Node_cpu_hog](docs/node-cpu-hog.md)
 - [Node_memory_hog](docs/node-memory-hog.md)
 - [Node_io_hog](docs/node-io-hog.md)
-
+- [Namespace Scenarios](docs/namespace-scenarios.md)
 
 ### Adding New Scenarios/Testing Changes
 
