@@ -8,6 +8,9 @@
 $ podman run --net=host --env-host=true --privileged -d -v $KUBECONFIG:/root/.kube/config:Z quay.io/openshift-scale/cerberus:kraken-hub
 ```
 
+```
+$ docker run --net=host --privileged -d -v $KUBECONFIG:/root/.kube/config:Z quay.io/openshift-scale/cerberus:kraken-hub
+```
 
 #### Supported Parameters
 
