@@ -15,6 +15,10 @@ Hosts container images and wrapper for running scenarios supported by [Kraken](h
 - [Node_io_hog](docs/node-io-hog.md)
 - [Namespace Scenarios](docs/namespace-scenarios.md)
 
+
+### Set Up 
+Install Podman for your certain operating system based on these [instructions](https://podman.io/getting-started/installation) 
+
 ### Adding New Scenarios/Testing Changes
 
 Refer to the 2 docs below to be able to test your own images with any changes and be able to contribute them to the repository
