@@ -1,15 +1,16 @@
-### Zone Outage Scenarios
-This scenario disrupts a targeted zone in the public cloud by blocking egress and ingress traffic to understand the impact on both Kubernetes/OpenShift platforms control plane as well as applications running on the worker nodes in that zone. More information is documented [here](https://github.com/cloud-bulldozer/kraken/blob/master/docs/zone_outage.md)
+### Application outages
+This scenario disrupts the traffic to the specified application to be able to understand the impact of the outage on the dependent service/user experience. Refer [docs](https://github.com/cloud-bulldozer/kraken/blob/master/docs/application_outages.md) for more details.
 
 #### Run
 
 If enabling [Cerberus](https://github.com/cloud-bulldozer/kraken#kraken-scenario-passfail-criteria-and-report) to monitor the cluster and pass/fail the scenario post chaos, refer [docs](https://github.com/cloud-bulldozer/kraken-hub/tree/main/docs/cerberus.md). Make sure to start it before injecting the chaos and set `CERBERUS_ENABLED` environment variable for the chaos injection container to autoconnect.
- 
+
 ```
-$ podman run --name=<container_name> --net=host --env-host=true -v $KUBECONFIG:/root/.kube/config:Z -d quay.io/openshift-scale/kraken:zone-outages
+$ podman run --name=<container_name> --net=host --env-host=true -v $KUBECONFIG:/root/.kube/config:Z -d quay.io/openshift-scale/kraken:application-outages
 # podman logs -f <container_name or container_id> # Streams Kraken logs
 $ podman inspect <container-name or container-id> --format "{{.State.ExitCode}}" # Outputs exit code which can considered as pass/fail for the scenario
 ```
+
 
 #### Supported parameters
 
@@ -20,43 +21,15 @@ ex.)
 
 Parameter               | Description                                                           | Default
 ----------------------- | -----------------------------------------------------------------     | ------------------------------------ |
-KUBECONFIG              | Path to the kubeconfig to access the cluster API                      | /root/.kube/config                   |                                   
-CLOUD_TYPE              | Cloud platform on top of which cluster is running, [supported cloud platforms](https://github.com/cloud-bulldozer/kraken/blob/master/docs/node_scenarios.md)                     | aws |
-DURATION                | Duration in seconds after which the zone will be back online          | 600                                  |
-VPC_ID                  | cluster virtual private network to target ( REQUIRED )                             | ""                                   |
-SUBNET_ID               | subnet-id to deny both ingress and egress traffic ( REQUIRED )                    | ""                                   |
+KUBECONFIG              | Path to the kubeconfig to access the cluster API                      | /root/.kube/config                   |
+DURATION                | Duration in seconds after which the routes will be accessible         | 600                                  |
+NAMESPACE               | Namespace to target - all application routes will go inaccessible if pod selector is empty ( Required )|  No default |
+POD_SELECTOR            | Pods to target. For example {app=foo}                                 | No default                           |
+BLOCK_TRAFFIC_TYPE      | It can be Ingress or Egress or Ingress, Egress ( needs to be a list ) | [Ingress, Egress]                    |
 CERBERUS_ENABLED        | Set this to true if cerberus is running and monitoring the cluster    | False                                |
 CERBERUS_URL            | URL to poll for the go/no-go signal                                   | http://0.0.0.0:8080                  |
 WAIT_DURATION           | Duration in seconds to wait between each chaos scenario               | 60                                   |
 ITERATIONS              | Number of times to execute the scenarios                              | 1                                    |
 DAEMON_MODE             | Iterations are set to infinity which means that the kraken will cause chaos forever | False                  |
 
-The following environment variables need to be set for the scenarios that requires intereacting with the cloud platform API to perform the actions:
-
-Amazon Web Services
-```
-$ export AWS_ACCESS_KEY_ID=<>
-$ export AWS_SECRET_ACCESS_KEY=<>
-$ export AWS_DEFAULT_REGION=<>
-```
-
-Google Cloud Platform
-```
-TBD
-```
-
-Azure
-```
-TBD
-```
-
-OpenStack
-
-```
-TBD
-```
-
-Baremetal
-```
-TBD
-```
+**NOTE** Defining the `NAMESPACE` parameter is required for running this scenario while the pod_selector is optional.

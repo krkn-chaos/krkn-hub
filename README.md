@@ -14,7 +14,7 @@ Hosts container images and wrapper for running scenarios supported by [Kraken](h
 - [Node_memory_hog](docs/node-memory-hog.md)
 - [Node_io_hog](docs/node-io-hog.md)
 - [Namespace Scenarios](docs/namespace-scenarios.md)
-
+- [Application outages](docs/application-outages.md)
 
 ### Set Up 
 Install Podman for your certain operating system based on these [instructions](https://podman.io/getting-started/installation) 

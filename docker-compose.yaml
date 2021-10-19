@@ -55,3 +55,8 @@ services:
         context: ./
         dockerfile: ./namespace-scenarios/Dockerfile
       image: quay.io/openshift-scale/kraken:namespace-scenarios
+    application-outages:
+      build:
+        context: ./
+        dockerfile: ./application-outages/Dockerfile
+      image: quay.io/openshift-scale/kraken:application-outages
