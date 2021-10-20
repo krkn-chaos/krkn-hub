@@ -1,0 +1,60 @@
+name: Run e2e tests
+on:
+  pull_request_target:
+    types: [labeled, synchronize]
+  push:
+    branches: [ci-tests]
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+    inputs:
+      test_list:
+        description: Only run tests that match the regular expression
+        default: ""
+      img:
+        description: Kraken hub image location
+        default: quay.io/openshift-scale/kraken:testing
+concurrency:
+  group: e2e-ci
+jobs:
+  e2e:
+    name: E2E testing
+    runs-on: ubuntu-latest
+    timeout-minutes: 600
+    if: "github.event_name == 'push' || github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request_target' && contains(github.event.pull_request.labels.*.name, 'ok to test'))"
+    env:
+      BATS_TESTS: ${{ github.event.inputs.test_list }}
+      IMG: ${{ github.event.inputs.img }}
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v1
+    - name: Authenticate against OCP cluster
+      uses: redhat-actions/oc-login@v1
+      with:
+        openshift_server_url: ${{ secrets.OPENSHIFT_SERVER }}
+        openshift_username: ${{ secrets.OPENSHIFT_USER }}
+        openshift_password: ${{ secrets.OPENSHIFT_PASSWORD }}
+        insecure_skip_tls_verify: true
+
+    - name: Login in quay
+      run: podman login quay.io -u ${QUAY_USER} -p ${QUAY_TOKEN}
+      env:
+        QUAY_USER: ${{ secrets.QUAY_USER }}
+        QUAY_TOKEN: ${{ secrets.QUAY_TOKEN }}
+
+    - name: ls
+      run: ls
+    - name: Execute e2e tests
+      run: ./CI/run.sh
+      env:
+        TERM: linux
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: us-west-2
+        VPC_ID: ${{ secrets.VPC_ID }}
+        SUBNET_ID: ${{ secrets.SUBNET_ID }}
+
+    - name: Remove all podman images
+      run: docker rm -vf $(docker ps -a -q); docker rmi -f $(docker images -a -q)
+      if: always() # always run even if the previous step fails

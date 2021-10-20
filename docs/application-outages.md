@@ -38,5 +38,8 @@ CERBERUS_URL            | URL to poll for the go/no-go signal                   
 WAIT_DURATION           | Duration in seconds to wait between each chaos scenario               | 60                                   |
 ITERATIONS              | Number of times to execute the scenarios                              | 1                                    |
 DAEMON_MODE             | Iterations are set to infinity which means that the kraken will cause chaos forever | False                  |
+PUBLISH_KRAKEN_STATUS              | If you want                         | True                                    |
+PORT              | Port to print kraken status to                             | 8081                                    |
+LITMUS_VERSION             | Litmus version to install | v.1.13.8                 |
 
 **NOTE** Defining the `NAMESPACE` parameter is required for running this scenario while the pod_selector is optional. In case of using pod selector to target a particular application, make sure to define it using the following format with a space between key and value: "{key: value}".

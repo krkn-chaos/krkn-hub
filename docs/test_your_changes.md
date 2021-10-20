@@ -61,6 +61,20 @@ Scenario Types:
 6. Add service/scenario to [docker-compose.yaml](docker-compose.yaml) file following syntax of other services
 7. Point the dockerfile parameter in your docker-compose to the Dockerfile file in your new folder
 8. Update this doc and main README with new scenario type
+9. Add CI test for new scenario 
+
+    a. See [test_application_outages.sh](../CI/tests/test_application_outages.sh) for example
+    
+    b. Lines to change
+    
+        i. 13 and 31: Give a new function name 
+        
+        ii.  16: Give it a meaningful container name
+        
+        iii. Edit line 18 to give scenario type defined in docker-compose file 
+    
+    c. Add test name to [all_tests](../CI/tests/all_tests) file 
+ 
 
 NOTE: 
 1. If you added any variables or new sections be sure to update [config.yaml.template](../config.yaml.template) 
