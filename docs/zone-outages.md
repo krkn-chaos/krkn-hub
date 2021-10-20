@@ -24,7 +24,7 @@ KUBECONFIG              | Path to the kubeconfig to access the cluster API      
 CLOUD_TYPE              | Cloud platform on top of which cluster is running, [supported cloud platforms](https://github.com/cloud-bulldozer/kraken/blob/master/docs/node_scenarios.md)                     | aws |
 DURATION                | Duration in seconds after which the zone will be back online          | 600                                  |
 VPC_ID                  | cluster virtual private network to target ( REQUIRED )                             | ""                                   |
-SUBNET_ID               | subnet-id to deny both ingress and egress traffic ( REQUIRED )                    | ""                                   |
+SUBNET_ID               | subnet-id to deny both ingress and egress traffic ( REQUIRED ). Format: [subenet1, subnet2]                    | ""                                   |
 CERBERUS_ENABLED        | Set this to true if cerberus is running and monitoring the cluster    | False                                |
 CERBERUS_URL            | URL to poll for the go/no-go signal                                   | http://0.0.0.0:8080                  |
 WAIT_DURATION           | Duration in seconds to wait between each chaos scenario               | 60                                   |
