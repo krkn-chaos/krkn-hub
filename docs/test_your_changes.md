@@ -26,15 +26,45 @@ Scenario Types:
 * node-cpu-hog
 * node-io-hog
 * node-memory-hog
+* application-outages
 
 ## Adding a New Scenario
 1. Create folder with scenario name
-2. Create Dockerfile
-3. Create script to run chaos scenario
-4. Add any environment variables and helper files needed for run  
-5. Add service/scenario to [docker-compose.yaml](docker-compose.yaml) file following syntax of other services
-6. Point dockerfile location to Dockerfile in your new folder
-7. Update this doc and main README with new scenario type
+
+2. Create generic scenario template with enviornment variables
+
+    a. See [scenario.yaml](../application-outages/app_outages.yaml.template) for example
+    
+    b. Almost all parameters should be set using a variable (these will be set in the env.sh file or through the command line environment variables)
+    
+3. Add defaults for any environment variables in an "env.sh" file
+
+    a.  See [env.sh](../application-outages/env.sh) for example
+    
+4. Create script to run.sh chaos scenario
+    a. See [run.sh](../application-outages/run.sh) for example
+    
+    b. edit line 15 with your scenario config location
+
+5. Create Dockerfile
+    
+    a. See [dockerfile](../application-outages/Dockerfile) for example
+    
+    b. Lines to edit
+    
+        i. 14: replace "application-outages" with your folder name 
+        
+        ii. 16: replace "application-outages" with your folder name
+        
+        iii. 18: replace "application-outages" with your folder name and config file name 
+        
+6. Add service/scenario to [docker-compose.yaml](docker-compose.yaml) file following syntax of other services
+7. Point the dockerfile parameter in your docker-compose to the Dockerfile file in your new folder
+8. Update this doc and main README with new scenario type
+
+NOTE: 
+1. If you added any variables or new sections be sure to update [config.yaml.template](../config.yaml.template) 
+2. Similar to above, also add the default parameter values to [env.sh](../env.sh)
 
 ## Build Your Changes
 1. Edit the docker-compose.yaml file to point to your quay.io repository

@@ -3,6 +3,7 @@
 set -ex
 
 # Source env.sh to read all the vars
+source /root/main_env.sh
 source /root/env.sh
 
 ls -la /root/.kube
@@ -16,4 +17,7 @@ envsubst < /root/kraken/config/config.yaml.template > /root/kraken/config/config
 
 # Run Kraken
 cd /root/kraken
-python3 run_kraken.py --config=config/config.yaml
+
+cat /root/kraken/config/config.yaml
+
+python3 run_kraken.py --config=/root/kraken/config/config.yaml

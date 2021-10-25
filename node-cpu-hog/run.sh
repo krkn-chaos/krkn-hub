@@ -3,6 +3,7 @@
 set -ex
 
 # Source env.sh to read all the vars
+source /root/main_env.sh
 source /root/env.sh
 
 source /root/common_run.sh

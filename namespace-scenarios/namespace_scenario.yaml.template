@@ -1,6 +1,6 @@
 scenarios:
   - action: $ACTION
-    namespace: $OBJECT_TYPE
+    namespace: $NAMESPACE
     label_selector: $LABEL_SELECTOR
     runs: $RUNS
     sleep: $SLEEP

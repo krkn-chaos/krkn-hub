@@ -12,16 +12,22 @@ Scenario   | Description | Working
 [Node failures](docs/node-scenarios.md) | Injects node failure through OpenShift/Kubernetes, cloud API's | :heavy_check_mark: |
 [zone outages](docs/zone-outages.md) | Creates zone outage to observe the impact on the cluster, applications | :heavy_check_mark: |
 [time skew](docs/time-scenarios.md) | Skews the time and date | :heavy_check_mark: |
-[Node cpu hog](docs/node-cpu-hog.md) | Hogs CPU on the targeted nodes | Needs testing |
-[Node memory hog](docs/node-memory-hog.md) | Hogs memory on the targeted nodes | Needs testing |
-[Node IO hog](docs/node-io-hog.md) | Hogs IO on the targeted nodes | Needs testing |
+[Node cpu hog](docs/node-cpu-hog.md) | Hogs CPU on the targeted nodes | :heavy_check_mark: |
+[Node memory hog](docs/node-memory-hog.md) | Hogs memory on the targeted nodes | :heavy_check_mark:  |
+[Node IO hog](docs/node-io-hog.md) | Hogs IO on the targeted nodes | :heavy_check_mark:  |
 [Namespace failures](docs/namespace-scenarios.md) | Fails the components in a namespace by deleting it | :heavy_check_mark: | 
 [Application outages](docs/application-outages.md) | Isolates application Ingress/Egress traffic to observe the impact on dependent applications and recovery/initialization timing | :heavy_check_mark: |
-[Power Outages](docs/power-outages.md) | Shuts down the cluster for the specified durartion and turns it back on to check the cluster health | :heavy_check_mark: |
+[Power Outages](docs/power-outages.md) | Shuts down the cluster for the specified duration and turns it back on to check the cluster health | :heavy_check_mark: |
 
 
 ### Set Up 
-Install Podman for your certain operating system based on these [instructions](https://podman.io/getting-started/installation) 
+You can use docker or podman to run kraken-hub
+
+Install Podman your certain operating system based on these [instructions](https://podman.io/getting-started/installation) 
+
+or 
+
+Install [Docker](https://docs.docker.com/engine/install/)
 
 ### Adding New Scenarios/Testing Changes
 

@@ -1,15 +1,11 @@
 #!/bin/bash
 
 # Vars and respective defaults
-export KUBECONFIG=${KUBECONFIG:="/root/.kube/config"}
 export JOB_CLEANUP_POLICY=${JOB_CLEANUP_POLICY:="delete"}
 export TOTAL_CHAOS_DURATION=${TOTAL_CHAOS_DURATION:="300"}
 export NODE_CPU_CORE=${NODE_CPU_CORE:="2"}
 export NODES_AFFECTED_PERC=${NODES_AFFECTED_PERC:=""}
 export TARGET_NODES=${TARGET_NODES:=""}
-export CERBERUS_ENABLED=${CERBERUS_ENABLED:=False}
-export CERBERUS_URL=${CERBERUS_URL:=http://0.0.0.0:8080}
-export WAIT_DURATION=${WAIT_DURATION:=60}
-export ITERATIONS=${ITERATIONS:=1}
-export DAEMON_MODE=${DAEMON_MODE:=False}
-export RETRY_WAIT=${RETRY_WAIT:=120}
+export SCENARIO_TYPE=${SCENARIO_TYPE:=litmus_scenarios}
+export SCENARIO_FILE=${SCENARIO_FILE:=- "https://raw.githubusercontent.com/cloud-bulldozer/kraken/master/scenarios/templates/litmus-rbac.yaml"}
+export SCENARIO_POST_ACTION=${SCENARIO_POST_ACTION:=- scenarios/node_hog_engine.yaml}

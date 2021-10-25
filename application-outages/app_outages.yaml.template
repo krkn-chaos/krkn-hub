@@ -2,4 +2,5 @@ application_outage:                                  # Scenario to create an out
   duration: $DURATION                                      # Duration in seconds after which the routes will be accessible
   namespace: $NAMESPACE                                         # Namespace to target - all application routes will go inaccessible if pod selector is empty
   pod_selector: $POD_SELECTOR                            # Pods to target
-  block: $BLOCK_TRAFFIC_TYPE                           # It can be Ingress or Egress or Ingress, Egress
+  block:
+    $BLOCK_TRAFFIC_TYPE                           # It can be Ingress or Egress or Ingress, Egress
