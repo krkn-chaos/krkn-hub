@@ -30,6 +30,7 @@ ACTION                  | Action can be one of the [following](https://github.co
 LABEL_SELECTOR          | Node label to target                                                  | node-role.kubernetes.io/worker       |
 NODE_NAME               | Node name to inject faults in case of targeting a specific node; Can set multiple node names separated by a comma      | ""                                   |
 INSTANCE_COUNT          | Targeted instance count matching the label selector                   | 1                                    |
+RUNS                    | Iterations to perform action on a single node                         | 1                                    |
 CLOUD_TYPE              | Cloud platform on top of which cluster is running, [supported cloud platforms](https://github.com/cloud-bulldozer/kraken/blob/master/docs/node_scenarios.md)                     | aws |
 TIMEOUT                 | Duration to wait for completion of node scenario injection             | 180                                |
 CERBERUS_ENABLED        | Set this to true if cerberus is running and monitoring the cluster    | False                                |

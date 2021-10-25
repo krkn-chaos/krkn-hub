@@ -3,6 +3,7 @@ node_scenarios:
     - $ACTION
     node_name:  $NODE_NAME                                          # node on which scenario has to be injected
     label_selector: $LABEL_SELECTOR                                 # when node_name is not specified, a node with matching label_selector is selected for node chaos scenario injection
-    instance_kill_count: $INSTANCE_COUNT                            # number of times to inject each scenario under actions
+    instance_count: $INSTANCE_COUNT                                 # number of nodes to select matching the label selector to inject each scenario under actions
+    runs: $RUNS                                                      # number of times to inject each scenario under actions (on the same node)
     timeout: $TIMEOUT                                               # duration to wait for completion of node scenario injection
     cloud_type: $CLOUD_TYPE                                         # cloud type on which Kubernetes/OpenShift runs
