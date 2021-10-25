@@ -10,8 +10,9 @@ ENV KUBECONFIG /root/.kube/config
 RUN yum install -y which
 
 # Copy configurations
-COPY node-io-hog/config.yaml.template /root/kraken/config/config.yaml.template
+COPY config.yaml.template /root/kraken/config/config.yaml.template
 COPY node-io-hog/env.sh /root/env.sh
+COPY env.sh /root/main_env.sh
 COPY node-io-hog/run.sh /root/run.sh
 COPY node-io-hog/io_hog.yaml.template /root/kraken/scenarios/io_hog.yaml.template
 COPY common_run.sh /root/common_run.sh
