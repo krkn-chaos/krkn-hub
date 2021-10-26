@@ -6,6 +6,7 @@ export ACTION=${ACTION:="node_stop_start_scenario"}
 export LABEL_SELECTOR=${LABEL_SELECTOR:="node-role.kubernetes.io/worker"}
 export NODE_NAME=${NODE_NAME:=""}
 export INSTANCE_COUNT=${INSTANCE_COUNT:=1}
+export RUNS=${RUNS:=1}
 export CLOUD_TYPE=${CLOUD_TYPE:="aws"}
 export TIMEOUT=${TIMEOUT:=180}
 export CERBERUS_ENABLED=${CERBERUS_ENABLED:=False}
