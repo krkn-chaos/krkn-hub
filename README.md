@@ -7,16 +7,18 @@ Hosts container images and wrapper for running scenarios supported by [Kraken](h
 
 Scenario   | Description | Working
 ------------------------------------------- | --------------------------------------------------------------------------------------------- | -------------------- |  
-[Pod Scenarios](docs/pod-scenarios.md) | Injects pod failures | :heavy_check_mark: |
-[Container Scenarios](docs/container-scenarios.md) | Injects container failures based on the provided kill signal | :heavy_check_mark: | 
-[Node Scenarios](docs/node-scenarios.md) | Injects node failure through OpenShift/Kubernetes, cloud API's | :heavy_check_mark: |
-[zone_outages](docs/zone-outages.md) | Creates zone outage to observe the impact on the cluster, applications | :heavy_check_mark: |
-[time_skew](docs/time-scenarios.md) | Skews the time and date | :heavy_check_mark: |
-[Node_cpu_hog](docs/node-cpu-hog.md) | Hogs CPU on the targeted nodes | Needs testing |
-[Node_memory_hog](docs/node-memory-hog.md) | Hogs memory on the targeted nodes | Needs testing |
-[Node_io_hog](docs/node-io-hog.md) | Hogs IO on the targeted nodes | Needs testing |
-[Namespace Scenarios](docs/namespace-scenarios.md) | Fails the components in a namespace by deleting it | :heavy_check_mark: | 
+[Pod failures](docs/pod-scenarios.md) | Injects pod failures | :heavy_check_mark: |
+[Container failures](docs/container-scenarios.md) | Injects container failures based on the provided kill signal | :heavy_check_mark: | 
+[Node failures](docs/node-scenarios.md) | Injects node failure through OpenShift/Kubernetes, cloud API's | :heavy_check_mark: |
+[zone outages](docs/zone-outages.md) | Creates zone outage to observe the impact on the cluster, applications | :heavy_check_mark: |
+[time skew](docs/time-scenarios.md) | Skews the time and date | :heavy_check_mark: |
+[Node cpu hog](docs/node-cpu-hog.md) | Hogs CPU on the targeted nodes | Needs testing |
+[Node memory hog](docs/node-memory-hog.md) | Hogs memory on the targeted nodes | Needs testing |
+[Node IO hog](docs/node-io-hog.md) | Hogs IO on the targeted nodes | Needs testing |
+[Namespace failures](docs/namespace-scenarios.md) | Fails the components in a namespace by deleting it | :heavy_check_mark: | 
 [Application outages](docs/application-outages.md) | Isolates application Ingress/Egress traffic to observe the impact on dependent applications and recovery/initialization timing | :heavy_check_mark: |
+[Power Outages](docs/power-outages.md) | Shuts down the cluster for the specified durartion and turns it back on to check the cluster health | :heavy_check_mark: |
+
 
 ### Set Up 
 Install Podman for your certain operating system based on these [instructions](https://podman.io/getting-started/installation) 

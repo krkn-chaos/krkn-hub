@@ -5,8 +5,8 @@ This scenario disrupts the node(s) matching the label on a Kubernetes/OpenShift 
 If enabling [Cerberus](https://github.com/cloud-bulldozer/kraken#kraken-scenario-passfail-criteria-and-report) to monitor the cluster and pass/fail the scenario post chaos, refer [docs](https://github.com/cloud-bulldozer/kraken-hub/tree/main/docs/cerberus.md). Make sure to start it before injecting the chaos and set `CERBERUS_ENABLED` environment variable for the chaos injection container to autoconnect.
 
 ```
-$ podman run --name=<container_name> --net=host --env-host=true -v $KUBECONFIG:/root/.kube/config:Z -d quay.io/openshift-scale/kraken:node-scenarios
-# podman logs -f <container_name or container_id> # Streams Kraken logs
+$ podman run --name=<container_name> --net=host --env-host=true -v <path-to-kube-config>:/root/.kube/config:Z -d quay.io/openshift-scale/kraken:node-scenarios
+$ podman logs -f <container_name or container_id> # Streams Kraken logs
 $ podman inspect <container-name or container-id> --format "{{.State.ExitCode}}" # Outputs exit code which can considered as pass/fail for the scenario
 ```
 
@@ -19,7 +19,6 @@ ex.)
 
 Parameter               | Description                                                           | Default
 ----------------------- | -----------------------------------------------------------------     | ------------------------------------ |
-KUBECONFIG              | Path to the kubeconfig to access the cluster API                      | /root/.kube/config                   |                                   
 ACTION                  | Action can be one of the [following](https://github.com/cloud-bulldozer/kraken/blob/master/docs/node_scenarios.md) | node_stop_start_scenario |
 LABEL_SELECTOR          | Node label to target                                                  | node-role.kubernetes.io/worker       |
 NODE_NAME               | Node name to inject faults in case of targeting a specific node       | ""                                   |
