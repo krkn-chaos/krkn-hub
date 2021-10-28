@@ -3,11 +3,19 @@ on:
   pull_request_target:
     types: [labeled, synchronize]
   push:
-    branches: [*]
+    branches: ['*']
+    paths-ignore:
+      - 'docs/**'
+      - 'README.md'
+      - '*/README.md'
   pull_request:
-    branches:
-      - main
+    types: [edited, opened, synchronize, reopened]
   workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        required: false
+        default: 'Test User'
 concurrency:
   group: e2e-ci
 jobs:
