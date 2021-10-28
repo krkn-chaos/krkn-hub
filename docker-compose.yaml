@@ -25,11 +25,11 @@ services:
         context: ./
         dockerfile: ./time-scenarios/Dockerfile
       image: quay.io/openshift-scale/kraken:time-scenarios
-    cluster-shutdown:
+    power-outages:
       build:
         context: ./
-        dockerfile: ./cluster-shutdown/Dockerfile
-      image: quay.io/openshift-scale/kraken:cluster-shutdown
+        dockerfile: ./power-outages/Dockerfile
+      image: quay.io/openshift-scale/kraken:power-outages
     container-scenarios:
       build:
         context: ./

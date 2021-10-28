@@ -11,10 +11,10 @@ RUN yum install -y which
 
 # Copy configurations
 COPY config.yaml.template /root/kraken/config/config.yaml.template
-COPY cluster-shutdown/env.sh /root/env.sh
+COPY power-outages/env.sh /root/env.sh
 COPY env.sh /root/main_env.sh
-COPY cluster-shutdown/run.sh /root/run.sh
-COPY cluster-shutdown/shutdown_scenario.yaml.template /root/kraken/scenarios/shutdown_scenario.yaml.template
+COPY power-outages/run.sh /root/run.sh
+COPY power-outages/shutdown_scenario.yaml.template /root/kraken/scenarios/shutdown_scenario.yaml.template
 COPY common_run.sh /root/common_run.sh
 
 ENTRYPOINT /root/run.sh
