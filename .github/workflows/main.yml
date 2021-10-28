@@ -1,15 +1,11 @@
 name: Run e2e tests
 on:
-  pull_request_target:
-    types: [labeled, synchronize]
-  push:
-    branches: ['*']
+  pull_request:
+    types: [edited, opened, synchronize, reopened]
     paths-ignore:
       - 'docs/**'
       - 'README.md'
       - '*/README.md'
-  pull_request:
-    types: [edited, opened, synchronize, reopened]
   workflow_dispatch:
     inputs:
       name:
