@@ -27,4 +27,3 @@ If you want to add a variable that should be kept secret
 2. Go to secrets
 3. Update or Add new repository secret
 4. Add env variable in the form of ${{ secrets.<variable name> }} to your step you need to use it
-

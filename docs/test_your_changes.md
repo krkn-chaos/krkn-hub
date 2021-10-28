@@ -73,8 +73,21 @@ Scenario Types:
         
         iii. Edit line 18 to give scenario type defined in docker-compose file 
     
-    c. Add test name to [all_tests](../CI/tests/all_tests) file 
- 
+    c. Add test name to [all_tests](../CI/tests/all_tests) file
+    
+    d. You can test your changes by editing [main.yml](.github/workflows/main.yml) to run based on push to <<your branch name>>
+    
+        i. You'll need to add a couple of repository secrets
+        
+            * OPENSHIFT_SERVER
+            * OPENSHIFT_USER
+            * OPENSHIFT_PASSWORD
+            * QUAY_USER
+            * QUAY_TOKEN
+            * VPC_ID
+            * SUBNET_ID
+            * AWS_ACCESS_KEY_ID
+            * AWS_SECRET_ACCESS_KEY
 
 NOTE: 
 1. If you added any variables or new sections be sure to update [config.yaml.template](../config.yaml.template) 

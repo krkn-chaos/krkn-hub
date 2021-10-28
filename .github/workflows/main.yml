@@ -6,15 +6,8 @@ on:
     branches: [ci-tests]
   pull_request:
     branches:
-      - master
+      - main
   workflow_dispatch:
-    inputs:
-      test_list:
-        description: Only run tests that match the regular expression
-        default: ""
-      img:
-        description: Kraken hub image location
-        default: quay.io/openshift-scale/kraken:testing
 concurrency:
   group: e2e-ci
 jobs:
