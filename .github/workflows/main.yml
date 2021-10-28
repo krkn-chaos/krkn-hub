@@ -1,7 +1,7 @@
 name: Run e2e tests
 on:
   pull_request:
-    types: [edited, opened, synchronize, reopened]
+    types: ['synchronize', 'edited', 'opened', 'reopened']
     paths-ignore:
       - 'docs/**'
       - 'README.md'
@@ -12,14 +12,12 @@ on:
         description: 'Person to greet'
         required: false
         default: 'Test User'
-concurrency:
-  group: e2e-ci
 jobs:
   e2e:
     name: E2E testing
     runs-on: ubuntu-latest
     timeout-minutes: 600
-    if: "github.event_name == 'push' || github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request_target' && contains(github.event.pull_request.labels.*.name, 'ok to test'))"
+    if: "github.event_name == 'push' || github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request')"
     env:
       BATS_TESTS: ${{ github.event.inputs.test_list }}
       IMG: ${{ github.event.inputs.img }}
