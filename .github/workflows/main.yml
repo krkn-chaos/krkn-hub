@@ -22,7 +22,7 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v1
     - name: Login in quay
-      run: docker login quay.io -u "${QUAY_USER}" -p "${QUAY_TOKEN}"
+      run: podman login quay.io -u "${QUAY_USER}" -p "${QUAY_TOKEN}"
       env:
         QUAY_USER: ${{ secrets.QUAY_USER_1 }}
         QUAY_TOKEN: ${{ secrets.QUAY_TOKEN_1 }}
