@@ -29,6 +29,15 @@ or
 
 Install [Docker](https://docs.docker.com/engine/install/)
 
+Docker is also supported but all variables you want to set (separate from the defaults) need to be set at the command line
+In the form `-e <VARIABLE>=<value>`
+
+You can take advantage of the [get_docker_params.sh](get_docker_params.sh) script to create your parameters string
+This will take all environment variables and put them in the form "-e <var>=<value>" to make a long string that can get passed to the command
+
+For example: 
+`docker run $(./get_docker_params.sh) --net=host -v <path-to-kube-config>:/root/.kube/config:Z -d quay.io/openshift-scale/kraken:power-outages`
+
 ### Adding New Scenarios/Testing Changes
 
 Refer to the 2 docs below to be able to test your own images with any changes and be able to contribute them to the repository
