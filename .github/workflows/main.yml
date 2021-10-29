@@ -1,6 +1,6 @@
 name: Run e2e tests
 on:
-  pull_request:
+  pull_request_target:
     types: ['synchronize', 'edited', 'opened', 'reopened']
     paths-ignore:
       - 'docs/**'
