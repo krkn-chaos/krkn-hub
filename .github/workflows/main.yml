@@ -22,10 +22,10 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v1
     - name: Login in quay
-        run: podman login quay.io -u ${QUAY_USER} -p ${QUAY_TOKEN}
-        env:
-          QUAY_USER: ${{ secrets.QUAY_USER }}
-          QUAY_TOKEN: ${{ secrets.QUAY_TOKEN }}
+      run: podman login quay.io -u ${QUAY_USER} -p ${QUAY_TOKEN}
+      env:
+        QUAY_USER: ${{ secrets.QUAY_USER }}
+        QUAY_TOKEN: ${{ secrets.QUAY_TOKEN }}
     - name: Authenticate against OCP cluster
       uses: redhat-actions/oc-login@v1
       with:
