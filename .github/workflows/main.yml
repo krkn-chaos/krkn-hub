@@ -8,10 +8,12 @@ on:
       - '*/README.md'
   workflow_dispatch:
     inputs:
-      name:
-        description: 'Person to greet'
-        required: false
-        default: 'Test User'
+      test_list:
+        description: Only run tests that match the regular expression
+        default: ""
+      img:
+        description: Benchmark-operator image location
+        default: quay.io/openshift-scale/kraken:testing
 jobs:
   e2e:
     name: E2E testing
@@ -20,12 +22,7 @@ jobs:
     if: "github.event_name == 'push' || github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request')"
     steps:
     - name: Check out code
-      uses: actions/checkout@v1
-    - name: Login in quay
-      run: podman login quay.io --username="${QUAY_USER_1}" --password="${QUAY_TOKEN_1}"
-      env:
-        QUAY_USER_1: ${{ secrets.QUAY_USER_1 }}
-        QUAY_TOKEN_1: ${{ secrets.QUAY_TOKEN_1 }}
+      uses: actions/checkout@v2
     - name: Authenticate against OCP cluster
       uses: redhat-actions/oc-login@v1
       with:
@@ -33,6 +30,12 @@ jobs:
         openshift_username: ${{ secrets.OPENSHIFT_USER }}
         openshift_password: ${{ secrets.OPENSHIFT_PASSWORD }}
         insecure_skip_tls_verify: true
+    - name: Login in quay
+      run: podman login quay.io -u ${QUAY_USER_1} -p ${QUAY_TOKEN_1}
+      env:
+        QUAY_USER_1: ${{ secrets.QUAY_USER_1 }}
+        QUAY_TOKEN_1: ${{ secrets.QUAY_TOKEN_1 }}
+
 
     - name: ls
       run: ls
