@@ -23,7 +23,7 @@ Parameter               | Description                                           
 ----------------------- | -----------------------------------------------------------------     | ------------------------------------ |
 DURATION                | Duration in seconds after which the routes will be accessible         | 600                                  |
 NAMESPACE               | Namespace to target - all application routes will go inaccessible if pod selector is empty ( Required )|  No default |
-POD_SELECTOR            | Pods to target. For example {app=foo}                                 | No default                           |
+POD_SELECTOR            | Pods to target. For example {app: foo}                                 | No default                           |
 BLOCK_TRAFFIC_TYPE      | It can be Ingress or Egress or Ingress, Egress ( needs to be a list ) | [Ingress, Egress]                    |
 CERBERUS_ENABLED        | Set this to true if cerberus is running and monitoring the cluster    | False                                |
 CERBERUS_URL            | URL to poll for the go/no-go signal                                   | http://0.0.0.0:8080                  |
@@ -31,4 +31,4 @@ WAIT_DURATION           | Duration in seconds to wait between each chaos scenari
 ITERATIONS              | Number of times to execute the scenarios                              | 1                                    |
 DAEMON_MODE             | Iterations are set to infinity which means that the kraken will cause chaos forever | False                  |
 
-**NOTE** Defining the `NAMESPACE` parameter is required for running this scenario while the pod_selector is optional.
+**NOTE** Defining the `NAMESPACE` parameter is required for running this scenario while the pod_selector is optional. In case of using pod selector to target a particular application, make sure to define it using the following format with a space between key and value: {key: value}.
