@@ -11,11 +11,10 @@ $ podman logs -f <container_name or container_id> # Streams Kraken logs
 $ podman inspect <container-name or container-id> --format "{{.State.ExitCode}}" # Outputs exit code which can considered as pass/fail for the scenario
 ```
 
-
 ```
-$ docker run $(./get_docker_params.sh) --net=host -v <path-to-kube-config>:/root/.kube/config:Z -d quay.io/openshift-scale/kraken:pod-scenarios
+$ docker run $(./get_docker_params.sh) --name=<container_name> --net=host -v <path-to-kube-config>:/root/.kube/config:Z -d quay.io/openshift-scale/kraken:pod-scenarios
 OR 
-$ docker run -e <VARIABLE>=<value> --net=host -v <path-to-kube-config>:/root/.kube/config:Z -d quay.io/openshift-scale/kraken:pod-scenarios
+$ docker run -e <VARIABLE>=<value> --name=<container_name> --net=host -v <path-to-kube-config>:/root/.kube/config:Z -d quay.io/openshift-scale/kraken:pod-scenarios
 
 $ docker logs -f <container_name or container_id> # Streams Kraken logs
 $ docker inspect <container-name or container-id> --format "{{.State.ExitCode}}" # Outputs exit code which can considered as pass/fail for the scenario
@@ -41,6 +40,9 @@ CERBERUS_URL            | URL to poll for the go/no-go signal                   
 WAIT_DURATION           | Duration in seconds to wait between each chaos scenario               | 60                                   |
 ITERATIONS              | Number of times to execute the scenarios                              | 1                                    |
 DAEMON_MODE             | Iterations are set to infinity which means that the kraken will cause chaos forever | False                  |
+PUBLISH_KRAKEN_STATUS              | If you want                         | True                                    |
+PORT              | Port to print kraken status to                             | 8081                                    |
+LITMUS_VERSION             | Litmus version to install | v.1.13.8                 |
 
 
 **NOTE** Set NAMESPACE environment variable to `openshift-.*` to pick and disrupt pods randomly in openshift system namespaces, the DAEMON_MODE can also be enabled to disrupt the pods every x seconds in the background to check the reliability.
