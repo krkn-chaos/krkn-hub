@@ -7,7 +7,7 @@ on:
         default: ""
         required: false
       img:
-        description: Benchmark-operator image location
+        description: Kraken image location
         default: quay.io/openshift-scale/kraken:testing
         required: false
   push:
