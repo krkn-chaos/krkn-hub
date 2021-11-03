@@ -15,7 +15,7 @@ jobs:
         QUAY_USER: ${{ secrets.QUAY_USER_1 }}
         QUAY_TOKEN: ${{ secrets.QUAY_TOKEN_1 }}
     - name: Check out code
-      uses: actions/checkout@v1
+      uses: actions/checkout@main
     - name: Build the Docker images
       run: docker-compose build --parallel
     - name: Push the Docker images
