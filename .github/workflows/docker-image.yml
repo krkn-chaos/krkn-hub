@@ -2,9 +2,8 @@ name: Docker Image CI
 on:
   workflow_dispatch:
 
-  pull_request:
-    branch: ['main']
-    types: ['closed']
+  push:
+    branches: ['main']
 
 jobs:
   build:
