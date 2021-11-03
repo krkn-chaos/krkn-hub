@@ -1,15 +1,7 @@
 name: Docker Image CI
 on:
   workflow_dispatch:
-    inputs:
-      test_list:
-        description: Only run tests that match the regular expression
-        default: ""
-        required: false
-      img:
-        description: Kraken image location
-        default: quay.io/openshift-scale/kraken:testing
-        required: false
+
   push:
     branch: ['main']
 jobs:
