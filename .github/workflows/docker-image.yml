@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: "github.event_name == 'push' || github.event_name == 'workflow_dispatch'"
     steps:
     - name: Login in quay
       run: docker login quay.io -u ${QUAY_USER} -p ${QUAY_TOKEN}
