@@ -1,6 +1,11 @@
 name: Docker Image CI
 on:
   workflow_dispatch:
+    inputs:
+      test_list:
+        description: Only run tests that match the regular expression
+        default: ""
+        required: false
 
   push:
     branches: ['main']
