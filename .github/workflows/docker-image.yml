@@ -1,20 +1,23 @@
 name: Docker Image CI
 on:
-  push:
-    branches: [ 'main' ]
+  workflow_dispatch:
 
+  pull_request:
+    branch: ['main']
+    type: [closed]
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: "github.event_name == 'push' || github.event_name == 'workflow_dispatch'"
     steps:
     - name: Login in quay
-      run: podman login quay.io -u ${QUAY_USER} -p ${QUAY_TOKEN}
+      run: docker login quay.io -u ${QUAY_USER} -p ${QUAY_TOKEN}
       env:
-        QUAY_USER: ${{ secrets.QUAY_USER }}
-        QUAY_TOKEN: ${{ secrets.QUAY_TOKEN }}
+        QUAY_USER: ${{ secrets.QUAY_USER_1 }}
+        QUAY_TOKEN: ${{ secrets.QUAY_TOKEN_1 }}
     - name: Check out code
       uses: actions/checkout@main
     - name: Build the Docker images
-      run: docker-compose build
+      run: docker-compose build --parallel
     - name: Push the Docker images
       run: docker-compose push
