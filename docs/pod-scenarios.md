@@ -43,6 +43,6 @@ DAEMON_MODE             | Iterations are set to infinity which means that the kr
 PUBLISH_KRAKEN_STATUS              | If you want                         | True                                    |
 PORT              | Port to print kraken status to                             | 8081                                    |
 LITMUS_VERSION             | Litmus version to install | v.1.13.8                 |
-
+SIGNAL_STATE      | Waits for the RUN signal when set to PAUSE before running the scenarios, refer [docs](https://github.com/cloud-bulldozer/kraken/blob/master/docs/signal.md) for more details | RUN |
 
 **NOTE** Set NAMESPACE environment variable to `openshift-.*` to pick and disrupt pods randomly in openshift system namespaces, the DAEMON_MODE can also be enabled to disrupt the pods every x seconds in the background to check the reliability.
