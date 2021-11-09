@@ -3,6 +3,9 @@ set -x
 rm -rf results.markdown
 test_rc=0
 
+# Clean up our created directories
+rm -rf test_* ci_results gold
+
 sed 's/.sh//g' CI/tests/all_tests > CI/tests/my_tests
 
 # Create a "gold" directory based off the current branch
