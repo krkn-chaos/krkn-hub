@@ -43,6 +43,8 @@ DAEMON_MODE             | Iterations are set to infinity which means that the kr
 PUBLISH_KRAKEN_STATUS              | If you want                         | True                                    |
 PORT              | Port to print kraken status to                             | 8081                                    |
 LITMUS_VERSION             | Litmus version to install | v.1.13.8                 |
+DEPLOY_DASHBOARDS | Deploys mutable grafana loaded with dashboards visualizing performance metrics pulled from in-cluster prometheus. The dashboard will be exposed as a route. | False |
+
 
 The following environment variables need to be set for the scenarios that requires intereacting with the cloud platform API to perform the actions:
 

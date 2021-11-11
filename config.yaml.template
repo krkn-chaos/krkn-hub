@@ -17,7 +17,7 @@ cerberus:
     check_applicaton_routes: False                         # When enabled will look for application unavailability using the routes specified in the cerberus config and fails the run
 
 performance_monitoring:
-    deploy_dashboards: False                              # Install a mutable grafana and load the performance dashboards. Enable this only when running on OpenShift
+    deploy_dashboards: $DEPLOY_DASHBOARDS                 # Install a mutable grafana and load the performance dashboards. Enable this only when running on OpenShift
     repo: "https://github.com/cloud-bulldozer/performance-dashboards.git"
     kube_burner_binary_url: "https://github.com/cloud-bulldozer/kube-burner/releases/download/v0.9.1/kube-burner-0.9.1-Linux-x86_64.tar.gz"
     capture_metrics: False
