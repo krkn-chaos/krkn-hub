@@ -14,7 +14,7 @@ command="docker"
 function functional_test_node_memory {
   export WAIT_DURATION=5
   export TOTAL_CHAOS_DURATION=10
-
+  get_node_name
   container_name="node_mem_test"
 
   $command-compose build node-memory-hog

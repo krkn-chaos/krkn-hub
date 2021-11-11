@@ -39,6 +39,11 @@ function get_exit_code {
   echo $exit_code
 }
 
+function get_node_name {
+  worker_node=$(oc get nodes --no-headers | grep worker | awk '{print $1}' | head -n 1)
+  export TARGET_NODES=$worker_node
+}
+
 function command_to_run() {
   command=""
   check_podman
