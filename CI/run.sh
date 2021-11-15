@@ -29,6 +29,7 @@ done
 for test_name in `cat CI/tests/my_tests`
 do
   ./CI/run_test.sh $test_name
+  cp $test_name/test_*.out outputs/
 done
 
 # Update markdown file
@@ -48,14 +49,6 @@ if [ `grep -c Failed ci_results` -gt 0 ]
 then
   test_rc=1
 fi
-
-test_folders=$(ls | grep "test_")
-
-for test_folder in $test_folders;
-do
-  cp $test_folder/test_*.out outputs/
-done
-
 
 # Clean up our created directories
 rm -rf test_* ci_results

@@ -15,7 +15,7 @@ function functional_test_node_cpu {
   export TOTAL_CHAOS_DURATION=10
 
   container_name="node_cpu_test"
-
+  get_node_name
   $command-compose build node-cpu-hog
   . ./get_docker_params.sh
 
