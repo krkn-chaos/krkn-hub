@@ -7,6 +7,7 @@ source /root/main_env.sh
 source /root/env.sh
 
 source /root/common_run.sh
+config_setup
 checks
 
 # Substitute config with environment vars defined

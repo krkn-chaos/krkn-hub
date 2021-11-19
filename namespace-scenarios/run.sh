@@ -8,6 +8,7 @@ source /root/env.sh
 
 source /root/common_run.sh
 checks
+config_setup
 
 # Substitute config with environment vars defined
 envsubst < /root/kraken/scenarios/namespace_scenario.yaml.template > /root/kraken/scenarios/namespace_scenario.yaml

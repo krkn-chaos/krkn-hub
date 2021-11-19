@@ -1,0 +1,15 @@
+---
+
+global:
+  writeToFile: true
+  metricsDirectory: collected-metrics
+  measurements:
+    - name: podLatency
+      esIndex: kraken
+
+  indexerConfig:
+    enabled: true
+    esServers: [$ES_SERVER]  # Please change this to the respective Elasticsearch in use if you haven't run the podman-compose command to setup the infrastructure containers
+    insecureSkipVerify: true
+    defaultIndex: kraken
+    type: elastic

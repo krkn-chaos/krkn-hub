@@ -10,6 +10,7 @@ ls -la /root/.kube
 
 source /root/common_run.sh
 checks
+config_setup
 
 # Substitute config with environment vars defined
 envsubst < /root/kraken/scenarios/pod_scenario.yaml.template > /root/kraken/scenarios/pod_scenario.yaml
