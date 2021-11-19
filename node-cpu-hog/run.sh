@@ -8,6 +8,7 @@ source /root/env.sh
 
 source /root/common_run.sh
 checks
+config_setup
 
 # Substitute config with environment vars defined
 envsubst < /root/kraken/scenarios/cpu_hog.yaml.template > /root/kraken/scenarios/node_hog_engine.yaml

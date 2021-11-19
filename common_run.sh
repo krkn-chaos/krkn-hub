@@ -42,3 +42,8 @@ checks() {
   check_kubectl
   check_cluster_version
 }
+
+# Config substitutions
+config_setup(){
+  envsubst < /root/kraken/config/kube_burner.yaml.template > /root/kraken/config/kube_burner.yaml
+}

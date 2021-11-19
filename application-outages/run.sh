@@ -10,6 +10,7 @@ ls -la /root/.kube
 
 source /root/common_run.sh
 checks
+config_setup
 
 # Substitute config with environment vars defined
 envsubst < /root/kraken/scenarios/app_outage.yaml.template > /root/kraken/scenarios/app_outage.yaml
