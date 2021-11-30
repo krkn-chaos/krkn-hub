@@ -50,3 +50,7 @@ ENABLE_ALERTS     | Evaluates expressions from in-cluster prometheus and exits 0
 ```
 $ podman run --name=<container_name> --net=host --env-host=true -v <path-to-custom-metrics-profile>:/root/kraken/config/metrics-aggregated.yaml -v <path-to-custom-alerts-profile>:/root/kraken/config/alerts -v <path-to-kube-config>:/root/.kube/config:Z -d quay.io/openshift-scale/kraken:container-scenarios
 ```
+
+
+#### Demo
+You can find a link to a demo of the scenario [here](https://asciinema.org/a/BXqs9JSGDSEKcydTIJ5LpPZBM?speed=3&theme=solarized-dark)
