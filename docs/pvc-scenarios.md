@@ -27,9 +27,9 @@ ex.)
 
 Parameter               | Description                                                           | Default
 ----------------------- | -----------------------------------------------------------------     | ------------------------------------ |
-PVC_NAME                | Targeted PersistentVolumeClaim in the cluster (required)              | <pvc_name>                           |
-POD_NAME                | Targeted pod in the cluster                                           | <pod_name>                           |
-NAMESPACE               | Targeted namespace in the cluster (required)                          | <namespace>                          |
+PVC_NAME                | Targeted PersistentVolumeClaim in the cluster (required)              |                                      |
+POD_NAME                | Targeted pod in the cluster                                           |                                      |
+NAMESPACE               | Targeted namespace in the cluster (required)                          |                                      |
 FILL_PERCENTAGE         | Targeted percentage to be filled up in the PVC                        | 50                                   |
 DURATION                | Duration in seconds with the PVC filled up                            | 60                                   |
 CERBERUS_ENABLED        | Set this to true if cerberus is running and monitoring the cluster    | False                                |
