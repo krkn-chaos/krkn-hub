@@ -9,3 +9,4 @@ test_node_scenarios
 test_pod_scenarios
 test_zone_scenarios
 test_cerberus
+test_pvc_scenario
