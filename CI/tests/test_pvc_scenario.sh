@@ -17,7 +17,7 @@ function functional_test_pvc_scenario {
   export NAMESPACE=default
 
   container_name="pvc_scenario_test"
-  $command-compose build pvc-scenario
+  $command-compose build pvc-scenarios
   . ./get_docker_params.sh
   image_id=$($command images --format "{{.ID}}" | head -n 1)
   $command run --name=$container_name --net=host $PARAMS -v /root/.kube/config:/root/.kube/config:Z -d $image_id

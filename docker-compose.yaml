@@ -60,8 +60,8 @@ services:
         context: ./
         dockerfile: ./application-outages/Dockerfile
       image: quay.io/openshift-scale/kraken:application-outages
-    pvc-scenario:
+    pvc-scenarios:
       build:
         context: ./
         dockerfile: ./pvc-scenario/Dockerfile
-      image: quay.io/openshift-scale/kraken:pvc-scenario
+      image: quay.io/openshift-scale/kraken:pvc-scenarios
