@@ -44,7 +44,9 @@ Scenario Types:
 4. Create script to run.sh chaos scenario
     a. See [run.sh](../application-outages/run.sh) for example
     
-    b. edit line 17 with your scenario config location
+    b. edit line 16 with your scenario yaml template
+
+    c. edit line 17 and 23 with your yaml config location
 
 5. Create Dockerfile
     

@@ -15,6 +15,8 @@ function functional_test_pvc_scenario {
   export PVC_NAME=kraken-test-pvc
   export POD_NAME=kraken-test-pod
   export NAMESPACE=default
+  export DURATION=60
+  export WAIT_DURATION=5
 
   container_name="pvc_scenario_test"
   $command-compose build pvc-scenarios
