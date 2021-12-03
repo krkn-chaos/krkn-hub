@@ -32,11 +32,11 @@ ex.)
 Parameter               | Description                                                           | Default
 ----------------------- | -----------------------------------------------------------------     | ------------------------------------ |
 ACTION                  | Action to take on the namespace                                       | delete                                  |
-LABEL_SELECTOR          | Label of the namspace to target                                       |                          |
-OBJECT_NAME             | List of the names of pods or nodes you want to skew ( optional parameter )                   | []                                   |
-NAMESPACE               | Namespace of the pods you want to skew, need to be set only if setting a specific pod name | ""                   |
+LABEL_SELECTOR          | Label of the namespace to target. Set this parameter only if NAMESPACE is not set                                       |     ""                     |
+NAMESPACE               | Name of the namespace you want to target. Set this parameter only if LABEL_SELECTOR is not set  | "openshift-etcd"                   |
 SLEEP                   | Number of seconds to wait before polling to see if namespace exists again         | 15                                    |
-RUNS                    | Number of namespaces to take the action on in each scenario           | 1                                    |
+DELETE_COUNT            | Number of namespaces to kill in each run, based on matching namespace and label specified | 1 |
+RUNS                    | Number of runs to execute the action           | 1                                    |
 CERBERUS_ENABLED        | Set this to true if cerberus is running and monitoring the cluster    | False                                |
 CERBERUS_URL            | URL to poll for the go/no-go signal                                   | http://0.0.0.0:8080                  |
 WAIT_DURATION           | Duration in seconds to wait between each chaos scenario               | 60                                   |
