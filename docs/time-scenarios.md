@@ -32,6 +32,7 @@ OBJECT_TYPE             | Object to target. Supported options: pod, node        
 LABEL_SELECTOR          | Label of the container(s) or nodes to target                          | k8s-app=etcd                         |
 ACTION                  | Action to run. Supported actions: skew_time, skew_date                | skew_date                            |
 OBJECT_NAME             | List of the names of pods or nodes you want to skew ( optional parameter )                   | []                                   |
+CONTAINER_NAME          | Container in the specified pod to target in case the pod has multiple containers running. Random container is picked if empty   | ""                                   |
 NAMESPACE               | Namespace of the pods you want to skew, need to be set only if setting a specific pod name | ""                   |
 CERBERUS_ENABLED        | Set this to true if cerberus is running and monitoring the cluster    | False                                |
 CERBERUS_URL            | URL to poll for the go/no-go signal                                   | http://0.0.0.0:8080                  |
