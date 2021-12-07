@@ -1,6 +1,11 @@
 ### Power Outages
 This scenario shuts down Kubernetes/OpenShift cluster for the specified duration to simulate power outages, brings it back online and checks if it's healthy. More information can be found [here](https://github.com/cloud-bulldozer/kraken/blob/master/docs/cluster_shut_down_scenarios.md)
 
+Right now power outage and cluster shutdown are one in the same. We originally created this scenario to stop all the nodes and then start them back up how a customer would shut their cluster down. 
+
+In a real life chaos scenario though, we figured this scenario was close to if the power went out on the aws side so all of our ec2 nodes would be stopped/powered off.
+We tried to look at if aws cli had a way to forcefully poweroff the nodes (not gracefully) and they don't currently support so this scenario is as close as we can get to "pulling the plug"
+
 #### Run
 If enabling [Cerberus](https://github.com/cloud-bulldozer/kraken#kraken-scenario-passfail-criteria-and-report) to monitor the cluster and pass/fail the scenario post chaos, refer [docs](https://github.com/cloud-bulldozer/kraken-hub/tree/main/docs/cerberus.md). Make sure to start it before injecting the chaos and set `CERBERUS_ENABLED` environment variable for the chaos injection container to autoconnect.
 
@@ -18,6 +23,10 @@ $ docker run -e <VARIABLE>=<value> --name=<container_name> --net=host -v <path-t
 $ docker logs -f <container_name or container_id> # Streams Kraken logs
 $ docker inspect <container-name or container-id> --format "{{.State.ExitCode}}" # Outputs exit code which can considered as pass/fail for the scenario
 ```
+
+#### Demo
+
+Demo can be found [here](https://asciinema.org/a/r0zLbh70XK7gnc4s5v0ZzSXGo)
 
 #### Supported parameters
 
