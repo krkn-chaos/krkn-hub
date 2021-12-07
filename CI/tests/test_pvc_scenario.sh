@@ -16,7 +16,7 @@ function functional_test_pvc_scenario {
   export POD_NAME=kraken-test-pod
   export NAMESPACE=default
   export DURATION=60
-  export WAIT_DURATION=5
+  export WAIT_DURATION=10
 
   container_name="pvc_scenario_test"
   $command-compose build pvc-scenarios
@@ -30,4 +30,6 @@ function functional_test_pvc_scenario {
   exit $final_exit_code
 }
 
+kubectl create -f https://raw.githubusercontent.com/cloud-bulldozer/kraken/master/CI/scenarios/volume_scenario.yaml
 functional_test_pvc_scenario
+kubectl delete -f https://raw.githubusercontent.com/cloud-bulldozer/kraken/master/CI/scenarios/volume_scenario.yaml
