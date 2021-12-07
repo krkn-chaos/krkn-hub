@@ -47,6 +47,10 @@ DEPLOY_DASHBOARDS | Deploys mutable grafana loaded with dashboards visualizing p
 CAPTURE_METRICS   | Captures metrics as specified in the profile from in-cluster prometheus. Default metrics captures are listed [here] (https://github.com/cloud-bulldozer/kraken/blob/master/config/metrics-aggregated.yaml) | False |
 ENABLE_ALERTS     | Evaluates expressions from in-cluster prometheus and exits 0 or 1 based on the severity set. [Default profile](https://github.com/cloud-bulldozer/kraken/blob/master/config/alerts). More details can be found [here](https://github.com/cloud-bulldozer/kraken#alerts) | False |
 
+#### Demo
+You can find a link to a demo of the scenario [here](https://asciinema.org/a/ANZY7HhPdWTNaWt4xMFanF6Q5)
+
+
 The following environment variables need to be set for the scenarios that requires intereacting with the cloud platform API to perform the actions:
 
 Amazon Web Services
