@@ -44,7 +44,9 @@ Scenario Types:
 4. Create script to run.sh chaos scenario
     a. See [run.sh](../application-outages/run.sh) for example
     
-    b. edit line 15 with your scenario config location
+    b. edit line 16 with your scenario yaml template
+
+    c. edit line 17 and 23 with your yaml config location
 
 5. Create Dockerfile
     
@@ -52,13 +54,13 @@ Scenario Types:
     
     b. Lines to edit
     
-        i. 14: replace "application-outages" with your folder name 
+        i. 15: replace "application-outages" with your folder name 
         
-        ii. 16: replace "application-outages" with your folder name
+        ii. 17: replace "application-outages" with your folder name
         
-        iii. 18: replace "application-outages" with your folder name and config file name 
+        iii. 19: replace "application-outages" with your folder name and config file name 
         
-6. Add service/scenario to [docker-compose.yaml](docker-compose.yaml) file following syntax of other services
+6. Add service/scenario to [docker-compose.yaml](/docker-compose.yaml) file following syntax of other services
 7. Point the dockerfile parameter in your docker-compose to the Dockerfile file in your new folder
 8. Update this doc and main README with new scenario type
 9. Add CI test for new scenario 
@@ -67,11 +69,11 @@ Scenario Types:
     
     b. Lines to change
     
-        i. 13 and 31: Give a new function name 
+        i. 14 and 31: Give a new function name 
         
-        ii.  16: Give it a meaningful container name
+        ii.  19: Give it a meaningful container name
         
-        iii. Edit line 18 to give scenario type defined in docker-compose file 
+        iii. Edit line 20 to give scenario type defined in docker-compose file 
     
     c. Add test name to [all_tests](../CI/tests/all_tests) file
     
