@@ -19,6 +19,9 @@ $ docker logs -f <container_name or container_id> # Streams Kraken logs
 $ docker inspect <container-name or container-id> --format "{{.State.ExitCode}}" # Outputs exit code which can considered as pass/fail for the scenario
 ```
 
+#### Demo
+[Here](https://asciinema.org/a/zMBAdzHE40oPXkFVIz0exEoOX) is a demo of kraken-hub in action
+
 #### Supported parameters
 
 The following environment variables can be set on the host running the container to tweak the scenario/faults being injected:
