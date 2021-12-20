@@ -2,7 +2,6 @@
 
 # Vars and respective defaults
 export ACTION=${ACTION:="delete"}
-export LABEL_SELECTOR=${LABEL_SELECTOR:="kubernetes.io/metadata.name=openshift-etcd"}
 export NAMESPACE=${NAMESPACE:="openshift-etcd"}
 export RUNS=${RUNS:=1}
 export SLEEP=${SLEEP:=15}
