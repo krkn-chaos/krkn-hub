@@ -65,3 +65,8 @@ services:
         context: ./
         dockerfile: ./pvc-scenario/Dockerfile
       image: quay.io/openshift-scale/kraken:pvc-scenarios
+    network-chaos:
+      build:
+        context: ./
+        dockerfile: ./network-chaos/Dockerfile
+      image: quay.io/openshift-scale/kraken:network-chaos

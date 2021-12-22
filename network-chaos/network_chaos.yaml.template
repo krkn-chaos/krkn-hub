@@ -1,0 +1,8 @@
+network_chaos:                    # Scenario to create an outage by simulating random variations in the network.
+  duration: $DURATION             # in seconds - during with network chaos will be applied.
+  node_name: $NODE_NAME           # comma separated node names on which scenario has to be injected.
+  label_selector: $LABEL_SELECTOR # when node_name is not specified, a node with matching label_selector is selected for running the scenario.
+  instance_count: $INSTANCE_COUNT # Number of nodes to execute network chaos in.
+  interfaces: $INTERFACES         # List of interface on which to apply the network restriction. Interface name would be the Kernel host network interface name.
+  execution: $EXECUTION           # Execute each of the egress option as a single scenario(parallel) or as separate scenario(serial).
+  egress: $EGRESS                 # Dictonary of values to set  network latency(latency: 50ms), packet loss(loss: 0.02), bandwidth restriction(bandwidth: 100mbit)

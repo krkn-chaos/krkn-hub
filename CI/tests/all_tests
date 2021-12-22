@@ -10,3 +10,4 @@ test_pod_scenarios
 test_zone_scenarios
 test_cerberus
 test_pvc_scenario
+test_net_chaos
