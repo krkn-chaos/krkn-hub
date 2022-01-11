@@ -18,6 +18,8 @@ Scenario   | Description | Working
 [Namespace failures](docs/namespace-scenarios.md) | Fails the components in a namespace by deleting it | :heavy_check_mark: | 
 [Application outages](docs/application-outages.md) | Isolates application Ingress/Egress traffic to observe the impact on dependent applications and recovery/initialization timing | :heavy_check_mark: |
 [Power Outages](docs/power-outages.md) | Shuts down the cluster for the specified duration and turns it back on to check the cluster health | :heavy_check_mark: |
+[PVC disk fill](docs/pvc-scenarios.md) | Fills up a given PersistenVolumeClaim by creating a temp file on the PVC from a pod associated with it | :heavy_check_mark: |
+[Network Chaos](docs/network-chaos.md) | Introduces network latency, packet loss, bandwidth restriction in the egress traffic of a Node's interface using tc and Netem | :heavy_check_mark: | 
 
 
 ### Set Up 
