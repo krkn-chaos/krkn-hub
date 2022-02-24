@@ -17,5 +17,6 @@ COPY env.sh /root/main_env.sh
 COPY pod-scenarios/run.sh /root/run.sh
 COPY common_run.sh /root/common_run.sh
 COPY pod-scenarios/pod_scenario.yaml.template /root/kraken/scenarios/pod_scenario.yaml.template
+COPY pod-scenarios/pod_scenario_namespace.yaml.template /root/kraken/scenarios/pod_scenario_namespace.yaml.template
 
 ENTRYPOINT /root/run.sh
