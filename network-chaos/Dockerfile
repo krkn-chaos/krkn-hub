@@ -1,6 +1,6 @@
 # Dockerfile for kraken
 
-FROM quay.io/openshift-scale/kraken:latest
+FROM quay.io/chaos-kubox/krkn:latest
 
 MAINTAINER Red Hat Chaos Engineering Team
 

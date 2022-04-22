@@ -9,64 +9,64 @@ services:
       build:
           context: ./
           dockerfile: ./pod-scenarios/Dockerfile
-      image: quay.io/openshift-scale/kraken:pod-scenarios
+      image: quay.io/chaos-kubox/krkn-hub:pod-scenarios
     node-scenarios:
         build:
             context: ./
             dockerfile: ./node-scenarios/Dockerfile
-        image: quay.io/openshift-scale/kraken:node-scenarios
+        image: quay.io/chaos-kubox/krkn-hub:node-scenarios
     zone-outages:
       build:
         context: ./
         dockerfile: ./zone-outages/Dockerfile
-      image: quay.io/openshift-scale/kraken:zone-outages
+      image: quay.io/chaos-kubox/krkn-hub:zone-outages
     time-scenarios:
       build:
         context: ./
         dockerfile: ./time-scenarios/Dockerfile
-      image: quay.io/openshift-scale/kraken:time-scenarios
+      image: quay.io/chaos-kubox/krkn-hub:time-scenarios
     power-outages:
       build:
         context: ./
         dockerfile: ./power-outages/Dockerfile
-      image: quay.io/openshift-scale/kraken:power-outages
+      image: quay.io/chaos-kubox/krkn-hub:power-outages
     container-scenarios:
       build:
         context: ./
         dockerfile: ./container-scenarios/Dockerfile
-      image: quay.io/openshift-scale/kraken:container-scenarios
+      image: quay.io/chaos-kubox/krkn-hub:container-scenarios
     node-cpu-hog:
       build:
         context: ./
         dockerfile: ./node-cpu-hog/Dockerfile
-      image: quay.io/openshift-scale/kraken:node-cpu-hog
+      image: quay.io/chaos-kubox/krkn-hub:node-cpu-hog
     node-io-hog:
       build:
         context: ./
         dockerfile: ./node-io-hog/Dockerfile
-      image: quay.io/openshift-scale/kraken:node-io-hog
+      image: quay.io/chaos-kubox/krkn-hub:node-io-hog
     node-memory-hog:
       build:
         context: ./
         dockerfile: ./node-memory-hog/Dockerfile
-      image: quay.io/openshift-scale/kraken:node-memory-hog
+      image: quay.io/chaos-kubox/krkn-hub:node-memory-hog
     namespace-scenarios:
       build:
         context: ./
         dockerfile: ./namespace-scenarios/Dockerfile
-      image: quay.io/openshift-scale/kraken:namespace-scenarios
+      image: quay.io/chaos-kubox/krkn-hub:namespace-scenarios
     application-outages:
       build:
         context: ./
         dockerfile: ./application-outages/Dockerfile
-      image: quay.io/openshift-scale/kraken:application-outages
+      image: quay.io/chaos-kubox/krkn-hub:application-outages
     pvc-scenarios:
       build:
         context: ./
         dockerfile: ./pvc-scenario/Dockerfile
-      image: quay.io/openshift-scale/kraken:pvc-scenarios
+      image: quay.io/chaos-kubox/krkn-hub:pvc-scenarios
     network-chaos:
       build:
         context: ./
         dockerfile: ./network-chaos/Dockerfile
-      image: quay.io/openshift-scale/kraken:network-chaos
+      image: quay.io/chaos-kubox/krkn-hub:network-chaos
