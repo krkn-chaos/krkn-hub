@@ -4,7 +4,7 @@ services:
       build:
         context: ./
         dockerfile: ./cerberus/Dockerfile
-      image: quay.io/openshift-scale/cerberus:kraken-hub
+      image: quay.io/chaos-kubox/cerberus:kraken-hub
     pod-scenarios:
       build:
           context: ./
