@@ -5,7 +5,7 @@
 **NOTE** Make sure to start it before injecting the chaos and set `CERBERUS_ENABLED` environment variable to autoconnect to the chaos injection container and other supported environment variables to tweak the components being monitored. It exposes the go/no-go signal at http://0.0.0.0:8080 and metrics API at http://0.0.0.0/history. More details can be found [here](https://github.com/cloud-bulldozer/cerberus#how-does-cerberus-report-cluster-health).
 
 ```
-$ podman run --net=host --env-host=true --privileged -d -v <path-to-kube-config>:/root/.kube/config:Z quay.io/openshift-scale/cerberus:kraken-hub
+$ podman run --net=host --env-host=true --privileged -d -v <path-to-kube-config>:/root/.kube/config:Z quay.io/chaos-kubox/cerberus:kraken-hub
 ```
 
 ```

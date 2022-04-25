@@ -1,6 +1,6 @@
 # Dockerfile for cerberus
 
-FROM quay.io/openshift-scale/cerberus:latest
+FROM quay.io/chaos-kubox/cerberus:latest
 
 MAINTAINER Red Hat Chaos Engineering Team
 
