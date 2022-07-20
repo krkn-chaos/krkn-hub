@@ -30,3 +30,4 @@ CERBERUS_ITERATIONS     | Number of iterations to run                           
 CERBERUS_DAEMON_MODE    | Infinitely run cerberus on cluster, will ignore iterations if this is set to true               | 3                                    |
 CERBERUS_CORES          | Set the fraction of cores to be used for multiprocessing              | 1                                    |
 INSPECT_COMPONENTS      | Enable it only when OpenShift client is supported to run; collects logs, events and metrics of failed components | False  | 
+CHUNK_SIZE              | Set the number of objects to return in one call to the kuberenetes API |100 | 
