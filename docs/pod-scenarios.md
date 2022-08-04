@@ -29,13 +29,13 @@ ex.)
 
 Parameter               | Description                                                           | Default
 ----------------------- | -----------------------------------------------------------------     | ------------------------------------ |
-RUNS                    | Number of iterations to run the scenario                              | 1                                    |
-SECONDS_BETWEEN_RUNS    | Time in seconds to wait before each of the iteration                  | 30                                   |
-NAMESPACE               | Targeted namespace in the cluster                                     | openshift-.*                         |
+NAMESPACE               | Targeted namespace in the cluster ( supports regex )                                     | openshift-.*                         |
 POD_LABEL               | Label of the pod(s) to target                                         | ""                                   | 
+NAME_PATTERN            | Regex pattern to match the pods in NAMESPACE  when POD_LABEL is not specified | .* |
 DISRUPTION_COUNT        | Number of pods to disrupt                                             | 1                                    |
+KILL_TIMEOUT            | Timeout to wait for the target pod(s) to be removed in seconds        | 180                                  |
+WAIT_TIMEOUT            | Seconds to wait for the pod recovery to match EXPECTED_POD_COUNT      | 360                                  |
 EXPECTED_POD_COUNT      | Total pod count matching the label to verify post disruption ( REQUIRED when POD_LABEL is set )| ""          |
-TIMEOUT                 | Time in seconds to wait for the target pods to match EXPECTED_POD_COUNT | 180                                |
 CERBERUS_ENABLED        | Set this to true if cerberus is running and monitoring the cluster    | False                                |
 CERBERUS_URL            | URL to poll for the go/no-go signal                                   | http://0.0.0.0:8080                  |
 WAIT_DURATION           | Duration in seconds to wait between each chaos scenario               | 60                                   |
