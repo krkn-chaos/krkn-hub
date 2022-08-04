@@ -1,35 +1,12 @@
-config:
-  runStrategy:
-    runs: $RUNS
-    maxSecondsBetweenRuns: $SECONDS_BETWEEN_RUNS
-    minSecondsBetweenRuns: 1
-scenarios:
-  - name: "delete pods"
-    steps:
-    - podAction:
-        matches:
-          - labels:
-              namespace: "$NAMESPACE"
-              selector: "$POD_LABEL"
-
-        filters:
-          - randomSample:
-              size: $DISRUPTION_COUNT
-
-        # The actions will be executed in the order specified
-        actions:
-          - kill:
-              probability: 1
-              force: true
-    - podAction:
-        matches:
-          - labels:
-              namespace: "$NAMESPACE"
-              selector: "$POD_LABEL"
-        retries:
-          retriesTimeout:
-            timeout: $TIMEOUT
-
-        actions:
-          - checkPodCount:
-              count: $EXPECTED_POD_COUNT
+- id: kill-pods
+  config:
+    namespace_pattern: $NAMESPACE
+    label_selector: $POD_LABEL
+    kill: $DISRUPTION_COUNT
+    timeout: $KILL_TIMEOUT
+- id: wait-for-pods
+  config:
+    namespace_pattern: $NAMESPACE
+    label_selector: $POD_LABEL
+    count: $EXPECTED_POD_COUNT
+    timeout: $WAIT_TIMEOUT

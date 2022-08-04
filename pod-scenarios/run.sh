@@ -24,5 +24,6 @@ envsubst < /root/kraken/config/config.yaml.template > /root/kraken/config/pod_sc
 cd /root/kraken
 
 cat /root/kraken/config/pod_scenario_config.yaml
+cat /root/kraken/scenarios/pod_scenario.yaml
 
 python3 run_kraken.py --config=/root/kraken/config/pod_scenario_config.yaml

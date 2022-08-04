@@ -1,20 +1,6 @@
-config:
-  runStrategy:
-    runs: $RUNS
-    maxSecondsBetweenRuns: $SECONDS_BETWEEN_RUNS
-    minSecondsBetweenRuns: 1
-scenarios:
-  - name: kill pods in the specified namespace
-    steps:
-    - podAction:
-        matches:
-          - namespace: "$NAMESPACE"
-        filters:
-          - property:
-             name: "state"
-             value: "Running"
-          - randomSample:
-              size: $DISRUPTION_COUNT
-        actions:
-          - kill:
-              probability: .7
+- id: kill-pods
+  config:
+    namespace_pattern: $NAMESPACE
+    name_pattern: $NAME_PATTERN
+    kill: $DISRUPTION_COUNT
+    timeout: $KILL_TIMEOUT
