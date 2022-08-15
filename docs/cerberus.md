@@ -24,6 +24,7 @@ CERBERUS_PORT           | HTTP server port where cerberus status is published   
 CERBERUS_WATCH_NODES    | Set to True for the cerberus to monitor the cluster nodes             | True                                 |
 CERBERUS_WATCH_OPERATORS | Set to True for cerberus to monitor cluster operators                | True                                 |
 CERBERUS_WATCH_NAMESPACES |  List of namespaces to be monitored                                 | [openshift-etcd, openshift-apiserver, openshift-kube-apiserver, openshift-monitoring, openshift-kube-controller-manager, openshift-machine-api, openshift-kube-scheduler, openshift-ingress, openshift-sdn] |
+CERBERUS_IGNORE_PODS |  List of regex pod names to be ignored in list of namespaces             | [^installer*] |
 CERBERUS_TIMEOUT        | Number of seconds before requests fail                                | 3                                    |
 CERBERUS_SLEEP          | Number of seconds between iterations of Cerberus                      | 3                                    |
 CERBERUS_ITERATIONS     | Number of iterations to run                                           | 5                                    |
