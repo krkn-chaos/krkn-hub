@@ -29,6 +29,7 @@ ex.)
 Parameter               | Description                                                           | Default
 ----------------------- | -----------------------------------------------------------------     | ------------------------------------ |
 JOB_CLEANUP_POLICY      | It can be delete/retain                                               | delete                               |
+LITMUS_UNINSTALL_BEFORE_RUN | If you want to uninstall litmus before a new run starts           | true                                |
 TOTAL_CHAOS_DURATION    | Set chaos duration (in sec) as desired                                | 300                                  |
 FILESYSTEM_UTILIZATION_PERCENTAGE | Specify the size as percentage of free space on the file system | 90                               |
 NUMBER_OF_WORKERS       | Total number of workers ( only set if not targeting specific nodes    | ""                                    |
