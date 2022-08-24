@@ -10,5 +10,5 @@ export NUMBER_OF_WORKERS=${NUMBER_OF_WORKERS:=""}
 export CPU=${CPU:=2}
 export TARGET_NODES=${TARGET_NODES:=""}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=litmus_scenarios}
-export SCENARIO_FILE=${SCENARIO_FILE:=- scenarios/templates/litmus-rbac.yaml}
+export SCENARIO_FILE=${SCENARIO_FILE:=- scenarios/openshift/templates/litmus-rbac.yaml}
 export SCENARIO_POST_ACTION=${SCENARIO_POST_ACTION:=- scenarios/io_hog.yaml}
