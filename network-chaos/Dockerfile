@@ -16,6 +16,7 @@ COPY network-chaos/env.sh /root/env.sh
 COPY env.sh /root/main_env.sh
 COPY network-chaos/run.sh /root/run.sh
 COPY common_run.sh /root/common_run.sh
-COPY network-chaos/network_chaos.yaml.template /root/kraken/scenarios/network_chaos.yaml.template
+COPY network-chaos/network_chaos_egress.yaml.template /root/kraken/scenarios/network_chaos_egress.yaml.template
+COPY network-chaos/network_chaos_ingress.yaml.template /root/kraken/scenarios/network_chaos_ingress.yaml.template
 
 ENTRYPOINT /root/run.sh
