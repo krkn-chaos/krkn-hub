@@ -18,7 +18,7 @@ function functional_test_pvc_scenario {
   export DURATION=60
   export WAIT_DURATION=10
 
-  kubectl create -f https://raw.githubusercontent.com/cloud-bulldozer/kraken/master/CI/scenarios/volume_scenario.yaml
+  kubectl create -f https://raw.githubusercontent.com/redhat-chaos/krkn/master/CI/scenarios/volume_scenario.yaml
   container_name="pvc_scenario_test"
   $command-compose build pvc-scenarios
   . ./get_docker_params.sh
@@ -28,7 +28,7 @@ function functional_test_pvc_scenario {
   final_exit_code=$(get_exit_code $command $container_name)
   echo "exit code final: $final_exit_code"
   delete_containers_and_images $command
-  kubectl delete -f https://raw.githubusercontent.com/cloud-bulldozer/kraken/master/CI/scenarios/volume_scenario.yaml
+  kubectl delete -f https://raw.githubusercontent.com/redhat-chaos/krkn/master/CI/scenarios/volume_scenario.yaml
   exit $final_exit_code
 }
 
