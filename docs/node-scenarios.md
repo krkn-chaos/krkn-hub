@@ -26,6 +26,8 @@ The following environment variables can be set on the host running the container
 ex.) 
 `export <parameter_name>=<value>`
 
+See list of variables that apply to all scenarios [here](all_scenarios_env.md) that can be used/set in addition to these scenario specific variables
+
 Parameter               | Description                                                           | Default
 ----------------------- | -----------------------------------------------------------------     | ------------------------------------ |
 ACTION                  | Action can be one of the [following](https://github.com/redhat-chaos/krkn/blob/master/docs/node_scenarios.md) | node_stop_start_scenario for aws and node_stop_scenario for vmware |
@@ -37,17 +39,6 @@ CLOUD_TYPE              | Cloud platform on top of which cluster is running, sup
 TIMEOUT                 | Duration to wait for completion of node scenario injection             | 180                                |
 VERIFY_SESSION          | Only needed for vmware - Set to True if you want to verify the vSphere client session using certificates    | False                               |
 SKIP_OPENSHIFT_CHECKS   | Only needed for vmware - Set to True if you don't want to wait for the status of the nodes to change on OpenShift before passing the scenario  | False |
-CERBERUS_ENABLED        | Set this to true if cerberus is running and monitoring the cluster    | False                                |
-CERBERUS_URL            | URL to poll for the go/no-go signal                                   | http://0.0.0.0:8080                  |
-WAIT_DURATION           | Duration in seconds to wait between each chaos scenario               | 60                                   |
-ITERATIONS              | Number of times to execute the scenarios                              | 1                                    |
-DAEMON_MODE             | Iterations are set to infinity which means that the kraken will cause chaos forever | False                  |
-PUBLISH_KRAKEN_STATUS              | If you want                         | True                                    |
-PORT              | Port to print kraken status to                             | 8081                                    |
-LITMUS_VERSION             | Litmus version to install | v.1.13.8                 |
-DEPLOY_DASHBOARDS | Deploys mutable grafana loaded with dashboards visualizing performance metrics pulled from in-cluster prometheus. The dashboard will be exposed as a route. | False |
-CAPTURE_METRICS   | Captures metrics as specified in the profile from in-cluster prometheus. Default metrics captures are listed [here] (https://github.com/redhat-chaos/krkn/blob/master/config/metrics-aggregated.yaml) | False |
-ENABLE_ALERTS     | Evaluates expressions from in-cluster prometheus and exits 0 or 1 based on the severity set. [Default profile](https://github.com/redhat-chaos/krkn/blob/master/config/alerts). More details can be found [here](https://github.com/redhat-chaos/krkn#alerts) | False |
 
 #### Demo
 You can find a link to a demo of the scenario [here](https://asciinema.org/a/ANZY7HhPdWTNaWt4xMFanF6Q5)
