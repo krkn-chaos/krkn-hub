@@ -4,7 +4,7 @@ kraken:
     exit_on_failure: False                                 # Exit when a post action scenario fails
     litmus_install: $LITMUS_INSTALL                        # Skips install if set to False assuming it's already setup
     litmus_version: $LITMUS_VERSION                        # Litmus version to install
-    signal_address: $ADDRESS_SIGNAL                               # Signal listening address
+    signal_address: $SIGNAL_ADDRESS                               # Signal listening address
     port: $PORT
     publish_kraken_status: $PUBLISH_KRAKEN_STATUS
     litmus_uninstall: False                                # If you want to uninstall litmus if failure
