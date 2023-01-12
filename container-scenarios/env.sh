@@ -3,7 +3,7 @@
 # Vars and respective defaults
 export NAMESPACE=${NAMESPACE:="openshift-etcd"}
 export LABEL_SELECTOR=${LABEL_SELECTOR:="k8s-app=etcd"}
-export RETRY_WAIT=${RETRY_WAIT:=120}
+export RETRY_WAIT=${RETRY_WAIT:=60}
 export DISRUPTION_COUNT=${DISRUPTION_COUNT:=1}
 export CONTAINER_NAME=${CONTAINER_NAME:=etcd}
 export ACTION=${ACTION:="kill 1"}
