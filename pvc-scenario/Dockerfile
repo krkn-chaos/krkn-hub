@@ -1,6 +1,6 @@
 # Dockerfile for kraken
 
-FROM quay.io/chaos-kubox/krkn:latest
+FROM quay.io/redhat-chaos/krkn:latest
 
 LABEL Red Hat Chaos Engineering Team
 
