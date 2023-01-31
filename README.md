@@ -38,7 +38,7 @@ You can take advantage of the [get_docker_params.sh](get_docker_params.sh) scrip
 This will take all environment variables and put them in the form "-e <var>=<value>" to make a long string that can get passed to the command
 
 For example: 
-`docker run $(./get_docker_params.sh) --net=host -v <path-to-kube-config>:/root/.kube/config:Z -d quay.io/chaos-kubox/krkn-hub:power-outages`
+`docker run $(./get_docker_params.sh) --net=host -v <path-to-kube-config>:/root/.kube/config:Z -d quay.io/redhat-chaos/krkn-hub:power-outages`
 
 ### Adding New Scenarios/Testing Changes
 
