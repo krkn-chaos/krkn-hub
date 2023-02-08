@@ -10,7 +10,8 @@ RUN yum install -y which
 # Copy configurations
 ADD . /krkn-hub
 
-RUN yum install -y python3 python3-pip python3-devel git diffutils && python3 -m pip install --upgrade pip
+RUN yum install -y python3 python3-pip python3-devel git diffutils && \
+    python3 -m pip install --upgrade pip
 
 ENV PYTHONPATH=/krkn-hub/packages:$PYTHONPATH PYTHONUNBUFFERED=1
 
