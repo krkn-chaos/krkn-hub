@@ -5,14 +5,10 @@ set -ex
 ls
 
 # Source env.sh to read all the vars
-source main_env.sh
 source env.sh
-
-ls -la .kube
+source pod-scenarios/env.sh
 
 source common_run.sh
-checks
-config_setup
 
 krn_loc=../kraken
 
@@ -23,7 +19,7 @@ else
   envsubst < pod-scenarios/pod_scenario.yaml.template > $krn_loc/scenarios/pod_scenario.yaml
 fi
 export SCENARIO_FILE=${SCENARIO_FILE:=$krn_loc/scenarios/pod_scenario.yaml}
-envsubst < config/config.yaml.template > $krn_loc/config/pod_scenario_config.yaml
+envsubst < config.yaml.template > $krn_loc/config/pod_scenario_config.yaml
 
 cat $krn_loc/config/pod_scenario_config.yaml
 cat $krn_loc/scenarios/pod_scenario.yaml
