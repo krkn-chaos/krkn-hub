@@ -8,8 +8,6 @@ ls
 source env.sh
 source pod-scenarios/env.sh
 
-source common_run.sh
-
 krn_loc=../kraken
 
 # Substitute config with environment vars defined
