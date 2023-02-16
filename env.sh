@@ -17,3 +17,6 @@ export DEPLOY_DASHBOARDS=${DEPLOY_DASHBOARDS:=False}
 export CAPTURE_METRICS=${CAPTURE_METRICS:=False}
 export ENABLE_ALERTS=${ENABLE_ALERTS:=False}
 export ES_SERVER=${ES_SERVER:=http://0.0.0.0:9200}
+
+# Unset KUBECONFIG to make sure mounted kubeconfig is used
+unset KUBECONFIG
