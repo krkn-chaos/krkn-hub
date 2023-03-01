@@ -4,8 +4,20 @@ set -ex
 
 ls
 
+
+
 # Source env.sh to read all the vars
 source env.sh
+
+export KUBECONFIG=$KRKN_KUBE_CONFIG
+
+oc version 
+
+cat $KRKN_KUBE_CONFIG
+
+
+oc config view
+
 source pod-scenarios/env.sh
 
 krn_loc=/root/kraken
