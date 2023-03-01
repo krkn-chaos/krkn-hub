@@ -4,8 +4,6 @@ set -ex
 
 ls
 
-
-
 # Source env.sh to read all the vars
 source env.sh
 
@@ -28,7 +26,7 @@ if [[ -z "$POD_LABEL" ]]; then
 else  
   envsubst < pod-scenarios/pod_scenario.yaml.template > pod-scenarios/pod_scenario.yaml
 fi
-export SCENARIO_FILE=${SCENARIO_FILE:=pod-scenarios/pod_scenario.yaml}
+export SCENARIO_FILE=pod-scenarios/pod_scenario.yaml
 envsubst < config.yaml.template > pod_scenario_config.yaml
 
 cat pod_scenario_config.yaml
