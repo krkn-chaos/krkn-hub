@@ -34,11 +34,19 @@ Install [Docker](https://docs.docker.com/engine/install/)
 Docker is also supported but all variables you want to set (separate from the defaults) need to be set at the command line
 In the form `-e <VARIABLE>=<value>`
 
-You can take advantage of the [get_docker_params.sh](get_docker_params.sh) script to create your parameters string
-This will take all environment variables and put them in the form "-e <var>=<value>" to make a long string that can get passed to the command
+You can take advantage of the [get_docker_params.sh](get_docker_params.sh) script to create your parameters string and eventually make your kubeconfig
+compatible with the scenario, this will:
+- take all environment variables and put them in the form "-e <var>=<value>" to make a long string that can get passed to the command
+- create a portable version of your kubeconfig (placed in /tmp folder) in case this contains certificate paths instead of base64 encoded certificates 
 
 For example: 
-`docker run $(./get_docker_params.sh) --net=host -v <path-to-kube-config>:/root/.kube/config:Z -d quay.io/redhat-chaos/krkn-hub:power-outages`
+
+`podman run  --net=host  -v /tmp/kubeconfig:/root/.kube/config:Z $(./get_docker_params) quay.io/redhat-chaos/krkn-hub:power-outages`
+
+or
+
+`docker run  --net=host  -v /tmp/kubeconfig:/root/.kube/config:Z $(./get_docker_params) quay.io/redhat-chaos/krkn-hub:power-outages`
+
 
 ### Adding New Scenarios/Testing Changes
 
