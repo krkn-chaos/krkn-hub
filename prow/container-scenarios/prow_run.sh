@@ -13,7 +13,7 @@ cat $KRKN_KUBE_CONFIG
 oc config view
 source container-scenarios/env.sh
 
-krn_loc=/root/kraken
+krkn_loc=/root/kraken
 
 # Substitute config with environment vars defined
 envsubst < container-scenarios/container_scenario.yaml.template > container-scenarios/container_scenario.yaml
