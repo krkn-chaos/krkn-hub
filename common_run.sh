@@ -34,7 +34,7 @@ check_cluster_version() {
     log "Unable to connect to the cluster, please check if it's up and make sure the KUBECONFIG is set correctly"
     exit 1
   fi
-  kubectl get clusterversion
+  kubectl get clusterversion || log "Not an OpenShift environment"
 }
 
 
