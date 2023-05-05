@@ -29,11 +29,12 @@ check_kubectl() {
 
 # Check if cluster exists and print the clusterversion under test
 check_cluster_version() {
-  if ! kubectl get clusterversion;
-  then
+  if ! kubectl version;
+  then 
     log "Unable to connect to the cluster, please check if it's up and make sure the KUBECONFIG is set correctly"
     exit 1
   fi
+  kubectl get clusterversion
 }
 
 
