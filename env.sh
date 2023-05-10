@@ -18,6 +18,7 @@ export CAPTURE_METRICS=${CAPTURE_METRICS:=False}
 export ENABLE_ALERTS=${ENABLE_ALERTS:=False}
 export ALERTS_PATH=${ALERTS_PATH:=config/alerts}
 export ES_SERVER=${ES_SERVER:=http://0.0.0.0:9200}
+export CHECK_CRITICAL_ALERTS=${CHECK_CRITICAL_ALERTS:=False}
 
 # Unset KUBECONFIG to make sure mounted kubeconfig is used
 unset KUBECONFIG
