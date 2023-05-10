@@ -5,4 +5,4 @@ scenarios:
   container_name: $CONTAINER_NAME
   action: $ACTION
   count: $DISRUPTION_COUNT
-  retry_wait: $RETRY_WAIT
+  expected_recovery_time: $EXPECTED_RECOVERY_TIME

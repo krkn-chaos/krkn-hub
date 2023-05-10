@@ -35,7 +35,7 @@ LABEL_SELECTOR          | Label of the container(s) to target                   
 DISRUPTION_COUNT        | Number of container to disrupt                                        | 1                                    |
 CONTAINER_NAME          | Name of the container to disrupt                                      | etcd                                 |
 ACTION                  | Action to run. For example kill 1 ( hang up ) or kill 9               | kill 1                               |
-RETRY_WAIT              | Time to wait before checking if all containers that were affected recover properly | 60                      |
+EXPECTED_RECOVERY_TIME  | Time to wait before checking if all containers that were affected recover properly | 60                      |
 
 **NOTE** In case of using custom metrics profile or alerts profile when `CAPTURE_METRICS` or `ENABLE_ALERTS` is enabled, mount the metrics profile from the host on which the container is run using podman/docker under `/root/kraken/config/metrics-aggregated.yaml` and `/root/kraken/config/alerts`. For example:
 ```
