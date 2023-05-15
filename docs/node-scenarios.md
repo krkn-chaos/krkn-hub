@@ -30,7 +30,7 @@ See list of variables that apply to all scenarios [here](all_scenarios_env.md) t
 
 Parameter               | Description                                                           | Default
 ----------------------- | -----------------------------------------------------------------     | ------------------------------------ |
-ACTION                  | Action can be one of the [following](https://github.com/redhat-chaos/krkn/blob/master/docs/node_scenarios.md) | node_stop_start_scenario for aws and node_stop_scenario for vmware |
+ACTION                  | Action can be one of the [following](https://github.com/redhat-chaos/krkn/blob/master/docs/node_scenarios.md) | node_stop_start_scenario for aws and vmware-node-reboot for vmware, ibmcloud-node-reboot for ibmcloud |
 LABEL_SELECTOR          | Node label to target                                                  | node-role.kubernetes.io/worker       |
 NODE_NAME               | Node name to inject faults in case of targeting a specific node; Can set multiple node names separated by a comma      | ""                                   |
 INSTANCE_COUNT          | Targeted instance count matching the label selector                   | 1                                    |
@@ -60,6 +60,15 @@ $ export VSPHERE_IP=<vSphere_client_IP_address>
 $ export VSPHERE_USERNAME=<vSphere_client_username>
 
 $ export VSPHERE_PASSWORD=<vSphere_client_password>
+
+```
+
+
+Ibmcloud 
+```
+$ export IBMC_URL=https://<region>.iaas.cloud.ibm.com/v1
+
+$ export IBMC_APIKEY=<ibmcloud_api_key>
 
 ```
 
