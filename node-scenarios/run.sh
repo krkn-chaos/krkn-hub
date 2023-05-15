@@ -10,10 +10,10 @@ source /root/common_run.sh
 checks
 
 # Substitute config with environment vars defined
-if [[ "$CLOUD_TYPE" == "vmware" ]]; then
-  envsubst < /root/kraken/scenarios/vmware_node_scenario.yaml.template > /root/kraken/scenarios/node_scenario.yaml
+if [[ "$CLOUD_TYPE" == "vmware" || "$CLOUD_TYPE" == "ibmcloud" ]]; then
+  envsubst < /root/kraken/scenarios/plugin_node_scenario.yaml.template > /root/kraken/scenarios/node_scenario.yaml
   export SCENARIO_TYPE="plugin_scenarios"
-  export ACTION=${ACTION:="node_stop_scenario"}
+  export ACTION=${ACTION:="$CLOUD_TYPE-node-reboot"}
 else
   envsubst < /root/kraken/scenarios/node_scenario.yaml.template > /root/kraken/scenarios/node_scenario.yaml
 fi
