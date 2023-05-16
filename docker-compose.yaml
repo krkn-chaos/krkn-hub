@@ -70,3 +70,8 @@ services:
         context: ./
         dockerfile: ./network-chaos/Dockerfile
       image: quay.io/redhat-chaos/krkn-hub:network-chaos
+    pod-network-chaos:
+      build:
+        context: ./
+        dockerfile: ./pod-network-chaos/Dockerfile
+      image: quay.io/redhat-chaos/krkn-hub:pod-network-chaos

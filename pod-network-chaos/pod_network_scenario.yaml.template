@@ -1,0 +1,10 @@
+- id: pod_network_outage
+  config:
+    namespace: $NAMESPACE
+    direction: $TRAFFIC_TYPE             
+    ingress_ports: $INGRESS_PORTS
+    egress_ports: $EGRESS_PORTS                     
+    label_selector: $LABEL_SELECTOR
+    instance_count: $INSTANCE_COUNT
+    wait_duration: $WAIT_DURATION
+    test_duration: $TEST_DURATION
