@@ -2,19 +2,29 @@
 
 set -ex
 
-# Source env.sh to read all the vars
-source /root/main_env.sh
-source /root/env.sh
+ROOT_FOLDER="/root"
+KRAKEN_FOLDER="$ROOT_FOLDER/kraken"
+SCENARIO_FOLDER="$KRAKEN_FOLDER/scenarios/arcaflow/memory-hog"
 
-source /root/common_run.sh
+# Source env.sh to read all the vars
+source $ROOT_FOLDER/main_env.sh
+source $ROOT_FOLDER/env.sh
+
+source $ROOT_FOLDER/common_run.sh
+
+setup_arcaflow_env "$SCENARIO_FOLDER"
+# Substitute config with environment vars defined
+envsubst < $KRAKEN_FOLDER/config/config.yaml.template > $KRAKEN_FOLDER/config/mem_config.yaml
+
 checks
 config_setup
 
-# Substitute config with environment vars defined
-envsubst < /root/kraken/scenarios/memory_hog.yaml.template > /root/kraken/scenarios/memory_hog.yaml
-envsubst < /root/kraken/config/config.yaml.template > /root/kraken/config/mem_config.yaml
 
 # Run Kraken
-cd /root/kraken
+cd $KRAKEN_FOLDER
+
+cat config/mem_config.yaml
+
+cat scenarios/arcaflow/memory-hog/input.yaml
 
 python3 run_kraken.py --config=config/mem_config.yaml
