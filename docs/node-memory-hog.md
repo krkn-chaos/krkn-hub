@@ -1,5 +1,5 @@
 ### Node Memory hog scenario
-This scenario hogs the memory on the specified node on a Kubernetes/OpenShift cluster for a specified duration. For more information refer the following [documentation](https://github.com/redhat-chaos/krkn/blob/master/docs/litmus_scenarios.md).
+This scenario hogs the memory on the specified node on a Kubernetes/OpenShift cluster for a specified duration. For more information refer the following [documentation](https://github.com/redhat-chaos/krkn/blob/main/docs/arcaflow_scenarios/memory_hog.md).
 
 #### Run
 If enabling [Cerberus](https://github.com/redhat-chaos/krkn#kraken-scenario-passfail-criteria-and-report) to monitor the cluster and pass/fail the scenario post chaos, refer [docs](https://github.com/redhat-chaos/krkn-hub/tree/main/docs/cerberus.md). Make sure to start it before injecting the chaos and set `CERBERUS_ENABLED` environment variable for the chaos injection container to autoconnect.
@@ -31,12 +31,11 @@ See list of variables that apply to all scenarios [here](all_scenarios_env.md) t
 
 Parameter               | Description                                                           | Default
 ----------------------- | -----------------------------------------------------------------     | ------------------------------------ |
-JOB_CLEANUP_POLICY      | It can be delete/retain                                               | delete                               |
-LITMUS_INSTALL          | Skips litmus install when set to False                                | true                                 |
-LITMUS_UNINSTALL_BEFORE_RUN | If you want to uninstall litmus before a new run starts           | true                                |
-TOTAL_CHAOS_DURATION    | Set chaos duration (in sec) as desired                                | 300                                  |
-MEMORY_CONSUMPTION_PERCENTAGE | Specify the size as percent of total node capacity Ex: '30'. Note: For consuming memory in mebibytes change the variable to MEMORY_CONSUMPTION_MEBIBYTES | 50 |
-TARGET_NODES            | Enter the comma separated targeted node names ( Required )            | ""                                   |
+TOTAL_CHAOS_DURATION    | Set chaos duration (in sec) as desired                                | 60                                  |
+MEMORY_CONSUMPTION_PERCENTAGE | percentage  (expressed with the suffix %) or amount (expressed with the suffix b, k, m or g) of memory to be consumed by the scenario | 90% |
+NUMBER_OF_WORKERS       | Total number of workers (stress-ng threads)   | 1    |
+NAMESPACE | Namespace where the scenario container will be deployed | default |
+NODE_SELECTORS | Node selectors where the scenario containers will be scheduled in the format "`<selector>=<value>`". __NOTE__: This value can be specified as a list of node selectors separated by "`;`". Will be instantiated a container per each node selector with the same scenario options. This option is meant to run one or more stress scenarios simultaneously on different nodes, kubernetes will schedule the pods on the target node accordingly with the selector specified. Specifying the same selector multiple times will  instantiate as many scenario container as the number of times the selector is specified on the same node| "" |                              
 
 
 **NOTE** In case of using custom metrics profile or alerts profile when `CAPTURE_METRICS` or `ENABLE_ALERTS` is enabled, mount the metrics profile from the host on which the container is run using podman/docker under `/root/kraken/config/metrics-aggregated.yaml` and `/root/kraken/config/alerts`. For example:

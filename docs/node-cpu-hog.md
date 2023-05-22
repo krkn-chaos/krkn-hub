@@ -1,5 +1,5 @@
 ### Node CPU hog scenario
-This scenario hogs the cpu on the specified node on a Kubernetes/OpenShift cluster for a specified duration. For more information refer the following [documentation](https://github.com/redhat-chaos/krkn/blob/master/docs/litmus_scenarios.md).
+This scenario hogs the cpu on the specified node on a Kubernetes/OpenShift cluster for a specified duration. For more information refer the following [documentation](https://github.com/redhat-chaos/krkn/blob/main/docs/arcaflow_scenarios/cpu_hog.md).
 
 #### Run
 If enabling [Cerberus](https://github.com/redhat-chaos/krkn#kraken-scenario-passfail-criteria-and-report) to monitor the cluster and pass/fail the scenario post chaos, refer [docs](https://github.com/redhat-chaos/krkn-hub/tree/main/docs/cerberus.md). Make sure to start it before injecting the chaos and set `CERBERUS_ENABLED` environment variable for the chaos injection container to autoconnect.
@@ -30,14 +30,12 @@ ex.)
 See list of variables that apply to all scenarios [here](all_scenarios_env.md) that can be used/set in addition to these scenario specific variables
 
 Parameter               | Description                                                           | Default
------------------------ | -----------------------------------------------------------------     | ------------------------------------ |
-JOB_CLEANUP_POLICY      | It can be delete/retain                                               | delete                               |
-LITMUS_INSTALL          | Skips litmus install when set to False                                | true                                 |
-LITMUS_UNINSTALL_BEFORE_RUN | If you want to uninstall litmus before a new run starts           | true                                |
-TOTAL_CHAOS_DURATION    | Set chaos duration (in sec) as desired                                | 300                                  |
-NODE_CPU_CORE           | Number of cores of node CPU to be consumed                            | 2                                    |
-NODES_AFFECTED_PERC     | Percentage of total nodes to target ( Required )                      | ""                                   |
-TARGET_NODES            | Enter the comma separated targeted node names ( Required )            | ""                                   |
+----------------------- | -----------------------------------------------------------------     | ------------------------------------                   |
+TOTAL_CHAOS_DURATION    | Set chaos duration (in sec) as desired                                | 60                                  |
+NODE_CPU_CORE           | Number of cores (workers) of node CPU to be consumed                            | 2                                    |
+NODE_CPU_PERCENTAGE     | Percentage of total cpu to be consumed                      | 50                                   |
+NAMESPACE | Namespace where the scenario container will be deployed | default |
+NODE_SELECTORS | Node selectors where the scenario containers will be scheduled in the format "`<selector>=<value>`". __NOTE__: This value can be specified as a list of node selectors separated by "`;`". Will be instantiated a container per each node selector with the same scenario options. This option is meant to run one or more stress scenarios simultaneously on different nodes, kubernetes will schedule the pods on the target node accordingly with the selector specified. Specifying the same selector multiple times will  instantiate as many scenario container as the number of times the selector is specified on the same node| "" |                             |
 
 
 **NOTE** In case of using custom metrics profile or alerts profile when `CAPTURE_METRICS` or `ENABLE_ALERTS` is enabled, mount the metrics profile from the host on which the container is run using podman/docker under `/root/kraken/config/metrics-aggregated.yaml` and `/root/kraken/config/alerts`. For example:
