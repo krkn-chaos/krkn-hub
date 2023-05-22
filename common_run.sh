@@ -49,12 +49,16 @@ config_setup(){
   envsubst < /root/kraken/config/kube_burner.yaml.template > /root/kraken/config/kube_burner.yaml
 }
 
-setup_arcaflow(){
-    #check for yq in $PATH
+setup_arcaflow_env(){
+    # will create the arcaflow input.yaml replacing the env variables
+    # and creating an input_list entry per each node selector passed as
+    # NODE_SELECTORS env
+
+    # check for yq in $PATH
     YQ=`which yq`
     [ -z $YQ ] && echo "Error: yq not found in PATH" && exit 1
 
-    #blank the default input file
+    # blank the default input file
     echo > $1/input.yaml
     
     IFS=';' read -r -a SELECTORS <<< $NODE_SELECTORS
@@ -78,3 +82,4 @@ setup_arcaflow(){
           $YQ e '.input_list += [env(TEMPLATE)]' -i $1/input.yaml
     fi
 }
+

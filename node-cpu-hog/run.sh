@@ -12,7 +12,7 @@ source $ROOT_FOLDER/env.sh
 
 source $ROOT_FOLDER/common_run.sh
 
-setup_arcaflow "$SCENARIO_FOLDER"
+setup_arcaflow_env "$SCENARIO_FOLDER"
 # Substitute config with environment vars defined
 envsubst < $KRAKEN_FOLDER/config/config.yaml.template > $KRAKEN_FOLDER/config/cpu_config.yaml
 checks
