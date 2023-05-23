@@ -4,7 +4,7 @@ set -ex
 
 ROOT_FOLDER="/root"
 KRAKEN_FOLDER="$ROOT_FOLDER/kraken"
-SCENARIO_FOLDER="$KRAKEN_FOLDER/scenarios/arcaflow/memory-hog"
+SCENARIO_FOLDER="$KRAKEN_FOLDER/scenarios/arcaflow/cpu-hog"
 
 # Source env.sh to read all the vars
 source $ROOT_FOLDER/main_env.sh
