@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Vars and respective defaults
-export CERBERUS_KUBECONFIG=/root/.kube/config
+export CERBERUS_KUBECONFIG=${CERBERUS_KUBECONFIG:=/root/.kube/config}
 export CERBERUS_PORT=${CERBERUS_PORT:=8080}
 export CERBERUS_WATCH_NODES=${CERBERUS_WATCH_NODES:=True}
 export CERBERUS_WATCH_OPERATORS=${CERBERUS_WATCH_OPERATORS:=True}
