@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Vars and respective defaults
-export JOB_CLEANUP_POLICY=${JOB_CLEANUP_POLICY:="delete"}
-export LITMUS_INSTALL=${LITMUS_INSTALL:=true}
-export LITMUS_UNINSTALL_BEFORE_RUN=${LITMUS_UNINSTALL_BEFORE_RUN:=true} 
-export TOTAL_CHAOS_DURATION=${TOTAL_CHAOS_DURATION:="300"}
-export FILESYSTEM_UTILIZATION_PERCENTAGE=${FILESYSTEM_UTILIZATION_PERCENTAGE:="90"}
-export NUMBER_OF_WORKERS=${NUMBER_OF_WORKERS:=""}
-export CPU=${CPU:=2}
-export TARGET_NODES=${TARGET_NODES:=""}
-export SCENARIO_TYPE=${SCENARIO_TYPE:=litmus_scenarios}
-export SCENARIO_FILE=${SCENARIO_FILE:=- scenarios/openshift/templates/litmus-rbac.yaml}
-export SCENARIO_POST_ACTION=${SCENARIO_POST_ACTION:=- scenarios/io_hog.yaml}
+export BLOCK_SIZE=${BLOCK_SIZE:="4m"}
+export NUMBER_OF_WORKERS=${NUMBER_OF_WORKERS:="1"}
+export TOTAL_DATA_SIZE=${TOTAL_DATA_SIZE:="1g"}
+export TARGET_FOLDER=${TARGET_FOLDER:="/data"}
+export HOST_VOLUME_PATH=${HOST_VOLUME_PATH:="/tmp"}
+export NAMESPACE=${NAMESPACE:="default"}
+export NODE_SELECTORS=${NODE_SELECTORS:=""}
+
+export TOTAL_CHAOS_DURATION=${TOTAL_CHAOS_DURATION:="60"}
+export SCENARIO_TYPE=${SCENARIO_TYPE:=arcaflow_scenarios}
+export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/arcaflow/io-hog/input.yaml}

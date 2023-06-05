@@ -2,13 +2,8 @@ kraken:
     distribution: openshift                                # Distribution can be kubernetes or openshift
     kubeconfig_path: $KRKN_KUBE_CONFIG                   # Path to kubeconfig
     exit_on_failure: False                                 # Exit when a post action scenario fails
-    litmus_install: $LITMUS_INSTALL                        # Skips install if set to False assuming it's already setup
-    litmus_version: $LITMUS_VERSION                        # Litmus version to install
-    signal_address: $SIGNAL_ADDRESS                               # Signal listening address
     port: $PORT
     publish_kraken_status: $PUBLISH_KRAKEN_STATUS
-    litmus_uninstall: False                                # If you want to uninstall litmus if failure
-    litmus_uninstall_before_run: $LITMUS_UNINSTALL_BEFORE_RUN # If you want to uninstall litmus before a new run starts
     signal_state: $SIGNAL_STATE                            # Will wait for the RUN signal when set to PAUSE before running the scenarios
     chaos_scenarios:                                       # List of policies/chaos scenarios to load
         - $SCENARIO_TYPE:                                  # List of chaos time scenarios to load

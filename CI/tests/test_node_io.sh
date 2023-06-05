@@ -22,7 +22,6 @@ function functional_test_node_io {
   image_id=$($command images --format "{{.ID}}" | head -n 1)
   $command run --name=$container_name --net=host $PARAMS -v /root/.kube/config:/root/.kube/config:Z -d $image_id
   $command logs -f $container_name
-  kubectl get chaosresult -n litmus -o yaml
   final_exit_code=$(get_exit_code $command $container_name)
   echo "exit code final: $final_exit_code"
   delete_containers_and_images $command

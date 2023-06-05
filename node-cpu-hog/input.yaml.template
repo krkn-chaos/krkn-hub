@@ -1,0 +1,12 @@
+cpu_count: $NODE_CPU_CORE
+cpu_load_percentage: $NODE_CPU_PERCENTAGE
+cpu_method: all
+duration: $TOTAL_CHAOS_DURATION
+node_selector: 
+  $SELECTOR: $SELECTOR_VALUE
+kubeconfig: ""
+namespace: $NAMESPACE
+
+
+
+

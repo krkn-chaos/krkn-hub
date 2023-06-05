@@ -19,8 +19,7 @@ ITERATIONS              | Number of times to execute the scenarios              
 DAEMON_MODE             | Iterations are set to infinity which means that the kraken will cause chaos forever | False                  |
 PUBLISH_KRAKEN_STATUS              | If you want                         | True                                    |
 SIGNAL_ADDRESS              | Address to print kraken status to                          | 0.0.0.0                                    |
-PORT              | Port to print kraken status to                             | 8081                                    |
-LITMUS_VERSION             | Litmus version to install | v.1.13.8                 |
+PORT              | Port to print kraken status to                             | 8081                                    |         |
 SIGNAL_STATE      | Waits for the RUN signal when set to PAUSE before running the scenarios, refer [docs](https://github.com/redhat-chaos/krkn/blob/master/docs/signal.md) for more details | RUN |
 DEPLOY_DASHBOARDS | Deploys mutable grafana loaded with dashboards visualizing performance metrics pulled from in-cluster prometheus. The dashboard will be exposed as a route. | False |
 CAPTURE_METRICS   | Captures metrics as specified in the profile from in-cluster prometheus. Default metrics captures are listed [here] (https://github.com/redhat-chaos/krkn/blob/master/config/metrics-aggregated.yaml) | False |

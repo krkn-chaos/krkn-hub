@@ -48,3 +48,38 @@ checks() {
 config_setup(){
   envsubst < /root/kraken/config/kube_burner.yaml.template > /root/kraken/config/kube_burner.yaml
 }
+
+setup_arcaflow_env(){
+    # will create the arcaflow input.yaml replacing the env variables
+    # and creating an input_list entry per each node selector passed as
+    # NODE_SELECTORS env
+
+    # check for yq in $PATH
+    YQ=`which yq`
+    [ -z $YQ ] && echo "Error: yq not found in PATH" && exit 1
+
+    # blank the default input file
+    echo > $1/input.yaml
+    
+    IFS=';' read -r -a SELECTORS <<< $NODE_SELECTORS
+    if [[ "${#SELECTORS[@]}" > 0 ]]
+    then
+        for selector in "${SELECTORS[@]}"
+        do
+            [[ ! $selector =~ ^.+\=.+ ]] && echo "$selector is not in the right format, node selectors must be in the format <selector>=<value>" && exit 1
+            IFS='=' read -r -a SPLITTED_SELECTOR <<< $selector
+            export SELECTOR=${SPLITTED_SELECTOR[0]}
+            export SELECTOR_VALUE=${SPLITTED_SELECTOR[1]}
+            export TEMPLATE=`envsubst < $1/input.yaml.template`
+            $YQ e '.input_list += [env(TEMPLATE)]' -i $1/input.yaml
+            
+        done
+    else
+          export SELECTOR="none"
+          export SELECTOR_VALUE="none"
+          export TEMPLATE=`envsubst < $1/input.yaml.template`
+          TEMPLATE=`echo "${TEMPLATE}" | yq e '.node_selector={}'`
+          $YQ e '.input_list += [env(TEMPLATE)]' -i $1/input.yaml
+    fi
+}
+

@@ -1,0 +1,6 @@
+duration: $TOTAL_CHAOS_DURATION
+kubeconfig: ""
+namespace: $NAMESPACE
+node_selector: {}
+vm_bytes: $MEMORY_CONSUMPTION_PERCENTAGE
+vm_workers: $NUMBER_OF_WORKERS
