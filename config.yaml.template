@@ -5,6 +5,7 @@ kraken:
     port: $PORT
     publish_kraken_status: $PUBLISH_KRAKEN_STATUS
     signal_state: $SIGNAL_STATE                            # Will wait for the RUN signal when set to PAUSE before running the scenarios
+    signal_address: $SIGNAL_ADDRESS                        # Signal listening address
     chaos_scenarios:                                       # List of policies/chaos scenarios to load
         - $SCENARIO_TYPE:                                  # List of chaos time scenarios to load
             - $SCENARIO_FILE
