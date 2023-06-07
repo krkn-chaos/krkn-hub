@@ -40,11 +40,6 @@ services:
         context: ./
         dockerfile: ./node-cpu-hog/Dockerfile
       image: quay.io/redhat-chaos/krkn-hub:node-cpu-hog
-    node-io-hog:
-      build:
-        context: ./
-        dockerfile: ./node-io-hog/Dockerfile
-      image: quay.io/redhat-chaos/krkn-hub:node-io-hog
     node-memory-hog:
       build:
         context: ./
