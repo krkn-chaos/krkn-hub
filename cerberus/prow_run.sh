@@ -7,11 +7,11 @@ ls
 # Source env.sh to read all the vars
 source env.sh
 
-export KUBECONFIG=$KRKN_KUBE_CONFIG
+export KUBECONFIG=$CERBERUS_KUBECONFIG
 
 oc version 
 
-cat $KRKN_KUBE_CONFIG
+cat $KUBECONFIG
 
 oc config view
 source env.sh
