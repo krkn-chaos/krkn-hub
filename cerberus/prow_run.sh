@@ -23,6 +23,6 @@ crb_loc=/root/cerberus
 # Substitute config with environment vars defined
 envsubst < cerberus/cerberus.yaml.template > cerberus/config.yaml
 
-cat config/config.yaml
+cat cerberus/config.yaml
 
 python3 $crb_loc/start_cerberus.py --config=cerberus/config.yaml
