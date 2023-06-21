@@ -9,12 +9,14 @@ source env.sh
 
 export KUBECONFIG=$KRKN_KUBE_CONFIG
 
+
+# Cluster details
+echo "Printing cluster details"
 oc version 
-
 cat $KRKN_KUBE_CONFIG
-
-
 oc config view
+echo "Printing node info"
+for node in $(oc get nodes | awk 'NR!=1{print $1}'); do oc get node/$node -o yaml; done
 
 source pod-scenarios/env.sh
 
