@@ -20,9 +20,11 @@ crb_loc=/root/cerberus
 
 ls -la
 
+config_loc=$(mktemp -d)
+
 # Substitute config with environment vars defined
-envsubst < cerberus/cerberus.yaml.template > cerberus_config.yaml
+envsubst < cerberus/cerberus.yaml.template > $config_loc/cerberus_config.yaml
 
-cat cerberus_config.yaml
+cat $config_loc/cerberus_config.yaml
 
-python3 $crb_loc/start_cerberus.py --config=cerberus_config.yaml
+python3 $crb_loc/start_cerberus.py --config=$config_loc/cerberus_config.yaml
