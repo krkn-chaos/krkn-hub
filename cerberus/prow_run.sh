@@ -4,8 +4,6 @@ set -ex
 
 ls
 
-
-
 export KUBECONFIG=$CERBERUS_KUBECONFIG
 
 oc version 
@@ -20,9 +18,11 @@ source cerberus/env.sh
 
 crb_loc=/root/cerberus
 
+ls -la
+
 # Substitute config with environment vars defined
-envsubst < cerberus/cerberus.yaml.template > cerberus/config.yaml
+envsubst < cerberus/cerberus.yaml.template > cerberus_config.yaml
 
 cat cerberus/config.yaml
 
-python3 $crb_loc/start_cerberus.py --config=cerberus/config.yaml
+python3 $crb_loc/start_cerberus.py --config=cerberus_config.yaml
