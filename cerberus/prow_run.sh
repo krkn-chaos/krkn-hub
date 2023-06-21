@@ -23,6 +23,6 @@ ls -la
 # Substitute config with environment vars defined
 envsubst < cerberus/cerberus.yaml.template > cerberus_config.yaml
 
-cat cerberus/config.yaml
+cat cerberus_config.yaml
 
 python3 $crb_loc/start_cerberus.py --config=cerberus_config.yaml
