@@ -27,4 +27,4 @@ envsubst < cerberus/cerberus.yaml.template > $config_loc/cerberus_config.yaml
 
 cat $config_loc/cerberus_config.yaml
 
-python3 $crb_loc/start_cerberus.py --config=$config_loc/cerberus_config.yaml
+python3 $crb_loc/start_cerberus.py --config=$config_loc/cerberus_config.yaml -o $config_loc/report.out
