@@ -16,4 +16,4 @@ envsubst < /root/kraken/config/config.yaml.template > /root/kraken/config/zone_c
 
 # Run Kraken
 cd /root/kraken
-python3 run_kraken.py --config=config/zone_config.yaml
+python3.9 run_kraken.py --config=config/zone_config.yaml
