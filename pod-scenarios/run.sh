@@ -26,4 +26,4 @@ cd /root/kraken
 cat /root/kraken/config/pod_scenario_config.yaml
 cat /root/kraken/scenarios/pod_scenario.yaml
 
-python3 run_kraken.py --config=/root/kraken/config/pod_scenario_config.yaml
+python3.9 run_kraken.py --config=/root/kraken/config/pod_scenario_config.yaml

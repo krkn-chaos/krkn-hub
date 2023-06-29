@@ -22,4 +22,4 @@ cat config/container_scenario_config.yaml
 cat scenarios/container_scenario.yaml
 
 
-python3 run_kraken.py --config=config/container_scenario_config.yaml
+python3.9 run_kraken.py --config=config/container_scenario_config.yaml

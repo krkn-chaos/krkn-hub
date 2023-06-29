@@ -27,4 +27,4 @@ cat config/mem_config.yaml
 
 cat scenarios/arcaflow/memory-hog/input.yaml
 
-python3 run_kraken.py --config=config/mem_config.yaml
+python3.9 run_kraken.py --config=config/mem_config.yaml

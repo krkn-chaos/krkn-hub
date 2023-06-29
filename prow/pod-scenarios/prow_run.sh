@@ -34,4 +34,4 @@ envsubst < config.yaml.template > pod_scenario_config.yaml
 cat pod_scenario_config.yaml
 cat pod-scenarios/pod_scenario.yaml
 
-python3 $krn_loc/run_kraken.py --config=pod_scenario_config.yaml
+python3.9 $krn_loc/run_kraken.py --config=pod_scenario_config.yaml
