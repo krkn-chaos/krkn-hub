@@ -20,4 +20,4 @@ cd /root/kraken
 cat scenarios/namespace_scenario.yaml
 cat config/namespace_config.yaml
 
-python3 run_kraken.py --config=config/namespace_config.yaml
+python3.9 run_kraken.py --config=config/namespace_config.yaml

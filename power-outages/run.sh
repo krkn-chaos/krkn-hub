@@ -21,4 +21,4 @@ cat config/shut_down_config.yaml
 
 cat scenarios/cluster_shut_down_scenario.yml
 
-python3 run_kraken.py --config=config/shut_down_config.yaml
+python3.9 run_kraken.py --config=config/shut_down_config.yaml

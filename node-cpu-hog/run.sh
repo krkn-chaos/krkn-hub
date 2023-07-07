@@ -25,6 +25,6 @@ cat config/cpu_config.yaml
 
 cat scenarios/arcaflow/cpu-hog/input.yaml
 
-python3 run_kraken.py --config=config/cpu_config.yaml
+python3.9 run_kraken.py --config=config/cpu_config.yaml
 
 
