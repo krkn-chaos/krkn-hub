@@ -31,3 +31,4 @@ envsubst < config.yaml.template > pvc_scenario_config.yaml
 cat pvc_scenario_config.yaml
 cat pvc-scenario/pvc_scenario.yaml
 python3.9 $krkn_loc/run_kraken.py --config=pvc_scenario_config.yaml 2>&1
+
