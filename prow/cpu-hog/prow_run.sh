@@ -22,11 +22,11 @@ source node-cpu-hog/env.sh
 krkn_loc=/root/kraken
 
 # Substitute config with environment vars defined
-envsubst < node-cpu-hog/input.yaml.template> cpu-hog/cpu_hog_scenario.yaml
-export SCENARIO_FILE="cpu-hog/cpu_hog_scenario.yaml"
+envsubst < node-cpu-hog/input.yaml.template> node-cpu-hog/cpu_hog_scenario.yaml
+export SCENARIO_FILE="node-cpu-hog/cpu_hog_scenario.yaml"
 envsubst < config.yaml.template > cpu_hog_config.yaml
 
 # Run Kraken
 cat cpu_hog_config.yaml
-cat cpu-hog/cpu_hog_scenario.yaml
+cat node-cpu-hog/cpu_hog_scenario.yaml
 python3.9 $krkn_loc/run_kraken.py --config=cpu_hog_config.yaml
