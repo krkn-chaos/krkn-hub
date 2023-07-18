@@ -20,7 +20,6 @@ echo "Printing node info"
 for node in $(oc get nodes | awk 'NR!=1{print $1}'); do oc get node/$node -o yaml; done
 
 source node-cpu-hog/env.sh
-source main_env.sh
 source env.sh
 source common_run.sh
 
