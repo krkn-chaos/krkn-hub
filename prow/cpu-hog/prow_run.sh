@@ -19,9 +19,6 @@ oc config view
 echo "Printing node info"
 for node in $(oc get nodes | awk 'NR!=1{print $1}'); do oc get node/$node -o yaml; done
 
-# Install dependencies
-wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
-
 source node-cpu-hog/env.sh
 source env.sh
 source common_run.sh
