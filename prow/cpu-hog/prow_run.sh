@@ -8,7 +8,9 @@ ls
 source env.sh
 
 export KUBECONFIG=$KRKN_KUBE_CONFIG
-krkn_loc=/root/kraken
+# Move kraken from root dir to tmp to avoid permissions issues in prow until fixed in base image
+cp -r /root/kraken /tmp/kraken
+krkn_loc=/tmp/kraken
 SCENARIO_FOLDER="$krkn_loc/scenarios/arcaflow/cpu-hog"
 
 # cluster details
