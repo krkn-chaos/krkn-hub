@@ -24,6 +24,9 @@ for node in $(oc get nodes | awk 'NR!=1{print $1}'); do oc get node/$node -o yam
 # Label the nodes to target
 for node in $(oc get nodes --selector="node-role.kubernetes.io/worker=" | awk ' NR>1 {print $1}'); do oc label node/$node chaos-hog=true; done
 
+# Copy config to kraken
+cp node-cpu-hog/input.yaml.template $SCENARIO_FOLDER/input.yaml.template
+
 source node-cpu-hog/env.sh
 source env.sh
 source common_run.sh
@@ -33,11 +36,12 @@ checks
 config_setup
 
 # Substitute config with environment vars defined
-envsubst < node-cpu-hog/input.yaml.template> node-cpu-hog/cpu_hog_scenario.yaml
-export SCENARIO_FILE="node-cpu-hog/cpu_hog_scenario.yaml"
+#envsubst < node-cpu-hog/input.yaml.template> node-cpu-hog/cpu_hog_scenario.yaml
+#export SCENARIO_FILE="node-cpu-hog/cpu_hog_scenario.yaml"
+export SCENARIO_FILE="$SCENARIO_FOLDER/input.yaml"
 envsubst < config.yaml.template > cpu_hog_config.yaml
 
 # Run Kraken
 cat cpu_hog_config.yaml
-cat node-cpu-hog/cpu_hog_scenario.yaml
+cat $SCENARIO_FOLDER/input.yaml
 python3.9 $krkn_loc/run_kraken.py --config=cpu_hog_config.yaml
