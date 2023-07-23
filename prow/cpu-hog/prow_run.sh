@@ -33,7 +33,6 @@ source common_run.sh
 
 setup_arcaflow_env "$SCENARIO_FOLDER"
 checks
-config_setup
 
 # Substitute config with environment vars defined
 #envsubst < node-cpu-hog/input.yaml.template> node-cpu-hog/cpu_hog_scenario.yaml
