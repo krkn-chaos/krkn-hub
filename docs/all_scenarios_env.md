@@ -26,3 +26,16 @@ CAPTURE_METRICS   | Captures metrics as specified in the profile from in-cluster
 ENABLE_ALERTS     | Evaluates expressions from in-cluster prometheus and exits 0 or 1 based on the severity set. [Default profile](https://github.com/redhat-chaos/krkn/blob/master/config/alerts). More details can be found [here](https://github.com/redhat-chaos/krkn#alerts) | False |
 ALERTS_PATH       | Path to the alerts file to use when ENABLE_ALERTS is set | config/alerts |
 CHECK_CRITICAL_ALERTS | When enabled will check prometheus for critical alerts firing post chaos | False |
+TELEMETRY_ENABLED | Enable/disables the telemetry collection feature | False |
+TELEMETRY_API_URL | telemetry service endpoint | https://ulnmf9xv7j.execute-api.us-west-2.amazonaws.com/production |
+TELEMETRY_USERNAME | telemetry service username | redhat-chaos |
+TELEMETRY_PASSWORD | | No default |
+TELEMETRY_PROMETHEUS_BACKUP | enables/disables prometheus data collection | True |
+TELEMTRY_FULL_PROMETHEUS_BACKUP | if is set to False only the /prometheus/wal folder will be downloaded | False |
+TELEMETRY_BACKUP_THREADS | number of telemetry download/upload threads | 5 |
+TELEMETRY_ARCHIVE_PATH | local path where the archive files will be temporarly stored | /tmp |
+TELEMETRY_MAX_RETRIES | maximum number of upload retries (if 0 will retry forever)  | 0 |
+TELEMETRY_RUN_TAG | if set, this will be appended to the run folder in the bucket (useful to group the runs | chaos |
+TELEMETRY_ARCHIVE_SIZE | the size of the prometheus data archive size in KB. The lower the size of archive is | 1000 |
+
+**NOTE**: For setting the TELEMETRY_ARCHIVE_SIZE,the higher the number of archive files will be produced and uploaded (and processed by backup_thread simultaneously).For unstable/slow connection is better to keep this value low increasing the number of backup_threads, in this way, on upload failure, the retry will happen only on the failed chunk without affecting the whole upload.
