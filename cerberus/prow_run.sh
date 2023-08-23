@@ -3,11 +3,11 @@
 set -ex
 
 function cerberus_cleanup() {
-  echo "killing cerberus observer - prow_run"
+  echo "killing cerberus prow run"
    for child in $( jobs -p ); do
     kill "${child}"
   done
-  echo "ended resource watch gracefully"
+  echo "Ended resource watch gracefully"
   echo "Finished running cerberus scenarios"
   exit 0
 
