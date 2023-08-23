@@ -66,7 +66,11 @@ setup_arcaflow_env(){
     then
         for selector in "${SELECTORS[@]}"
         do
-            [[ ! $selector =~ ^.+\=.+ ]] && echo "$selector is not in the right format, node selectors must be in the format <selector>=<value>" && exit 1
+            # if the selector is in the format kubernetes.io/os= will become kubernetes.io/os=''
+            [[ $selector =~ ^.+\=$ ]] && selector="$selector''"
+            # if the selector is in the format kubernetes.io/os will become kubernetes.io/os=''
+            [[ ! $selector =~ ^.+\=.+ ]] && selector="$selector=''"
+
             IFS='=' read -r -a SPLITTED_SELECTOR <<< $selector
             export SELECTOR=${SPLITTED_SELECTOR[0]}
             export SELECTOR_VALUE=${SPLITTED_SELECTOR[1]}
