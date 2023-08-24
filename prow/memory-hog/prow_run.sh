@@ -21,9 +21,6 @@ oc config view
 echo "Printing node info"
 for node in $(oc get nodes | awk 'NR!=1{print $1}'); do oc get node/$node -o yaml; done
 
-# Label the nodes to target
-for node in $(oc get nodes --selector="node-role.kubernetes.io/worker=" | awk ' NR>1 {print $1}'); do oc label node/$node chaos-hog=true; done
-
 # Copy config to kraken
 cp node-memory-hog/input.yaml.template $SCENARIO_FOLDER/input.yaml.template 
 
