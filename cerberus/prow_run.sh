@@ -3,16 +3,15 @@
 set -ex
 
 function cerberus_cleanup() {
-  echo "killing cerberus prow run"
-   for child in $( jobs -p ); do
-    kill "${child}"
+  echo "End running cerberus scenarios"
+  PID=$( ps -a | grep -E 'cerberus' | grep -v "grep" | awk '{print $1}' > pid_list.txt) 
+  for p in $(cat pid_list.txt); do 
+    kill -9 $p
   done
-  echo "Ended resource watch gracefully"
-  echo "Finished running cerberus scenarios"
   exit 0
 
 }
-trap cerberus_cleanup EXIT SIGTERM SIGINT
+trap cerberus_cleanup SIGTERM SIGINT
 
 export KUBECONFIG=$CERBERUS_KUBECONFIG
 
