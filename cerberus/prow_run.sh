@@ -2,7 +2,16 @@
 
 set -ex
 
-ls
+function cerberus_cleanup() {
+  echo "End running cerberus scenarios"
+  PID=$( ps -a | grep -E 'cerberus' | grep -v "grep" | awk '{print $1}' > pid_list.txt) 
+  for p in $(cat pid_list.txt); do 
+    kill -9 $p
+  done
+  exit 0
+
+}
+trap cerberus_cleanup SIGTERM SIGINT
 
 export KUBECONFIG=$CERBERUS_KUBECONFIG
 
