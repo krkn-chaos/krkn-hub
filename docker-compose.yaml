@@ -5,6 +5,11 @@ services:
         context: ./
         dockerfile: ./cerberus/Dockerfile
       image: quay.io/redhat-chaos/cerberus:kraken-hub
+    cerberus-prow:
+      build:
+        context: ./
+        dockerfile: ./cerberus/Dockerfile_prow
+      image: quay.io/redhat-chaos/cerberus:prow
     pod-scenarios:
       build:
           context: ./
