@@ -1,6 +1,6 @@
 # Dockerfile for cerberus in prow
 
-FROM registry.ci.openshift.org/chaos/cerberus:latest
+FROM quay.io/redhat-chaos/cerberus:latest
 
 LABEL maintainer="Red Hat Chaos Engineering Team"
 
