@@ -22,7 +22,7 @@ source namespace-scenarios/env.sh
 krkn_loc=/root/kraken
 
 # Substitute config with environment vars defined
-envsubst < namespace_scenario.yaml.template > namespace-scenarios/namespace_scenario.yaml
+envsubst < namespace-scenarios/namespace_scenario.yaml.template > namespace-scenarios/namespace_scenario.yaml
 envsubst < config.yaml.template > namespace_config.yaml
 export SCENARIO_FILE="- namespace-scenarios/namespace_scenario.yaml"
 
