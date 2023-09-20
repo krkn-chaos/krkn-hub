@@ -14,6 +14,7 @@ Scenario   | Description | Working
 [time skew](docs/time-scenarios.md) | Skews the time and date | :heavy_check_mark: |
 [Node cpu hog](docs/node-cpu-hog.md) | Hogs CPU on the targeted nodes | :heavy_check_mark: |
 [Node memory hog](docs/node-memory-hog.md) | Hogs memory on the targeted nodes | :heavy_check_mark:  |
+[Node IO hog](docs/node-io-hog.md) | Hogs io on the targeted nodes | :heavy_check_mark: |
 [Namespace failures](docs/namespace-scenarios.md) | Fails the components in a namespace by deleting it | :heavy_check_mark: | 
 [Application outages](docs/application-outages.md) | Isolates application Ingress/Egress traffic to observe the impact on dependent applications and recovery/initialization timing | :heavy_check_mark: |
 [Power Outages](docs/power-outages.md) | Shuts down the cluster for the specified duration and turns it back on to check the cluster health | :heavy_check_mark: |

@@ -50,6 +50,11 @@ services:
         context: ./
         dockerfile: ./node-memory-hog/Dockerfile
       image: quay.io/redhat-chaos/krkn-hub:node-memory-hog
+    node-io-hog:
+      build:
+        context: ./
+        dockerfile: ./node-io-hog/Dockerfile
+      image: quay.io/redhat-chaos/krkn-hub:node-io-hog
     namespace-scenarios:
       build:
         context: ./
