@@ -23,7 +23,7 @@ krkn_loc=/root/kraken
 
 # Substitute config with environment vars defined
 envsubst < time-scenarios/time_scenario.yaml.template > time-scenarios/time_scenario.yaml
-export SCENARIO_FILE="- time-scenarios/time_scenario.yaml"
+export SCENARIO_FILE="time-scenarios/time_scenario.yaml"
 envsubst < config.yaml.template > time_scenario_config.yaml
 
 # Run Kraken
