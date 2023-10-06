@@ -1,7 +1,0 @@
-scenarios:
-  - action: $ACTION
-    namespace: $NAMESPACE
-    label_selector: $LABEL_SELECTOR
-    delete_count: $DELETE_COUNT
-    runs: $RUNS
-    sleep: $SLEEP
