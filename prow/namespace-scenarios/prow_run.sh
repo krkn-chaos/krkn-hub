@@ -17,16 +17,16 @@ oc config view
 echo "Printing node info"
 for node in $(oc get nodes | awk 'NR!=1{print $1}'); do oc get node/$node -o yaml; done
 
-source namespace-scenarios/env.sh
+source service-disruption-scenarios/env.sh
 
 krkn_loc=/root/kraken
 
 # Substitute config with environment vars defined
-export SCENARIO_FILE="- namespace-scenarios/namespace_scenario.yaml"
-envsubst < namespace-scenarios/namespace_scenario.yaml.template > namespace-scenarios/namespace_scenario.yaml
-envsubst < config.yaml.template > namespace_config.yaml
+export SCENARIO_FILE="- service-disruption-scenarios/service-disruption_scenario.yaml"
+envsubst < service-disruption-scenarios/service_disruption_scenario.yaml.template > service-disruption-scenarios/service_disruption_scenario.yaml
+envsubst < config.yaml.template > service_disruption_config.yaml
 
 # Run Kraken
-cat namespace_config.yaml
-cat namespace-scenarios/namespace_scenario.yaml
-python3.9 $krkn_loc/run_kraken.py --config=namespace_config.yaml
+cat service_disruption_config.yaml
+cat service-disruption-scenarios/service_disruption_scenario.yaml
+python3.9 $krkn_loc/run_kraken.py --config=service_disruption_config.yaml

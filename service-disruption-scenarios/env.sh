@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Vars and respective defaults
-export ACTION=${ACTION:="delete"}
 export NAMESPACE=${NAMESPACE:="openshift-etcd"}
 export LABEL_SELECTOR=${LABEL_SELECTOR:="''"}
 export RUNS=${RUNS:=1}
