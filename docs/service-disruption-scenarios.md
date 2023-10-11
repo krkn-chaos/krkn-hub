@@ -1,5 +1,5 @@
 ### Namespace/Service Disruption Scenarios
-This scenario deletes a namespace in your Kubernetes/OpenShift cluster. More information can be found [here](https://github.com/redhat-chaos/krkn/blob/master/docs/service_disruption_scenarios.md).
+This scenario deletes main objects within a namespace in your Kubernetes/OpenShift cluster. More information can be found [here](https://github.com/redhat-chaos/krkn/blob/master/docs/service_disruption_scenarios.md).
 
 #### Run
 If enabling [Cerberus](https://github.com/redhat-chaos/krkn#kraken-scenario-passfail-criteria-and-report) to monitor the cluster and pass/fail the scenario post chaos, refer [docs](https://github.com/redhat-chaos/krkn-hub/tree/main/docs/cerberus.md). Make sure to start it before injecting the chaos and set `CERBERUS_ENABLED` environment variable for the chaos injection container to autoconnect.
