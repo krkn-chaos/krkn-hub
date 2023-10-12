@@ -37,5 +37,6 @@ TELEMETRY_ARCHIVE_PATH | local path where the archive files will be temporarly s
 TELEMETRY_MAX_RETRIES | maximum number of upload retries (if 0 will retry forever)  | 0 |
 TELEMETRY_RUN_TAG | if set, this will be appended to the run folder in the bucket (useful to group the runs | chaos |
 TELEMETRY_ARCHIVE_SIZE | the size of the prometheus data archive size in KB. The lower the size of archive is | 1000 |
+TELEMETRY_LOGS_BACKUP  | Logs backup to s3 | True | 
 
 **NOTE**: For setting the TELEMETRY_ARCHIVE_SIZE,the higher the number of archive files will be produced and uploaded (and processed by backup_thread simultaneously).For unstable/slow connection is better to keep this value low increasing the number of backup_threads, in this way, on upload failure, the retry will happen only on the failed chunk without affecting the whole upload.
