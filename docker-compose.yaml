@@ -55,11 +55,11 @@ services:
         context: ./
         dockerfile: ./node-io-hog/Dockerfile
       image: quay.io/redhat-chaos/krkn-hub:node-io-hog
-    namespace-scenarios:
+    service-disruption-scenarios:
       build:
         context: ./
-        dockerfile: ./namespace-scenarios/Dockerfile
-      image: quay.io/redhat-chaos/krkn-hub:namespace-scenarios
+        dockerfile: ./service-disruption-scenarios/Dockerfile
+      image: quay.io/redhat-chaos/krkn-hub:service-disruption-scenarios
     application-outages:
       build:
         context: ./
