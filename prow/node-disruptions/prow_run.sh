@@ -7,6 +7,7 @@ ls
 # Source env.sh to read all the vars
 source env.sh
 source common_run.sh
+source node-scenarios/env.sh
 checks
 
 export KUBECONFIG=$KRKN_KUBE_CONFIG
@@ -31,6 +32,7 @@ if [[ "$CLOUD_TYPE" == "vmware" || "$CLOUD_TYPE" == "ibmcloud" ]]; then
 else
   envsubst < node-scenarios/node_scenario.yaml.template > $krkn_loc/scenarios/node_scenario.yaml
 fi
+export SCENARIO_TYPE=node_scenarios
 export SCENARIO_FILE=$krkn_loc/scenarios/node_scenario.yaml
 envsubst < config.yaml.template > node_scenario_config.yaml
 
