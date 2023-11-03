@@ -22,6 +22,12 @@ Scenario   | Description | Working
 [Network Chaos](docs/network-chaos.md) | Introduces network latency, packet loss, bandwidth restriction in the egress traffic of a Node's interface using tc and Netem | :heavy_check_mark: | 
 [Pod Network Chaos](docs/pod-network-chaos.md) | Introducs network chaos at pod level | :heavy_check_mark: |
 
+### Utilities
+
+Utility | Description | Working|
+--------|-------------|--------|
+[Chaos Recommender](docs/chaos-recommender.md) | Runs the chaos recommender | :heavy_check_mark: |
+
 
 ### Set Up 
 You can use docker or podman to run kraken-hub
