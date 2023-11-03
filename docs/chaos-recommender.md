@@ -8,6 +8,11 @@ $ podman run --name=<container_name> --net=host --env-host=true -v <path-to-kube
 
 #### Supported parameters
 
+See list of variables that apply to all scenarios [here](all_scenarios_env.md) that can be used/set in addition to these scenario specific variables
+
+ex.) 
+`export <parameter_name>=<value>`
+
 ##### Required variables
 
 Parameter               | Description                                                           
