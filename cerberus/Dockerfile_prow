@@ -17,4 +17,6 @@ ENV PYTHONPATH=/cerberus/packages:$PYTHONPATH PYTHONUNBUFFERED=1
 
 RUN ls
 
+RUN chmod 777  /cerberus
+
 WORKDIR /cerberus
