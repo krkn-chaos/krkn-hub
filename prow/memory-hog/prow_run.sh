@@ -13,13 +13,9 @@ cp -r /root/kraken /tmp/kraken
 krkn_loc=/tmp/kraken
 SCENARIO_FOLDER="$krkn_loc/scenarios/arcaflow/memory-hog"
 
-# cluster details
-echo "Printing cluster details"
+# cluster version
+echo "Printing cluster version"
 oc version
-cat $KRKN_KUBE_CONFIG
-oc config view
-echo "Printing node info"
-for node in $(oc get nodes | awk 'NR!=1{print $1}'); do oc get node/$node -o yaml; done
 
 # Copy config to kraken
 cp node-memory-hog/input.yaml.template $SCENARIO_FOLDER/input.yaml.template 
