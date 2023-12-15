@@ -18,7 +18,7 @@ oc version
 
 # Substitute config with environment vars defined
 envsubst < power-outages/shutdown_scenario.yaml.template > /tmp/power_outage_scenario.yaml
-export SCENARIO_FILE=/tmp/power_outage_scenario.yaml
+export SCENARIO_FILE="- /tmp/power_outage_scenario.yaml"
 envsubst < config.yaml.template > power_outage_config.yaml
 
 # Run Kraken
