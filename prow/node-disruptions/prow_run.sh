@@ -12,13 +12,9 @@ checks
 
 export KUBECONFIG=$KRKN_KUBE_CONFIG
 
-# Cluster details
-echo "Printing cluster details"
+# cluster version
+echo "Printing cluster version"
 oc version
-cat $KRKN_KUBE_CONFIG
-oc config view
-echo "Printing node info"
-for node in $(oc get nodes | awk 'NR!=1{print $1}'); do oc get node/$node -o yaml; done
 
 # Move kraken from root dir to tmp to avoid permissions issues in prow until fixed in base image
 cp -r /root/kraken /tmp/kraken

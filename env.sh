@@ -33,6 +33,7 @@ export TELEMETRY_ARCHIVE_SIZE=${TELEMETRY_ARCHIVE_SIZE:=1000}
 export TELEMETRY_LOGS_BACKUP=${TELEMETRY_LOGS_BACKUP:=False}
 export TELEMETRY_FILTER_PATTERN=${TELEMETRY_FILTER_PATTERN:='["(\\w{3}\\s\\d{1,2}\\s\\d{2}:\\d{2}:\\d{2}\\.\\d+).+","kinit (\\d+/\\d+/\\d+\\s\\d{2}:\\d{2}:\\d{2})\\s+","(\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d+Z).+"]'}
 export TELEMETRY_CLI_PATH=${TELEMETRY_CLI_PATH:=""}
+export TELEMETRY_EVENTS_BACKUP=${TELEMETRY_EVENTS_BACKUP:=True}
 
 # Unset KUBECONFIG to make sure mounted kubeconfig is used
 unset KUBECONFIG

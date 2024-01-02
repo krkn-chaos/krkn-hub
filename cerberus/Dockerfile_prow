@@ -5,7 +5,7 @@ FROM quay.io/redhat-chaos/cerberus:latest
 LABEL maintainer="Red Hat Chaos Engineering Team"
 
 # Install dependencies
-RUN yum install -y which
+RUN yum install -y which jq
 
 # Copy configurations
 ADD . /cerberus
@@ -16,5 +16,7 @@ RUN yum install -y python3 python3-pip python3-devel git diffutils gettext && \
 ENV PYTHONPATH=/cerberus/packages:$PYTHONPATH PYTHONUNBUFFERED=1
 
 RUN ls
+
+RUN chmod 777 /cerberus
 
 WORKDIR /cerberus

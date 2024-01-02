@@ -80,3 +80,8 @@ services:
         context: ./
         dockerfile: ./pod-network-chaos/Dockerfile
       image: quay.io/redhat-chaos/krkn-hub:pod-network-chaos
+    chaos-recommender:
+      build:
+        context: ./
+        dockerfile: ./chaos-recommender/Dockerfile
+      image: quay.io/redhat-chaos/krkn-hub:chaos-recommender

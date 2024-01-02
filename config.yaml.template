@@ -49,3 +49,4 @@ telemetry:
     logs_backup: $TELEMETRY_LOGS_BACKUP
     logs_filter_patterns: $TELEMETRY_FILTER_PATTERN
     oc_cli_path: $TELEMETRY_CLI_PATH                             # optional, if not specified will be search in $PATH
+    events_backup: $TELEMETRY_EVENTS_BACKUP
