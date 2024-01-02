@@ -28,6 +28,7 @@ if [[ -z $NAMESPACE ]]; then
   exit 1
 fi
 export SCENARIO_FILE=pod-network-chaos/pod_network_scenario.yaml
+envsubst < pod_network_scenario.yaml.template > pod_network_scenario.yaml
 envsubst < config.yaml.template > pod_network_scenario_config.yaml
 
 cat pod_network_scenario_config.yaml
