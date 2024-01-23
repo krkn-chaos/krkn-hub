@@ -1,18 +1,18 @@
 # Cerberus
 
-[Cerberus](https://github.com/redhat-chaos/cerberus) monitors the cluster health and provides a go/no-go signal in addition to exposing cluster state metrics API.
+[Cerberus](https://github.com/krkn-chaos/cerberus) monitors the cluster health and provides a go/no-go signal in addition to exposing cluster state metrics API.
 Run the container on the same host on which chaos injection container is running, it runs as a daemon continuosly monitoring the cluster.
 
-**NOTE** Make sure to start it before injecting the chaos and set `CERBERUS_ENABLED` environment variable to autoconnect to the chaos injection container and other supported environment variables to tweak the components being monitored. It exposes the go/no-go signal at http://0.0.0.0:8080 and metrics API at http://0.0.0.0:8080/history. More details can be found [here](https://github.com/redhat-chaos/cerberus#how-does-cerberus-report-cluster-health).
+**NOTE** Make sure to start it before injecting the chaos and set `CERBERUS_ENABLED` environment variable to autoconnect to the chaos injection container and other supported environment variables to tweak the components being monitored. It exposes the go/no-go signal at http://0.0.0.0:8080 and metrics API at http://0.0.0.0:8080/history. More details can be found [here](https://github.com/krkn-chaos/cerberus#how-does-cerberus-report-cluster-health).
 
 ```
-$ podman run --net=host --env-host=true --privileged -d -v <path-to-kube-config>:/root/.kube/config:Z quay.io/redhat-chaos/cerberus:kraken-hub
+$ podman run --net=host --env-host=true --privileged -d -v <path-to-kube-config>:/root/.kube/config:Z quay.io/krkn-chaos/cerberus:kraken-hub
 ```
 
 ```
-$ docker run $(./get_docker_params.sh) --net=host -v <path-to-kube-config>:/root/.kube/config:Z -d quay.io/openshift-scale/cerberus:kraken-hub
+$ docker run $(./get_docker_params.sh) --net=host -v <path-to-kube-config>:/root/.kube/config:Z -d quay.io/krkn-chaos/cerberus:kraken-hub
 OR
-$ docker run -e VARIABLE=value --net=host -v <path-to-kube-config>:/root/.kube/config:Z -d quay.io/openshift-scale/cerberus:kraken-hub
+$ docker run -e VARIABLE=value --net=host -v <path-to-kube-config>:/root/.kube/config:Z -d quay.io/krkn-chaos/cerberus:kraken-hub
 ```
 
 #### Supported Parameters
