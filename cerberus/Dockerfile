@@ -2,7 +2,7 @@
 
 FROM quay.io/redhat-chaos/cerberus:latest
 
-MAINTAINER Red Hat Chaos Engineering Team
+LABEL maintainer="Red Hat Chaos Engineering Team"
 
 ENV KUBECONFIG /root/.kube/config
 
