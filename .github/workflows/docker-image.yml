@@ -25,3 +25,6 @@ jobs:
       run: docker-compose build --parallel
     - name: Push the Docker images
       run: docker-compose push
+    - name: Call repo lambda
+      run: |
+        curl --location --request POST '${{ secrets.LAMBDA_URL }}' --header 'Authorization: Bearer ${{ secrets.LAMBDA_TOKEN }}'
