@@ -1,8 +1,6 @@
 # Dockerfile for kraken
 
-FROM quay.io/redhat-chaos/krkn:latest
-
-MAINTAINER Red Hat Chaos Engineering Team
+FROM quay.io/krkn-chaos/krkn:latest
 
 ENV KUBECONFIG /root/.kube/config
 
