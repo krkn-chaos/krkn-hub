@@ -1,8 +1,6 @@
 # Dockerfile for cerberus in prow
 
-FROM quay.io/redhat-chaos/cerberus:latest
-
-LABEL maintainer="Red Hat Chaos Engineering Team"
+FROM quay.io/krkn-chaos/cerberus:latest
 
 # Install dependencies
 RUN yum install -y which jq
