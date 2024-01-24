@@ -4,84 +4,84 @@ services:
       build:
         context: ./
         dockerfile: ./cerberus/Dockerfile
-      image: quay.io/redhat-chaos/cerberus:kraken-hub
+      image: quay.io/krkn-chaos/cerberus:kraken-hub
     cerberus-prow:
       build:
         context: ./
         dockerfile: ./cerberus/Dockerfile_prow
-      image: quay.io/redhat-chaos/cerberus:prow
+      image: quay.io/krkn-chaos/cerberus:prow
     pod-scenarios:
       build:
           context: ./
           dockerfile: ./pod-scenarios/Dockerfile
-      image: quay.io/redhat-chaos/krkn-hub:pod-scenarios
+      image: quay.io/krkn-chaos/krkn-hub:pod-scenarios
     node-scenarios:
         build:
             context: ./
             dockerfile: ./node-scenarios/Dockerfile
-        image: quay.io/redhat-chaos/krkn-hub:node-scenarios
+        image: quay.io/krkn-chaos/krkn-hub:node-scenarios
     zone-outages:
       build:
         context: ./
         dockerfile: ./zone-outages/Dockerfile
-      image: quay.io/redhat-chaos/krkn-hub:zone-outages
+      image: quay.io/krkn-chaos/krkn-hub:zone-outages
     time-scenarios:
       build:
         context: ./
         dockerfile: ./time-scenarios/Dockerfile
-      image: quay.io/redhat-chaos/krkn-hub:time-scenarios
+      image: quay.io/krkn-chaos/krkn-hub:time-scenarios
     power-outages:
       build:
         context: ./
         dockerfile: ./power-outages/Dockerfile
-      image: quay.io/redhat-chaos/krkn-hub:power-outages
+      image: quay.io/krkn-chaos/krkn-hub:power-outages
     container-scenarios:
       build:
         context: ./
         dockerfile: ./container-scenarios/Dockerfile
-      image: quay.io/redhat-chaos/krkn-hub:container-scenarios
+      image: quay.io/krkn-chaos/krkn-hub:container-scenarios
     node-cpu-hog:
       build:
         context: ./
         dockerfile: ./node-cpu-hog/Dockerfile
-      image: quay.io/redhat-chaos/krkn-hub:node-cpu-hog
+      image: quay.io/krkn-chaos/krkn-hub:node-cpu-hog
     node-memory-hog:
       build:
         context: ./
         dockerfile: ./node-memory-hog/Dockerfile
-      image: quay.io/redhat-chaos/krkn-hub:node-memory-hog
+      image: quay.io/krkn-chaos/krkn-hub:node-memory-hog
     node-io-hog:
       build:
         context: ./
         dockerfile: ./node-io-hog/Dockerfile
-      image: quay.io/redhat-chaos/krkn-hub:node-io-hog
+      image: quay.io/krkn-chaos/krkn-hub:node-io-hog
     service-disruption-scenarios:
       build:
         context: ./
         dockerfile: ./service-disruption-scenarios/Dockerfile
-      image: quay.io/redhat-chaos/krkn-hub:service-disruption-scenarios
+      image: quay.io/krkn-chaos/krkn-hub:service-disruption-scenarios
     application-outages:
       build:
         context: ./
         dockerfile: ./application-outages/Dockerfile
-      image: quay.io/redhat-chaos/krkn-hub:application-outages
+      image: quay.io/krkn-chaos/krkn-hub:application-outages
     pvc-scenarios:
       build:
         context: ./
         dockerfile: ./pvc-scenario/Dockerfile
-      image: quay.io/redhat-chaos/krkn-hub:pvc-scenarios
+      image: quay.io/krkn-chaos/krkn-hub:pvc-scenarios
     network-chaos:
       build:
         context: ./
         dockerfile: ./network-chaos/Dockerfile
-      image: quay.io/redhat-chaos/krkn-hub:network-chaos
+      image: quay.io/krkn-chaos/krkn-hub:network-chaos
     pod-network-chaos:
       build:
         context: ./
         dockerfile: ./pod-network-chaos/Dockerfile
-      image: quay.io/redhat-chaos/krkn-hub:pod-network-chaos
+      image: quay.io/krkn-chaos/krkn-hub:pod-network-chaos
     chaos-recommender:
       build:
         context: ./
         dockerfile: ./chaos-recommender/Dockerfile
-      image: quay.io/redhat-chaos/krkn-hub:chaos-recommender
+      image: quay.io/krkn-chaos/krkn-hub:chaos-recommender
