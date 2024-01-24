@@ -11,9 +11,7 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v3
     - name: Sync with GH CLI
+      env:
+        GH_TOKEN: ${{ github.token }}
       run: |
-        git remote add upstream https://github.com/krkn-chaos/krkn-hub.git
-        git fetch upstream
-        git checkout main
-        git rebase upstream/main
-        git push origin +main
+        gh repo sync redhat-chaos/krkn-hub -b main
