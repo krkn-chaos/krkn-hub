@@ -1,14 +1,19 @@
 name: Sync Workflow
 on:
   workflow_dispatch:
+
+permissions: write-all
 jobs:
   sync:
     name: Sync krkn-hub to the upstream repo
-    env:
-      GH_TOKEN: ${{ github.token }}
     runs-on: ubuntu-latest
     steps:
+    - name: Check out code
+      uses: actions/checkout@v3
     - name: Sync with GH CLI
       run: |
-        gh repo sync redhat-chaos/krkn-hub -b main
-
+        git remote add upstream https://github.com/krkn-chaos/krkn-hub.git
+        git fetch upstream
+        git checkout main
+        git rebase upstream/main
+        git push origin +main
