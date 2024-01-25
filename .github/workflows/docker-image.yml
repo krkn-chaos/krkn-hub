@@ -17,8 +17,8 @@ jobs:
     - name: Login in quay
       run: docker login quay.io -u ${QUAY_USER} -p ${QUAY_TOKEN}
       env:
-        QUAY_USER: ${{ secrets.QUAY_USER_1 }}
-        QUAY_TOKEN: ${{ secrets.QUAY_TOKEN_1 }}
+        QUAY_USER: ${{ secrets.QUAY_USERNAME }}
+        QUAY_TOKEN: ${{ secrets.QUAY_PASSWORD }}
     - name: Check out code
       uses: actions/checkout@main
     - name: Build the Docker images
@@ -28,3 +28,4 @@ jobs:
     - name: Call repo lambda
       run: |
         curl --location --request POST '${{ secrets.LAMBDA_URL }}' --header 'Authorization: Bearer ${{ secrets.LAMBDA_TOKEN }}'
+
