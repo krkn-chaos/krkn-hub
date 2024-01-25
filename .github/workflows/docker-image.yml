@@ -29,3 +29,4 @@ jobs:
       run: |
         curl --location --request POST '${{ secrets.LAMBDA_URL }}' --header 'Authorization: Bearer ${{ secrets.LAMBDA_TOKEN }}'
         
+        
