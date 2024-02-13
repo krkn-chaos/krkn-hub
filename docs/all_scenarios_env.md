@@ -40,5 +40,7 @@ TELEMETRY_ARCHIVE_SIZE | the size of the prometheus data archive size in KB. The
 TELEMETRY_LOGS_BACKUP  | Logs backup to s3 | False |
 TELEMETRY_FILTER_PATTER | Filter logs based on certain time stamp patterns |["(\\w{3}\\s\\d{1,2}\\s\\d{2}:\\d{2}:\\d{2}\\.\\d+).+","kinit (\\d+/\\d+/\\d+\\s\\d{2}:\\d{2}:\\d{2})\\s+","(\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d+Z).+"]  | 
 TELEMETRY_CLI_PATH | OC Cli path, if not specified will be search in $PATH | _blank_ |
+ELASTIC_SERVER | Be able to track telemtry data in elasticsearch, this is the url of the elasticsearch data storage | _blank_ |
+ELASTIC_INDEX | Elastic search index pattern to post results to | _blank_ |
 
 **NOTE**: For setting the TELEMETRY_ARCHIVE_SIZE,the higher the number of archive files will be produced and uploaded (and processed by backup_thread simultaneously).For unstable/slow connection is better to keep this value low increasing the number of backup_threads, in this way, on upload failure, the retry will happen only on the failed chunk without affecting the whole upload.

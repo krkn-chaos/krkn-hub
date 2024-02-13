@@ -50,3 +50,7 @@ telemetry:
     logs_filter_patterns: $TELEMETRY_FILTER_PATTERN
     oc_cli_path: $TELEMETRY_CLI_PATH                             # optional, if not specified will be search in $PATH
     events_backup: $TELEMETRY_EVENTS_BACKUP
+
+elastic: 
+    elastic_url: $ELASTIC_SERVER
+    elastic_index: $ELASTIC_INDEX
