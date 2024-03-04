@@ -36,6 +36,7 @@ TELEMETRY_BACKUP_THREADS | number of telemetry download/upload threads | 5 |
 TELEMETRY_ARCHIVE_PATH | local path where the archive files will be temporarly stored | /tmp |
 TELEMETRY_MAX_RETRIES | maximum number of upload retries (if 0 will retry forever)  | 0 |
 TELEMETRY_RUN_TAG | if set, this will be appended to the run folder in the bucket (useful to group the runs | chaos |
+TELEMETRY_GROUP | if set will archive the telemetry in the S3 bucket on a folder named after the value | default |
 TELEMETRY_ARCHIVE_SIZE | the size of the prometheus data archive size in KB. The lower the size of archive is | 1000 |
 TELEMETRY_LOGS_BACKUP  | Logs backup to s3 | False |
 TELEMETRY_FILTER_PATTER | Filter logs based on certain time stamp patterns |["(\\w{3}\\s\\d{1,2}\\s\\d{2}:\\d{2}:\\d{2}\\.\\d+).+","kinit (\\d+/\\d+/\\d+\\s\\d{2}:\\d{2}:\\d{2})\\s+","(\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d+Z).+"]  | 

@@ -44,6 +44,7 @@ telemetry:
     backup_threads: $TELEMTRY_BACKUP_THREADS                   # number of telemetry download/upload threads
     archive_path: $TELEMETRY_ARCHIVE_PATH                      # local path where the archive files will be temporarly stored
     max_retries: $TELEMETRY_MAX_RETRIES                        # maximum number of upload retries (if 0 will retry forever)
+    telemetry_group: $TELEMETRY_GROUP                          # if set will archive the telemetry in the S3 bucket on a folder named after the value, otherwise will use "default"
     run_tag: $TELEMETRY_RUN_TAG                                # if set, this will be appended to the run folder in the bucket (useful to group the runs)
     archive_size: $TELEMETRY_ARCHIVE_SIZE                       # the size of the prometheus data archive size in KB. The lower the size of archive is
     logs_backup: $TELEMETRY_LOGS_BACKUP
