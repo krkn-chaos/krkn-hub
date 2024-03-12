@@ -3,6 +3,7 @@
 # Vars and respective defaults
 export CERBERUS_ENABLED=${CERBERUS_ENABLED:=False}
 export CERBERUS_URL=${CERBERUS_URL:=http://0.0.0.0:8080}
+export DISTRIBUTION=${DISTRIBUTION:=openshift}
 export KRKN_KUBE_CONFIG=${KRKN_KUBE_CONFIG:=/root/.kube/config}
 export WAIT_DURATION=${WAIT_DURATION:=60}
 export ITERATIONS=${ITERATIONS:=1}
