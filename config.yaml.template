@@ -1,5 +1,5 @@
 kraken:
-    distribution: openshift                                # Distribution can be kubernetes or openshift
+    distribution: $DISTRIBUTION                                # Distribution can be kubernetes or openshift
     kubeconfig_path: $KRKN_KUBE_CONFIG                   # Path to kubeconfig
     exit_on_failure: False                                 # Exit when a post action scenario fails
     port: $PORT
