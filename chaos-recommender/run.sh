@@ -19,12 +19,10 @@ source $ROOT_FOLDER/common_run.sh
   with the -e NAMESPACE=<namespace> option" && exit 1
 
 [ -z "$PROMETHEUS_ENDPOINT" ] && echo "error: PROMETHEUS_ENDPOINT not set, run the recommender \
-  with the -e PROMETHEUS_ENDPOINT=<namespace> option" && exit 1
+  with the -e PROMETHEUS_ENDPOINT=<prometheus_url> option" && exit 1
 
 [ -z "$PROMETHEUS_TOKEN" ] && echo "error: PROMETHEUS_TOKEN not set, run the recommender \
-  with the -e PROMETHEUS_TOKEN=<namespace> option" && exit 1
-
-
+  with the -e PROMETHEUS_TOKEN=<prometheus_token> option" && exit 1
 
 #checks
 #config_setup
