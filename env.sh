@@ -40,5 +40,5 @@ export TELEMETRY_EVENTS_BACKUP=${TELEMETRY_EVENTS_BACKUP:=True}
 export ELASTIC_SERVER=${ELASTIC_SERVER:=""}
 export ELASTIC_INDEX=${ELASTIC_INDEX:=""}
 
-# Unset KUBECONFIG to make sure mounted kubeconfig is used
-unset KUBECONFIG
+# Set KUBECONFIG to mounted kubeconfig
+export KUBECONFIG=${KRKN_KUBE_CONFIG}
