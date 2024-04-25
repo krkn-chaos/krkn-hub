@@ -4,3 +4,4 @@
     name_pattern: $NAME_PATTERN
     kill: $DISRUPTION_COUNT
     timeout: $KILL_TIMEOUT
+    krkn_pod_recovery_time: $EXPECTED_RECOVERY_TIME

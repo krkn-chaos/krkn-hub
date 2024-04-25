@@ -4,9 +4,4 @@
     label_selector: $POD_LABEL
     kill: $DISRUPTION_COUNT
     timeout: $KILL_TIMEOUT
-- id: wait-for-pods
-  config:
-    namespace_pattern: $NAMESPACE
-    label_selector: $POD_LABEL
-    count: $EXPECTED_POD_COUNT
-    timeout: $WAIT_TIMEOUT
+    krkn_pod_recovery_time: $EXPECTED_RECOVERY_TIME
