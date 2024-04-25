@@ -36,9 +36,7 @@ POD_LABEL               | Label of the pod(s) to target                         
 NAME_PATTERN            | Regex pattern to match the pods in NAMESPACE  when POD_LABEL is not specified | .* |
 DISRUPTION_COUNT        | Number of pods to disrupt                                             | 1                                    |
 KILL_TIMEOUT            | Timeout to wait for the target pod(s) to be removed in seconds        | 180                                  |
-WAIT_TIMEOUT            | Seconds to wait for the pod recovery to match EXPECTED_POD_COUNT      | 360                                  |
-EXPECTED_POD_COUNT      | Total pod count matching the label to verify post disruption ( REQUIRED when POD_LABEL is set )| ""          |
-
+EXPECTED_RECOVERY_TIME           | Fails if the pod disrupted do not recover within the timeout set      | 120                                  |
 
 **NOTE** Set NAMESPACE environment variable to `openshift-.*` to pick and disrupt pods randomly in openshift system namespaces, the DAEMON_MODE can also be enabled to disrupt the pods every x seconds in the background to check the reliability.
 
