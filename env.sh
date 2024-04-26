@@ -16,7 +16,7 @@ export SIGNAL_STATE=${SIGNAL_STATE:=RUN}
 export DEPLOY_DASHBOARDS=${DEPLOY_DASHBOARDS:=False}
 export CAPTURE_METRICS=${CAPTURE_METRICS:=False}
 export ENABLE_ALERTS=${ENABLE_ALERTS:=False}
-export ALERTS_PATH=${ALERTS_PATH:=config/alerts}
+export ALERTS_PATH=${ALERTS_PATH:=config/alerts.yaml}
 export ES_SERVER=${ES_SERVER:=http://0.0.0.0:9200}
 export CHECK_CRITICAL_ALERTS=${CHECK_CRITICAL_ALERTS:=False}
 export KUBE_BURNER_URL=${KUBE_BURNER_URL:=https://github.com/cloud-bulldozer/kube-burner/releases/download/v1.7.0/kube-burner-1.7.0-Linux-x86_64.tar.gz}
