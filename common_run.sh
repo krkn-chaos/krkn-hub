@@ -37,6 +37,13 @@ check_cluster_version() {
   kubectl get clusterversion || log "Not an OpenShift environment"
 }
 
+# sets kubernetes distribution in krkn config if platform is kubernetes
+set_kubernetes_platform() {
+  if ! kubectl get clusterversion;
+  then
+    yq -i '.kraken.distribution="kubernetes"' "$1"
+  fi
+}
 
 checks() {
   check_oc

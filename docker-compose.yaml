@@ -85,3 +85,8 @@ services:
         context: ./
         dockerfile: ./chaos-recommender/Dockerfile
       image: quay.io/krkn-chaos/krkn-hub:chaos-recommender
+    service-hijacking:
+      build:
+        context: ./
+        dockerfile: ./service-hijacking/Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:service-hijacking
