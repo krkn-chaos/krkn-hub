@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "service_target_port": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "integer"
+        }
+      ]
+    },
+    "service_name": {
+      "type": "string"
+    },
+    "service_namespace": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "chaos_duration": {
+      "type": "integer"
+    },
+    "plan": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "resource": {
+            "type": "string"
+          },
+          "steps": {
+            "type": "object",
+            "patternProperties": {
+              "^[A-Z]+$": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "duration": {
+                      "type": "integer"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "mime_type": {
+                      "type": "string"
+                    },
+                    "payload": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["duration", "status", "mime_type", "payload"]
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": ["resource", "steps"]
+      }
+    }
+  },
+  "required": [
+    "service_target_port",
+    "service_name",
+    "service_namespace",
+    "image",
+    "chaos_duration",
+    "plan"
+  ]
+}
