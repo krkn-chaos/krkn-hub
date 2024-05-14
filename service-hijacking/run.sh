@@ -27,9 +27,10 @@ echo $SCENARIO_BASE64 | base64 -d >> /root/kraken/scenarios/service_hijacking.ya
 python3.9 /root/validate_config.py -y /root/kraken/scenarios/service_hijacking.yaml \
                              -s /root/kraken/scenarios/service-hijacking-schema.json
 
-envsubst < /root/kraken/config/config.yaml.template > /root/kraken/config/service_hijacking_config.yaml
 
-set_kubernetes_platform "/root/kraken/config/service_hijacking_config.yaml"
+# replace env variables
+
+envsubst < /root/kraken/config/config.yaml.template > /root/kraken/config/service_hijacking_config.yaml
 
 # Run Kraken
 cd /root/kraken
