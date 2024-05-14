@@ -13,9 +13,10 @@ args = parser.parse_args()
 
 if not os.path.exists(args.yaml):
     print(f"[ERROR] file not found: {args.yaml}")
+    sys.exit(1)
 if not os.path.exists(args.schema):
     print(f"[ERROR] file not found: {args.schema}")
-
+    sys.exit(1)
 try:
     with open(args.yaml) as stream:
         yaml_file = yaml.safe_load(stream)
@@ -31,5 +32,6 @@ except ValidationError as e:
     sys.exit(1)
 except Exception as e:
     print(f"[ERROR] Failed to validate file with exception: {str(e)}")
+    sys.exit(1)
 
 
