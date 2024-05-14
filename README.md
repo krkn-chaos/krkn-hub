@@ -5,22 +5,23 @@ Hosts container images and wrapper for running scenarios supported by [Krkn](htt
 
 ### Supported chaos scenarios
 
-Scenario   | Description | Working
-------------------------------------------- | --------------------------------------------------------------------------------------------- | -------------------- |  
-[Pod failures](docs/pod-scenarios.md) | Injects pod failures | :heavy_check_mark: |
-[Container failures](docs/container-scenarios.md) | Injects container failures based on the provided kill signal | :heavy_check_mark: | 
-[Node failures](docs/node-scenarios.md) | Injects node failure through OpenShift/Kubernetes, cloud API's | :heavy_check_mark: |
+Scenario   | Description                                                      | Working
+------------------------------------------- |------------------------------------------------------------------| -------------------- |  
+[Pod failures](docs/pod-scenarios.md) | Injects pod failures                                             | :heavy_check_mark: |
+[Container failures](docs/container-scenarios.md) | Injects container failures based on the provided kill signal     | :heavy_check_mark: | 
+[Node failures](docs/node-scenarios.md) | Injects node failure through OpenShift/Kubernetes, cloud API's   | :heavy_check_mark: |
 [zone outages](docs/zone-outages.md) | Creates zone outage to observe the impact on the cluster, applications | :heavy_check_mark: |
-[time skew](docs/time-scenarios.md) | Skews the time and date | :heavy_check_mark: |
-[Node cpu hog](docs/node-cpu-hog.md) | Hogs CPU on the targeted nodes | :heavy_check_mark: |
-[Node memory hog](docs/node-memory-hog.md) | Hogs memory on the targeted nodes | :heavy_check_mark:  |
-[Node IO hog](docs/node-io-hog.md) | Hogs io on the targeted nodes | :heavy_check_mark: |
-[Service Disruption](docs/service-disruption-scenarios.md) | Deleting all objects within a namespace | :heavy_check_mark: | 
+[time skew](docs/time-scenarios.md) | Skews the time and date                                          | :heavy_check_mark: |
+[Node cpu hog](docs/node-cpu-hog.md) | Hogs CPU on the targeted nodes                                   | :heavy_check_mark: |
+[Node memory hog](docs/node-memory-hog.md) | Hogs memory on the targeted nodes                                | :heavy_check_mark:  |
+[Node IO hog](docs/node-io-hog.md) | Hogs io on the targeted nodes                                    | :heavy_check_mark: |
+[Service Disruption](docs/service-disruption-scenarios.md) | Deleting all objects within a namespace                          | :heavy_check_mark: | 
 [Application outages](docs/application-outages.md) | Isolates application Ingress/Egress traffic to observe the impact on dependent applications and recovery/initialization timing | :heavy_check_mark: |
 [Power Outages](docs/power-outages.md) | Shuts down the cluster for the specified duration and turns it back on to check the cluster health | :heavy_check_mark: |
 [PVC disk fill](docs/pvc-scenarios.md) | Fills up a given PersistenVolumeClaim by creating a temp file on the PVC from a pod associated with it | :heavy_check_mark: |
 [Network Chaos](docs/network-chaos.md) | Introduces network latency, packet loss, bandwidth restriction in the egress traffic of a Node's interface using tc and Netem | :heavy_check_mark: | 
-[Pod Network Chaos](docs/pod-network-chaos.md) | Introducs network chaos at pod level | :heavy_check_mark: |
+[Pod Network Chaos](docs/pod-network-chaos.md) | Introduces network chaos at pod level                            | :heavy_check_mark: |
+[Service Hijacking](docs/service-hijacking.md) | Hijacks a service http traffic to simulate custom HTTP responses | :heavy_check_mark: |
 
 ### Utilities
 
