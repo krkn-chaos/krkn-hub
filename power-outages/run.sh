@@ -3,19 +3,19 @@
 set -ex
 
 # Source env.sh to read all the vars
-source /root/main_env.sh
-source /root/env.sh
+source /tmp/main_env.sh
+source /tmp/env.sh
 
-source /root/common_run.sh
+source /tmp/common_run.sh
 config_setup
 checks
 
 # Substitute config with environment vars defined
-envsubst < /root/kraken/scenarios/shutdown_scenario.yaml.template > /root/kraken/scenarios/cluster_shut_down_scenario.yml
-envsubst < /root/kraken/config/config.yaml.template > /root/kraken/config/shut_down_config.yaml
+envsubst < /tmp/kraken/scenarios/shutdown_scenario.yaml.template > /tmp/kraken/scenarios/cluster_shut_down_scenario.yml
+envsubst < /tmp/kraken/config/config.yaml.template > /tmp/kraken/config/shut_down_config.yaml
 
 # Run Kraken
-cd /root/kraken
+cd /tmp/kraken
 
 cat config/shut_down_config.yaml
 

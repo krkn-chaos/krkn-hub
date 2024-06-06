@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Vars and respective defaults
-export KUBECONFIG=${KUBECONFIG:="/root/.kube/config"}
+export KUBECONFIG=${KUBECONFIG:="/tmp/.kube/config"}
 export CLOUD_TYPE=${CLOUD_TYPE:="aws"}
 export DURATION=${DURATION:=600}
 export VPC_ID=${VPC_ID:=""}

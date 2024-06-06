@@ -3,15 +3,15 @@
 set -ex
 
 # Source env.sh to read all the vars
-source /root/main_env.sh
-source /root/env.sh
+source /tmp/main_env.sh
+source /tmp/env.sh
 
-source /root/common_run.sh
+source /tmp/common_run.sh
 checks
 
 # Substitute config with environment vars defined
-envsubst < /root/cerberus/config/cerberus.yaml.template > /root/cerberus/config/config.yaml
+envsubst < /tmp/cerberus/config/cerberus.yaml.template > /tmp/cerberus/config/config.yaml
 
 # Run cerberus
-cd /root/cerberus
+cd /tmp/cerberus
 python3 start_cerberus.py --config=config/config.yaml

@@ -2,7 +2,7 @@
 
 set -ex
 
-ROOT_FOLDER="/root"
+ROOT_FOLDER="/tmp"
 KUBECONFIG_PATH="$ROOT_FOLDER/.kube/config"
 KRAKEN_FOLDER="$ROOT_FOLDER/kraken"
 
@@ -13,7 +13,7 @@ source $ROOT_FOLDER/common_run.sh
 
 [ ! -f "$KUBECONFIG_PATH" ] && echo "error: kubeconfig file not found in $KUBECONFIG_PATH,\
   run the recommender image with the -v\
-  <PATH_TO_YOUR_LOCAL_KUBECONFIG>:/root/.kube/config:Z option" && exit 1
+  <PATH_TO_YOUR_LOCAL_KUBECONFIG>:/tmp/.kube/config:Z option" && exit 1
 
 [ -z "$NAMESPACE" ] && echo "error: NAMESPACE not set, run the recommender \
   with the -e NAMESPACE=<namespace> option" && exit 1

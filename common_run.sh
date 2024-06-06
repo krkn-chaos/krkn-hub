@@ -44,7 +44,7 @@ check_cluster_version() {
 set_kubernetes_platform() {
   if ! kubectl get clusterversion;
   then
-    yq -i '.kraken.distribution="kubernetes"' /root/kraken/config/config.yaml.template
+    yq -i '.kraken.distribution="kubernetes"' /tmp/kraken/config/config.yaml.template
   fi
 }
 
@@ -57,7 +57,7 @@ checks() {
 
 # Config substitutions
 config_setup(){
-  envsubst < /root/kraken/config/kube_burner.yaml.template > /root/kraken/config/kube_burner.yaml
+  envsubst < /tmp/kraken/config/kube_burner.yaml.template > /tmp/kraken/config/kube_burner.yaml
 }
 
 setup_arcaflow_env(){
