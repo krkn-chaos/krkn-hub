@@ -2,7 +2,7 @@
 
 set -ex
 
-ROOT_FOLDER="/root"
+ROOT_FOLDER="/home/krkn"
 KUBECONFIG_PATH="$ROOT_FOLDER/.kube/config"
 KRAKEN_FOLDER="$ROOT_FOLDER/kraken"
 

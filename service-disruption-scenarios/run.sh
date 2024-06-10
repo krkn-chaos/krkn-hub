@@ -3,19 +3,19 @@
 set -ex
 
 # Source env.sh to read all the vars
-source /root/main_env.sh
-source /root/env.sh
+source /home/krkn/main_env.sh
+source /home/krkn/env.sh
 
-source /root/common_run.sh
+source /home/krkn/common_run.sh
 checks
 config_setup
 
 # Substitute config with environment vars defined
-envsubst < /root/kraken/scenarios/namespace_scenario.yaml.template > /root/kraken/scenarios/namespace_scenario.yaml
-envsubst < /root/kraken/config/config.yaml.template > /root/kraken/config/namespace_config.yaml
+envsubst < /home/krkn/kraken/scenarios/namespace_scenario.yaml.template > /home/krkn/kraken/scenarios/namespace_scenario.yaml
+envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/config/namespace_config.yaml
 
 # Run Kraken
-cd /root/kraken
+cd /home/krkn/kraken
 
 cat scenarios/namespace_scenario.yaml
 cat config/namespace_config.yaml
