@@ -3,24 +3,24 @@
 set -ex
 
 # Source env.sh to read all the vars
-source /root/main_env.sh
-source /root/env.sh
+source /home/krkn/main_env.sh
+source /home/krkn/env.sh
 
-source /root/common_run.sh
+source /home/krkn/common_run.sh
 checks
 
 # Substitute config with environment vars defined
 if [[ "$CLOUD_TYPE" == "vmware" || "$CLOUD_TYPE" == "ibmcloud" ]]; then
-  envsubst < /root/kraken/scenarios/plugin_node_scenario.yaml.template > /root/kraken/scenarios/node_scenario.yaml
+  envsubst < /home/krkn/kraken/scenarios/plugin_node_scenario.yaml.template > /home/krkn/kraken/scenarios/node_scenario.yaml
   export SCENARIO_TYPE="plugin_scenarios"
   export ACTION=${ACTION:="$CLOUD_TYPE-node-reboot"}
 else
-  envsubst < /root/kraken/scenarios/node_scenario.yaml.template > /root/kraken/scenarios/node_scenario.yaml
+  envsubst < /home/krkn/kraken/scenarios/node_scenario.yaml.template > /home/krkn/kraken/scenarios/node_scenario.yaml
 fi
-envsubst < /root/kraken/config/config.yaml.template > /root/kraken/config/node_scenario_config.yaml
+envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/config/node_scenario_config.yaml
 
 # Run Kraken
-cd /root/kraken
+cd /home/krkn/kraken
 
 cat config/node_scenario_config.yaml
 

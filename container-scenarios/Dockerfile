@@ -4,10 +4,6 @@ FROM FROM quay.io/krkn-chaos/krkn:latest
 
 ENV KUBECONFIG /home/krkn/.kube/config
 
-# Install dependencies
-USER root
-RUN yum install -y which
-
 # Copy configurations
 COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
 COPY metrics_config.yaml.template /home/krkn/kraken/config/kube_burner.yaml.template

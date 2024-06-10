@@ -3,10 +3,10 @@
 set -ex
 
 # Source env.sh to read all the vars
-source /root/main_env.sh
-source /root/env.sh
+source /home/krkn/main_env.sh
+source /home/krkn/env.sh
 
-source /root/common_run.sh
+source /home/krkn/common_run.sh
 checks
 
 # check if SCENARIO_BASE64 is set
@@ -18,22 +18,22 @@ exit 1 )
 
 
 # Substitute config with environment vars defined
-echo $SCENARIO_BASE64 | base64 -d >> /root/kraken/scenarios/service_hijacking.yaml || \
+echo $SCENARIO_BASE64 | base64 -d >> /home/krkn/kraken/scenarios/service_hijacking.yaml || \
 (echo -e "[ERROR] Unable to decode SCENARIO_BASE64, bad base64 format please refer to documentation" \
 && exit 1)
 
 # Validate scenario against schema
 
-python3.9 /root/validate_config.py -y /root/kraken/scenarios/service_hijacking.yaml \
-                             -s /root/kraken/scenarios/service-hijacking-schema.json
+python3.9 /home/krkn/validate_config.py -y /home/krkn/kraken/scenarios/service_hijacking.yaml \
+                             -s /home/krkn/kraken/scenarios/service-hijacking-schema.json
 
 
 # replace env variables
 
-envsubst < /root/kraken/config/config.yaml.template > /root/kraken/config/service_hijacking_config.yaml
+envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/config/service_hijacking_config.yaml
 
 # Run Kraken
-cd /root/kraken
+cd /home/krkn/kraken
 
 cat scenarios/service_hijacking.yaml
 cat config/service_hijacking_config.yaml

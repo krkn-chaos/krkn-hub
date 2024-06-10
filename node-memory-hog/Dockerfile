@@ -2,21 +2,16 @@
 
 FROM quay.io/krkn-chaos/krkn:latest
 
-ENV KUBECONFIG /root/.kube/config
-
-# Install dependencies
-RUN yum install -y which wget
-RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
-
+ENV KUBECONFIG /home/krkn/.kube/config
 
 # Copy configurations
-COPY metrics_config.yaml.template /root/kraken/config/kube_burner.yaml.template
-COPY config.yaml.template /root/kraken/config/config.yaml.template
+COPY metrics_config.yaml.template /home/krkn/kraken/config/kube_burner.yaml.template
+COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
 
-COPY node-memory-hog/env.sh /root/env.sh
-COPY env.sh /root/main_env.sh
-COPY node-memory-hog/run.sh /root/run.sh
-COPY node-memory-hog/input.yaml.template /root/kraken/scenarios/arcaflow/memory-hog/input.yaml.template
-COPY common_run.sh /root/common_run.sh
+COPY node-memory-hog/env.sh /home/krkn/env.sh
+COPY env.sh /home/krkn/main_env.sh
+COPY node-memory-hog/run.sh /home/krkn/run.sh
+COPY node-memory-hog/input.yaml.template /home/krkn/kraken/scenarios/arcaflow/memory-hog/input.yaml.template
+COPY common_run.sh /home/krkn/common_run.sh
 
-ENTRYPOINT /root/run.sh
+ENTRYPOINT /home/krkn/run.sh

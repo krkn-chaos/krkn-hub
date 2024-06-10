@@ -3,7 +3,7 @@ This tool profiles an application and gathers telemetry data such as CPU, Memory
 #### Run
 
 ```
-$ podman run --name=<container_name> --net=host --env-host=true -v <path-to-kube-config>:/root/.kube/config:Z  -e NAMESPACE=<NAMESPACE> -e PROMETHEUS_ENDPOINT=<PROMETHEUS_ENDPOINT> -e PROMETHEUS_TOKEN=<PROMETHEUS_TOKEN>  quay.io/krkn-chaos/krkn-hub:chaos-recommender
+$ podman run --name=<container_name> --net=host --env-host=true -v <path-to-kube-config>:/home/krkn/.kube/config:Z  -e NAMESPACE=<NAMESPACE> -e PROMETHEUS_ENDPOINT=<PROMETHEUS_ENDPOINT> -e PROMETHEUS_TOKEN=<PROMETHEUS_TOKEN>  quay.io/krkn-chaos/krkn-hub:chaos-recommender
 ```
 
 #### Supported parameters

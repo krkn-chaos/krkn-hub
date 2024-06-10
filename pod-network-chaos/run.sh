@@ -3,18 +3,18 @@
 set -ex
 
 # Source env.sh to read all the vars
-source /root/main_env.sh
-source /root/env.sh
+source /home/krkn/main_env.sh
+source /home/krkn/env.sh
 
-ls -la /root/.kube
+ls -la /home/krkn/.kube
 
-source /root/common_run.sh
+source /home/krkn/common_run.sh
 checks
 config_setup
 
 # Substitute config with environment vars defined
-envsubst < /root/kraken/scenarios/pod_network_scenario.yaml.template > /root/kraken/scenarios/pod_network_scenario.yaml
-envsubst < /root/kraken/config/config.yaml.template > /root/kraken/config/pod_network_scenario_config.yaml
+envsubst < /home/krkn/kraken/scenarios/pod_network_scenario.yaml.template > /home/krkn/kraken/scenarios/pod_network_scenario.yaml
+envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/config/pod_network_scenario_config.yaml
 
 # Validate if namespace parameter is set
 if [[ -z $NAMESPACE ]]; then
@@ -23,9 +23,9 @@ if [[ -z $NAMESPACE ]]; then
 fi
 
 # Run Kraken
-cd /root/kraken
+cd /home/krkn/kraken
 
-cat /root/kraken/config/pod_network_scenario_config.yaml
-cat /root/kraken/scenarios/pod_network_scenario.yaml
+cat /home/krkn/kraken/config/pod_network_scenario_config.yaml
+cat /home/krkn/kraken/scenarios/pod_network_scenario.yaml
 
-python3.9 run_kraken.py --config=/root/kraken/config/pod_network_scenario_config.yaml
+python3.9 run_kraken.py --config=/home/krkn/kraken/config/pod_network_scenario_config.yaml

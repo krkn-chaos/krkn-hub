@@ -3,17 +3,17 @@
 set -ex
 
 # Source env.sh to read all the vars
-source /root/main_env.sh
-source /root/env.sh
+source /home/krkn/main_env.sh
+source /home/krkn/env.sh
 
-source /root/common_run.sh
+source /home/krkn/common_run.sh
 checks
 config_setup
 
 # Substitute config with environment vars defined
-envsubst < /root/kraken/scenarios/zone_outage_scenario.yaml.template > /root/kraken/scenarios/zone_outage.yaml
-envsubst < /root/kraken/config/config.yaml.template > /root/kraken/config/zone_config.yaml
+envsubst < /home/krkn/kraken/scenarios/zone_outage_scenario.yaml.template > /home/krkn/kraken/scenarios/zone_outage.yaml
+envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/config/zone_config.yaml
 
 # Run Kraken
-cd /root/kraken
+cd /home/krkn/kraken
 python3.9 run_kraken.py --config=config/zone_config.yaml

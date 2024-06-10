@@ -2,7 +2,7 @@
 
 set -ex
 
-ROOT_FOLDER="/root"
+ROOT_FOLDER="/home/krkn"
 KRAKEN_FOLDER="$ROOT_FOLDER/kraken"
 SCENARIO_FOLDER="$KRAKEN_FOLDER/scenarios/arcaflow/memory-hog"
 

@@ -2,18 +2,15 @@
 
 FROM quay.io/krkn-chaos/krkn:latest
 
-ENV KUBECONFIG /root/.kube/config
-
-# Install dependencies
-RUN yum install -y which
+ENV KUBECONFIG /home/krkn/.kube/config
 
 # Copy configurations
-COPY config.yaml.template /root/kraken/config/config.yaml.template
-COPY metrics_config.yaml.template /root/kraken/config/kube_burner.yaml.template
-COPY pod-network-chaos/env.sh /root/env.sh
-COPY env.sh /root/main_env.sh
-COPY pod-network-chaos/run.sh /root/run.sh
-COPY common_run.sh /root/common_run.sh
-COPY pod-network-chaos/pod_network_scenario.yaml.template /root/kraken/scenarios/pod_network_scenario.yaml.template
+COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
+COPY metrics_config.yaml.template /home/krkn/kraken/config/kube_burner.yaml.template
+COPY pod-network-chaos/env.sh /home/krkn/env.sh
+COPY env.sh /home/krkn/main_env.sh
+COPY pod-network-chaos/run.sh /home/krkn/run.sh
+COPY common_run.sh /home/krkn/common_run.sh
+COPY pod-network-chaos/pod_network_scenario.yaml.template /home/krkn/kraken/scenarios/pod_network_scenario.yaml.template
 
-ENTRYPOINT /root/run.sh
+ENTRYPOINT /home/krkn/run.sh
