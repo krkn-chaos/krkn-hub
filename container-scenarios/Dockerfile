@@ -1,6 +1,6 @@
 # Dockerfile for kraken
 
-FROM FROM quay.io/krkn-chaos/krkn:latest
+FROM quay.io/krkn-chaos/krkn:latest
 
 ENV KUBECONFIG /home/krkn/.kube/config
 
