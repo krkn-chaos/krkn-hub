@@ -22,8 +22,8 @@ def main():
     image = os.getenv("IMAGE")
     node_selectors = os.getenv("NODE_SELECTORS")
 
-    target_service_label_re = re.compile("^$|^.+=.*$")
-    node_selectors_re = re.compile(r"^$|^.*=.*^|^(.+=.*)(;.+=.*)*$")
+    target_service_label_re = re.compile(r"^$|^.+=.*$")
+    node_selectors_re = re.compile(r"^$|^(.+=.*)(;.+=.*)*$")
 
     if not target_service_label_re.match(target_service_label):
         logging.error(f"{target_service_label} is not a valid service label, "
