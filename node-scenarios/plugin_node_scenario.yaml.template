@@ -10,7 +10,6 @@
     instance_count: $INSTANCE_COUNT
     # Duration to wait for completion of node scenario injection              
     timeout: $TIMEOUT
-    # Set to True if you want to verify the vSphere client session using certificates; else False
-    verify_session: $VERIFY_SESSION
+    $VERIFY_SESSION
     # Set to True if you don't want to wait for the status of the nodes to change on OpenShift before passing the scenario
     skip_openshift_checks: $SKIP_OPENSHIFT_CHECKS
