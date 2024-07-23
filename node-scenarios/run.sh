@@ -12,7 +12,7 @@ checks
 # Substitute config with environment vars defined
 if [[ "$CLOUD_TYPE" == "vmware" || "$CLOUD_TYPE" == "ibmcloud" ]]; then
   export ACTION=${ACTION:="$CLOUD_TYPE-node-reboot"}
-  envsubst < /root/kraken/scenarios/plugin_node_scenario.yaml.template > /root/kraken/scenarios/node_scenario.yaml
+  
   export SCENARIO_TYPE="plugin_scenarios"
 
   # IBM doesnt have verify session
@@ -24,7 +24,7 @@ if [[ "$CLOUD_TYPE" == "vmware" || "$CLOUD_TYPE" == "ibmcloud" ]]; then
   else
     export VERIFY_SESSION=""
   fi
-
+  envsubst < /home/krkn/kraken/scenarios/plugin_node_scenario.yaml.template > /home/krkn/kraken/scenarios/node_scenario.yaml
 
 
 else
