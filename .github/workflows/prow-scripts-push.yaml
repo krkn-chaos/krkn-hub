@@ -1,0 +1,21 @@
+name: Docker Image CI
+on:
+  workflow_dispatch:
+    inputs:
+      test_list:
+        description: Only run tests that match the regular expression
+        default: ""
+        required: false
+
+  push:
+    branches: ['main']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Make push to Prow-Scripts
+      uses: redhat-chaos/actions/prow-scripts@main
+      with:
+        AUTOPUSH: ${{ secrets.AUTOPUSH }}
+  
