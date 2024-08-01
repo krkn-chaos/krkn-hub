@@ -34,7 +34,12 @@ check_cluster_version() {
     log "Unable to connect to the cluster, please check if it's up and make sure the KUBECONFIG is set correctly"
     exit 1
   fi
-  kubectl get clusterversion || log "Not an OpenShift environment"
+  if [[ $(kubectl api-resources  --api-group=apiserver.openshift.io --no-headers=true|wc -l) -gt 0 ]];
+  then
+    kubectl get clusterversion 
+  else
+    log "Not an OpenShift environment"
+  fi  
 }
 
 # sets kubernetes distribution in krkn config if platform is kubernetes included automatically
@@ -42,7 +47,7 @@ check_cluster_version() {
 # called in the checks method below
 
 set_kubernetes_platform() {
-  if ! kubectl get clusterversion;
+  if [[ $(kubectl api-resources  --api-group=apiserver.openshift.io --no-headers=true|wc -l) -eq 0 ]];  
   then
     yq -i '.kraken.distribution="kubernetes"' /home/krkn/kraken/config/config.yaml.template
   fi
