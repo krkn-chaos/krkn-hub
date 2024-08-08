@@ -13,3 +13,8 @@ export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/node_scenario.yaml}
 export SCENARIO_POST_ACTION=${SCENARIO_POST_ACTION:=""}
 export VERIFY_SESSION=${VERIFY_SESSION:="false"}
 export SKIP_OPENSHIFT_CHECKS=${SKIP_OPENSHIFT_CHECKS:="false"}
+
+# Baremetal vars
+export BMC_USER=${BMC_USER:=""}
+export BMC_PASSWORD=${BMC_PASSWORD:=""}
+export BMC_ADDR=${BMC_ADDR:=""}
