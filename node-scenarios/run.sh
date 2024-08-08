@@ -26,10 +26,13 @@ if [[ "$CLOUD_TYPE" == "vmware" || "$CLOUD_TYPE" == "ibmcloud" ]]; then
   fi
   envsubst < /home/krkn/kraken/scenarios/plugin_node_scenario.yaml.template > /home/krkn/kraken/scenarios/node_scenario.yaml
 
-
+elif [[ "$CLOUD_TYPE" == "bm" ]]; then
+    envsubst < /home/krkn/kraken/scenarios/baremetal_node_scenario.yaml.template > /home/krkn/kraken/scenarios/node_scenario.yaml  
 else
   envsubst < /home/krkn/kraken/scenarios/node_scenario.yaml.template > /home/krkn/kraken/scenarios/node_scenario.yaml
 fi
+
+# Setup config
 envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/config/node_scenario_config.yaml
 
 # Run Kraken

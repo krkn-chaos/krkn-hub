@@ -1,0 +1,14 @@
+node_scenarios:
+  - actions:                                                        # Node chaos scenarios to be injected.
+    - $ACTION
+    node_name: $NODE_NAME                                           # Node on which scenario has to be injected.
+    label_selector: $LABEL_SELECTOR                                 # When node_name is not specified, a node with matching label_selector is selected for node chaos scenario injection.
+    instance_count: $INSTANCE_COUNT                                 # Number of nodes to perform action/select that match the label selector.
+    runs: $RUNS                                                     # Number of times to inject each scenario under actions (will perform on same node each time).
+    timeout: $TIMEOUT                                               # Duration to wait for completion of node scenario injection.
+    cloud_type: $CLOUD_TYPE                                         # Cloud type on which Kubernetes/OpenShift runs.
+    bmc_user: $BMC_USER                                             # For baremetal (bm) cloud type. The default IPMI username. Optional if specified for all machines.
+    bmc_password: $BMC_PASSWORD                                     # For baremetal (bm) cloud type. The default IPMI password. Optional if specified for all machines.
+    bmc_info:                                                       # This section is here to specify baremetal per-machine info, so it is optional if there is no per-machine info.
+      $NODE_NAME:                                                   # The node name for the baremetal machine
+        bmc_addr: $BMC_ADDR                                         # Optional. For baremetal nodes with the IPMI BMC address missing from 'oc get bmh'.
