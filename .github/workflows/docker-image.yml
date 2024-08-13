@@ -22,9 +22,9 @@ jobs:
     - name: Check out code
       uses: actions/checkout@main
     - name: Build the Docker images
-      run: docker-compose build --parallel
+      run: docker compose build --parallel
     - name: Push the Docker images
-      run: docker-compose push
+      run: docker compose push
     - name: Call repo lambda
       run: |
         curl --location --request POST '${{ secrets.LAMBDA_URL }}' --header 'Authorization: Bearer ${{ secrets.LAMBDA_TOKEN }}'
