@@ -36,11 +36,14 @@ LABEL_SELECTOR          | Node label to target                                  
 NODE_NAME               | Node name to inject faults in case of targeting a specific node; Can set multiple node names separated by a comma      | ""                                   |
 INSTANCE_COUNT          | Targeted instance count matching the label selector                   | 1                                    |
 RUNS                    | Iterations to perform action on a single node                         | 1                                    |
-CLOUD_TYPE              | Cloud platform on top of which cluster is running, supported platforms - aws or vmware                     | aws |
+CLOUD_TYPE              | Cloud platform on top of which cluster is running, supported platforms - aws, vmware, ibmcloud, bm           | aws |
 TIMEOUT                 | Duration to wait for completion of node scenario injection             | 180                                |
 DURATION                | Duration to stop the node before running the start action - not supported for vmware and ibm cloud type             | 120                                |
 VERIFY_SESSION          | Only needed for vmware - Set to True if you want to verify the vSphere client session using certificates    | False                               |
 SKIP_OPENSHIFT_CHECKS   | Only needed for vmware - Set to True if you don't want to wait for the status of the nodes to change on OpenShift before passing the scenario  | False |
+BMC_USER                 | Only needed for Baremetal ( bm ) - IPMI/bmc username | "" | 
+BMC_PASSWORD             | Only needed for Baremetal ( bm ) - IPMI/bmc password | "" |
+BMC_ADDR                 | Only needed for Baremetal ( bm ) - IPMI/bmc username | "" |
 
 #### Demo
 You can find a link to a demo of the scenario [here](https://asciinema.org/a/ANZY7HhPdWTNaWt4xMFanF6Q5)
@@ -74,6 +77,13 @@ $ export IBMC_APIKEY=<ibmcloud_api_key>
 
 ```
 
+Baremetal
+```
+$ export BMC_USER=<bmc/IPMI user>
+$ export BMC_PASSWORD=<bmc/IPMI password>
+$ export BMC_ADDR=<bmc address>
+```
+
 Google Cloud Platform
 ```
 TBD
@@ -89,11 +99,6 @@ export AZURE_CLIENT_ID=<>
 
 OpenStack
 
-```
-TBD
-```
-
-Baremetal
 ```
 TBD
 ```
