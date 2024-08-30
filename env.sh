@@ -17,7 +17,22 @@ export DEPLOY_DASHBOARDS=${DEPLOY_DASHBOARDS:=False}
 export CAPTURE_METRICS=${CAPTURE_METRICS:=False}
 export ENABLE_ALERTS=${ENABLE_ALERTS:=False}
 export ALERTS_PATH=${ALERTS_PATH:=config/alerts.yaml}
-export ES_SERVER=${ES_SERVER:=http://0.0.0.0:9200}
+
+
+export ENABLE_ES=${ENABLE_ES:=False}
+export ES_SERVER=${ES_SERVER:=http://0.0.0.0}
+export ES_PORT=${ES_PORT:=443}
+export ES_COLLECT_METRICS=${ES_COLLECT_METRICS:=False}
+export ES_COLLECT_ALERTS=${ES_COLLECT_ALERTS:=False}
+export ES_USERNAME=${ES_USERNAME:=elastic}
+export ES_PASSWORD=${ES_PASSWORD}
+export ES_VERIFY_CERTS=${ES_VERIFY_CERTS:=False}
+
+export ES_METRICS_INDEX=${ES_METRICS_INDEX:=krkn-metrics}
+export ES_ALERTS_INDEX=${ES_ALERTS_INDEX:=krkn-alerts}
+export ES_TELEMETRY_INDEX=${ES_TELEMETRY_INDEX:=krkn-telemetry}
+
+
 export CHECK_CRITICAL_ALERTS=${CHECK_CRITICAL_ALERTS:=False}
 export KUBE_BURNER_URL=${KUBE_BURNER_URL:=https://github.com/cloud-bulldozer/kube-burner/releases/download/v1.7.0/kube-burner-1.7.0-Linux-x86_64.tar.gz}
 export TELEMETRY_ENABLED=${TELEMETRY_ENABLED:=False}
