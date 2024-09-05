@@ -18,10 +18,11 @@ if [[ "$CLOUD_TYPE" == "vmware" || "$CLOUD_TYPE" == "ibmcloud" ]]; then
   # IBM doesnt have verify session
   # Invalid parameter 'verify_session', expected one of: name, runs, label_selector, timeout, instance_count, skip_openshift_checks, kubeconfig_path
   if [[ "$CLOUD_TYPE" == "vmware" ]]; then
-    
     ## Set to True if you want to verify the vSphere client session using certificates; else False
     export VERIFY_SESSION="verify_session: $VERIFY_SESSION"
+    export SKIP_OPENSHIFT_CHECKS="skip_openshift_checks: $SKIP_OPENSHIFT_CHECKS"
   else
+    export SKIP_OPENSHIFT_CHECKS=""
     export VERIFY_SESSION=""
   fi
   envsubst < /home/krkn/kraken/scenarios/plugin_node_scenario.yaml.template > /home/krkn/kraken/scenarios/node_scenario.yaml
