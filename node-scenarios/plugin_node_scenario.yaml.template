@@ -12,4 +12,4 @@
     timeout: $TIMEOUT
     $VERIFY_SESSION
     # Set to True if you don't want to wait for the status of the nodes to change on OpenShift before passing the scenario
-    skip_openshift_checks: $SKIP_OPENSHIFT_CHECKS
+    $SKIP_OPENSHIFT_CHECKS
