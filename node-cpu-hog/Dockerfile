@@ -10,7 +10,7 @@ COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
 COPY node-cpu-hog/env.sh /home/krkn/env.sh
 COPY env.sh /home/krkn/main_env.sh
 COPY node-cpu-hog/run.sh /home/krkn/run.sh
-COPY node-cpu-hog/input.yaml.template /home/krkn/kraken/scenarios/arcaflow/cpu-hog/input.yaml.template
+COPY node-cpu-hog/input.yaml.template /home/krkn/kraken/scenarios/kube/cpu-hog/input.yaml.template
 COPY common_run.sh /home/krkn/common_run.sh
 
 ENTRYPOINT /home/krkn/run.sh

@@ -4,7 +4,7 @@ set -ex
 
 ROOT_FOLDER="/home/krkn"
 KRAKEN_FOLDER="$ROOT_FOLDER/kraken"
-SCENARIO_FOLDER="$KRAKEN_FOLDER/scenarios/arcaflow/io-hog"
+SCENARIO_FOLDER="$KRAKEN_FOLDER/scenarios/kube/io-hog"
 
 # Source env.sh to read all the vars
 source $ROOT_FOLDER/main_env.sh
@@ -23,7 +23,7 @@ cd $KRAKEN_FOLDER
 
 cat config/io_config.yaml
 
-cat scenarios/arcaflow/io-hog/input.yaml
+cat scenarios/kube/io-hog/input.yaml
 
 python3.9 run_kraken.py --config=config/io_config.yaml
 

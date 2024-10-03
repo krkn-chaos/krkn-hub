@@ -8,5 +8,5 @@ export IO_WRITE_BYTES=${IO_WRITE_BYTES:="10m"}
 export NAMESPACE=${NAMESPACE:="default"}
 export NODE_SELECTORS=${NODE_SELECTORS:=""}
 
-export SCENARIO_TYPE=${SCENARIO_TYPE:=arcaflow_scenarios}
-export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/arcaflow/io-hog/input.yaml}
+export SCENARIO_TYPE=${SCENARIO_TYPE:=hog_scenarios}
+export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kube/io-hog/input.yaml}

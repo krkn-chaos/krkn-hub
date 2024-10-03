@@ -11,7 +11,7 @@ COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
 COPY node-memory-hog/env.sh /home/krkn/env.sh
 COPY env.sh /home/krkn/main_env.sh
 COPY node-memory-hog/run.sh /home/krkn/run.sh
-COPY node-memory-hog/input.yaml.template /home/krkn/kraken/scenarios/arcaflow/memory-hog/input.yaml.template
+COPY node-memory-hog/input.yaml.template /home/krkn/kraken/scenarios/kube/memory-hog/input.yaml.template
 COPY common_run.sh /home/krkn/common_run.sh
 
 ENTRYPOINT /home/krkn/run.sh

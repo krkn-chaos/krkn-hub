@@ -9,7 +9,7 @@ export INTERFACES=${INTERFACES:="[]"}
 export EXECUTION=${EXECUTION:="parallel"}
 export EGRESS=${EGRESS:="{bandwidth: 100mbit}"}
 export SCENARIO_POST_ACTION=${SCENARIO_POST_ACTION:=""}
-export SCENARIO_TYPE=${SCENARIO_TYPE:=network_chaos}
+export SCENARIO_TYPE=${SCENARIO_TYPE:=network_chaos_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/network_chaos.yaml}
 export TRAFFIC_TYPE=${TRAFFIC_TYPE:=egress}
 
