@@ -7,6 +7,6 @@ export NODE_CPU_PERCENTAGE=${NODE_CPU_PERCENTAGE:="50"}
 export NAMESPACE=${NAMESPACE:="default"}
 export NODE_SELECTORS=${NODE_SELECTORS:=""}
 
-export SCENARIO_TYPE=${SCENARIO_TYPE:=arcaflow_scenarios}
-export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/arcaflow/cpu-hog/input.yaml}
+export SCENARIO_TYPE=${SCENARIO_TYPE:=hog_scenarios}
+export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kube/cpu-hog/input.yaml}
 

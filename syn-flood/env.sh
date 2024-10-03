@@ -14,5 +14,5 @@ export NODE_SELECTORS=${NODE_SELECTORS:=""}
 python3.9 $ROOT_FOLDER/build_config_file.py --outconfig $SCENARIO_CONFIG_FILE
 cat $SCENARIO_CONFIG_FILE
 
-export SCENARIO_TYPE=${SCENARIO_TYPE:=syn_flood}
+export SCENARIO_TYPE=${SCENARIO_TYPE:=syn_flood_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=$SCENARIO_CONFIG_FILE}
