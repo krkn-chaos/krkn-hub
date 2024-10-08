@@ -8,4 +8,3 @@ export VPC_ID=${VPC_ID:=""}
 export SUBNET_ID=${SUBNET_ID:=""}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=zone_outages_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/zone_outage.yaml}
-export SCENARIO_POST_ACTION=${SCENARIO_POST_ACTION:=""}

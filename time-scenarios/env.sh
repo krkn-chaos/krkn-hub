@@ -9,4 +9,3 @@ export NAMESPACE=${NAMESPACE:=""}
 export CONTAINER_NAME=${CONTAINER_NAME:=""}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=time_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/time_scenario.yaml}
-export SCENARIO_POST_ACTION=${SCENARIO_POST_ACTION:=""}
