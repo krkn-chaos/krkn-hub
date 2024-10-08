@@ -9,7 +9,6 @@ kraken:
     chaos_scenarios:                                       # List of policies/chaos scenarios to load
         - $SCENARIO_TYPE:                                  # List of chaos time scenarios to load
             - $SCENARIO_FILE
-              $SCENARIO_POST_ACTION
 cerberus:
     cerberus_enabled: $CERBERUS_ENABLED                    # Enable it when cerberus is previously installed
     cerberus_url: $CERBERUS_URL                            # When cerberus_enabled is set to True, provide the url where cerberus publishes go/no-go signal

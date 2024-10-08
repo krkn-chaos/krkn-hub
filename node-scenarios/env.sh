@@ -11,7 +11,6 @@ export TIMEOUT=${TIMEOUT:=180}
 export DURATION=${DURATION:=120}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=node_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/node_scenario.yaml}
-export SCENARIO_POST_ACTION=${SCENARIO_POST_ACTION:=""}
 export VERIFY_SESSION=${VERIFY_SESSION:="false"}
 export SKIP_OPENSHIFT_CHECKS=${SKIP_OPENSHIFT_CHECKS:="false"}
 
