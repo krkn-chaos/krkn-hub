@@ -13,10 +13,13 @@ source $ROOT_FOLDER/env.sh
 source $ROOT_FOLDER/common_run.sh
 
 # Substitute config with environment vars defined
+envsubst < $KRAKEN_FOLDER/scenarios/syn-flood.yaml.template > $KRAKEN_FOLDER/scenarios/syn-flood.yaml
 envsubst < $KRAKEN_FOLDER/config/config.yaml.template > $KRAKEN_FOLDER/config/syn_flood_config.yaml
 
+cat $KRAKEN_FOLDER/config/syn_flood_config.yaml
+cat $KRAKEN_FOLDER/scenarios/syn-flood.yaml
+
 checks
-config_setup
 
 # Run Kraken
 cd $KRAKEN_FOLDER
