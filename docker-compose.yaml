@@ -89,3 +89,8 @@ services:
         context: ./
         dockerfile: ./service-hijacking/Dockerfile
       image: quay.io/krkn-chaos/krkn-hub:service-hijacking
+    syn-flood:
+      build:
+        context: ./
+        dockerfile: ./syn-flood/Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:syn-flood
