@@ -1,0 +1,22 @@
+# Dockerfile for kraken
+
+FROM quay.io/krkn-chaos/krkn:latest
+
+ENV KUBECONFIG /home/krkn/.kube/config
+
+# Copy configurations
+COPY metrics_config.yaml.template /home/krkn/kraken/config/kube_burner.yaml.template
+COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
+
+COPY node-memory-hog/env.sh /home/krkn/env.sh
+COPY env.sh /home/krkn/main_env.sh
+COPY node-memory-hog/run.sh /home/krkn/run.sh
+COPY node-memory-hog/input.yaml.template /home/krkn/kraken/scenarios/kube/memory-hog/input.yaml.template
+COPY common_run.sh /home/krkn/common_run.sh
+
+LABEL krknctl.title="Memory Hog"
+LABEL krknctl.description="This scenario is based on the arcaflow arcaflow-plugin-stressng plugin. The purpose of this scenario is to create Virtual Memory pressure on a particular node of the Kubernetes/OpenShift cluster for a time span."
+
+LABEL krknctl.inputFields='$KRKNCTL_INPUT'
+
+ENTRYPOINT /home/krkn/run.sh
