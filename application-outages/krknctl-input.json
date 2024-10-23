@@ -11,7 +11,7 @@
     {
         "name":"namespace",
 	    "short_description":"Namespace",
-        "description":"Namespace where the scenario container will be deployed",
+        "description":"Namespace to target - all application routes will go inaccessible if pod selector is empty ( Required )",
         "variable":"NAMESPACE",
         "type":"string",
         "required":"true"
