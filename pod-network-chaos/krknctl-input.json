@@ -1,0 +1,78 @@
+[
+    {
+	    "name":"namespace",
+       	"short_description":"Namespace",
+        "description":"Namespace of the pod to which filter need to be applied",
+        "variable":"NAMESPACE",
+        "type":"string",
+        "required":"true"
+    },
+    {
+        "name":"label-selector",
+	    "short_description":"Label selector",
+        "description":"When label_selector is not specified, pod matching the name will be selected for the chaos scenario",
+        "variable":"LABEL_SELECTOR",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"instance-count",
+	    "short_description":"Instance count",
+        "description":"Targeted instance count matching the label selector",
+        "variable":"INSTANCE_COUNT",
+        "type":"number",
+        "default":"1",
+        "required":"false"
+    },
+    {
+	    "name":"traffic-type",
+        "short_description":"Traffic type",
+        "description":"List of directions to apply filters - egress/ingress ( needs to be a list )",
+        "variable":"TRAFFIC_TYPE",
+        "type":"string",
+        "validator":"^\\[ingress\\]$|^\\[egress\\]$|^\\[ingress,egress\\]$",
+        "default":"[ingress,egress]",
+        "required":"false"
+    },
+    {
+	    "name":"ingress-ports",
+        "short_description":"Ingress ports",
+        "description":"Engress ports to block ( needs to be a list )",
+        "variable":"INGRESS_PORTS",
+        "type":"string",
+        "validator":"^\\[\\]$|^\\[([0-9]+(,)?)+[^,]\\]$",
+        "default":"[]",
+        "required":"false"
+    },
+    {
+	    "name":"egress-ports",
+        "short_description":"Egress ports",
+        "description":"Egress ports to block ( needs to be a list )",
+        "variable":"EGRESS_PORTS",
+        "type":"string",
+        "validator":"^\\[\\]$|^\\[([0-9]+(,)?)+[^,]\\]$",
+        "default":"[]",
+        "required":"false"
+    },
+    {
+	    "name":"wait-duration",
+        "short_description":"Egress ports",
+        "description":"Ensure that it is at least about twice of test_duration",
+        "variable":"WAIT_DURATION",
+        "type":"number",
+        "default":"300",
+        "required":"false"
+    },
+    {
+	    "name":"test-duration",
+        "short_description":"Test duration",
+        "description":"Duration of the test run",
+        "variable":"TEST_DURATION",
+        "type":"number",
+        "default":"120",
+        "required":"false"
+    }
+    
+
+]

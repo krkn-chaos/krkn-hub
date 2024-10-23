@@ -1,0 +1,38 @@
+[
+    {
+        "name":"namespace",
+        "short_description":"Namespace",
+        "description":"Targeted namespace in the cluster (required)",
+        "variable":"NAMESPACE",
+        "type":"string",
+        "default":"openshift-etcd",
+        "required":"false"
+    },
+    {
+        "name":"label-selector",
+        "short_description":"Label selector",
+        "description":"Label of the namespace to target. Set this parameter ⚠️ only if NAMESPACE is not set",
+        "variable":"LABEL_SELECTOR",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"delete-count",
+        "short_description":"Delete count",
+        "description":"Number of namespaces to kill in each run, based on matching namespace and label specified",
+        "variable":"DELETE_COUNT",
+        "type":"number",
+        "default":"1",
+        "required":"false"
+    },
+    {
+        "name":"runs",
+        "short_description":"Runs",
+        "description":"Number of runs to execute the action",
+        "variable":"RUNS",
+        "type":"number",
+        "default":"1",
+        "required":"false"
+    }
+]

@@ -13,4 +13,12 @@ COPY service-disruption-scenarios/run.sh /home/krkn/run.sh
 COPY service-disruption-scenarios/namespace_scenario.yaml.template /home/krkn/kraken/scenarios/namespace_scenario.yaml.template
 COPY common_run.sh /home/krkn/common_run.sh
 
+LABEL krknctl.kubeconfig="/home/krkn/.kube/config"
+LABEL krknctl.title="Service Disruption"
+LABEL krknctl.description="Using this type of scenario configuration one is able to delete crucial objects in a specific namespace, \
+or a namespace matching a certain regex string. For more details documentation can be found here \
+https://github.com/krkn-chaos/krkn/blob/main/docs/service_disruption_scenarios.md"
+
+LABEL krknctl.inputFields='$KRKNCTL_INPUT'
+
 ENTRYPOINT /home/krkn/run.sh

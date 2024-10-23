@@ -1,0 +1,94 @@
+[
+    {
+        "name":"packet-size",
+        "short_description":"Packet size",
+        "description":"The size in bytes of the SYN packet",
+        "variable":"PACKET_SIZE",
+        "type":"number",
+        "default":"120",
+        "required":"false"
+    },
+    {
+        "name":"window-size",
+        "short_description":"Window size",
+        "description":"The TCP window size between packets in bytes",
+        "variable":"WINDOW_SIZE",
+        "type":"number",
+        "default":"64",
+        "required":"false"
+    },
+    {
+        "name":"chaos-duration",
+        "short_description":"Chaos duration",
+        "description":"The number of seconds the chaos will last",
+        "variable":"TOTAL_CHAOS_DURATION",
+        "type":"number",
+        "default":"120",
+        "required":"false"
+    },
+    {
+        "name":"namespace",
+        "short_description":"Namespace",
+        "description":"The namespace containing the target service and where the attacker pods will be deployed",
+        "variable":"NAMESPACE",
+        "type":"string",
+        "default":"default",
+        "required":"false"
+    },
+    {
+        "name":"target-service",
+        "short_description":"Target service",
+        "description":"The service name (or the hostname/IP address in case an external target will be hit) that will be affected by the attack.⚠️ Must be empty if TARGET_SERVICE_LABEL will be set",
+        "variable":"TARGET_SERVICE",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"target-port",
+        "short_description":"Target port",
+        "description":"The TCP port that will be targeted by the attack",
+        "variable":"TARGET_PORT",
+        "type":"number",
+        "required":"true"
+    },
+    {
+        "name":"target-service-label",
+        "short_description":"Target service label",
+        "description":"The label that will be used to select one or more services.⚠️ Must be left empty if TARGET_SERVICE variable is set",
+        "variable":"TARGET_SERVICE_LABEL",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"number-of-pods",
+        "short_description":"Number of pods",
+        "description":"The number of attacker pods that will be deployed",
+        "variable":"NUMBER_OF_PODS",
+        "type":"number",
+        "default":"2",
+        "required":"false"
+    },
+    {
+        "name":"image",
+        "short_description":"Workload image",
+        "description":"The container image that will be used to perform the scenario",
+        "variable":"IMAGE",
+        "type":"string",
+        "default":"quay.io/krkn-chaos/krkn-syn-flood:latest",
+        "required":"false"
+    },
+    {
+        "name":"node-selectors",
+        "short_description":"Workload image",
+        "description":"The node selectors are used to guide the cluster on where to deploy attacker pods. You can specify one or more labels in the format key=value;key=value2 (even using the same key) to choose one or more node categories. If left empty, the pods will be scheduled on any available node, depending on the cluster's capacity.",
+        "variable":"NODE_SELECTORS",
+        "type":"string",
+        "validator":"^$|^(([a-zA-Z0-9._-]+\\=[a-zA-Z0-9._-]+)(;)?)+[^;]$",
+        "default":"",
+        "required":"false"
+    }
+
+
+]

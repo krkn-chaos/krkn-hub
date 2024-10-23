@@ -13,4 +13,12 @@ COPY application-outages/run.sh /home/krkn/run.sh
 COPY common_run.sh /home/krkn/common_run.sh
 COPY application-outages/app_outages.yaml.template /home/krkn/kraken/scenarios/app_outage.yaml.template
 
+LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
+LABEL krknctl.title="Application Outages"
+LABEL krknctl.description="Scenario to block the traffic ( Ingress/Egress ) of an application matching the labels for the specified duration of time to understand the behavior of the service/other services which depend on it during downtime. This helps with planning the requirements accordingly, be it improving the timeouts or tweaking the alerts etc."
+
+LABEL krknctl.inputFields='$KRKNCTL_INPUT'
+
+
+
 ENTRYPOINT /home/krkn/run.sh

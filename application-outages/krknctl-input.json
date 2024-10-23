@@ -1,0 +1,39 @@
+[
+    {
+	   "name":"chaos-duration",
+       	"short_description":"Chaos Duration",
+        "description":"Set chaos duration (in sec) as desired",
+        "variable":"DURATION",
+        "type":"number",
+        "default":"600",
+        "required":"false"
+    },
+    {
+        "name":"namespace",
+	    "short_description":"Namespace",
+        "description":"Namespace to target - all application routes will go inaccessible if pod selector is empty ( Required )",
+        "variable":"NAMESPACE",
+        "type":"string",
+        "required":"true"
+    },
+    {
+	    "name":"pod-selector",
+        "short_description":"Pod Selector",
+        "description": "Pods to target. For example \"{app: foo}\"",
+        "type":"string",
+        "variable":"POD_SELECTOR",
+        "validator": "\\{[a-zA-Z0-9-_]+\\: [a-zA-Z0-9-_]+\\}",
+	    "required": "true"
+    },
+    {
+        "name":"block-traffic-type",
+         "short_description":"Pod Selector",
+         "description": "It can be [Ingress] or [Egress] or [Ingress, Egress]",
+         "type":"string",
+         "variable":"BLOCK_TRAFFIC_TYPE",
+         "validator": "^\\[Ingress\\]$|^\\[Egress\\]$|^\\[Ingress, Egress\\]$",
+         "default":"[Ingress, Egress]",
+         "required": "false"
+     }
+
+]

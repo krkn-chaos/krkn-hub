@@ -1,0 +1,59 @@
+[
+    {
+	    "name":"shutdown-duration",
+       	"short_description":"Shutdown duration",
+        "description":"Duration in seconds to shut down the cluster",
+        "variable":"SHUTDOWN_DURATION",
+        "type":"number",
+        "default":"1200",
+        "required":"false"
+    },
+    {
+        "name":"cloud-type",
+	    "short_description":"Cloud Type",
+        "description":"Cloud platform on top of which cluster is running",
+        "variable":"CLOUD_TYPE",
+        "type":"enum",
+        "allowed_values": "aws",
+        "separator":",",
+        "default":"aws",
+        "required": "false"
+    },
+    {
+        "name":"timeout",
+	    "short_description":"Timeout",
+        "description":"Time in seconds to wait for each node to be stopped or running after the cluster comes back",
+        "variable":"TIMEOUT",
+        "type":"int",
+        "default":"600",
+        "required":"false"
+    },
+    {
+        "name":"aws-secret-access-key",
+	    "short_description":"AWS Secret Access Key [⚠️ AWS only]",
+        "description":"AWS Secret Access Key",
+        "variable":"AWS_SECRET_ACCESS_KEY",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"aws-default-region",
+	    "short_description":"AWS default region [⚠️ AWS only]",
+        "description":"AWS default region",
+        "variable":"AWS_DEFAULT_REGION",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"aws-access-key",
+	    "short_description":"AWS Access Key [⚠️ AWS only]",
+        "description":"VSpere password",
+        "variable":"VSPHERE_PASSWORD",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    }
+
+]

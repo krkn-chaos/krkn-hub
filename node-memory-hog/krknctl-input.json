@@ -1,0 +1,48 @@
+[
+    {
+	   "name":"chaos-duration",
+       	"short_description":"Chaos Duration",
+        "description":"Set chaos duration (in sec) as desired",
+        "variable":"TOTAL_CHAOS_DURATION",
+        "type":"number",
+        "default":"60"
+    },
+    {
+	    "name":"memory-workers",
+        "short_description":"Memory Workers",
+        "description":"Total number of workers (stress-ng threads)",
+        "variable":"NUMBER_OF_WORKERS",
+        "type":"number",
+        "default":"1",
+        "required":"false"
+    },
+    {
+        "name":"memory-consumption",
+	    "short_description":"Memory Consumption",
+        "description":"percentage (expressed with the suffix %) or amount (expressed with the suffix b, k, m or g) of memory to be consumed by the scenario",
+        "variable":"MEMORY_CONSUMPTION_PERCENTAGE",
+        "type":"string",
+        "validator":"^[0-9]+[%bkmg]$",
+        "default":"90%",
+        "required":"false"
+    },
+    {
+        "name":"namespace",
+	    "short_description":"Namespace",
+        "description":"Namespace where the scenario container will be deployed",
+        "variable":"NAMESPACE",
+        "type":"string",
+        "default":"default"
+    },
+    {
+	   "name":"node-selectors",
+        "short_description":"Node Selectors",
+        "description":"Node selectors where the scenario containers will be scheduled in the format \"<selector>=<value>\". NOTE: This value can be specified as a list of node selectors separated by \";\". Will be instantiated a container per each node selector with the same scenario options. This option is meant to run one or more stress scenarios simultaneously on different nodes, kubernetes will schedule the pods on the target node accordingly with the selector specified. Specifying the same selector multiple times will instantiate as many scenario container as the number of times the selector is specified on the same node",
+        "variable":"NODE_SELECTORS",
+        "type":"string",
+        "validator": "^$|^(([a-zA-Z0-9._-]+\\=[a-zA-Z0-9._-]+)(;)?)+[^;]$",
+        "default":"",
+	    "required": "false"
+    }
+
+]

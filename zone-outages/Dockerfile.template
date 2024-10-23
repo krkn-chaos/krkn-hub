@@ -13,4 +13,13 @@ COPY zone-outages/run.sh /home/krkn/run.sh
 COPY zone-outages/zone_outage_scenario.yaml.template /home/krkn/kraken/scenarios/zone_outage_scenario.yaml.template
 COPY common_run.sh /home/krkn/common_run.sh
 
+LABEL krknctl.kubeconfig="/home/krkn/.kube/config"
+LABEL krknctl.title="Zone outage"
+LABEL krknctl.description="This scenario disrupts a targeted zone in the public cloud by blocking egress and ingress traffic \
+to understand the impact on both Kubernetes/OpenShift platforms control plane as well as applications running on the worker \
+nodes in that zone. More information is documented here https://github.com/krkn-chaos/krkn/blob/master/docs/zone_outage.md"
+
+
+LABEL krknctl.inputFields='$KRKNCTL_INPUT'
+
 ENTRYPOINT /home/krkn/run.sh

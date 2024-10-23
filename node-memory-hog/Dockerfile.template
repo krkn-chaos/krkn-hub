@@ -14,4 +14,10 @@ COPY node-memory-hog/run.sh /home/krkn/run.sh
 COPY node-memory-hog/input.yaml.template /home/krkn/kraken/scenarios/kube/memory-hog/input.yaml.template
 COPY common_run.sh /home/krkn/common_run.sh
 
+LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
+LABEL krknctl.title="Memory Hog"
+LABEL krknctl.description="This scenario is based on the arcaflow arcaflow-plugin-stressng plugin. The purpose of this scenario is to create Virtual Memory pressure on a particular node of the Kubernetes/OpenShift cluster for a time span."
+
+LABEL krknctl.inputFields='$KRKNCTL_INPUT'
+
 ENTRYPOINT /home/krkn/run.sh

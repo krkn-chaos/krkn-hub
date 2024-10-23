@@ -1,0 +1,57 @@
+[
+    {
+	   "name":"chaos-duration",
+       	"short_description":"Chaos Duration",
+        "description":"Set chaos duration (in sec) as desired",
+        "variable":"TOTAL_CHAOS_DURATION",
+        "type":"number",
+        "default":"60"
+    },
+    {
+        "name":"io-block-size",
+	    "short_description":"I/O Block Size",
+        "description":"sSze of each write in bytes. Size can be from 1 byte to 4 Megabytes (allowed suffix are b,k,m)",
+        "variable":"IO_BLOCK_SIZE",
+        "type":"string",
+        "validator":"^[0-9]+[bkm]$",
+        "default":"1m",
+        "required":"false"
+    },
+    {
+	    "name":"io-workers",
+        "short_description":"I/O Workers",
+        "description":"Number of stressor instances",
+        "variable":"IO_WORKERS",
+        "type":"number",
+        "default":"5",
+        "required":"false"
+    },
+    {
+        "name":"io-write-bytes",
+	    "short_description":"I/O Write Bytes",
+        "description":"string writes N bytes for each hdd process. The size can be expressed as % of free space on the file system or in units of Bytes, KBytes, MBytes and GBytes using the suffix b, k, m or g",
+        "variable":"IO_WRITE_BYTES",
+        "type":"string",
+        "validator":"^[0-9]+[%bkmg]$",
+        "default":"10m"
+    },
+    {
+        "name":"namespace",
+	    "short_description":"Namespace",
+        "description":"Namespace where the scenario container will be deployed",
+        "variable":"NAMESPACE",
+        "type":"string",
+        "default":"default"
+    },
+    {
+	   "name":"node-selectors",
+        "short_description":"Node Selectors",
+        "description":"Node selectors where the scenario containers will be scheduled in the format \"<selector>=<value>\". NOTE: This value can be specified as a list of node selectors separated by \";\". Will be instantiated a container per each node selector with the same scenario options. This option is meant to run one or more stress scenarios simultaneously on different nodes, kubernetes will schedule the pods on the target node accordingly with the selector specified. Specifying the same selector multiple times will instantiate as many scenario container as the number of times the selector is specified on the same node",
+        "variable":"NODE_SELECTORS",
+        "type":"string",
+        "validator": "^$|^(([a-zA-Z0-9._-]+\\=[a-zA-Z0-9._-]+)(;)?)+[^;]$",
+        "default":"",
+	    "required": "false"
+    }
+
+]

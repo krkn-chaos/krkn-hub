@@ -1,0 +1,61 @@
+[
+
+     {
+         "name":"namespace",
+         "short_description":"Namespace",
+         "description":"Targeted namespace in the cluster",
+         "variable":"NAMESPACE",
+         "type":"string",
+         "default":"openshift-etcd",
+         "required":"false"
+     },
+     {
+         "name":"label-selector",
+         "short_description":"Label Selector",
+         "description":"Label of the container(s) to target",
+         "variable":"LABEL_SELECTOR",
+         "type":"string",
+         "default":"k8s-app=etcd",
+         "validator":"^.+\\=.+$",
+         "required":"false"
+     },
+     {
+         "name":"disruption-count",
+         "short_description":"Disruption Count",
+         "description": "Number of container to disrupt",
+         "type":"number",
+         "variable":"DISRUPTION_COUNT",
+         "default":"1",
+         "required": "false"
+     },
+     {
+         "name":"container-name",
+          "short_description":"Container Name",
+          "description": "Name of the container to disrupt",
+          "type":"string",
+          "variable":"CONTAINER_NAME",
+          "default":"etcd",
+          "required": "false"
+      },
+      {
+        "name":"action",
+        "short_description":"Action",
+        "description":"kill signal to run. For example 1 ( hang up ) or 9",
+        "variable":"ACTION",
+        "type":"string",
+        "default":"1",
+        "validator":"^[1-9]$",
+        "required":"false"
+    },
+    {
+        "name":"expected-recovery-time",
+        "short_description":"Expected Recovery Time",
+        "description":"Time to wait before checking if all containers that were affected recover properly",
+        "variable":"EXPECTED_RECOVERY_TIME",
+        "type":"number",
+        "default":"60",
+        "required":"false"
+    }
+
+ 
+]

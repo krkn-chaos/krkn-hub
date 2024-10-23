@@ -1,0 +1,46 @@
+[
+    {
+        "name":"pvc-name",
+        "short_description":"PVC name",
+        "description":"Targeted PersistentVolumeClaim in the cluster (⚠️ if null, POD_NAME is required)",
+        "variable":"PVC_NAME",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"pod-name",
+        "short_description":"Pod name",
+        "description":"Targeted pod in the cluster (⚠️ if null, PVC_NAME is required)",
+        "variable":"POD_NAME",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"namespace",
+        "short_description":"Namespace",
+        "description":"Targeted namespace in the cluster (required)",
+        "variable":"NAMESPACE",
+        "type":"string",
+        "required":"true"
+    },
+    {
+        "name":"fill-percentage",
+        "short_description":"Fill percentage",
+        "description":"Targeted percentage to be filled up in the PVC",
+        "variable":"FILL_PERCENTAGE",
+        "type":"number",
+        "default":"50",
+        "required":"false"
+    },
+    {
+        "name":"duration",
+        "short_description":"Duration",
+        "description":"Duration in seconds with the PVC filled up",
+        "variable":"DURATION",
+        "type":"number",
+        "default":"60",
+        "required":"false"
+    }
+]

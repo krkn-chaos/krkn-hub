@@ -14,4 +14,9 @@ COPY common_run.sh /home/krkn/common_run.sh
 COPY network-chaos/network_chaos_egress.yaml.template /home/krkn/kraken/scenarios/network_chaos_egress.yaml.template
 COPY network-chaos/network_chaos_ingress.yaml.template /home/krkn/kraken/scenarios/network_chaos_ingress.yaml.template
 
+LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
+LABEL krknctl.title="Network Chaos"
+LABEL krknctl.description="Scenario to introduce network latency, packet loss, and bandwidth restriction in the Node's host network interface. The purpose of this scenario is to observe faults caused by random variations in the network."
+LABEL krknctl.inputFields='$KRKNCTL_INPUT'
+
 ENTRYPOINT /home/krkn/run.sh

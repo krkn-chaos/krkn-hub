@@ -1,0 +1,235 @@
+[
+    {
+	   "name":"action",
+       	"short_description":"Chaos Duration",
+        "description":"action performed on the node, visit https://github.com/krkn-chaos/krkn/blob/main/docs/node_scenarios.md for more infos",
+        "variable":"ACTION",
+        "type":"enum",
+        "allowed_values":"node_start_scenario,node_stop_scenario,node_stop_start_scenario,node_termination_scenario,node_reboot_scenario,stop_kubelet_scenario,stop_start_kubelet_scenario,restart_kubelet_scenario,node_crash_scenario,stop_start_helper_node_scenario",
+        "separator":",",
+        "required":"true"
+    },
+    {
+        "name":"label-selector",
+	    "short_description":"Label Selector",
+        "description":"Node label to target",
+        "variable":"LABEL_SELECTOR",
+        "type":"string",
+        "default":"node-role.kubernetes.io/worker",
+        "required":"false"
+    },
+    {
+	    "name":"node-name",
+        "short_description":"Node Name",
+        "description":"Node name to inject faults in case of targeting a specific node; Can set multiple node names separated by a comma",
+        "variable":"NODE_NAME",
+        "type":"string",
+        "validator":"^$|^([a-zA-Z0-9.-_]+(,)?)+[^,]$",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"instance-count",
+	    "short_description":"Instance Count",
+        "description":"Targeted instance count matching the label selector",
+        "variable":"INSTANCE_COUNT",
+        "type":"number",
+        "default":"1",
+        "required":"false"
+    },
+    {
+        "name":"runs",
+	    "short_description":"Runs",
+        "description":"Iterations to perform action on a single node",
+        "variable":"RUNS",
+        "type":"number",
+        "default":"1",
+        "required":"false"
+    },
+    {
+        "name":"cloud-type",
+         "short_description":"Cloud Type",
+         "description":"Cloud platform on top of which cluster is running, supported platforms - aws, vmware, ibmcloud, bm",
+         "variable":"CLOUD_TYPE",
+         "type":"enum",
+         "allowed_values": "aws,vmware,ibmcloud,bm",
+         "separator":",",
+         "default":"aws",
+         "required": "false"
+     },
+     {
+        "name":"timeout",
+	    "short_description":"Timeout",
+        "description":"Duration to wait for completion of node scenario injection",
+        "variable":"TIMEOUT",
+        "type":"number",
+        "default":"180",
+        "required":"false"
+    },
+    {
+        "name":"duration",
+	    "short_description":"Duration",
+        "description":"Duration to wait for completion of node scenario injection",
+        "variable":"DURATION",
+        "type":"number",
+        "default":"120",
+        "required":"false"
+    },
+    {
+        "name":"verify-session",
+	    "short_description":"Verify Session [⚠️ VMWare only]",
+        "description":"Only needed for vmware - Set to True if you want to verify the vSphere client session using certificates",
+        "variable":"VERIFY_SESSION",
+        "type":"enum",
+        "allowed_values":"True,False",
+        "separator":",",
+        "default":"False",
+        "required":"false"
+    },
+    {
+        "name":"vsphere-ip",
+	    "short_description":"VSphere IP [⚠️ VSphere only]",
+        "description":"VSpere IP Address",
+        "variable":"VSPHERE_IP",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"vsphere-username",
+	    "short_description":"VSphere Username [⚠️ VSphere only]",
+        "description":"VSpere IP Address",
+        "variable":"VSPHERE_USERNAME",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"vsphere-password",
+	    "short_description":"VSphere Password [⚠️ VSphere only]",
+        "description":"VSpere password",
+        "variable":"VSPHERE_PASSWORD",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"aws-access-key-id",
+	    "short_description":"AWS Access Key Id[⚠️ AWS only]",
+        "description":"AWS Access Key Id",
+        "variable":"AWS_ACCESS_KEY_ID",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"aws-secret-access-key",
+	    "short_description":"AWS Secret Access Key [⚠️ AWS only]",
+        "description":"AWS Secret Access Key",
+        "variable":"AWS_SECRET_ACCESS_KEY",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"aws-default-region",
+	    "short_description":"AWS default region [⚠️ AWS only]",
+        "description":"AWS default region",
+        "variable":"AWS_DEFAULT_REGION",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"aws-access-key",
+	    "short_description":"AWS Access Key [⚠️ AWS only]",
+        "description":"VSpere password",
+        "variable":"VSPHERE_PASSWORD",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"skip-openshift-checks",
+	    "short_description":"Skip Openshift Checks [⚠️ VMWare only]",
+        "description":"Only needed for vmware - Set to True if you don't want to wait for the status of the nodes to change on OpenShift before passing the scenario",
+        "variable":"SKIP_OPENSHIFT_CHECKS",
+        "type":"enum",
+        "allowed_values":"True,False",
+        "separator":",",
+        "default":"False",
+        "required":"false"
+    },
+    {
+        "name":"bmc-user",
+	    "short_description":"Bare Metal Cloud Username [⚠️ Bare Metal only]",
+        "description":"Only needed for Baremetal ( bm ) - IPMI/bmc username",
+        "variable":"BMC_USER",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"bmc-password",
+	    "short_description":"Bare Metal Cloud Username [⚠️ Bare Metal only]",
+        "description":"Only needed for Baremetal ( bm ) - IPMI/bmc password",
+        "variable":"BMC_PASSWORD",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"bmc-address",
+	    "short_description":"Bare Metal Cloud Username [⚠️ Bare Metal only]",
+        "description":"Only needed for Baremetal ( bm ) - IPMI/bmc address",
+        "variable":"BMC_ADDR",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"ibmc-address",
+	    "short_description":"IBM Cloud URL [⚠️ IBM Cloud only]",
+        "description":"IBM Cloud URL",
+        "variable":"IBMC_URL",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"ibmc-address",
+	    "short_description":"IBM Cloud API key [⚠️ IBM Cloud only]",
+        "description":"IBM Cloud API Key",
+        "variable":"IBMC_APIKEY",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"azure-tenant",
+	    "short_description":"Azure Tenant [⚠️ Azure only]",
+        "description":"Azure Tenant",
+        "variable":"AZURE_TENANT_ID",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"azure-client-secret",
+	    "short_description":"Azure Client Secret [⚠️ Azure only]",
+        "description":"IBM Cloud API Key",
+        "variable":"IBMC_APIKEY",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"azure-client-id",
+	    "short_description":"Azure Client ID [⚠️ Azure only]",
+        "description":"IBM Cloud API Key",
+        "variable":"AZURE_CLIENT_ID",
+        "type":"enum",
+        "default":"",
+        "required":"false"
+    }
+]
