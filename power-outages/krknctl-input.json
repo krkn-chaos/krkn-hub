@@ -10,8 +10,8 @@
     },
     {
         "name":"cloud-type",
-	    "short_description":"Cloud platform on top of which cluster is running",
-        "description":"Label of the pod(s) to target",
+	    "short_description":"Cloud Type",
+        "description":"Cloud platform on top of which cluster is running",
         "variable":"CLOUD_TYPE",
         "type":"enum",
         "allowed_values": "aws",
