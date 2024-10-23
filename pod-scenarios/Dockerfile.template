@@ -14,4 +14,8 @@ COPY common_run.sh /home/krkn/common_run.sh
 COPY pod-scenarios/pod_scenario.yaml.template /home/krkn/kraken/scenarios/pod_scenario.yaml.template
 COPY pod-scenarios/pod_scenario_namespace.yaml.template /home/krkn/kraken/scenarios/pod_scenario_namespace.yaml.template
 
+LABEL krknctl.kubeconfig="/home/krkn/.kube/config"
+LABEL krknctl.title="Pod Failures"
+LABEL krknctl.description="This scenario disrupts the pods matching the label in the specified namespace on a Kubernetes/OpenShift cluster."
+
 ENTRYPOINT /home/krkn/run.sh
