@@ -1,0 +1,77 @@
+[
+    {
+        "name":"cloud-type",
+	    "short_description":"Cloud Type",
+        "description":"Cloud platform on top of which cluster is running",
+        "variable":"CLOUD_TYPE",
+        "type":"enum",
+        "allowed_values": "aws",
+        "separator":",",
+        "default":"aws",
+        "required": "false"
+    },
+    
+    {
+        "name":"duration",
+        "short_description":"Chaos Duration",
+        "description":"Duration in seconds after which the zone will be back online",
+        "variable":"DURATION",
+        "type":"number",
+        "default":"600",
+        "required":"false"
+    },
+    {
+        "name":"vpc-id",
+        "short_description":"VPC-ID",
+        "description":"cluster virtual private network to target",
+        "variable":"VPC_ID",
+        "type":"string",
+        "required":"true"
+    },
+    {
+        "name":"vpc-id",
+        "short_description":"VPC_ID",
+        "description":"cluster virtual private network to target",
+        "variable":"VPC_ID",
+        "type":"string",
+        "required":"true"
+    },
+    {
+        "name":"subnet-id",
+        "short_description":"SUBNET_ID",
+        "description":"subnet-id to deny both ingress and egress traffic ( REQUIRED ). Format: [subnet1, subnet2]",
+        "variable":"SUBNET_ID",
+        "type":"string",
+        "validator":"^$|^\\[([a-zA-Z0-9._-](,)?)+[^,]\\]$",
+        "required":"false"
+    },
+    {
+        "name":"aws-access-key-id",
+	    "short_description":"AWS Access Key Id[⚠️ AWS only]",
+        "description":"AWS Access Key Id",
+        "variable":"AWS_ACCESS_KEY_ID",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"aws-secret-access-key",
+	    "short_description":"AWS Secret Access Key [⚠️ AWS only]",
+        "description":"AWS Secret Access Key",
+        "variable":"AWS_SECRET_ACCESS_KEY",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"aws-default-region",
+	    "short_description":"AWS default region [⚠️ AWS only]",
+        "description":"AWS default region",
+        "variable":"AWS_DEFAULT_REGION",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    }
+
+
+]
