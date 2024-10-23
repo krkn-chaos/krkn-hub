@@ -13,6 +13,7 @@ COPY node-io-hog/run.sh /home/krkn/run.sh
 COPY node-io-hog/input.yaml.template /home/krkn/kraken/scenarios/kube/io-hog/input.yaml.template
 COPY common_run.sh /home/krkn/common_run.sh
 
+LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="I/O Hog"
 LABEL krknctl.description="This scenario is based on the arcaflow arcaflow-plugin-stressng plugin. The purpose of this scenario is to create disk pressure on a particular node of the Kubernetes/OpenShift cluster for a time span. The scenario allows to attach a node path to the pod as a hostPath volume."
 
