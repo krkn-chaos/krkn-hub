@@ -1,0 +1,62 @@
+[
+    {
+        "name":"object-type",
+        "short_description":"Object type",
+        "description":"Object to target. Supported options: pod, node",
+        "variable":"OBJECT_TYPE",
+        "type":"enum",
+        "allowed_values":"pod,node",
+        "separator":",",
+        "default":"pod",
+        "required":"false"
+    },
+    {
+        "name":"label-selector",
+        "short_description":"Label selector",
+        "description":"Label of the container(s) or nodes to target",
+        "variable":"LABEL_SELECTOR",
+        "type":"string",
+        "default":"k8s-app=etcd",
+        "required":"false"
+    },
+    {
+        "name":"action",
+        "short_description":"Action",
+        "description":"Action to run. Supported actions: skew_time, skew_date",
+        "variable":"ACTION",
+        "type":"enum",
+        "allowed_values":"skew_time,skew_date",
+        "separator":",",
+        "default":"skew_date",
+        "required":"false"
+    },
+    {
+        "name":"object-names",
+        "short_description":"Object names",
+        "description":"List of the names of pods or nodes you want to skew",
+        "variable":"OBJECT_NAME",
+        "type":"string",
+        "default":"[]",
+        "validator":"^\\[\\]$|^\\[([a-zA-Z0-9._-](,)?)+[^,]\\]$",
+        "required":"false"
+    },
+    {
+        "name":"container-name",
+        "short_description":"Container name",
+        "description":"Container in the specified pod to target in case the pod has multiple containers running. Random container is picked if empty",
+        "variable":"CONTAINER_NAME",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"namespace",
+        "short_description":"Namespace",
+        "description":"Namespace of the pods you want to skew,⚠️ need to be set only if setting a specific pod name",
+        "variable":"NAMESPACE",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    }
+
+]
