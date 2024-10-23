@@ -1,0 +1,23 @@
+# Dockerfile for kraken
+
+FROM quay.io/krkn-chaos/krkn:latest
+
+ENV KUBECONFIG /home/krkn/.kube/config
+
+# Copy configurations
+COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
+COPY metrics_config.yaml.template /home/krkn/kraken/config/kube_burner.yaml.template
+COPY application-outages/env.sh /home/krkn/env.sh
+COPY env.sh /home/krkn/main_env.sh
+COPY application-outages/run.sh /home/krkn/run.sh
+COPY common_run.sh /home/krkn/common_run.sh
+COPY application-outages/app_outages.yaml.template /home/krkn/kraken/scenarios/app_outage.yaml.template
+
+LABEL krknctl.title="This scenario disrupts the traffic to the specified application to be able to understand the impact of the outage on the dependent service/user experience. Refer docs for more details."
+LABEL krknctl.description="Scenario to block the traffic ( Ingress/Egress ) of an application matching the labels for the specified duration of time to understand the behavior of the service/other services which depend on it during downtime. This helps with planning the requirements accordingly, be it improving the timeouts or tweaking the alerts etc."
+
+LABEL krknctl.inputFields='$KRKNCTL_INPUT'
+
+
+
+ENTRYPOINT /home/krkn/run.sh
