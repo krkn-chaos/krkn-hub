@@ -1,0 +1,22 @@
+# Dockerfile for kraken
+
+FROM quay.io/krkn-chaos/krkn:latest
+
+ENV KUBECONFIG /home/krkn/.kube/config
+
+# Copy configurations
+COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
+COPY metrics_config.yaml.template /home/krkn/kraken/config/kube_burner.yaml.template
+COPY container-scenarios/env.sh /home/krkn/env.sh
+COPY env.sh /home/krkn/main_env.sh
+COPY container-scenarios/run.sh /home/krkn/run.sh
+COPY container-scenarios/container_scenario.yaml.template /home/krkn/kraken/scenarios/container_scenario.yaml.template
+COPY common_run.sh /home/krkn/common_run.sh
+USER krkn
+
+LABEL krknctl.title="Container Scenarios"
+LABEL krknctl.description="Scenario to block the traffic ( Ingress/Egress ) of an application matching the labels for the specified duration of time to understand the behavior of the service/other services which depend on it during downtime. This helps with planning the requirements accordingly, be it improving the timeouts or tweaking the alerts etc."
+
+LABEL krknctl.inputFields='$KRKNCTL_INPUT'
+
+ENTRYPOINT /home/krkn/run.sh
