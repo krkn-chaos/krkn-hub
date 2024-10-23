@@ -21,6 +21,8 @@ accordingly, be it improving the timeouts or tweaking the alerts etc. With the c
 ports which are enabled by allowed network policy rule. This chaos scenario addresses this issue by using OVS flow rules to block ports related \
 to the pod. It supports OpenShiftSDN and OVNKubernetes based networks."
 
+LABEL krknctl.inputFields='$KRKNCTL_INPUT'
+
 ENTRYPOINT /home/krkn/run.sh
 
 

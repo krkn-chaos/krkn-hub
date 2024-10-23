@@ -18,4 +18,6 @@ LABEL krknctl.kubeconfig="/home/krkn/.kube/config"
 LABEL krknctl.title="Pod Failures"
 LABEL krknctl.description="This scenario disrupts the pods matching the label in the specified namespace on a Kubernetes/OpenShift cluster."
 
+LABEL krknctl.inputFields='$KRKNCTL_INPUT'
+
 ENTRYPOINT /home/krkn/run.sh

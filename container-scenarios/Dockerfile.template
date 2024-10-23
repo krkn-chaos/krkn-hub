@@ -14,6 +14,7 @@ COPY container-scenarios/container_scenario.yaml.template /home/krkn/kraken/scen
 COPY common_run.sh /home/krkn/common_run.sh
 USER krkn
 
+LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Container Scenarios"
 LABEL krknctl.description="Scenario to block the traffic ( Ingress/Egress ) of an application matching the labels for the specified duration of time to understand the behavior of the service/other services which depend on it during downtime. This helps with planning the requirements accordingly, be it improving the timeouts or tweaking the alerts etc."
 
