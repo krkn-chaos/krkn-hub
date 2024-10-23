@@ -13,4 +13,12 @@ COPY pvc-scenario/run.sh /home/krkn/run.sh
 COPY common_run.sh /home/krkn/common_run.sh
 COPY pvc-scenario/pvc_scenario.yaml.template /home/krkn/kraken/scenarios/pvc_scenario.yaml.template
 
+LABEL krknctl.kubeconfig="/home/krkn/.kube/config"
+LABEL krknctl.title="PVC Disk Fill"
+LABEL krknctl.description="This scenario fills up a given PersistenVolumeClaim by creating a temp file on the PVC from a pod associated with it. \
+The purpose of this scenario is to fill up a volume to understand faults cause by the application using this volume. \
+For more information refer the following documentation (https://github.com/krkn-chaos/krkn/blob/main/docs/pvc_scenario.md)."
+
+LABEL krknctl.inputFields='$KRKNCTL_INPUT'
+
 ENTRYPOINT /home/krkn/run.sh
