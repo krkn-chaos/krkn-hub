@@ -49,7 +49,7 @@
      },
      {
         "name":"node-name",
-         "short_description":"Node Name [⬅️ Egress only!]",
+         "short_description":"Node Name [*Egress only*]",
          "description": "Node name to inject faults in case of targeting a specific node; Can set multiple node names separated by a comma",
          "type":"string",
          "variable":"NODE_NAME",
@@ -58,7 +58,7 @@
      },
      {
         "name":"interfaces",
-         "short_description":"Interfaces [⬅️ Egress only!]",
+         "short_description":"Interfaces [*Egress only*]",
          "description": "List of interface on which to apply the network restriction. eg. [eth0,eth1,eth2]",
          "type":"string",
          "variable":"INTERFACES",
@@ -68,7 +68,7 @@
      },
      {
         "name":"egress",
-         "short_description":"Egress [⬅️ Egress only!]",
+         "short_description":"Egress [*Egress only*]",
          "description": "Dictonary of values to set network latency(latency: 50ms), packet loss(loss: 0.02), bandwidth restriction(bandwidth: 100mbit) eg. {bandwidth: 100mbit}",
          "type":"string",
          "variable":"EGRESS",
@@ -78,7 +78,7 @@
      },
      {
         "name":"target-node-interface",
-         "short_description":"Target Node and Interfaces [➡️ Ingress only!]",
+         "short_description":"Target Node and Interfaces [*Ingress only*]",
          "description": "Dictionary with key as node name(s) and value as a list of its interfaces to test. For example: {ip-10-0-216-2.us-west-2.compute.internal: [ens5]}",
          "type":"string",
          "variable":"TARGET_NODE_AND_INTERFACE",
@@ -88,7 +88,7 @@
      },
      {
         "name":"network-params",
-         "short_description":"Network Params [➡️ Ingress only!]",
+         "short_description":"Network Params [*Ingress only*]",
          "description": "latency, loss and bandwidth are the three supported network parameters to alter for the chaos test. For example: {latency: 50ms, loss: '0.02'}",
          "type":"string",
          "variable":"NETWORK_PARAMS",
@@ -98,7 +98,7 @@
      },
      {
         "name":"wait-duration",
-         "short_description":"Wait Duration [➡️ Ingress only!]",
+         "short_description":"Wait Duration [*Ingress only*]",
          "description": "Ensure that it is at least about twice of test_duration",
          "type":"number",
          "variable":"WAIT_DURATION",

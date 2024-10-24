@@ -77,7 +77,7 @@
     },
     {
         "name":"verify-session",
-	    "short_description":"Verify Session [⚠️ VMWare only]",
+	    "short_description":"Verify Session [*VMWare only*]",
         "description":"Only needed for vmware - Set to True if you want to verify the vSphere client session using certificates",
         "variable":"VERIFY_SESSION",
         "type":"enum",
@@ -88,7 +88,7 @@
     },
     {
         "name":"vsphere-ip",
-	    "short_description":"VSphere IP [⚠️ VSphere only]",
+	    "short_description":"VSphere IP [*VSphere only*]",
         "description":"VSpere IP Address",
         "variable":"VSPHERE_IP",
         "type":"string",
@@ -97,7 +97,7 @@
     },
     {
         "name":"vsphere-username",
-	    "short_description":"VSphere Username [⚠️ VSphere only]",
+	    "short_description":"VSphere Username [*VSphere only*]",
         "description":"VSpere IP Address",
         "variable":"VSPHERE_USERNAME",
         "type":"string",
@@ -106,7 +106,7 @@
     },
     {
         "name":"vsphere-password",
-	    "short_description":"VSphere Password [⚠️ VSphere only]",
+	    "short_description":"VSphere Password [*VSphere only*]",
         "description":"VSpere password",
         "variable":"VSPHERE_PASSWORD",
         "type":"string",
@@ -115,7 +115,7 @@
     },
     {
         "name":"aws-access-key-id",
-	    "short_description":"AWS Access Key Id[⚠️ AWS only]",
+	    "short_description":"AWS Access Key Id[*AWS only*]",
         "description":"AWS Access Key Id",
         "variable":"AWS_ACCESS_KEY_ID",
         "type":"string",
@@ -124,7 +124,7 @@
     },
     {
         "name":"aws-secret-access-key",
-	    "short_description":"AWS Secret Access Key [⚠️ AWS only]",
+	    "short_description":"AWS Secret Access Key [*AWS only*]",
         "description":"AWS Secret Access Key",
         "variable":"AWS_SECRET_ACCESS_KEY",
         "type":"string",
@@ -133,7 +133,7 @@
     },
     {
         "name":"aws-default-region",
-	    "short_description":"AWS default region [⚠️ AWS only]",
+	    "short_description":"AWS default region [*AWS only*]",
         "description":"AWS default region",
         "variable":"AWS_DEFAULT_REGION",
         "type":"string",
@@ -142,7 +142,7 @@
     },
     {
         "name":"aws-access-key",
-	    "short_description":"AWS Access Key [⚠️ AWS only]",
+	    "short_description":"AWS Access Key [*AWS only*]",
         "description":"VSpere password",
         "variable":"VSPHERE_PASSWORD",
         "type":"string",
@@ -151,7 +151,7 @@
     },
     {
         "name":"skip-openshift-checks",
-	    "short_description":"Skip Openshift Checks [⚠️ VMWare only]",
+	    "short_description":"Skip Openshift Checks [*VMWare only*]",
         "description":"Only needed for vmware - Set to True if you don't want to wait for the status of the nodes to change on OpenShift before passing the scenario",
         "variable":"SKIP_OPENSHIFT_CHECKS",
         "type":"enum",
@@ -162,7 +162,7 @@
     },
     {
         "name":"bmc-user",
-	    "short_description":"Bare Metal Cloud Username [⚠️ Bare Metal only]",
+	    "short_description":"Bare Metal Cloud Username [*Bare Metal only*]",
         "description":"Only needed for Baremetal ( bm ) - IPMI/bmc username",
         "variable":"BMC_USER",
         "type":"string",
@@ -171,7 +171,7 @@
     },
     {
         "name":"bmc-password",
-	    "short_description":"Bare Metal Cloud Username [⚠️ Bare Metal only]",
+	    "short_description":"Bare Metal Cloud Username [*Bare Metal only*]",
         "description":"Only needed for Baremetal ( bm ) - IPMI/bmc password",
         "variable":"BMC_PASSWORD",
         "type":"string",
@@ -180,7 +180,7 @@
     },
     {
         "name":"bmc-address",
-	    "short_description":"Bare Metal Cloud Username [⚠️ Bare Metal only]",
+	    "short_description":"Bare Metal Cloud Username [*Bare Metal only*]",
         "description":"Only needed for Baremetal ( bm ) - IPMI/bmc address",
         "variable":"BMC_ADDR",
         "type":"string",
@@ -189,7 +189,7 @@
     },
     {
         "name":"ibmc-address",
-	    "short_description":"IBM Cloud URL [⚠️ IBM Cloud only]",
+	    "short_description":"IBM Cloud URL [*IBM Cloud only*]",
         "description":"IBM Cloud URL",
         "variable":"IBMC_URL",
         "type":"string",
@@ -198,7 +198,7 @@
     },
     {
         "name":"ibmc-address",
-	    "short_description":"IBM Cloud API key [⚠️ IBM Cloud only]",
+	    "short_description":"IBM Cloud API key [*IBM Cloud only*]",
         "description":"IBM Cloud API Key",
         "variable":"IBMC_APIKEY",
         "type":"string",
@@ -207,7 +207,7 @@
     },
     {
         "name":"azure-tenant",
-	    "short_description":"Azure Tenant [⚠️ Azure only]",
+	    "short_description":"Azure Tenant [*Azure only*]",
         "description":"Azure Tenant",
         "variable":"AZURE_TENANT_ID",
         "type":"string",
@@ -216,7 +216,7 @@
     },
     {
         "name":"azure-client-secret",
-	    "short_description":"Azure Client Secret [⚠️ Azure only]",
+	    "short_description":"Azure Client Secret [*Azure only*]",
         "description":"IBM Cloud API Key",
         "variable":"IBMC_APIKEY",
         "type":"string",
@@ -225,7 +225,7 @@
     },
     {
         "name":"azure-client-id",
-	    "short_description":"Azure Client ID [⚠️ Azure only]",
+	    "short_description":"Azure Client ID [*Azure only*]",
         "description":"IBM Cloud API Key",
         "variable":"AZURE_CLIENT_ID",
         "type":"enum",

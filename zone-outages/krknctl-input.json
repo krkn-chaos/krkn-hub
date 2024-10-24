@@ -47,7 +47,7 @@
     },
     {
         "name":"aws-access-key-id",
-	    "short_description":"AWS Access Key Id[⚠️ AWS only]",
+	    "short_description":"AWS Access Key Id[*AWS only*]",
         "description":"AWS Access Key Id",
         "variable":"AWS_ACCESS_KEY_ID",
         "type":"string",
@@ -56,7 +56,7 @@
     },
     {
         "name":"aws-secret-access-key",
-	    "short_description":"AWS Secret Access Key [⚠️ AWS only]",
+	    "short_description":"AWS Secret Access Key [*AWS only*]",
         "description":"AWS Secret Access Key",
         "variable":"AWS_SECRET_ACCESS_KEY",
         "type":"string",
@@ -65,7 +65,7 @@
     },
     {
         "name":"aws-default-region",
-	    "short_description":"AWS default region [⚠️ AWS only]",
+	    "short_description":"AWS default region [*AWS only*]",
         "description":"AWS default region",
         "variable":"AWS_DEFAULT_REGION",
         "type":"string",
