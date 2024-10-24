@@ -20,6 +20,6 @@ within the cluster or an external target reachable by the cluster. For more deta
 the following documentation (https://github.com/krkn-chaos/krkn-hub/blob/main/docs/syn-flood.md)."
 
 
-LABEL krknctl.inputFields='$KRKNCTL_INPUT'
+LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
 ENTRYPOINT /home/krkn/run.sh

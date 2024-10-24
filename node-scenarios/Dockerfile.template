@@ -24,6 +24,6 @@ LABEL krknctl.title="Node scenarios"
 LABEL krknctl.description="This scenario disrupts the node(s) matching the label on a Kubernetes/OpenShift \
 cluster. Actions/disruptions supported are listed. For further infos visit https://github.com/krkn-chaos/krkn/blob/main/docs/node_scenarios.md"
 
-LABEL krknctl.inputFields='$KRKNCTL_INPUT'
+LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
 ENTRYPOINT /home/krkn/run.sh

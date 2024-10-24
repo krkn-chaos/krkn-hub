@@ -19,6 +19,6 @@ LABEL krknctl.description="Using this type of scenario configuration one is able
 or a namespace matching a certain regex string. For more details documentation can be found here \
 https://github.com/krkn-chaos/krkn/blob/main/docs/service_disruption_scenarios.md"
 
-LABEL krknctl.inputFields='$KRKNCTL_INPUT'
+LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
 ENTRYPOINT /home/krkn/run.sh

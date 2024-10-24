@@ -15,6 +15,6 @@ LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="CPU Hog"
 LABEL krknctl.description="This scenario is based on the arcaflow arcaflow-plugin-stressng plugin. The purpose of this scenario is to create cpu pressure on a particular node of the Kubernetes/OpenShift cluster for a time span. To enable this plugin add the pointer to the scenario input file scenarios/arcaflow/cpu-hog/input.yaml as described in the Usage section. This scenario takes a list of objects named input_list"
 
-LABEL krknctl.inputFields='$KRKNCTL_INPUT'
+LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
 ENTRYPOINT /home/krkn/run.sh

@@ -24,6 +24,6 @@ modifying the target Service selector to direct traffic to this web service for 
 Please refer to the documentation for the scenario file syntax https://github.com/krkn-chaos/krkn/blob/main/docs/service_hijacking_scenarios.md"
 
 
-LABEL krknctl.inputFields='$KRKNCTL_INPUT'
+LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
 ENTRYPOINT /home/krkn/run.sh
