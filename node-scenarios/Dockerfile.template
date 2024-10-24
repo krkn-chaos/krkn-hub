@@ -19,7 +19,7 @@ COPY node-scenarios/node_scenario.yaml.template /home/krkn/kraken/scenarios/node
 COPY node-scenarios/plugin_node_scenario.yaml.template /home/krkn/kraken/scenarios/plugin_node_scenario.yaml.template
 COPY node-scenarios/baremetal_node_scenario.yaml.template /home/krkn/kraken/scenarios/baremetal_node_scenario.yaml.template
 
-LABEL krknctl.kubeconfig="/home/krkn/.kube/config"
+LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Node scenarios"
 LABEL krknctl.description="This scenario disrupts the node(s) matching the label on a Kubernetes/OpenShift \
 cluster. Actions/disruptions supported are listed. For further infos visit https://github.com/krkn-chaos/krkn/blob/main/docs/node_scenarios.md"

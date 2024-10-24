@@ -13,7 +13,7 @@ COPY env.sh /home/krkn/main_env.sh
 COPY syn-flood/run.sh /home/krkn/run.sh
 COPY common_run.sh /home/krkn/common_run.sh
 
-LABEL krknctl.kubeconfig="/home/krkn/.kube/config"
+LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Syn flood"
 LABEL krknctl.description="This scenario simulates a user-defined surge of TCP SYN requests directed at one or more services deployed \
 within the cluster or an external target reachable by the cluster. For more details, please refer to \

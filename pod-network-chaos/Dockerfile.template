@@ -13,7 +13,7 @@ COPY pod-network-chaos/run.sh /home/krkn/run.sh
 COPY common_run.sh /home/krkn/common_run.sh
 COPY pod-network-chaos/pod_network_scenario.yaml.template /home/krkn/kraken/scenarios/pod_network_scenario.yaml.template
 
-LABEL krknctl.kubeconfig="/home/krkn/.kube/config"
+LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Pod Network Chaos"
 LABEL krknctl.description="Scenario to block the traffic ( Ingress/Egress ) of a pod matching the labels for the specified duration \
 of time to understand the behavior of the service/other services which depend on it during downtime. This helps with planning the requirements \

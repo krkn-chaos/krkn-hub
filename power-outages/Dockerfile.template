@@ -14,7 +14,7 @@ COPY power-outages/shutdown_scenario.yaml.template /home/krkn/kraken/scenarios/s
 COPY power-outages/post_action.py /home/krkn/kraken/scenarios/post_action.py
 COPY common_run.sh /home/krkn/common_run.sh
 
-LABEL krknctl.kubeconfig="/home/krkn/.kube/config"
+LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Power outages"
 LABEL krknctl.description="This scenario shuts down Kubernetes/OpenShift cluster for the specified duration \
 to simulate power outages, brings it back online and checks if it's healthy. More information can be found \
