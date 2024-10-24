@@ -89,7 +89,7 @@
      {
         "name":"network-params",
          "short_description":"Network Params [*Ingress only*]",
-         "description": "latency, loss and bandwidth are the three supported network parameters to alter for the chaos test. For example: {latency: 50ms, loss: '0.02'}",
+         "description": "latency, loss and bandwidth are the three supported network parameters to alter for the chaos test. For example: {latency: 50ms, loss: 0.02}",
          "type":"string",
          "variable":"NETWORK_PARAMS",
          "default":"",

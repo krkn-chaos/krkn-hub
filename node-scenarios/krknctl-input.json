@@ -152,7 +152,7 @@
     {
         "name":"skip-openshift-checks",
 	    "short_description":"Skip Openshift Checks [*VMWare only*]",
-        "description":"Only needed for vmware - Set to True if you don't want to wait for the status of the nodes to change on OpenShift before passing the scenario",
+        "description":"Only needed for vmware - Set to True if you don t want to wait for the status of the nodes to change on OpenShift before passing the scenario",
         "variable":"SKIP_OPENSHIFT_CHECKS",
         "type":"enum",
         "allowed_values":"True,False",
