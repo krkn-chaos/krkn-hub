@@ -20,6 +20,6 @@ to understand the impact on both Kubernetes/OpenShift platforms control plane as
 nodes in that zone. More information is documented here https://github.com/krkn-chaos/krkn/blob/master/docs/zone_outage.md"
 
 
-LABEL krknctl.inputFields='$KRKNCTL_INPUT'
+LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
 ENTRYPOINT /home/krkn/run.sh

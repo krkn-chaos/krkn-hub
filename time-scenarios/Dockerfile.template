@@ -20,6 +20,6 @@ the label on a Kubernetes/OpenShift cluster. More information can be found here 
 https://github.com/krkn-chaos/krkn/blob/master/docs/time_scenarios.md"
 
 
-LABEL krknctl.inputFields='$KRKNCTL_INPUT'
+LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
 ENTRYPOINT /home/krkn/run.sh

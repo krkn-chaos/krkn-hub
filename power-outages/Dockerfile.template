@@ -24,6 +24,6 @@ chaos scenario though, we figured this scenario was close to if the power went o
 our ec2 nodes would be stopped/powered off. We tried to look at if aws cli had a way to forcefully poweroff \
 the nodes (not gracefully) and they don't currently support so this scenario is as close as we can get to \"pulling the plug\""
 
-LABEL krknctl.inputFields='$KRKNCTL_INPUT'
+LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
 ENTRYPOINT /home/krkn/run.sh
