@@ -49,7 +49,7 @@
     {
         "name":"aws-access-key",
 	    "short_description":"AWS Access Key [*AWS only*]",
-        "description":"VSpere password",
+        "description":"AWS Secret Access Key",
         "variable":"VSPHERE_PASSWORD",
         "type":"string",
         "default":"",
