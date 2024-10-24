@@ -24,7 +24,7 @@
 	    "short_description":"Timeout",
         "description":"Time in seconds to wait for each node to be stopped or running after the cluster comes back",
         "variable":"TIMEOUT",
-        "type":"int",
+        "type":"number",
         "default":"600",
         "required":"false"
     },

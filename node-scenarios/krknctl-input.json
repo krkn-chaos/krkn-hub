@@ -197,7 +197,7 @@
         "required":"false"
     },
     {
-        "name":"ibmc-address",
+        "name":"ibmc-api-key",
 	    "short_description":"IBM Cloud API key [*IBM Cloud only*]",
         "description":"IBM Cloud API Key",
         "variable":"IBMC_APIKEY",
