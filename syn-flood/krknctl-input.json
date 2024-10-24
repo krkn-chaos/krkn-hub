@@ -38,7 +38,7 @@
     {
         "name":"target-service",
         "short_description":"Target service",
-        "description":"The service name (or the hostname/IP address in case an external target will be hit) that will be affected by the attack.⚠️ Must be empty if TARGET_SERVICE_LABEL will be set",
+        "description":"The service name (or the hostname/IP address in case an external target will be hit) that will be affected by the attack.Must be empty if TARGET_SERVICE_LABEL will be set",
         "variable":"TARGET_SERVICE",
         "type":"string",
         "default":"",
@@ -55,7 +55,7 @@
     {
         "name":"target-service-label",
         "short_description":"Target service label",
-        "description":"The label that will be used to select one or more services.⚠️ Must be left empty if TARGET_SERVICE variable is set",
+        "description":"The label that will be used to select one or more services.Must be left empty if TARGET_SERVICE variable is set",
         "variable":"TARGET_SERVICE_LABEL",
         "type":"string",
         "default":"",

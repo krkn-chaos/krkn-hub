@@ -52,7 +52,7 @@
     {
         "name":"namespace",
         "short_description":"Namespace",
-        "description":"Namespace of the pods you want to skew,⚠️ need to be set only if setting a specific pod name",
+        "description":"Namespace of the pods you want to skew, need to be set only if setting a specific pod name",
         "variable":"NAMESPACE",
         "type":"string",
         "default":"",

@@ -11,7 +11,7 @@
     {
         "name":"label-selector",
         "short_description":"Label selector",
-        "description":"Label of the namespace to target. Set this parameter ⚠️ only if NAMESPACE is not set",
+        "description":"Label of the namespace to target. Set this parameter only if NAMESPACE is not set",
         "variable":"LABEL_SELECTOR",
         "type":"string",
         "default":"",

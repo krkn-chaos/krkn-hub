@@ -2,7 +2,7 @@
     {
         "name":"pvc-name",
         "short_description":"PVC name",
-        "description":"Targeted PersistentVolumeClaim in the cluster (⚠️ if null, POD_NAME is required)",
+        "description":"Targeted PersistentVolumeClaim in the cluster (if null, POD_NAME is required)",
         "variable":"PVC_NAME",
         "type":"string",
         "default":"",
@@ -11,7 +11,7 @@
     {
         "name":"pod-name",
         "short_description":"Pod name",
-        "description":"Targeted pod in the cluster (⚠️ if null, PVC_NAME is required)",
+        "description":"Targeted pod in the cluster (if null, PVC_NAME is required)",
         "variable":"POD_NAME",
         "type":"string",
         "default":"",
