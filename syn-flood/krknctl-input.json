@@ -82,7 +82,7 @@
     {
         "name":"node-selectors",
         "short_description":"Workload image",
-        "description":"The node selectors are used to guide the cluster on where to deploy attacker pods. You can specify one or more labels in the format key=value;key=value2 (even using the same key) to choose one or more node categories. If left empty, the pods will be scheduled on any available node, depending on the cluster's capacity.",
+        "description":"The node selectors are used to guide the cluster on where to deploy attacker pods. You can specify one or more labels in the format key=value;key=value2 (even using the same key) to choose one or more node categories. If left empty, the pods will be scheduled on any available node, depending on the cluster s capacity.",
         "variable":"NODE_SELECTORS",
         "type":"string",
         "validator":"^$|^(([a-zA-Z0-9._-]+\\=[a-zA-Z0-9._-]+)(;)?)+[^;]$",
