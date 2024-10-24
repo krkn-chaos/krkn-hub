@@ -48,9 +48,9 @@ Scenario Types:
 
     c. edit line 17 and 23 with your yaml config location
 
-5. Create Dockerfile
+5. Create Dockerfile template
     
-    a. See [dockerfile](../application-outages/Dockerfile) for example
+    a. See [dockerfile](../application-outages/Dockerfile.template) for example
     
     b. Lines to edit
     
@@ -82,8 +82,9 @@ NOTE:
 2. Similar to above, also add the default parameter values to [env.sh](../env.sh)
 
 ## Build Your Changes
-1. Edit the docker-compose.yaml file to point to your quay.io repository
-2. Build your image(s) from base kraken-hub directory
+1. Run [build.sh](../build.sh) to get Dockerfiles for each scenario
+2. Edit the docker-compose.yaml file to point to your quay.io repository (optional)
+3. Build your image(s) from base kraken-hub directory
     
 Builds all images in docker-compose file
 `docker-compose build`
