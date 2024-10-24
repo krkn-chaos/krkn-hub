@@ -5,5 +5,3 @@ for i in "${SCENARIOS[@]}"; do
     export KRKNCTL_INPUT=$(cat $i/krknctl-input.json|tr -d "\n")
     envsubst < $i/Dockerfile.template > $i/Dockerfile
 done;
-
-docker compose build --parallel
