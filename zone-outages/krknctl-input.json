@@ -29,14 +29,6 @@
         "required":"true"
     },
     {
-        "name":"vpc-id",
-        "short_description":"VPC_ID",
-        "description":"cluster virtual private network to target",
-        "variable":"VPC_ID",
-        "type":"string",
-        "required":"true"
-    },
-    {
         "name":"subnet-id",
         "short_description":"SUBNET_ID",
         "description":"subnet-id to deny both ingress and egress traffic ( REQUIRED ). Format: [subnet1, subnet2]",
