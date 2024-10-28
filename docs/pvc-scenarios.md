@@ -39,5 +39,5 @@ POD_NAME                | Targeted pod in the cluster (if null, PVC_NAME is requ
 NAMESPACE               | Targeted namespace in the cluster (required)                                    |                                      |
 FILL_PERCENTAGE         | Targeted percentage to be filled up in the PVC                                  | 50                                   |
 DURATION                | Duration in seconds with the PVC filled up                                      | 60                                   |
-
+BLOCK_SIZE              | Block size (used by dd if fallocate not available in the container)             | 102400
 **NOTE** Set NAMESPACE environment variable to `openshift-.*` to pick and disrupt pods randomly in openshift system namespaces, the DAEMON_MODE can also be enabled to disrupt the pods every x seconds in the background to check the reliability.
