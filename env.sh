@@ -13,6 +13,7 @@ export PUBLISH_KRAKEN_STATUS=${PUBLISH_KRAKEN_STATUS:=False}
 export SIGNAL_ADDRESS=${SIGNAL_ADDRESS:=0.0.0.0}
 export PORT=${PORT:=8081}
 export SIGNAL_STATE=${SIGNAL_STATE:=RUN}
+export UUID=${UUID:=""}
 export DEPLOY_DASHBOARDS=${DEPLOY_DASHBOARDS:=False}
 export CAPTURE_METRICS=${CAPTURE_METRICS:=False}
 export ENABLE_ALERTS=${ENABLE_ALERTS:=False}
@@ -34,7 +35,6 @@ export ES_TELEMETRY_INDEX=${ES_TELEMETRY_INDEX:=krkn-telemetry}
 
 
 export CHECK_CRITICAL_ALERTS=${CHECK_CRITICAL_ALERTS:=False}
-export KUBE_BURNER_URL=${KUBE_BURNER_URL:=https://github.com/cloud-bulldozer/kube-burner/releases/download/v1.7.0/kube-burner-1.7.0-Linux-x86_64.tar.gz}
 export TELEMETRY_ENABLED=${TELEMETRY_ENABLED:=False}
 export TELEMETRY_API_URL=${TELEMETRY_API_URL:=https://ulnmf9xv7j.execute-api.us-west-2.amazonaws.com/production}
 export TELEMETRY_USERNAME=${TELEMETRY_USERNAME:=redhat-chaos}
