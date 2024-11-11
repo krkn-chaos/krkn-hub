@@ -6,6 +6,7 @@ node_scenarios:
     instance_count: $INSTANCE_COUNT                                 # Number of nodes to perform action/select that match the label selector.
     runs: $RUNS                                                     # Number of times to inject each scenario under actions (will perform on same node each time).
     timeout: $TIMEOUT                                               # Duration to wait for completion of node scenario injection.
+    duration: $DURATION                                             # Duration to stop the node before running the start action. 
     cloud_type: $CLOUD_TYPE                                         # Cloud type on which Kubernetes/OpenShift runs.
     bmc_user: $BMC_USER                                             # For baremetal (bm) cloud type. The default IPMI username. Optional if specified for all machines.
     bmc_password: $BMC_PASSWORD                                     # For baremetal (bm) cloud type. The default IPMI password. Optional if specified for all machines.
