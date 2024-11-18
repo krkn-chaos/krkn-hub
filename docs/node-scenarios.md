@@ -36,6 +36,8 @@ LABEL_SELECTOR          | Node label to target                                  
 NODE_NAME               | Node name to inject faults in case of targeting a specific node; Can set multiple node names separated by a comma      | ""                                   |
 INSTANCE_COUNT          | Targeted instance count matching the label selector                   | 1                                    |
 RUNS                    | Iterations to perform action on a single node                         | 1                                    |
+PARALLEL                | Run action on label or node name in parallel or sequential, set to true for parallel | false                 |
+
 CLOUD_TYPE              | Cloud platform on top of which cluster is running, supported platforms - aws, vmware, ibmcloud, bm           | aws |
 TIMEOUT                 | Duration to wait for completion of node scenario injection             | 180                                |
 DURATION                | Duration to stop the node before running the start action - not supported for vmware and ibm cloud type             | 120                                |
