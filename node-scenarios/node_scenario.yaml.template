@@ -8,3 +8,4 @@ node_scenarios:
     timeout: $TIMEOUT                                               # duration to wait for completion of node scenario injection
     duration: $DURATION                                             # duration to stop the node before running the start action
     cloud_type: $CLOUD_TYPE                                         # cloud type on which Kubernetes/OpenShift runs
+    parallel: $PARALLEL                                             # Run action on label or node name in parallel or sequential, set to true for parallel
