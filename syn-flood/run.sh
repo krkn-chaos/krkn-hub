@@ -1,7 +1,4 @@
 #!/bin/bash
-
-set -ex
-
 ROOT_FOLDER="/home/krkn"
 KRAKEN_FOLDER="$ROOT_FOLDER/kraken"
 SCENARIO_FOLDER="$KRAKEN_FOLDER/scenarios/syn-flood"
@@ -9,8 +6,11 @@ SCENARIO_FOLDER="$KRAKEN_FOLDER/scenarios/syn-flood"
 # Source env.sh to read all the vars
 source $ROOT_FOLDER/main_env.sh
 source $ROOT_FOLDER/env.sh
-
 source $ROOT_FOLDER/common_run.sh
+
+if [[ $DEBUG == "True" ]];then
+  set -ex
+fi
 
 # Substitute config with environment vars defined
 envsubst < $KRAKEN_FOLDER/scenarios/syn-flood.yaml.template > $KRAKEN_FOLDER/scenarios/syn-flood.yaml

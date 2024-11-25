@@ -1,12 +1,13 @@
 #!/bin/bash
-
-set -ex
-
 # Source env.sh to read all the vars
 source /home/krkn/main_env.sh
 source /home/krkn/env.sh
-
 source /home/krkn/common_run.sh
+
+if [[ $DEBUG == "True" ]];then
+  set -ex
+fi
+
 checks
 config_setup
 
@@ -17,7 +18,10 @@ envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/con
 # Run Kraken
 cd /home/krkn/kraken
 
-cat scenarios/namespace_scenario.yaml
-cat config/namespace_config.yaml
+if [[ $DEBUG == "True" ]];then
+  cat scenarios/namespace_scenario.yaml
+  cat config/namespace_config.yaml
+fi
+
 
 python3.9 run_kraken.py --config=config/namespace_config.yaml

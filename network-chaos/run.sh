@@ -1,14 +1,15 @@
 #!/bin/bash
-
-set -ex
-
 # Source env.sh to read all the vars
 source /home/krkn/main_env.sh
 source /home/krkn/env.sh
-
-ls -la /home/krkn/.kube
-
 source /home/krkn/common_run.sh
+
+if [[ $DEBUG == "True" ]];then
+  set -ex
+  ls -la /home/krkn/.kube
+fi
+
+
 checks
 config_setup
 
