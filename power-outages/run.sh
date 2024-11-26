@@ -1,12 +1,13 @@
 #!/bin/bash
-
-set -ex
-
 # Source env.sh to read all the vars
 source /home/krkn/main_env.sh
 source /home/krkn/env.sh
-
 source /home/krkn/common_run.sh
+
+if [[ $DEBUG == "True" ]];then
+  set -ex
+fi
+
 config_setup
 checks
 
@@ -17,8 +18,9 @@ envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/con
 # Run Kraken
 cd /home/krkn/kraken
 
-cat config/shut_down_config.yaml
-
-cat scenarios/cluster_shut_down_scenario.yml
+if [[ $DEBUG == "True" ]];then
+  cat config/shut_down_config.yaml
+  cat scenarios/cluster_shut_down_scenario.yml
+fi
 
 python3.9 run_kraken.py --config=config/shut_down_config.yaml
