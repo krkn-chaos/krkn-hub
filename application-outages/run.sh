@@ -7,7 +7,7 @@ source /home/krkn/env.sh
 source /home/krkn/common_run.sh
 
 
-if [[ $DEBUG == "True" ]];then
+if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
   ls -la /home/krkn/.kube
 fi

@@ -54,4 +54,4 @@ export TELEMETRY_EVENTS_BACKUP=${TELEMETRY_EVENTS_BACKUP:=True}
 
 # Set KUBECONFIG to mounted kubeconfig
 export KUBECONFIG=${KRKN_KUBE_CONFIG}
-export DEBUG=${DEBUG:="False"}
+export KRKN_DEBUG=${KRKN_DEBUG:="False"}

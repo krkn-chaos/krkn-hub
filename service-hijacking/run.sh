@@ -4,7 +4,7 @@ source /home/krkn/main_env.sh
 source /home/krkn/env.sh
 source /home/krkn/common_run.sh
 
-if [[ $DEBUG == "True" ]];then
+if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
 fi
 
@@ -36,7 +36,7 @@ envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/con
 # Run Kraken
 cd /home/krkn/kraken
 
-if [[ $DEBUG == "True" ]];then
+if [[ $KRKN_DEBUG == "True" ]];then
   cat scenarios/service_hijacking.yaml
   cat config/service_hijacking_config.yaml
 fi

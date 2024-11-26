@@ -4,7 +4,7 @@ source /home/krkn/main_env.sh
 source /home/krkn/env.sh
 source /home/krkn/common_run.sh
 
-if [[ $DEBUG == "True" ]];then
+if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
   ls -la /home/krkn/.kube
 fi
@@ -25,7 +25,7 @@ fi
 # Run Kraken
 cd /home/krkn/kraken
 
-if [[ $DEBUG == "True" ]];then
+if [[ $KRKN_DEBUG == "True" ]];then
   cat /home/krkn/kraken/config/pod_network_scenario_config.yaml
   cat /home/krkn/kraken/scenarios/pod_network_scenario.yaml
 fi

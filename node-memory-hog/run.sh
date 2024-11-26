@@ -9,7 +9,7 @@ source $ROOT_FOLDER/main_env.sh
 source $ROOT_FOLDER/env.sh
 source $ROOT_FOLDER/common_run.sh
 
-if [[ $DEBUG == "True" ]];then
+if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
 fi
 
@@ -24,7 +24,7 @@ config_setup
 # Run Kraken
 cd $KRAKEN_FOLDER
 
-if [[ $DEBUG == "True" ]];then
+if [[ $KRKN_DEBUG == "True" ]];then
   cat config/mem_config.yaml
   cat scenarios/kube/memory-hog/input.yaml
 fi

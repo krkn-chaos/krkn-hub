@@ -8,7 +8,7 @@ source $ROOT_FOLDER/main_env.sh
 source $ROOT_FOLDER/env.sh
 source $ROOT_FOLDER/common_run.sh
 
-if [[ $DEBUG == "True" ]];then
+if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
 fi
 
