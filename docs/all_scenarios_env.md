@@ -43,5 +43,6 @@ TELEMETRY_FILTER_PATTER | Filter logs based on certain time stamp patterns |["(\
 TELEMETRY_CLI_PATH | OC Cli path, if not specified will be search in $PATH | _blank_ |
 ELASTIC_SERVER | Be able to track telemtry data in elasticsearch, this is the url of the elasticsearch data storage | _blank_ |
 ELASTIC_INDEX | Elastic search index pattern to post results to | _blank_ |
+DEBUG| If set to "True" enables krkn Verbose output | "False" |
 
 **NOTE**: For setting the TELEMETRY_ARCHIVE_SIZE,the higher the number of archive files will be produced and uploaded (and processed by backup_thread simultaneously).For unstable/slow connection is better to keep this value low increasing the number of backup_threads, in this way, on upload failure, the retry will happen only on the failed chunk without affecting the whole upload.
