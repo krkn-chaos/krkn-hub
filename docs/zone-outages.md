@@ -36,8 +36,8 @@ Parameter               | Description                                           
 CLOUD_TYPE              | Cloud platform on top of which cluster is running, [supported cloud platforms](https://github.com/krkn-chaos/krkn/blob/master/docs/node_scenarios.md)                     | aws |
 DURATION                | Duration in seconds after which the zone will be back online          | 600                                  |
 VPC_ID                  | cluster virtual private network to target ( REQUIRED )                             | ""                                   |
-SUBNET_ID               | subnet-id to deny both ingress and egress traffic ( REQUIRED ). Format: [subenet1, subnet2]                    | ""                                   |
-
+SUBNET_ID               | subnet-id to deny both ingress and egress traffic ( REQUIRED ). Format: [subenet1, subnet2]                    | ""       |
+DEFAULT_ACL_ID          | (Optional) ID of an existing network ACL to use instead of creating a new one. If provided, this ACL will not be deleted after the scenario | "" |
 
 The following environment variables need to be set for the scenarios that requires intereacting with the cloud platform API to perform the actions:
 
