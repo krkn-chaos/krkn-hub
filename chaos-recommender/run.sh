@@ -24,8 +24,14 @@ source $ROOT_FOLDER/common_run.sh
 [ -z "$PROMETHEUS_TOKEN" ] && echo "error: PROMETHEUS_TOKEN not set, run the recommender \
   with the -e PROMETHEUS_TOKEN=<prometheus_token> option" && exit 1
 
-#checks
-#config_setup
+[ -z "$THRESHOLD" ] && echo "error: THRESHOLD not set, run the recommender \
+  with the -e THRESHOLD=<threshold, for example 0.7> option" && exit 1
+
+[ -z "$CPU_THRESHOLD" ] && echo "error: CPU_THRESHOLD not set, run the recommender \
+  with the -e CPU_THRESHOLD=<cpu_threshold, for example 0.5> option" && exit 1
+
+[ -z "$MEMORY_THRESHOLD" ] && echo "error: MEMORY_THRESHOLD not set, run the recommender \
+  with the -e MEMORY_THRESHOLD=<memory_threshold, for example 0.5> option" && exit 1
 
 # Run Kraken
 cd $KRAKEN_FOLDER
@@ -42,7 +48,7 @@ python3.9 utils/chaos_recommender/chaos_recommender.py \
 -p $PROMETHEUS_ENDPOINT \
 -t $PROMETHEUS_TOKEN \
 -s $SCRAPE_DURATION \
+--threshold $THRESHOLD \
+--cpu-threshold $CPU_THRESHOLD \
+--mem-threshold $MEMORY_THRESHOLD \
 -L $LOG_LEVEL
-
-
-

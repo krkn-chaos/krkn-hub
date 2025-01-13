@@ -21,6 +21,9 @@ Parameter               | Description
 NAMESPACE               | Targeted namespace in the cluster                                     
 PROMETHEUS_ENDPOINT     | Prometheus API endpoint in the cluster to gather telemetry data                                   
 PROMETHEUS_TOKEN        | Prometheus API Token (usually matches with OCP token)                                        
+THRESHOLD               | Threshold to compare and determine the outliers, for example 0.7 i.e 70%
+CPU_THRESHOLD           | CPU threshold to compare with the cpu limits, for example 0.5 i.e 50%
+MEMORY_THRESHOLD        | Memory threshold to compare with the memory limits, for example 0.5 i.e 50%
 
 *TIP:* to collect prometheus endpoint and token from your OpenShift cluster you can run the following commands:
 ```
