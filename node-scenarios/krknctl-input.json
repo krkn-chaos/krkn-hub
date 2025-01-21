@@ -228,7 +228,7 @@
 	    "short_description":"Azure Client ID [*Azure only*]",
         "description":"IBM Cloud API Key",
         "variable":"AZURE_CLIENT_ID",
-        "type":"enum",
+        "type":"string",
         "default":"",
         "required":"false"
     }
