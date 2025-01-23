@@ -1,0 +1,11 @@
+duration: $TOTAL_CHAOS_DURATION
+workers: $NODE_CPU_CORE
+hog-type: cpu
+image: quay.io/krkn-chaos/krkn-hog
+namespace: $NAMESPACE
+cpu-load-percentage: $NODE_CPU_PERCENTAGE
+cpu-method: all
+node-selector: $NODE_SELECTOR
+
+
+

@@ -2,7 +2,7 @@
 
 ROOT_FOLDER="/home/krkn"
 KRAKEN_FOLDER="$ROOT_FOLDER/kraken"
-SCENARIO_FOLDER="$KRAKEN_FOLDER/scenarios/kube/cpu-hog"
+SCENARIO_FOLDER="$KRAKEN_FOLDER/scenarios/kube"
 
 # Source env.sh to read all the vars
 source $ROOT_FOLDER/main_env.sh
@@ -13,9 +13,12 @@ if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
 fi
 
-setup_arcaflow_env "$SCENARIO_FOLDER"
+envsubst < $KRAKEN_FOLDER/scenarios/kube/cpu-hog.yml.template > $KRAKEN_FOLDER/scenarios/kube/cpu-hog.yml
+
+cat $KRAKEN_FOLDER/scenarios/kube/cpu-hog.yml
 # Substitute config with environment vars defined
 envsubst < $KRAKEN_FOLDER/config/config.yaml.template > $KRAKEN_FOLDER/config/cpu_config.yaml
+echo $KRAKEN_FOLDER
 checks
 config_setup
 
@@ -23,7 +26,7 @@ config_setup
 cd $KRAKEN_FOLDER
 
 if [[ $KRKN_DEBUG == "True" ]];then
-  cat scenarios/kube/cpu-hog/input.yaml
+  cat scenarios/kube/cpu-hog.yml
   cat config/cpu_config.yaml
 fi
 
