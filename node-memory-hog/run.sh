@@ -13,9 +13,9 @@ if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
 fi
 
-setup_arcaflow_env "$SCENARIO_FOLDER"
+envsubst < $KRAKEN_FOLDER/scenarios/kube/memory-hog.yml.template > $KRAKEN_FOLDER/scenarios/kube/memory-hog.yml
 # Substitute config with environment vars defined
-envsubst < $KRAKEN_FOLDER/config/config.yaml.template > $KRAKEN_FOLDER/config/mem_config.yaml
+envsubst < $KRAKEN_FOLDER/config/config.yaml.template > $KRAKEN_FOLDER/config/mem-config.yaml
 
 checks
 config_setup
@@ -25,9 +25,9 @@ config_setup
 cd $KRAKEN_FOLDER
 
 if [[ $KRKN_DEBUG == "True" ]];then
-  cat config/mem_config.yaml
-  cat scenarios/kube/memory-hog/input.yaml
+  cat scenarios/kube/memory-hog.yml
+  cat config/mem-config.yaml
 fi
 
 
-python3.9 run_kraken.py --config=config/mem_config.yaml
+python3.9 run_kraken.py --config=config/mem-config.yaml
