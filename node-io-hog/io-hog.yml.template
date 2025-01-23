@@ -1,0 +1,12 @@
+hog-type: io
+duration: $TOTAL_CHAOS_DURATION
+io-block_size: $IO_BLOCK_SIZE
+io-workers: $IO_WORKERS
+io-write-bytes: $IO_WRITE_BYTES
+namespace: $NAMESPACE
+node-selector: $NODE_SELECTOR
+target-pod-folder: /hog-data
+target-pod-volume:
+  hostPath:
+    path: $NODE_MOUNT_PATH
+  name: node-volume

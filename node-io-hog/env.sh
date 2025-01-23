@@ -3,10 +3,11 @@
 # Vars and respective defaults
 export TOTAL_CHAOS_DURATION=${TOTAL_CHAOS_DURATION:="180"}
 export IO_BLOCK_SIZE=${IO_BLOCK_SIZE:="1m"}
-export IO_WORKERS=${IO_WORKERS:="5"}
+export IO_WORKERS=${IO_WORKERS:=""}
 export IO_WRITE_BYTES=${IO_WRITE_BYTES:="10m"}
 export NAMESPACE=${NAMESPACE:="default"}
-export NODE_SELECTORS=${NODE_SELECTORS:=""}
+export NODE_SELECTOR=${NODE_SELECTOR:=""}
+export NODE_MOUNT_PATH=${NODE_MOUNT_PATH:="/root"}
 
 export SCENARIO_TYPE=${SCENARIO_TYPE:=hog_scenarios}
-export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kube/io-hog/input.yaml}
+export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kube/io-hog.yml}

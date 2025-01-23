@@ -2,7 +2,7 @@
 
 ROOT_FOLDER="/home/krkn"
 KRAKEN_FOLDER="$ROOT_FOLDER/kraken"
-SCENARIO_FOLDER="$KRAKEN_FOLDER/scenarios/kube/io-hog"
+SCENARIO_FOLDER="$KRAKEN_FOLDER/scenarios/kube"
 
 # Source env.sh to read all the vars
 source $ROOT_FOLDER/main_env.sh
@@ -13,9 +13,10 @@ if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
 fi
 
-setup_arcaflow_env "$SCENARIO_FOLDER"
+
+envsubst < $KRAKEN_FOLDER/scenarios/kube/io-hog.yml.template > $KRAKEN_FOLDER/scenarios/kube/io-hog.yml
 # Substitute config with environment vars defined
-envsubst < $KRAKEN_FOLDER/config/config.yaml.template > $KRAKEN_FOLDER/config/io_config.yaml
+envsubst < $KRAKEN_FOLDER/config/config.yaml.template > $KRAKEN_FOLDER/config/io-config.yaml
 checks
 config_setup
 
@@ -23,10 +24,10 @@ config_setup
 cd $KRAKEN_FOLDER
 
 if [[ $KRKN_DEBUG == "True" ]];then
-  cat config/io_config.yaml
-  cat scenarios/kube/io-hog/input.yaml
+  cat scenarios/kube/io-hog.yml
+  cat config/io-config.yaml
 fi
 
-python3.9 run_kraken.py --config=config/io_config.yaml
+python3.9 run_kraken.py --config=config/io-config.yaml
 
 

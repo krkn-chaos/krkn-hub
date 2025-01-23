@@ -10,7 +10,7 @@ COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
 COPY node-io-hog/env.sh /home/krkn/env.sh
 COPY env.sh /home/krkn/main_env.sh
 COPY node-io-hog/run.sh /home/krkn/run.sh
-COPY node-io-hog/input.yaml.template /home/krkn/kraken/scenarios/kube/io-hog/input.yaml.template
+COPY node-io-hog/io-hog.yml.template /home/krkn/kraken/scenarios/kube/io-hog.yml.template
 COPY common_run.sh /home/krkn/common_run.sh
 
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"

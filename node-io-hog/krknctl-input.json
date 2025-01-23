@@ -36,6 +36,14 @@
         "default":"10m"
     },
     {
+        "name":"node-mount-path",
+	    "short_description":"Node mount path",
+        "description":"the path in the node that will be mounted in the pod and where the io hog will be executed. NOTE: be sure that kubelet has the rights to write in that node path",
+        "variable":"NODE_MOUNT_PATH",
+        "type":"string",
+        "default":"/root"
+    },
+    {
         "name":"namespace",
 	    "short_description":"Namespace",
         "description":"Namespace where the scenario container will be deployed",
@@ -44,14 +52,14 @@
         "default":"default"
     },
     {
-	   "name":"node-selectors",
-        "short_description":"Node Selectors",
-        "description":"Node selectors where the scenario containers will be scheduled in the format \"<selector>=<value>\". NOTE: This value can be specified as a list of node selectors separated by \";\". Will be instantiated a container per each node selector with the same scenario options. This option is meant to run one or more stress scenarios simultaneously on different nodes, kubernetes will schedule the pods on the target node accordingly with the selector specified. Specifying the same selector multiple times will instantiate as many scenario container as the number of times the selector is specified on the same node",
-        "variable":"NODE_SELECTORS",
-        "type":"string",
-        "validator": "^$|^(([a-zA-Z0-9._-]+\\=[a-zA-Z0-9._-]+)(;)?)+[^;]$",
-        "default":"",
-	    "required": "false"
-    }
+        "name":"node-selector",
+         "short_description":"Node Selector",
+         "description":"Node selector where the scenario containers will be scheduled in the format \"<selector>=<value>\". NOTE:  Will be instantiated a container per each node selected with the same scenario options. If left empty a random node will be selected",
+         "variable":"NODE_SELECTOR",
+         "type":"string",
+         "validator": "^$|^.+\\=.*$",
+         "default":"",
+         "required": "false"
+     }
 
 ]
