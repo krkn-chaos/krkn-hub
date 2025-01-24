@@ -40,6 +40,23 @@
          "validator": "^$|^.+\\=.*$",
          "default":"",
          "required": "false"
+     },
+   {
+        "name":"number-of-nodes",
+         "short_description":"Number of nodes",
+         "description":"restricts the number of selected nodes by the selector",
+         "variable":"NUMBER_OF_NODES",
+         "type":"number",
+         "required": "false"
+     },
+      {
+        "name":"image",
+         "short_description":"Hog Container image",
+         "description":"The hog container image. Can be changed if the hog image is mirrored on a private repository",
+         "variable":"IMAGE",
+         "type":"string",
+         "default":"quay.io/krkn-chaos/krkn-hog",
+         "required": "false"
      }
 
 ]

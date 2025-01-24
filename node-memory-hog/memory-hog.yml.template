@@ -2,5 +2,8 @@ hog-type: memory
 duration: $TOTAL_CHAOS_DURATION
 workers: $NUMBER_OF_WORKERS
 namespace: $NAMESPACE
+image: $IMAGE
 node-selector: $NODE_SELECTOR
+number-of-nodes: $NUMBER_OF_NODES
 vm-bytes: $MEMORY_CONSUMPTION_PERCENTAGE
+

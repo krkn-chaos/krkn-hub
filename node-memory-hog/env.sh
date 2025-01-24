@@ -8,3 +8,5 @@ export NAMESPACE=${NAMESPACE:="default"}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=hog_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kube/memory-hog.yml}
 export NODE_SELECTOR=${NODE_SELECTOR:=""}
+export NUMBER_OF_NODES=${NUMBER_OF_NODES:=""}
+export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-hog"}
