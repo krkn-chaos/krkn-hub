@@ -30,13 +30,15 @@ ex.)
 
 See list of variables that apply to all scenarios [here](all_scenarios_env.md) that can be used/set in addition to these scenario specific variables
 
-Parameter               | Description                                                           | Default
------------------------ | -----------------------------------------------------------------     | ------------------------------------ |
-TOTAL_CHAOS_DURATION    | Set chaos duration (in sec) as desired                                | 60                                  |
-MEMORY_CONSUMPTION_PERCENTAGE | percentage  (expressed with the suffix %) or amount (expressed with the suffix b, k, m or g) of memory to be consumed by the scenario | 90% |
-NUMBER_OF_WORKERS       | Total number of workers (stress-ng threads)   | 1    |
-NAMESPACE | Namespace where the scenario container will be deployed | default |
-NODE_SELECTORS | Node selectors where the scenario containers will be scheduled in the format "`<selector>=<value>`". __NOTE__: This value can be specified as a list of node selectors separated by "`;`". Will be instantiated a container per each node selector with the same scenario options. This option is meant to run one or more stress scenarios simultaneously on different nodes, kubernetes will schedule the pods on the target node accordingly with the selector specified. Specifying the same selector multiple times will  instantiate as many scenario container as the number of times the selector is specified on the same node| "" |                              
+|  Parameter                    | Description                                                           | Default
+|-------------------------------| -----------------------------------------------------------------     | ------------------------------------ |
+| TOTAL_CHAOS_DURATION          | Set chaos duration (in sec) as desired                                | 60                                  |
+| MEMORY_CONSUMPTION_PERCENTAGE | percentage  (expressed with the suffix %) or amount (expressed with the suffix b, k, m or g) of memory to be consumed by the scenario | 90% |
+| NUMBER_OF_WORKERS             | Total number of workers (stress-ng threads)   | 1    |
+| NAMESPACE                     | Namespace where the scenario container will be deployed | default |
+| NODE_SELECTOR                 | defines the node selector for choosing target nodes. If not specified, one schedulable node in the cluster will be chosen at random. If multiple nodes match the selector, all of them will be subjected to stress. If number-of-nodes is specified, that many nodes will be randomly selected from those identified by the selector.                                     | "" |                             |
+| NUMBER_OF_NODES               | restricts the number of selected nodes by the selector                                     | "" |                             |
+| IMAGE                         | the container image of the stress workload|quay.io/krkn-chaos/krkn-hog||                          
 
 
 **NOTE** In case of using custom metrics profile or alerts profile when `CAPTURE_METRICS` or `ENABLE_ALERTS` is enabled, mount the metrics profile from the host on which the container is run using podman/docker under `/home/krkn/kraken/config/metrics-aggregated.yaml` and `/home/krkn/kraken/config/alerts`. For example:
