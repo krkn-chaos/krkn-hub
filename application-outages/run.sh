@@ -12,11 +12,7 @@ if [[ $KRKN_DEBUG == "True" ]];then
   ls -la /home/krkn/.kube
 fi
 
-
-
-
 checks
-config_setup
 
 # Substitute config with environment vars defined
 envsubst < /home/krkn/kraken/scenarios/app_outage.yaml.template > /home/krkn/kraken/scenarios/app_outage.yaml

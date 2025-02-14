@@ -11,7 +11,6 @@ fi
 
 
 checks
-config_setup
 
 # Substitute config with environment vars defined
 envsubst < /home/krkn/kraken/scenarios/container_scenario.yaml.template > /home/krkn/kraken/scenarios/container_scenario.yaml
