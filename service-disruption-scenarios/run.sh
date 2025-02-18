@@ -9,7 +9,6 @@ if [[ $KRKN_DEBUG == "True" ]];then
 fi
 
 checks
-config_setup
 
 # Substitute config with environment vars defined
 envsubst < /home/krkn/kraken/scenarios/namespace_scenario.yaml.template > /home/krkn/kraken/scenarios/namespace_scenario.yaml

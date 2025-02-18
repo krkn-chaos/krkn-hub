@@ -10,7 +10,6 @@ if [[ $KRKN_DEBUG == "True" ]];then
 fi
 
 checks
-config_setup
 
 # Substitute config with environment vars defined
 if [[ -z "$POD_LABEL" ]]; then

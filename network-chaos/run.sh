@@ -9,9 +9,7 @@ if [[ $KRKN_DEBUG == "True" ]];then
   ls -la /home/krkn/.kube
 fi
 
-
 checks
-config_setup
 
 # Substitute config with environment vars defined
 if [[ $TRAFFIC_TYPE == "egress" ]]; then

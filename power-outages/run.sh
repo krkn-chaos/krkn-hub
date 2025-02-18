@@ -8,7 +8,6 @@ if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
 fi
 
-config_setup
 checks
 
 # Substitute config with environment vars defined

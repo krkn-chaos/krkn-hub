@@ -9,7 +9,6 @@ if [[ $KRKN_DEBUG == "True" ]];then
 fi
 
 checks
-config_setup
 
 # Substitute config with environment vars defined
 envsubst < /home/krkn/kraken/scenarios/zone_outage_scenario.yaml.template > /home/krkn/kraken/scenarios/zone_outage.yaml

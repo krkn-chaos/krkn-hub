@@ -54,10 +54,3 @@ checks() {
   check_cluster_version
   set_kubernetes_platform
 }
-
-# Config substitutions
-config_setup(){
-  envsubst < /home/krkn/kraken/config/kube_burner.yaml.template > /home/krkn/kraken/config/kube_burner.yaml
-}
-
-
