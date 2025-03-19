@@ -23,8 +23,6 @@ export METRICS_PATH=${METRICS_PATH:=config/metrics-aggregated.yaml}
 export ENABLE_ES=${ENABLE_ES:=False}
 export ES_SERVER=${ES_SERVER:=http://0.0.0.0}
 export ES_PORT=${ES_PORT:=443}
-export ES_COLLECT_METRICS=${ES_COLLECT_METRICS:=False}
-export ES_COLLECT_ALERTS=${ES_COLLECT_ALERTS:=False}
 export ES_USERNAME=${ES_USERNAME:=elastic}
 export ES_PASSWORD=${ES_PASSWORD}
 export ES_VERIFY_CERTS=${ES_VERIFY_CERTS:=False}

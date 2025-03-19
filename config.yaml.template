@@ -51,8 +51,6 @@ telemetry:
 
 elastic:
     enable_elastic: $ENABLE_ES
-    collect_metrics: $ES_COLLECT_METRICS
-    collect_alerts: $ES_COLLECT_ALERTS
     verify_certs: $ES_VERIFY_CERTS
     elastic_url: "$ES_SERVER"                                         # To track results in elasticsearch, give url to server here; will post telemetry details when url and index not blank
     elastic_port: $ES_PORT
