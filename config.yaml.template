@@ -59,3 +59,11 @@ elastic:
     metrics_index: "$ES_METRICS_INDEX"
     alerts_index: "$ES_ALERTS_INDEX"
     telemetry_index: "$ES_TELEMETRY_INDEX"
+
+health_checks:                                                  # Utilizing health check endpoints to observe application behavior during chaos injection.
+    interval: "$HEALTH_CHECK_INTERVAL"
+    config:
+        - url: "$HEALTH_CHECK_URL"
+          bearer_token: "$HEALTH_CHECK_BEARER_TOKEN"
+          auth: "$HEALTH_CHECK_AUTH"
+          exit_on_failure: "$HEALTH_CHECK_EXIT_ON_FAILURE"
