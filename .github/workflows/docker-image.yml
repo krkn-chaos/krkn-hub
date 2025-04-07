@@ -9,16 +9,13 @@ on:
 
   push:
     branches: ['main']
+  pull_request:
+
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Login in quay
-      run: docker login quay.io -u ${QUAY_USER} -p ${QUAY_TOKEN}
-      env:
-        QUAY_USER: ${{ secrets.QUAY_USERNAME }}
-        QUAY_TOKEN: ${{ secrets.QUAY_PASSWORD }}
     - name: Check out code
       uses: actions/checkout@main
     - name: Add krknctl metadata to Dockerfiles
@@ -26,9 +23,17 @@ jobs:
         bash build.sh
     - name: Build the Docker images
       run: docker compose build --parallel
+    - name: Login in quay
+      if: ${{ github.ref == 'refs/heads/main' }}
+      run: docker login quay.io -u ${QUAY_USER} -p ${QUAY_TOKEN}
+      env:
+        QUAY_USER: ${{ secrets.QUAY_USERNAME }}
+        QUAY_TOKEN: ${{ secrets.QUAY_PASSWORD }}
     - name: Push the Docker images
+      if: ${{ github.ref == 'refs/heads/main' }}
       run: docker compose push
     - name: Call repo lambda
+      if: ${{ github.ref == 'refs/heads/main'}}
       run: |
         curl --location --request POST '${{ secrets.LAMBDA_URL }}' --header 'Authorization: Bearer ${{ secrets.LAMBDA_TOKEN }}'
         

@@ -18,6 +18,7 @@ $ docker run -e <VARIABLE>=<value> --net=host -v <path-to-kube-config>:/home/krk
 $ docker logs -f <container_name or container_id> # Streams Kraken logs
 $ docker inspect <container-name or container-id> --format "{{.State.ExitCode}}" # Outputs exit code which can considered as pass/fail for the scenario
 ```
+
 **TIP**: Because the container runs with a non-root user, ensure the kube config is globally readable before mounting it in the container. You can achieve this with the following commands:
 ```kubectl config view --flatten > ~/kubeconfig && chmod 444 ~/kubeconfig && docker run $(./get_docker_params.sh) --name=<container_name> --net=host -v ~kubeconfig:/home/krkn/.kube/config:Z -d quay.io/krkn-chaos/krkn-hub:<scenario>```
 #### Supported parameters
@@ -37,7 +38,6 @@ NODE_NAME               | Node name to inject faults in case of targeting a spec
 INSTANCE_COUNT          | Targeted instance count matching the label selector                   | 1                                    |
 RUNS                    | Iterations to perform action on a single node                         | 1                                    |
 PARALLEL                | Run action on label or node name in parallel or sequential, set to true for parallel | false                 |
-
 CLOUD_TYPE              | Cloud platform on top of which cluster is running, supported platforms - aws, vmware, ibmcloud, bm           | aws |
 TIMEOUT                 | Duration to wait for completion of node scenario injection             | 180                                |
 DURATION                | Duration to stop the node before running the start action - not supported for vmware and ibm cloud type             | 120                                |
