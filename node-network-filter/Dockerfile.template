@@ -1,0 +1,23 @@
+# Dockerfile for kraken
+
+FROM quay.io/krkn-chaos/krkn:latest
+
+ENV KUBECONFIG /home/krkn/.kube/config
+
+# Copy configurations
+COPY metrics_config.yaml.template /home/krkn/kraken/config/kube_burner.yaml.template
+COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
+
+COPY node-network-filter/env.sh /home/krkn/env.sh
+COPY env.sh /home/krkn/main_env.sh
+COPY node-network-filter/run.sh /home/krkn/run.sh
+COPY node-network-filter/network-filter.yml /home/krkn/kraken/scenarios/kube/network-filter.yml
+COPY common_run.sh /home/krkn/common_run.sh
+
+LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
+LABEL krknctl.title="Node Network Filter"
+LABEL krknctl.description="This scenario will create iptables rules on the target nodes to block incoming/outgoing traffic on specified ports and interfaces."
+
+LABEL krknctl.input_fields='$KRKNCTL_INPUT'
+
+ENTRYPOINT /home/krkn/run.sh
