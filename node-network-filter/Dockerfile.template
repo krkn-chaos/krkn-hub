@@ -21,3 +21,4 @@ LABEL krknctl.description="This scenario will create iptables rules on the targe
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
 ENTRYPOINT /home/krkn/run.sh
+
