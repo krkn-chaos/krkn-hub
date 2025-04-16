@@ -10,8 +10,12 @@ fi
 
 checks
 
+if [[ "$CLOUD_TYPE" == "gcp" ]]; then
 # Substitute config with environment vars defined
-envsubst < /home/krkn/kraken/scenarios/zone_outage_scenario.yaml.template > /home/krkn/kraken/scenarios/zone_outage.yaml
+  envsubst < /home/krkn/kraken/scenarios/zone_outage_scenario_gcp.yaml.template > /home/krkn/kraken/scenarios/zone_outage.yaml
+else 
+  envsubst < /home/krkn/kraken/scenarios/zone_outage_scenario.yaml.template > /home/krkn/kraken/scenarios/zone_outage.yaml
+fi 
 envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/config/zone_config.yaml
 
 # Run Kraken
