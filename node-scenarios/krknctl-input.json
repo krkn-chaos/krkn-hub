@@ -130,15 +130,6 @@
         "required": "false"
     },
     {
-        "name": "aws-access-key",
-        "short_description": "AWS Access Key [*AWS only*]",
-        "description": "VSpere password",
-        "variable": "VSPHERE_PASSWORD",
-        "type": "string",
-        "default": "",
-        "required": "false"
-    },
-    {
         "name": "bmc-user",
         "short_description": "Bare Metal Cloud Username [*Bare Metal only*]",
         "description": "Only needed for Baremetal ( bm ) - IPMI/bmc username",
@@ -195,8 +186,8 @@
     {
         "name": "azure-client-secret",
         "short_description": "Azure Client Secret [*Azure only*]",
-        "description": "IBM Cloud API Key",
-        "variable": "IBMC_APIKEY",
+        "description": "Azure Client Secret",
+        "variable": "AZURE_CLIENT_SECRET",
         "type": "string",
         "default": "",
         "required": "false"
@@ -204,8 +195,17 @@
     {
         "name": "azure-client-id",
         "short_description": "Azure Client ID [*Azure only*]",
-        "description": "IBM Cloud API Key",
+        "description": "Azure Client ID",
         "variable": "AZURE_CLIENT_ID",
+        "type": "string",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "azure-subscription-id",
+        "short_description": "Azure Subscription ID [*Azure only*]",
+        "description": "Azure Subscription ID",
+        "variable": "AZURE_SUBSCRIPTION_ID",
         "type": "string",
         "default": "",
         "required": "false"
