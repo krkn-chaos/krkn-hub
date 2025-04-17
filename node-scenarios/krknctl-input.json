@@ -49,10 +49,10 @@
     {
         "name": "cloud-type",
         "short_description": "Cloud Type",
-        "description": "Cloud platform on top of which cluster is running, supported platforms - aws, vmware, ibmcloud, bm",
+        "description": "Cloud platform on top of which cluster is running, supported platforms - aws, azure, gcp, vmware, ibmcloud, bm",
         "variable": "CLOUD_TYPE",
         "type": "enum",
-        "allowed_values": "aws,vmware,ibmcloud,bm",
+        "allowed_values": "aws,azure,gcp,vmware,ibmcloud,bm",
         "separator": ",",
         "default": "aws",
         "required": "false"
@@ -216,7 +216,7 @@
         "description": "GCP application credentials file location",
         "variable": "GOOGLE_APPLICATION_CREDENTIALS",
         "type": "file",
-        "default": "",
-        "required": "false"
+        "required": "false",
+        "mount_path": "/home/krkn/osServiceAccount.json"
     }
 ]
