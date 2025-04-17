@@ -1,59 +1,165 @@
 [
     {
-	    "name":"shutdown-duration",
-       	"short_description":"Shutdown duration",
-        "description":"Duration in seconds to shut down the cluster",
-        "variable":"SHUTDOWN_DURATION",
-        "type":"number",
-        "default":"1200",
-        "required":"false"
-    },
-    {
-        "name":"cloud-type",
-	    "short_description":"Cloud Type",
-        "description":"Cloud platform on top of which cluster is running",
-        "variable":"CLOUD_TYPE",
-        "type":"enum",
-        "allowed_values": "aws",
-        "separator":",",
-        "default":"aws",
+        "name": "shutdown-duration",
+        "short_description": "Shutdown duration",
+        "description": "Duration in seconds to shut down the cluster",
+        "variable": "SHUTDOWN_DURATION",
+        "type": "number",
+        "default": "1200",
         "required": "false"
     },
     {
-        "name":"timeout",
-	    "short_description":"Timeout",
-        "description":"Time in seconds to wait for each node to be stopped or running after the cluster comes back",
-        "variable":"TIMEOUT",
-        "type":"number",
-        "default":"600",
-        "required":"false"
+        "name": "cloud-type",
+        "short_description": "Cloud Type",
+        "description": "Cloud platform on top of which cluster is running",
+        "variable": "CLOUD_TYPE",
+        "type": "enum",
+        "allowed_values": "aws",
+        "separator": ",",
+        "default": "aws",
+        "required": "false"
     },
     {
-        "name":"aws-secret-access-key",
-	    "short_description":"AWS Secret Access Key [*AWS only*]",
-        "description":"AWS Secret Access Key",
-        "variable":"AWS_SECRET_ACCESS_KEY",
-        "type":"string",
-        "default":"",
-        "required":"false"
+        "name": "timeout",
+        "short_description": "Timeout",
+        "description": "Time in seconds to wait for each node to be stopped or running after the cluster comes back",
+        "variable": "TIMEOUT",
+        "type": "number",
+        "default": "600",
+        "required": "false"
     },
     {
-        "name":"aws-default-region",
-	    "short_description":"AWS default region [*AWS only*]",
-        "description":"AWS default region",
-        "variable":"AWS_DEFAULT_REGION",
-        "type":"string",
-        "default":"",
-        "required":"false"
+        "name": "vsphere-ip",
+        "short_description": "VSphere IP [*VSphere only*]",
+        "description": "VSpere IP Address",
+        "variable": "VSPHERE_IP",
+        "type": "string",
+        "default": "",
+        "required": "false"
     },
     {
-        "name":"aws-access-key",
-	    "short_description":"AWS Access Key [*AWS only*]",
-        "description":"AWS Secret Access Key",
-        "variable":"VSPHERE_PASSWORD",
-        "type":"string",
-        "default":"",
-        "required":"false"
+        "name": "vsphere-username",
+        "short_description": "VSphere Username [*VSphere only*]",
+        "description": "VSpere IP Address",
+        "variable": "VSPHERE_USERNAME",
+        "type": "string",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "vsphere-password",
+        "short_description": "VSphere Password [*VSphere only*]",
+        "description": "VSpere password",
+        "variable": "VSPHERE_PASSWORD",
+        "type": "string",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "aws-access-key-id",
+        "short_description": "AWS Access Key Id[*AWS only*]",
+        "description": "AWS Access Key Id",
+        "variable": "AWS_ACCESS_KEY_ID",
+        "type": "string",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "aws-secret-access-key",
+        "short_description": "AWS Secret Access Key [*AWS only*]",
+        "description": "AWS Secret Access Key",
+        "variable": "AWS_SECRET_ACCESS_KEY",
+        "type": "string",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "aws-default-region",
+        "short_description": "AWS default region [*AWS only*]",
+        "description": "AWS default region",
+        "variable": "AWS_DEFAULT_REGION",
+        "type": "string",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "bmc-user",
+        "short_description": "Bare Metal Cloud Username [*Bare Metal only*]",
+        "description": "Only needed for Baremetal ( bm ) - IPMI/bmc username",
+        "variable": "BMC_USER",
+        "type": "string",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "bmc-password",
+        "short_description": "Bare Metal Cloud Username [*Bare Metal only*]",
+        "description": "Only needed for Baremetal ( bm ) - IPMI/bmc password",
+        "variable": "BMC_PASSWORD",
+        "type": "string",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "bmc-address",
+        "short_description": "Bare Metal Cloud Username [*Bare Metal only*]",
+        "description": "Only needed for Baremetal ( bm ) - IPMI/bmc address",
+        "variable": "BMC_ADDR",
+        "type": "string",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "ibmc-address",
+        "short_description": "IBM Cloud URL [*IBM Cloud only*]",
+        "description": "IBM Cloud URL",
+        "variable": "IBMC_URL",
+        "type": "string",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "ibmc-api-key",
+        "short_description": "IBM Cloud API key [*IBM Cloud only*]",
+        "description": "IBM Cloud API Key",
+        "variable": "IBMC_APIKEY",
+        "type": "string",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "azure-tenant",
+        "short_description": "Azure Tenant [*Azure only*]",
+        "description": "Azure Tenant",
+        "variable": "AZURE_TENANT_ID",
+        "type": "string",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "azure-client-secret",
+        "short_description": "Azure Client Secret [*Azure only*]",
+        "description": "IBM Cloud API Key",
+        "variable": "IBMC_APIKEY",
+        "type": "string",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "azure-client-id",
+        "short_description": "Azure Client ID [*Azure only*]",
+        "description": "IBM Cloud API Key",
+        "variable": "AZURE_CLIENT_ID",
+        "type": "string",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "gcp-application-credentials",
+        "short_description": "GCP application credentials [*GCP only*]",
+        "description": "GCP application credentials file location",
+        "variable": "GOOGLE_APPLICATION_CREDENTIALS",
+        "type": "file",
+        "required": "false"
     }
-
 ]

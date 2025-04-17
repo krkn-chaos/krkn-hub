@@ -130,15 +130,6 @@
         "required": "false"
     },
     {
-        "name": "aws-access-key",
-        "short_description": "AWS Access Key [*AWS only*]",
-        "description": "VSpere password",
-        "variable": "VSPHERE_PASSWORD",
-        "type": "string",
-        "default": "",
-        "required": "false"
-    },
-    {
         "name": "bmc-user",
         "short_description": "Bare Metal Cloud Username [*Bare Metal only*]",
         "description": "Only needed for Baremetal ( bm ) - IPMI/bmc username",
@@ -208,6 +199,14 @@
         "variable": "AZURE_CLIENT_ID",
         "type": "string",
         "default": "",
+        "required": "false"
+    },
+    {
+        "name": "gcp-application-credentials",
+        "short_description": "GCP application credentials [*GCP only*]",
+        "description": "GCP application credentials file location",
+        "variable": "GOOGLE_APPLICATION_CREDENTIALS",
+        "type": "file",
         "required": "false"
     }
 ]
