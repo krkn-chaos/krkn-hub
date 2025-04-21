@@ -186,8 +186,8 @@
     {
         "name": "azure-client-secret",
         "short_description": "Azure Client Secret [*Azure only*]",
-        "description": "IBM Cloud API Key",
-        "variable": "IBMC_APIKEY",
+        "description": "Azure Client Secret",
+        "variable": "AZURE_CLIENT_SECRET",
         "type": "string",
         "default": "",
         "required": "false"
@@ -195,8 +195,17 @@
     {
         "name": "azure-client-id",
         "short_description": "Azure Client ID [*Azure only*]",
-        "description": "IBM Cloud API Key",
+        "description": "Azure Client ID",
         "variable": "AZURE_CLIENT_ID",
+        "type": "string",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "azure-subscription-id",
+        "short_description": "Azure Subscription ID [*Azure only*]",
+        "description": "Azure Subscription ID",
+        "variable": "AZURE_SUBSCRIPTION_ID",
         "type": "string",
         "default": "",
         "required": "false"
@@ -207,6 +216,7 @@
         "description": "GCP application credentials file location",
         "variable": "GOOGLE_APPLICATION_CREDENTIALS",
         "type": "file",
+        "default": "",
         "required": "false"
     }
 ]
