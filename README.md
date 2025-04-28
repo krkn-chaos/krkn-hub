@@ -2,8 +2,11 @@
 
 Hosts container images and wrapper for running scenarios supported by [Krkn](https://github.com/krkn-chaos/krkn), a chaos testing tool for Kubernetes clusters to ensure it is resilient to failures. All we need to do is run the containers with the respective environment variables defined as supported by the scenarios without having to maintain and tweak files!
 
+### Website 
+[Kraken Website](https://krkn-chaos.dev) is the one stop shop for all things Kraken.
+The website contains comprehensive information about the workflow, supported scenarios, and detailed descriptions of each scenario. It also provides the necessary configurations needed to run Kraken, along with insights into performance monitoring and signaling features.
 
-### Supported chaos scenarios
+<!-- ### Supported chaos scenarios
 
 Scenario   | Description                                                      | Working
 ------------------------------------------- |------------------------------------------------------------------| -------------------- |  
@@ -22,9 +25,9 @@ Scenario   | Description                                                      | 
 [Network Chaos](docs/network-chaos.md) | Introduces network latency, packet loss, bandwidth restriction in the egress traffic of a Node's interface using tc and Netem | :heavy_check_mark: | 
 [Pod Network Chaos](docs/pod-network-chaos.md) | Introduces network chaos at pod level                            | :heavy_check_mark: |
 [Service Hijacking](docs/service-hijacking.md) | Hijacks a service http traffic to simulate custom HTTP responses | :heavy_check_mark: |
-[SYN Flood](docs/syn-flood.md) | Simulates a user-defined surge of TCP SYN requests directed at one or more services | :heavy_check_mark: |
+[SYN Flood](docs/syn-flood.md) | Simulates a user-defined surge of TCP SYN requests directed at one or more services | :heavy_check_mark: | -->
 
-### Utilities
+<!-- ### Utilities
 
 Utility | Description | Working|
 --------|-------------|--------|
@@ -57,4 +60,4 @@ For example:
 Refer to the 2 docs below to be able to test your own images with any changes and be able to contribute them to the repository
 
 - [Testing Your Changes](docs/test_your_changes.md)
-- [Contribute](docs/contribute.md)
+- [Contribute](docs/contribute.md) -->
