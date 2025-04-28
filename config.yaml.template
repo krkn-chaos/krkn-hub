@@ -67,3 +67,4 @@ health_checks:                                                  # Utilizing heal
           bearer_token: "$HEALTH_CHECK_BEARER_TOKEN"
           auth: "$HEALTH_CHECK_AUTH"
           exit_on_failure: "$HEALTH_CHECK_EXIT_ON_FAILURE"
+          verify_url: "$HEALTH_CHECK_VERIFY"
