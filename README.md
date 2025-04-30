@@ -1,10 +1,10 @@
 # Krkn-hub aka kraken-hub
 
-Hosts container images and wrapper for running scenarios supported by [Krkn](https://github.com/krkn-chaos/krkn), a chaos testing tool for Kubernetes clusters to ensure it is resilient to failures. All we need to do is run the containers with the respective environment variables defined as supported by the scenarios without having to maintain and tweak files!
+Hosts container images and wrapper for running scenarios supported by [Krkn](https://krkn-chaos.dev/docs/), a chaos testing tool for Kubernetes clusters to ensure it is resilient to failures. All we need to do is run the containers with the respective environment variables defined as supported by the scenarios without having to maintain and tweak files!
 
 ### Documentation 
-[Kraken Website](https://krkn-chaos.dev/docs/) is the one stop shop for all things Kraken.
-The website contains comprehensive information about the workflow, supported scenarios, and detailed descriptions of each scenario. It also provides the necessary configurations needed to run Kraken, along with insights into performance monitoring and signaling features.
+[Krkn-Hub Documentation](https://krkn-chaos.dev/docs/krkn-hub/) is your go-to resource for all things Krkn-Hub.  
+The documentation provides detailed information about the supported scenarios, how to configure and run them using Krkn-Hub, and insights into leveraging the tool for chaos testing. It also includes setup instructions, usage examples, and best practices for integrating Krkn-Hub into your Kubernetes workflows.  
 
 <!-- ### Supported chaos scenarios
 
