@@ -54,6 +54,11 @@ services:
         context: ./
         dockerfile: ./node-io-hog/Dockerfile
       image: quay.io/krkn-chaos/krkn-hub:node-io-hog
+    node-network-filter:
+      build:
+        context: ./
+        dockerfile: ./node-network-filter/Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:node-network-filter
     service-disruption-scenarios:
       build:
         context: ./
