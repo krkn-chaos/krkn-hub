@@ -14,7 +14,7 @@
         "description": "Cloud platform on top of which cluster is running",
         "variable": "CLOUD_TYPE",
         "type": "enum",
-        "allowed_values": "aws",
+        "allowed_values": "aws,azure,gcp,vmware,ibmcloud,bm",
         "separator": ",",
         "default": "aws",
         "required": "false"
@@ -44,7 +44,8 @@
         "variable": "VSPHERE_USERNAME",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "vsphere-password",
@@ -53,7 +54,8 @@
         "variable": "VSPHERE_PASSWORD",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "aws-access-key-id",
@@ -62,7 +64,8 @@
         "variable": "AWS_ACCESS_KEY_ID",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "aws-secret-access-key",
@@ -71,7 +74,8 @@
         "variable": "AWS_SECRET_ACCESS_KEY",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "aws-default-region",
@@ -80,7 +84,8 @@
         "variable": "AWS_DEFAULT_REGION",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "bmc-user",
@@ -89,7 +94,8 @@
         "variable": "BMC_USER",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "bmc-password",
@@ -98,7 +104,8 @@
         "variable": "BMC_PASSWORD",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "bmc-address",
@@ -125,7 +132,8 @@
         "variable": "IBMC_APIKEY",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "azure-tenant",
@@ -134,22 +142,34 @@
         "variable": "AZURE_TENANT_ID",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "azure-client-secret",
         "short_description": "Azure Client Secret [*Azure only*]",
-        "description": "IBM Cloud API Key",
-        "variable": "IBMC_APIKEY",
+        "description": "Azure Client Secret",
+        "variable": "AZURE_CLIENT_SECRET",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "azure-client-id",
         "short_description": "Azure Client ID [*Azure only*]",
-        "description": "IBM Cloud API Key",
+        "description": "Azure Client ID",
         "variable": "AZURE_CLIENT_ID",
+        "type": "string",
+        "default": "",
+        "required": "false",
+        "secret": "true"
+    },
+    {
+        "name": "azure-subscription-id",
+        "short_description": "Azure Subscription ID [*Azure only*]",
+        "description": "Azure Subscription ID",
+        "variable": "AZURE_SUBSCRIPTION_ID",
         "type": "string",
         "default": "",
         "required": "false"
@@ -160,6 +180,7 @@
         "description": "GCP application credentials file location",
         "variable": "GOOGLE_APPLICATION_CREDENTIALS",
         "type": "file",
-        "required": "false"
+        "required": "false",
+        "mount_path": "/home/krkn/osServiceAccount.json"
     }
 ]

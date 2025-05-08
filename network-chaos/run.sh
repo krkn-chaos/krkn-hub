@@ -16,13 +16,15 @@ if [[ $TRAFFIC_TYPE == "egress" ]]; then
   envsubst < /home/krkn/kraken/scenarios/network_chaos_egress.yaml.template > /home/krkn/kraken/scenarios/network_chaos.yaml
 elif [[ $TRAFFIC_TYPE == "ingress" ]]; then
   envsubst < /home/krkn/kraken/scenarios/network_chaos_ingress.yaml.template > /home/krkn/kraken/scenarios/network_chaos.yaml
-  export SCENARIO_TYPE="plugin_scenarios"
+  export SCENARIO_TYPE="ingress_node_scenarios"
 else
   echo "Supported TRAFFIC_TYPE options are egress or ingress, please check"
   exit 1
 fi
 
 envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/config/network_chaos_config.yaml
+
+cat /home/krkn/kraken/scenarios/network_chaos.yaml
 
 # Run Kraken
 cd /home/krkn/kraken

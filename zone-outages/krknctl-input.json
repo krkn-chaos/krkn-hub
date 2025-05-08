@@ -25,7 +25,8 @@
         "description": "cluster virtual private network to target",
         "variable": "VPC_ID",
         "type": "string",
-        "required": "true"
+        "default": "",
+        "required": "false"
     },
     {
         "name": "subnet-id",
@@ -33,6 +34,7 @@
         "description": "subnet-id to deny both ingress and egress traffic ( REQUIRED ). Format: [subnet1, subnet2]",
         "variable": "SUBNET_ID",
         "type": "string",
+        "default": "",
         "validator": "^$|^\\[([a-zA-Z0-9._-](,)?)+[^,]\\]$",
         "required": "false"
     },
@@ -43,7 +45,8 @@
         "variable": "AWS_ACCESS_KEY_ID",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "aws-secret-access-key",
@@ -52,7 +55,8 @@
         "variable": "AWS_SECRET_ACCESS_KEY",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "aws-default-region",
@@ -61,7 +65,8 @@
         "variable": "AWS_DEFAULT_REGION",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "zone",
@@ -69,15 +74,16 @@
         "description": "cluster zone to target",
         "variable": "ZONE",
         "type": "string",
-        "required": "true"
+        "default": "",
+        "required": "false"
     },
     {
         "name": "gcp-application-credentials",
         "short_description": "GCP application credentials [*GCP only*]",
         "description": "GCP application credentials file location",
         "variable": "GOOGLE_APPLICATION_CREDENTIALS",
-        "type": "string",
-        "default": "",
-        "required": "false"
+        "type": "file",
+        "required": "false",
+        "mount_path": "/home/krkn/osServiceAccount.json"
     }
 ]
