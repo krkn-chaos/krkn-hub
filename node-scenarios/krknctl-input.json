@@ -91,7 +91,8 @@
         "variable": "VSPHERE_USERNAME",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "vsphere-password",
@@ -100,7 +101,8 @@
         "variable": "VSPHERE_PASSWORD",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "aws-access-key-id",
@@ -109,7 +111,8 @@
         "variable": "AWS_ACCESS_KEY_ID",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "aws-secret-access-key",
@@ -118,7 +121,8 @@
         "variable": "AWS_SECRET_ACCESS_KEY",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "aws-default-region",
@@ -127,7 +131,8 @@
         "variable": "AWS_DEFAULT_REGION",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "bmc-user",
@@ -136,7 +141,8 @@
         "variable": "BMC_USER",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "bmc-password",
@@ -145,7 +151,8 @@
         "variable": "BMC_PASSWORD",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "bmc-address",
@@ -172,7 +179,8 @@
         "variable": "IBMC_APIKEY",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "azure-tenant",
@@ -190,7 +198,8 @@
         "variable": "AZURE_CLIENT_SECRET",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "azure-client-id",
@@ -199,7 +208,8 @@
         "variable": "AZURE_CLIENT_ID",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "azure-subscription-id",
@@ -208,7 +218,8 @@
         "variable": "AZURE_SUBSCRIPTION_ID",
         "type": "string",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "secret": "true"
     },
     {
         "name": "gcp-application-credentials",
