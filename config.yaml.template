@@ -1,5 +1,4 @@
 kraken:
-    distribution: $DISTRIBUTION                                # Distribution can be kubernetes or openshift
     kubeconfig_path: $KRKN_KUBE_CONFIG                   # Path to kubeconfig
     exit_on_failure: False                                 # Exit when a post action scenario fails
     port: $PORT
@@ -61,10 +60,10 @@ elastic:
     telemetry_index: "$ES_TELEMETRY_INDEX"
 
 health_checks:                                                  # Utilizing health check endpoints to observe application behavior during chaos injection.
-    interval: "$HEALTH_CHECK_INTERVAL"
+    interval: $HEALTH_CHECK_INTERVAL
     config:
         - url: "$HEALTH_CHECK_URL"
           bearer_token: "$HEALTH_CHECK_BEARER_TOKEN"
           auth: "$HEALTH_CHECK_AUTH"
-          exit_on_failure: "$HEALTH_CHECK_EXIT_ON_FAILURE"
-          verify_url: "$HEALTH_CHECK_VERIFY"
+          exit_on_failure: $HEALTH_CHECK_EXIT_ON_FAILURE
+          verify_url: $HEALTH_CHECK_VERIFY
