@@ -6,6 +6,7 @@ io-write-bytes: $IO_WRITE_BYTES
 image: $IMAGE
 namespace: $NAMESPACE
 node-selector: $NODE_SELECTOR
+taints: $TAINTS
 number-of-nodes: $NUMBER_OF_NODES
 target-pod-folder: /hog-data
 target-pod-volume:
