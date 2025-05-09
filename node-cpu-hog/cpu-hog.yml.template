@@ -6,6 +6,7 @@ namespace: $NAMESPACE
 cpu-load-percentage: $NODE_CPU_PERCENTAGE
 cpu-method: all
 node-selector: $NODE_SELECTOR
+taints: $TAINTS
 number-of-nodes: $NUMBER_OF_NODES
 
 
