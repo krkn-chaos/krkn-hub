@@ -7,6 +7,7 @@ export IO_WORKERS=${IO_WORKERS:=""}
 export IO_WRITE_BYTES=${IO_WRITE_BYTES:="10m"}
 export NAMESPACE=${NAMESPACE:="default"}
 export NODE_SELECTOR=${NODE_SELECTOR:=""}
+export NODE_NAME=${NODE_NAME:=""}
 export TAINTS=${TAINTS:="[]"}
 export NUMBER_OF_NODES=${NUMBER_OF_NODES:=""}
 export NODE_MOUNT_PATH=${NODE_MOUNT_PATH:="/root"}
