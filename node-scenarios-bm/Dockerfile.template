@@ -1,0 +1,31 @@
+# Dockerfile for kraken
+
+FROM quay.io/krkn-chaos/krkn:latest
+
+ENV KUBECONFIG /home/krkn/.kube/config
+
+USER root
+RUN yum install -y OpenIPMI ipmitool
+USER krkn
+
+# Copy configurations
+COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
+COPY metrics_config.yaml.template /home/krkn/kraken/config/kube_burner.yaml.template
+
+COPY node-scenarios-bm/config-schema.json /home/krkn/kraken/scenarios/node-scenarios-bm.json
+COPY node-scenarios-bm/validate_config.py /home/krkn/validate_config.py
+
+COPY node-scenarios-bm/env.sh /home/krkn/env.sh
+COPY env.sh /home/krkn/main_env.sh
+COPY node-scenarios-bm/run.sh /home/krkn/run.sh
+COPY common_run.sh /home/krkn/common_run.sh
+
+
+LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
+LABEL krknctl.title="Node scenarios Bare Metal"
+LABEL krknctl.description="This scenario disrupts the node(s) matching the label on a Bare Metal Kubernetes/OpenShift \
+cluster. Actions/disruptions supported are listed. For further infos visit https://github.com/krkn-chaos/krkn/blob/main/docs/node_scenarios.md"
+
+LABEL krknctl.input_fields='$KRKNCTL_INPUT'
+
+ENTRYPOINT /home/krkn/run.sh
