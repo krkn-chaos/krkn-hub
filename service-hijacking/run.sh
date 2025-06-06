@@ -12,17 +12,17 @@ checks
 
 # check if SCENARIO_BASE64 is set
 
-[ $SCENARIO_BASE64 == 1 ] && \
-( echo "[ERROR] please set SCENARIO_BASE64 variable with a valid base64 encoded hijacking scenario
-eg. podman run -e SCENARIO_BASE64=\$(base64 -w0 ~/krkn/scenarios/kube/service_hijacking.yaml) [...] " && \
-exit 1 )
+if [ "$SCENARIO_BASE64" == "1" ]; then
+  echo "[ERROR] please set SCENARIO_BASE64 variable with a valid base64 encoded bare metal node scenario eg. podman run -e SCENARIO_BASE64=\$(base64 -w0 ~/krkn/scenarios/openshift/service_hijacking.yml) [...] "
+  exit 1
+fi
 
 
 # Substitute config with environment vars defined
-echo $SCENARIO_BASE64 | base64 -d >> /home/krkn/kraken/scenarios/service_hijacking.yaml || \
-(echo -e "[ERROR] Unable to decode SCENARIO_BASE64, bad base64 format please refer to documentation" \
-&& exit 1)
-
+if ! echo "$SCENARIO_BASE64" | base64 -d >> /home/krkn/kraken/scenarios/service_hijacking.yaml; then
+  echo -e "[ERROR] Unable to decode SCENARIO_BASE64, bad base64 format please refer to documentation"
+  exit 1
+fi
 # Validate scenario against schema
 
 python3.9 /home/krkn/validate_config.py -y /home/krkn/kraken/scenarios/service_hijacking.yaml \

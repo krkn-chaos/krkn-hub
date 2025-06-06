@@ -19,6 +19,11 @@ services:
             context: ./
             dockerfile: ./node-scenarios/Dockerfile
         image: quay.io/krkn-chaos/krkn-hub:node-scenarios
+    node-scenarios-bm:
+        build:
+            context: ./
+            dockerfile: ./node-scenarios-bm/Dockerfile
+        image: quay.io/krkn-chaos/krkn-hub:node-scenarios-bm
     zone-outages:
       build:
         context: ./

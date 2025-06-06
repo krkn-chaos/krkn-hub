@@ -1,0 +1,10 @@
+[
+    {
+        "name":"scenario-file-path",
+        "short_description":"Scenario file path",
+        "description": "The absolute path of the scenario file compiled following the documentation",
+        "variable": "SCENARIO_BASE64",
+        "type": "file_base64",
+        "required": "true"
+    }
+]
