@@ -47,6 +47,16 @@
             "enum": ["bm"],
             "description": "Cloud type on which Kubernetes/OpenShift runs (e.g., 'bm' for baremetal)."
           },
+          "parallel": {
+            "type": "string",
+            "enum": ["true", "false", "True", "False"],
+            "description": "Cloud type on which Kubernetes/OpenShift runs (e.g., 'bm' for baremetal)."
+          },
+          "kube_check": {
+            "type": "string",
+            "enum": ["true","false", "True", "False"],
+            "description": "Cloud type on which Kubernetes/OpenShift runs (e.g., 'bm' for baremetal)."
+          },
           "bmc_user": {
             "type": "string",
             "description": "Default IPMI username for baremetal nodes. Optional if specified for all machines."
