@@ -79,7 +79,7 @@ $ export IBMC_APIKEY=<ibmcloud_api_key>
 
 ```
 
-Baremetal
+Baremetal <br/>
 See [bare metal documentation](node-scenarios-bm.md)
 
 Google Cloud Platform
