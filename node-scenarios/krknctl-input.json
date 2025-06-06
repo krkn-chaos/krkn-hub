@@ -47,6 +47,28 @@
         "required": "false"
     },
     {
+        "name": "kube-check",
+        "short_description": "Kube Check",
+        "description": "Connect to the kubernetes api to see if the node gets to a certain state during the node scenario",
+        "variable": "KUBE_CHECK",
+        "type": "enum",
+        "allowed_values": "true,false",
+        "separator": ",",
+        "default": "true",
+        "required": "false"
+    },
+    {
+        "name": "parallel",
+        "short_description": "Parallel",
+        "description": "Run action on label or node name in parallel or sequential, defaults to sequential (false)",
+        "variable": "PARALLEL",
+        "type": "enum",
+        "allowed_values": "true,false",
+        "separator": ",",
+        "default": "false",
+        "required": "false"
+    },
+    {
         "name": "cloud-type",
         "short_description": "Cloud Type",
         "description": "Cloud platform on top of which cluster is running, supported platforms - aws, azure, gcp, vmware, ibmcloud, bm",
