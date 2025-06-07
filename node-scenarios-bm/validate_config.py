@@ -27,11 +27,9 @@ try:
     print("[SUCCESS] scenario configuration successfully validated")
     sys.exit(0)
 except ValidationError as e:
-    print("[ERROR] Bad configuration file, please refer to the Krkn Documentation https://github.com/krkn-chaos/krkn/blob/main/docs/service_hijacking_scenarios.md")
+    print("[ERROR] Bad configuration file, please refer to the Krkn Documentation: https://krkn-chaos.dev/docs/scenarios/node-scenarios/node-scenarios-bm-krkn-hub")
     print(str(e))
     sys.exit(1)
 except Exception as e:
     print(f"[ERROR] Failed to validate file with exception: {str(e)}")
     sys.exit(1)
-
-
