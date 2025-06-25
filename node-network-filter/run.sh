@@ -20,6 +20,7 @@ yq -i ".[0].instance_count=$INSTANCE_COUNT" $SCENARIO_FOLDER/network-filter.yml
 yq -i ".[0].execution=\"$EXECUTION\"" $SCENARIO_FOLDER/network-filter.yml
 yq -i ".[0].ingress=\"$INGRESS\"" $SCENARIO_FOLDER/network-filter.yml
 yq -i ".[0].egress=\"$EGRESS\"" $SCENARIO_FOLDER/network-filter.yml
+yq -i ".[0].image=\"$IMAGE\"" $SCENARIO_FOLDER/network-filter.yml
 
 IFS=',' read -ra array <<< "$INTERFACES"
 
