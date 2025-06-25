@@ -82,10 +82,10 @@
     "required": "true"
   },
   {
-    "name": "workload-image",
+    "name": "image",
     "short_description": "The network chaos injection workload container image",
     "description": "The network chaos injection workload container image",
-    "variable": "WORKLOAD_IMAGE",
+    "variable": "IMAGE",
     "type": "string",
     "default": "quay.io/krkn-chaos/krkn-network-chaos:latest",
     "required": "false"
