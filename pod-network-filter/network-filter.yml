@@ -1,0 +1,15 @@
+- id: pod_network_filter
+  wait_duration: 0
+  test_duration: 100
+  label_selector: ''
+  namespace: 'default'
+  instance_count: 1
+  execution: parallel
+  ingress: false
+  egress: true
+  target: node
+  interfaces: []
+  ports: []
+  protocols:
+    - tcp
+  image: quay.io/krkn-chaos/krkn-network-chaos:latest

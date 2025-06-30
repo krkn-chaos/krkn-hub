@@ -1,0 +1,112 @@
+[
+  {
+    "name": "chaos-duration",
+    "short_description": "Chaos Duration",
+    "description": "Set chaos duration (in sec) as desired",
+    "variable": "TOTAL_CHAOS_DURATION",
+    "type": "number",
+    "default": "60",
+    "required": "false"
+  },
+  {
+    "name": "node-selector",
+    "short_description": "Node Selector",
+    "description": "Node selector where the scenario containers will be scheduled in the format \"<selector>=<value>\". NOTE:  Will be instantiated a container per each node selected with the same scenario options. If left empty a random node will be selected",
+    "variable": "NODE_SELECTOR",
+    "type": "string",
+    "validator": "^$|^.+\\=.*$",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "target",
+    "short_description": "Scenario Target",
+    "description": "The Node name to target (if label selector not specified)",
+    "variable": "TARGET",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "namespace",
+    "short_description": "Namespace",
+    "description": "Namespace where the scenario container will be deployed",
+    "variable": "NAMESPACE",
+    "type": "string",
+    "default": "default",
+    "required": "false"
+  },
+  {
+    "name": "instance-count",
+    "short_description": "Number of instances to target",
+    "description": "Number of instances to target if more the one is selected by the NODE_SELECTOR",
+    "variable": "INSTANCE_COUNT",
+    "type": "number",
+    "default": "1",
+    "required": "false"
+  },
+  {
+    "name": "execution",
+    "short_description": "Execution mode",
+    "description": "When multiple nodes are selected the execution on all of them can be performed in serial or in parallel",
+    "variable": "EXECUTION",
+    "type": "enum",
+    "allowed_values": "parallel,serial",
+    "separator": ",",
+    "required": "false"
+  },
+  {
+    "name": "ingress",
+    "short_description": "Filter incoming traffic",
+    "description": "Incoming network traffic will be filtered",
+    "variable": "INGRESS",
+    "type": "boolean",
+    "required": "true"
+  },
+  {
+    "name": "egress",
+    "short_description": "Filter outgoing traffic",
+    "description": "Outgoing network traffic will be filtered",
+    "variable": "EGRESS",
+    "type": "boolean",
+    "required": "true"
+  },
+  {
+    "name": "interfaces",
+    "short_description": "Network interfaces to filter outgoing traffic (if more than one separated by comma)",
+    "description": "Network interfaces to filter outgoing traffic (if more than one separated by comma eg. eth0,eth1,eth2)",
+    "variable": "INTERFACES",
+    "type": "string",
+    "default": "",
+    "validator": "^$|^[a-zA-Z0-9]+(,[a-zA-Z0-9]+)*$",
+    "required": "false"
+  },
+  {
+    "name": "ports",
+    "short_description": "Network ports to filter traffic (if more than one separated by comma)",
+    "description": "Network ports to filter traffic (if more than one separated by comma eg. 8080,8081,8082)",
+    "variable": "PORTS",
+    "type": "string",
+    "validator": "^\\d+(,\\d+)*$",
+    "required": "true"
+  },
+  {
+    "name": "image",
+    "short_description": "The network chaos injection workload container image",
+    "description": "The network chaos injection workload container image",
+    "variable": "IMAGE",
+    "type": "string",
+    "default": "quay.io/krkn-chaos/krkn-network-chaos:latest",
+    "required": "false"
+  },
+  {
+    "name": "protocols",
+    "short_description": "The network protocols that will be filtered",
+    "description": "The network protocols that will be filtered (tcp, udp or both of them comma separated e.g. tcp,udp)",
+    "variable": "PROTOCOLS",
+    "type": "string",
+    "default": "tcp",
+    "validator": "^$|^tcp$|^udp$|^tcp,udp$|^udp,tcp$",
+    "required": "false"
+  }
+]
