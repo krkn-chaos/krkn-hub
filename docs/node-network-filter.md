@@ -35,9 +35,9 @@ See list of variables that apply to all scenarios [here](all_scenarios_env.md) t
 |  Parameter                    | Description                                                           | Default
 |-------------------------------| -----------------------------------------------------------------     | ------------------------------------ |
 | TOTAL_CHAOS_DURATION          | set chaos duration (in sec) as desired                                | 60                                  |
-| NODE_SELECTOR                 | defines the node selector for choosing target nodes. If not specified, one schedulable node in the cluster will be chosen at random. If multiple nodes match the selector, all of them will be subjected to stress. If number-of-nodes is specified, that many nodes will be randomly selected from those identified by the selector.                                     | "node-role.kubernetes.io/worker=" |                             |
+| NODE_SELECTOR                 | defines the node selector for choosing target nodes. If not specified, one schedulable node in the cluster will be chosen at random. If multiple nodes match the selector, all of them will be subjected to stress.| "node-role.kubernetes.io/worker=" |
 | NODE_NAME                     | the node name to target (if label selector not selected|                        
-| INSTANCE_COUNT               | restricts the number of selected nodes by the selector                                     | "1" |                             |
+| INSTANCE_COUNT               | restricts the number of selected nodes by the selector                                     | "1" |
 | EXECUTION                         | sets the execution mode of the scenario on multiple nodes, can be parallel or serial|"parallel"|
 | INGRESS                       | sets the network filter on incoming traffic, can be true or false| false |
 | EGRESS                       | sets the network filter on outgoing traffic, can be true or false| true |                       
@@ -49,5 +49,5 @@ See list of variables that apply to all scenarios [here](all_scenarios_env.md) t
 
 **NOTE** In case of using custom metrics profile or alerts profile when `CAPTURE_METRICS` or `ENABLE_ALERTS` is enabled, mount the metrics profile from the host on which the container is run using podman/docker under `/home/krkn/kraken/config/metrics-aggregated.yaml` and `/home/krkn/kraken/config/alerts`. For example:
 ```
-$ podman run --name=<container_name> --net=host --env-host=true -v <path-to-custom-metrics-profile>:/home/krkn/kraken/config/metrics-aggregated.yaml -v <path-to-custom-alerts-profile>:/home/krkn/kraken/config/alerts -v <path-to-kube-config>:/home/krkn/.kube/config:Z -d quay.io/krkn-chaos/krkn-hub:node-network-traffic
+$ podman run --name=<container_name> --net=host --env-host=true -v <path-to-custom-metrics-profile>:/home/krkn/kraken/config/metrics-aggregated.yaml -v <path-to-custom-alerts-profile>:/home/krkn/kraken/config/alerts -v <path-to-kube-config>:/home/krkn/.kube/config:Z -d quay.io/krkn-chaos/krkn-hub:node-network-filter
 ```
