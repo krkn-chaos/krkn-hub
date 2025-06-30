@@ -36,12 +36,15 @@ See list of variables that apply to all scenarios [here](all_scenarios_env.md) t
 |-------------------------------| -----------------------------------------------------------------     | ------------------------------------ |
 | TOTAL_CHAOS_DURATION          | set chaos duration (in sec) as desired                                | 60                                  |
 | NODE_SELECTOR                 | defines the node selector for choosing target nodes. If not specified, one schedulable node in the cluster will be chosen at random. If multiple nodes match the selector, all of them will be subjected to stress. If number-of-nodes is specified, that many nodes will be randomly selected from those identified by the selector.                                     | "node-role.kubernetes.io/worker=" |                             |
+| NODE_NAME                     | the node name to target (if label selector not selected|                        
 | INSTANCE_COUNT               | restricts the number of selected nodes by the selector                                     | "1" |                             |
 | EXECUTION                         | sets the execution mode of the scenario on multiple nodes, can be parallel or serial|"parallel"|
 | INGRESS                       | sets the network filter on incoming traffic, can be true or false| false |
 | EGRESS                       | sets the network filter on outgoing traffic, can be true or false| true |                       
 | INTERFACES                   | a list of comma separated names of network interfaces (eg. eth0 or eth0,eth1,eth2) to filter for outgoing traffic | "" |
 | PORTS                        | a list of comma separated port numbers (eg 8080 or 8080,8081,8082) to filter for both outgoing and incoming traffic | "" |
+| PROTOCOLS                    | a list of comma separated protocols to filter (tcp, udp or both) |
+
 
 
 **NOTE** In case of using custom metrics profile or alerts profile when `CAPTURE_METRICS` or `ENABLE_ALERTS` is enabled, mount the metrics profile from the host on which the container is run using podman/docker under `/home/krkn/kraken/config/metrics-aggregated.yaml` and `/home/krkn/kraken/config/alerts`. For example:

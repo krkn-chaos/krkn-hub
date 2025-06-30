@@ -19,10 +19,10 @@
     "required": "false"
   },
   {
-    "name": "target",
-    "short_description": "Scenario Target",
+    "name": "node-name",
+    "short_description": "Node Name",
     "description": "The Node name to target (if label selector not specified)",
-    "variable": "TARGET",
+    "variable": "NODE_NAME",
     "type": "string",
     "default": "",
     "required": "false"
