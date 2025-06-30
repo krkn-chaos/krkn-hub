@@ -10,3 +10,5 @@ export PORTS=${PORTS:=""}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=network_chaos_ng_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kube/network-filter.yml}
 export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-network-chaos:latest"}
+export PROTOCOLS=${PROTOCOLS:="tcp"}
+export TARGET=${TARGET:=""}
