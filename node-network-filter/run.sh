@@ -21,6 +21,7 @@ yq -i ".[0].execution=\"$EXECUTION\"" $SCENARIO_FOLDER/network-filter.yml
 yq -i ".[0].ingress=\"$INGRESS\"" $SCENARIO_FOLDER/network-filter.yml
 yq -i ".[0].egress=\"$EGRESS\"" $SCENARIO_FOLDER/network-filter.yml
 yq -i ".[0].image=\"$IMAGE\"" $SCENARIO_FOLDER/network-filter.yml
+yq -i ".[0].target=\"$NODE_NAME\"" $SCENARIO_FOLDER/network-filter.yml
 
 IFS=',' read -ra array <<< "$INTERFACES"
 
@@ -32,6 +33,12 @@ IFS=',' read -ra array <<< "$PORTS"
 
 for ((i=0; i<${#array[@]}; i++)); do
   yq -i ".[0].ports[$i]=${array[$i]}" $SCENARIO_FOLDER/network-filter.yml
+done
+
+IFS=',' read -ra array <<< "$PROTOCOLS"
+
+for ((i=0; i<${#array[@]}; i++)); do
+  yq -i ".[0].protocols[$i]=${array[$i]}" $SCENARIO_FOLDER/network-filter.yml
 done
 
 envsubst < $KRAKEN_FOLDER/config/config.yaml.template > $KRAKEN_FOLDER/config/network-filter-config.yaml

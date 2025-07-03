@@ -19,6 +19,15 @@
     "required": "false"
   },
   {
+    "name": "node-name",
+    "short_description": "Node Name",
+    "description": "The Node name to target (if label selector not specified)",
+    "variable": "NODE_NAME",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  },
+  {
     "name": "namespace",
     "short_description": "Namespace",
     "description": "Namespace where the scenario container will be deployed",
@@ -88,6 +97,16 @@
     "variable": "IMAGE",
     "type": "string",
     "default": "quay.io/krkn-chaos/krkn-network-chaos:latest",
+    "required": "false"
+  },
+  {
+    "name": "protocols",
+    "short_description": "The network protocols that will be filtered",
+    "description": "The network protocols that will be filtered (tcp, udp or both of them comma separated)",
+    "variable": "PROTOCOLS",
+    "type": "string",
+    "default": "tcp",
+    "validator": "^$|^tcp$|^udp$|^tcp,udp$|^udp,tcp$",
     "required": "false"
   }
 ]
