@@ -64,6 +64,11 @@ services:
         context: ./
         dockerfile: ./node-network-filter/Dockerfile
       image: quay.io/krkn-chaos/krkn-hub:node-network-filter
+    pod-network-filter:
+      build:
+        context: ./
+        dockerfile: ./pod-network-filter/Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:pod-network-filter
     service-disruption-scenarios:
       build:
         context: ./
