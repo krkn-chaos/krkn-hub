@@ -9,10 +9,10 @@
     "required": "false"
   },
   {
-    "name": "node-selector",
-    "short_description": "Node Selector",
-    "description": "Node selector where the scenario containers will be scheduled in the format \"<selector>=<value>\". NOTE:  Will be instantiated a container per each node selected with the same scenario options. If left empty a random node will be selected",
-    "variable": "NODE_SELECTOR",
+    "name": "pod-selector",
+    "short_description": "Pod Selector",
+    "description": "Pod selector used to target one or more pods by label",
+    "variable": "POD_SELECTOR",
     "type": "string",
     "validator": "^$|^.+\\=.*$",
     "default": "",
@@ -39,7 +39,7 @@
   {
     "name": "instance-count",
     "short_description": "Number of instances to target",
-    "description": "Number of instances to target if more the one is selected by the NODE_SELECTOR",
+    "description": "Number of instances to target if more the one is selected by the POD_SELECTOR",
     "variable": "INSTANCE_COUNT",
     "type": "number",
     "default": "1",
@@ -48,7 +48,7 @@
   {
     "name": "execution",
     "short_description": "Execution mode",
-    "description": "When multiple nodes are selected the execution on all of them can be performed in serial or in parallel",
+    "description": "When multiple pods are selected the execution on all of them can be performed in serial or in parallel",
     "variable": "EXECUTION",
     "type": "enum",
     "allowed_values": "parallel,serial",

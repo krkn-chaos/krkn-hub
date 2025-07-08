@@ -14,7 +14,7 @@ if [[ $KRKN_DEBUG == "True" ]];then
 fi
 
 yq -i ".[0].wait_duration=$TEST_DURATION" $SCENARIO_FOLDER/network-filter.yml
-yq -i ".[0].label_selector=\"$LABEL_SELECTOR\"" $SCENARIO_FOLDER/network-filter.yml
+yq -i ".[0].label_selector=\"$POD_SELECTOR\"" $SCENARIO_FOLDER/network-filter.yml
 yq -i ".[0].namespace=\"$NAMESPACE\"" $SCENARIO_FOLDER/network-filter.yml
 yq -i ".[0].instance_count=$INSTANCE_COUNT" $SCENARIO_FOLDER/network-filter.yml
 yq -i ".[0].execution=\"$EXECUTION\"" $SCENARIO_FOLDER/network-filter.yml
