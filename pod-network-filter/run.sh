@@ -38,7 +38,7 @@ done
 IFS=',' read -ra array <<< "$PROTOCOLS"
 
 for ((i=0; i<${#array[@]}; i++)); do
-  yq -i ".[0].protocols[$i]=${array[$i]}" $SCENARIO_FOLDER/network-filter.yml
+  yq -i ".[0].protocols[$i]=\"${array[$i]}\"" $SCENARIO_FOLDER/network-filter.yml
 done
 
 envsubst < $KRAKEN_FOLDER/config/config.yaml.template > $KRAKEN_FOLDER/config/network-filter-config.yaml
