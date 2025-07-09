@@ -1,0 +1,22 @@
+# Dockerfile for kraken
+
+FROM quay.io/krkn-chaos/krkn:latest
+
+ENV KUBECONFIG /home/krkn/.kube/config
+
+# Copy configurations
+COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
+COPY metrics_config.yaml.template /home/krkn/kraken/config/kube_burner.yaml.template
+COPY kubevirt-outage/env.sh /home/krkn/env.sh
+COPY env.sh /home/krkn/main_env.sh
+COPY kubevirt-outage/run.sh /home/krkn/run.sh
+COPY kubevirt-outage/kubevirt_scenario.yaml.template /home/krkn/kraken/scenarios/kubevirt_scenario.yaml.template
+COPY common_run.sh /home/krkn/common_run.sh
+USER krkn
+
+LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
+LABEL krknctl.title="Kubevirt Outage Scenarios"
+LABEL krknctl.description="Scenario to delete a vm in a CNV cluster"
+LABEL krknctl.input_fields='$KRKNCTL_INPUT'
+
+ENTRYPOINT /home/krkn/run.sh
