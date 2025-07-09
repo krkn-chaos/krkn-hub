@@ -13,7 +13,7 @@ if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
 fi
 
-yq -i ".[0].wait_duration=$TEST_DURATION" $SCENARIO_FOLDER/network-filter.yml
+yq -i ".[0].test_duration=$TEST_DURATION" $SCENARIO_FOLDER/network-filter.yml
 yq -i ".[0].label_selector=\"$POD_SELECTOR\"" $SCENARIO_FOLDER/network-filter.yml
 yq -i ".[0].namespace=\"$NAMESPACE\"" $SCENARIO_FOLDER/network-filter.yml
 yq -i ".[0].instance_count=$INSTANCE_COUNT" $SCENARIO_FOLDER/network-filter.yml
