@@ -109,3 +109,8 @@ services:
         context: ./
         dockerfile: ./syn-flood/Dockerfile
       image: quay.io/krkn-chaos/krkn-hub:syn-flood
+    kubevirt-outage:
+      build:
+        context: ./
+        dockerfile: ./kubevirt-outage/Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:kubevirt-outage

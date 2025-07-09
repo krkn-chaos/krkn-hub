@@ -1,0 +1,7 @@
+scenarios:
+  - name: "kubevirt outage test"
+    scenario: kubevirt_vm_outage
+    parameters:
+      vm_name: $VM_NAME
+      namespace: $NAMESPACE
+      timeout: $TIMEOUT

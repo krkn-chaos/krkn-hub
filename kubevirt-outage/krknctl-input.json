@@ -1,0 +1,29 @@
+[
+    {
+        "name": "namespace",
+        "short_description": "Namespace",
+        "description": "Targeted namespace in the cluster",
+        "variable": "NAMESPACE",
+        "type": "string",
+        "default": "default",
+        "required": "true"
+    },
+    {
+        "name": "vm-name",
+        "short_description": "VM Name",
+        "description": "Name of the vm to delete",
+        "type": "string",
+        "variable": "VM_NAME",
+        "default": "",
+        "required": "true"
+    },
+    {
+        "name": "timeout",
+        "short_description": "Timeout",
+        "description": "Time that scneario will wait for VM to come back",
+        "variable": "TIMEOUT",
+        "type": "number",
+        "default": "60",
+        "required": "false"
+    }
+]
