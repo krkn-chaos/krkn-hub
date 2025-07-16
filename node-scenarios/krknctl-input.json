@@ -210,7 +210,7 @@
         "description": "Disable SSL certificate verification",
         "variable": "DISABLE_SSL_VERIFICATION",
         "type": "enum",
-        "allowed_values": "true,false",
+        "allowed_values": "true,false,True,False",
         "separator": ",",
         "default": "false",
         "required": "true"
