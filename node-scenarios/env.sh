@@ -15,6 +15,7 @@ export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/node_scenario.yaml}
 export VERIFY_SESSION=${VERIFY_SESSION:="false"}
 export SKIP_OPENSHIFT_CHECKS=${SKIP_OPENSHIFT_CHECKS:="false"}
 export KUBE_CHECK=${KUBE_CHECK:=True}
+export DISABLE_SSL_VERIFICATION=${DISABLE_SSL_VERIFICATION:="false"}
 
 # Baremetal vars
 export BMC_USER=${BMC_USER:=""}
