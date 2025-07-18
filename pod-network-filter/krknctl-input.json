@@ -108,5 +108,14 @@
     "default": "tcp",
     "validator": "^$|^tcp$|^udp$|^tcp,udp$|^udp,tcp$",
     "required": "false"
+  },
+  {
+    "name": "taints",
+    "short_description": "The list of tolerations that can be assigned to the network filter workload",
+    "description": "The list of tolerations that can be assigned to the network filter workload (comma separated)",
+    "variable": "TAINTS",
+    "type": "string",
+    "default": "",
+    "required": "false"
   }
 ]

@@ -1,4 +1,4 @@
-export TEST_DURATION=$TOTAL_CHAOS_DURATION
+export TEST_DURATION=${TOTAL_CHAOS_DURATION:="60"}
 export POD_SELECTOR=${POD_SELECTOR:=""}
 export NAMESPACE=${NAMESPACE:="default"}
 export INSTANCE_COUNT=${INSTANCE_COUNT:="1"}
@@ -12,3 +12,4 @@ export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kube/network-filter.yml}
 export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-network-chaos:latest"}
 export PROTOCOLS=${PROTOCOLS:="tcp"}
 export POD_NAME=${POD_NAME:=""}
+export TAINTS=${TAINTS:=""}
