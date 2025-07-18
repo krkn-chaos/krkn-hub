@@ -205,6 +205,17 @@
         "secret": "true"
     },
     {
+        "name": "disable-ssl-verification",
+        "short_description": "Disable SSL Verification [*IBM Cloud only*]",
+        "description": "Disable SSL certificate verification",
+        "variable": "DISABLE_SSL_VERIFICATION",
+        "type": "enum",
+        "allowed_values": "true,false,True,False",
+        "separator": ",",
+        "default": "false",
+        "required": "true"
+    },
+    {
         "name": "azure-tenant",
         "short_description": "Azure Tenant [*Azure only*]",
         "description": "Azure Tenant",

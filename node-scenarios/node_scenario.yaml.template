@@ -10,3 +10,4 @@ node_scenarios:
     cloud_type: $CLOUD_TYPE                                         # cloud type on which Kubernetes/OpenShift runs
     parallel: $PARALLEL                                             # Run action on label or node name in parallel or sequential, set to true for parallel
     kube_check: $KUBE_CHECK
+    disable_ssl_verification: $DISABLE_SSL_VERIFICATION             # Disable SSL verification [*IBM Cloud only*]
