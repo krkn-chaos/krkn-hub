@@ -13,3 +13,4 @@ node_scenarios:
     bmc_info:                                                       # This section is here to specify baremetal per-machine info, so it is optional if there is no per-machine info.
       $NODE_NAME:                                                   # The node name for the baremetal machine
         bmc_addr: $BMC_ADDR                                         # Optional. For baremetal nodes with the IPMI BMC address missing from 'oc get bmh'.
+        disks: $DISKS                                               # Optional.List of disks for baremetal nodes format: ["sda", "sdb"].
