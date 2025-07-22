@@ -4,7 +4,7 @@ export NAMESPACE=${NAMESPACE:="default"}
 export INSTANCE_COUNT=${INSTANCE_COUNT:="1"}
 export EXECUTION=${EXECUTION:="parallel"}
 export INGRESS=${INGRESS:="false"}
-export EGRESS=${EGRESS:="true"}
+export EGRESS=${EGRESS:="false"}
 export INTERFACES=${INTERFACES:=""}
 export PORTS=${PORTS:=""}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=network_chaos_ng_scenarios}

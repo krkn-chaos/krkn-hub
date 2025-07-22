@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ROOT_FOLDER="/home/krkn"
 KRAKEN_FOLDER="$ROOT_FOLDER/kraken"
@@ -18,8 +18,8 @@ yq -i ".[0].label_selector=\"$LABEL_SELECTOR\"" $SCENARIO_FOLDER/network-filter.
 yq -i ".[0].namespace=\"$NAMESPACE\"" $SCENARIO_FOLDER/network-filter.yml
 yq -i ".[0].instance_count=$INSTANCE_COUNT" $SCENARIO_FOLDER/network-filter.yml
 yq -i ".[0].execution=\"$EXECUTION\"" $SCENARIO_FOLDER/network-filter.yml
-yq -i ".[0].ingress=\"$INGRESS\"" $SCENARIO_FOLDER/network-filter.yml
-yq -i ".[0].egress=\"$EGRESS\"" $SCENARIO_FOLDER/network-filter.yml
+yq -i ".[0].ingress=$INGRESS" $SCENARIO_FOLDER/network-filter.yml
+yq -i ".[0].egress=$EGRESS" $SCENARIO_FOLDER/network-filter.yml
 yq -i ".[0].image=\"$IMAGE\"" $SCENARIO_FOLDER/network-filter.yml
 yq -i ".[0].target=\"$NODE_NAME\"" $SCENARIO_FOLDER/network-filter.yml
 
