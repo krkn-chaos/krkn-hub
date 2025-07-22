@@ -10,6 +10,7 @@
   target: node
   interfaces: []
   ports: []
+  taints: []
   protocols:
     - tcp
   image: quay.io/krkn-chaos/krkn-network-chaos:latest
