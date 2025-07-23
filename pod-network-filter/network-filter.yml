@@ -2,6 +2,7 @@
   wait_duration: 0
   test_duration: 100
   label_selector: ''
+  service_account: ''
   namespace: 'default'
   instance_count: 1
   execution: parallel

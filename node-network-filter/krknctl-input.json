@@ -117,5 +117,14 @@
     "type": "string",
     "default": "",
     "required": "false"
+  },
+  {
+    "name": "service-account",
+    "short_description": "The service account associated with the Node Network Filter workload",
+    "description": "The service account associated with the Node Network Filter workload",
+    "variable": "SERVICE_ACCOUNT",
+    "type": "string",
+    "default": "",
+    "required": "false"
   }
 ]

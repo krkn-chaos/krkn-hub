@@ -13,3 +13,4 @@ export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-network-chaos:latest"}
 export PROTOCOLS=${PROTOCOLS:="tcp"}
 export NODE_NAME=${NODE_NAME:=""}
 export TAINTS=${TAINTS:=""}
+export SERVICE_ACCOUNT=${SERVICE_ACCOUNT:=""}
