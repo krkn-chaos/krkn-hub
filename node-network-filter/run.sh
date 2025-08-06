@@ -23,7 +23,7 @@ yq -i ".[0].egress=$EGRESS" $SCENARIO_FOLDER/network-filter.yml
 yq -i ".[0].image=\"$IMAGE\"" $SCENARIO_FOLDER/network-filter.yml
 yq -i ".[0].target=\"$NODE_NAME\"" $SCENARIO_FOLDER/network-filter.yml
 yq -i ".[0].service_account=\"$SERVICE_ACCOUNT\"" $SCENARIO_FOLDER/network-filter.yml
-
+yq -i ".[0].force=\"$FORCE\"" $SCENARIO_FOLDER/network-filter.yml
 IFS=',' read -ra array <<< "$INTERFACES"
 
 for ((i=0; i<${#array[@]}; i++)); do
