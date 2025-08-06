@@ -17,10 +17,6 @@ export KUBECONFIG=$CERBERUS_KUBECONFIG
 
 oc version 
 
-cat $KUBECONFIG
-
-oc config view
-
 # Source env.sh to read all the vars
 source env.sh
 source cerberus/env.sh
