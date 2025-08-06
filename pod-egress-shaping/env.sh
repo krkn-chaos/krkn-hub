@@ -1,5 +1,5 @@
 export SCENARIO_TYPE=${SCENARIO_TYPE:=network_chaos_ng_scenarios}
-export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kube/pod-egress-shaping.yml}
+export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kube/pod-network-shaping.yml}
 
 export IMAGE=${IMAGE:="docker.io/fedora/tools"}
 export TEST_DURATION=${TOTAL_CHAOS_DURATION:="60"}
