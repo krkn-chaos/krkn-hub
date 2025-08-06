@@ -1,0 +1,105 @@
+[
+   {
+      "name":"image",
+      "short_description":"The network chaos injection workload container image",
+      "description":"The network chaos injection workload container image",
+      "variable":"IMAGE",
+      "type":"string",
+      "default":"docker.io/fedora/tools",
+      "required":"false"
+   },
+   {
+      "name":"chaos-duration",
+      "short_description":"Chaos Duration",
+      "description":"Set chaos duration (in sec) as desired",
+      "variable":"TOTAL_CHAOS_DURATION",
+      "type":"number",
+      "default":"60",
+      "required":"false"
+   },
+   {
+      "name":"pod-selector",
+      "short_description":"Pod Selector",
+      "description":"Pod selector used to target one or more pods by label",
+      "variable":"POD_SELECTOR",
+      "type":"string",
+      "validator":"^$|^.+\\=.*$",
+      "default":"",
+      "required":"false"
+   },
+   {
+      "name":"execution",
+      "short_description":"Execution mode",
+      "description":"When multiple pods are selected the execution on all of them can be performed in serial or in parallel",
+      "variable":"EXECUTION",
+      "type":"enum",
+      "allowed_values":"parallel,serial",
+      "separator":",",
+      "required":"false"
+   },
+   {
+      "name":"namespace",
+      "short_description":"Namespace",
+      "description":"Namespace where the scenario container will be deployed",
+      "variable":"NAMESPACE",
+      "type":"string",
+      "default":"default",
+      "required":"false"
+   },
+   {
+      "name":"instance-count",
+      "short_description":"Number of instances to target",
+      "description":"Number of instances to target if more the one is selected by the POD_SELECTOR",
+      "variable":"INSTANCE_COUNT",
+      "type":"number",
+      "default":"1",
+      "required":"false"
+   },
+   {
+      "name":"pod-name",
+      "short_description":"Pod Name",
+      "description":"The Pod name to target (if label selector not specified)",
+      "variable":"POD_NAME",
+      "type":"string",
+      "default":"",
+      "required":"false"
+   },
+   {
+      "name":"latency",
+      "short_description":"Network Latency",
+      "description":"The network latency injected on the pod interface expressed as a string (eg. 50ms)",
+      "variable":"LATENCY",
+      "type":"string",
+      "default":"",
+      "required":"false"
+   },
+   {
+      "name":"loss",
+      "short_description":"Packet Loss",
+      "description":"the percentage of packet that will be dropeed, the value must be a percentage between 0 and 1 (eg. 0.5%)",
+      "variable":"LOSS",
+      "type":"string",
+      "default":"",
+      "required":"false"
+   },
+   {
+      "name":"bandwidth",
+      "short_description":"Bandwidth",
+      "description":"The n",
+      "variable":"POD_NAME",
+      "type":"string",
+      "default":"",
+      "required":"false"
+   },
+   {
+      "name":"network-shaping-execution",
+      "short_description":"Network Shaping Execution",
+      "description":"Execute Latency, Loss and Bandwidth shaping in parallel or serially",
+      "type":"enum",
+      "variable":"EXECUTION",
+      "allowed_values":"parallel,serial",
+      "separator":",",
+      "default":"parallel",
+      "required":"false"
+   }
+]
