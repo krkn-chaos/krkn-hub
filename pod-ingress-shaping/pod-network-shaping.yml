@@ -7,6 +7,8 @@
   namespace: <namespace>              # Required - Namespace of the pod to which traffic shaping need to be applied
   instance_count: <number>            # Number of pods to perform action/select that match the label selector
   target: <pod name>                # When label_selector is not specified, pod matching the name will be selected for the chaos scenario
+  taints: []
+  service_account: ''
 
   # latency, loss and bandwidth are the three supported network parameters to alter for the chaos test
   latency: <time>                 # Value is a string. For example : 50ms

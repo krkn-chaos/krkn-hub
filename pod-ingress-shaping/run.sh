@@ -21,12 +21,19 @@ yq -i ".[0].execution=\"$EXECUTION\"" $SCENARIO_FOLDER/pod-network-shaping.yml
 yq -i ".[0].namespace=\"$NAMESPACE\"" $SCENARIO_FOLDER/pod-network-shaping.yml
 yq -i ".[0].instance_count=$INSTANCE_COUNT" $SCENARIO_FOLDER/pod-network-shaping.yml
 yq -i ".[0].target=\"$POD_NAME\"" $SCENARIO_FOLDER/pod-network-filter.yml
+yq -i ".[0].service_account=\"$SERVICE_ACCOUNT\"" $SCENARIO_FOLDER/pod-network-shaping.yml
 
 yq -i ".[0].latency=\"$LATENCY\"" $SCENARIO_FOLDER/pod-network-shaping.yml
 yq -i ".[0].loss=\"$LOSS\"" $SCENARIO_FOLDER/pod-network-shaping.yml
 yq -i ".[0].bandwidth=\"$BANDWIDTH\"" $SCENARIO_FOLDER/pod-network-shaping.yml
 yq -i ".[0].network_shaping_execution=\"$NETWORK_SHAPING_EXECUTION\"" $SCENARIO_FOLDER/pod-network-shaping.yml
 
+
+IFS=',' read -ra array <<< "$TAINTS"
+
+for ((i=0; i<${#array[@]}; i++)); do
+  yq -i ".[0].taints[$i]=\"${array[$i]}\"" $SCENARIO_FOLDER/pod-network-shaping.yml
+done
 
 envsubst < $KRAKEN_FOLDER/config/config.yaml.template > $KRAKEN_FOLDER/config/network-filter-config.yaml
 
