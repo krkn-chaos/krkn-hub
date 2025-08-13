@@ -16,3 +16,4 @@
     wait_duration: $WAIT_DURATION
     # Test duration
     test_duration: $DURATION
+    image: $IMAGE

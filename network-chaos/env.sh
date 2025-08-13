@@ -11,8 +11,10 @@ export EGRESS=${EGRESS:="{bandwidth: 100mbit}"}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=network_chaos_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/network_chaos.yaml}
 export TRAFFIC_TYPE=${TRAFFIC_TYPE:=egress}
+export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn:tools"}
 
 # Ingress vars
 export TARGET_NODE_AND_INTERFACE=${TARGET_NODE_AND_INTERFACE:=""}
 export NETWORK_PARAMS=${NETWORK_PARAMS:=""}
-export WAIT_DURATION=${WAIT_DURATION:=300} 
+export WAIT_DURATION=${WAIT_DURATION:=300}
+

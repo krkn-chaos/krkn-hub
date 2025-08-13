@@ -8,6 +8,15 @@
         "required": "true"
     },
     {
+        "name": "image",
+        "short_description": "Image",
+        "description": "Network chaos helper image",
+        "variable": "IMAGE",
+        "type": "string",
+        "default": "quay.io/krkn-chaos/krkn:tools",
+        "required": "false"
+    },
+    {
         "name": "label-selector",
         "short_description": "Label selector",
         "description": "When pod_name is not specified, pod matching the label will be selected for the chaos scenario",

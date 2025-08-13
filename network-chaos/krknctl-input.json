@@ -1,110 +1,117 @@
 [
     {
-	    "name":"traffic-type",
-       	"short_description":"Traffic Type",
-        "description":"Selects the network chaos scenario type can be ingress or egress",
-        "variable":"TRAFFIC_TYPE",
-        "type":"enum",
-        "allowed_values":"ingress,egress",
-        "separator":",",
-        "required":"true"
+        "name": "traffic-type",
+        "short_description": "Traffic Type",
+        "description": "Selects the network chaos scenario type can be ingress or egress",
+        "variable": "TRAFFIC_TYPE",
+        "type": "enum",
+        "allowed_values": "ingress,egress",
+        "separator": ",",
+        "required": "true"
     },
     {
-        "name":"duration",
-	    "short_description":"Duration [common]",
-        "description":"Duration in seconds - during with network chaos will be applied.",
-        "variable":"DURATION",
-        "type":"number",
-        "default":"300",
-        "required":"false"
+        "name": "image",
+        "short_description": "Image",
+        "description": "Network chaos helper image",
+        "variable": "IMAGE",
+        "type": "string",
+        "default": "quay.io/krkn-chaos/krkn:tools",
+        "required": "false"
     },
     {
-	    "name":"label-selector",
-        "short_description":"Label Selector [common]",
+        "name": "duration",
+        "short_description": "Duration [common]",
+        "description": "Duration in seconds - during with network chaos will be applied.",
+        "variable": "DURATION",
+        "type": "number",
+        "default": "300",
+        "required": "false"
+    },
+    {
+        "name": "label-selector",
+        "short_description": "Label Selector [common]",
         "description": "When NODE_NAME is not specified, a node with matching label_selector is selected for running.",
-        "type":"string",
-        "variable":"LABEL_SELECTOR",
-        "default":"node-role.kubernetes.io/master",
-	    "required": "false"
+        "type": "string",
+        "variable": "LABEL_SELECTOR",
+        "default": "node-role.kubernetes.io/master",
+        "required": "false"
     },
     {
-        "name":"execution",
-         "short_description":"Execution [common]",
-         "description": "Execute each of the egress option as a single scenario(parallel) or as separate scenario(serial).",
-         "type":"enum",
-         "variable":"EXECUTION",
-         "allowed_values":"parallel,serial",
-         "separator":",",
-         "default":"parallel",
-         "required": "false"
-     },
-     {
-        "name":"instance-count",
-         "short_description":"Instance Count [common]",
-         "description": "Targeted instance count matching the label selector.",
-         "type":"number",
-         "variable":"INSTANCE_COUNT",
-         "default":"1",
-         "required": "false"
-     },
-     {
-        "name":"node-name",
-         "short_description":"Node Name [*Egress only*]",
-         "description": "Node name to inject faults in case of targeting a specific node; Can set multiple node names separated by a comma",
-         "type":"string",
-         "variable":"NODE_NAME",
-         "default":"",
-         "required": "false"
-     },
-     {
-        "name":"interfaces",
-         "short_description":"Interfaces [*Egress only*]",
-         "description": "List of interface on which to apply the network restriction. eg. [eth0,eth1,eth2]",
-         "type":"string",
-         "variable":"INTERFACES",
-         "default":"[]",
-         "validator":"^\\[\\]$|^\\[([a-zA-Z0-9]+(,)?)*\\[^,]]$",
-         "required": "false"
-     },
-     {
-        "name":"egress",
-         "short_description":"Egress [*Egress only*]",
-         "description": "Dictonary of values to set network latency(latency: 50ms), packet loss(loss: 0.02), bandwidth restriction(bandwidth: 100mbit) eg. {bandwidth: 100mbit}",
-         "type":"string",
-         "variable":"EGRESS",
-         "default":"{bandwidth: 100mbit}",
-         "validator":"^{((latency|loss|bandwidth): [a-zA-Z0-9.]+(,)?)+[^,]}$",
-         "required": "false"
-     },
-     {
-        "name":"target-node-interface",
-         "short_description":"Target Node and Interfaces [*Ingress only*]",
-         "description": "Dictionary with key as node name(s) and value as a list of its interfaces to test. For example: {ip-10-0-216-2.us-west-2.compute.internal: [ens5]}",
-         "type":"string",
-         "variable":"TARGET_NODE_AND_INTERFACE",
-         "default":"",
-         "validator":"^{([a-zA-Z0-9-.]+: \\[(([A-Za-z0-9]+(,)?)+)\\](,)?)+[^,]}$",
-         "required": "false"
-     },
-     {
-        "name":"network-params",
-         "short_description":"Network Params [*Ingress only*]",
-         "description": "latency, loss and bandwidth are the three supported network parameters to alter for the chaos test. For example: {latency: 50ms, loss: 0.02}",
-         "type":"string",
-         "variable":"NETWORK_PARAMS",
-         "default":"",
-         "validator":"^{((latency|loss|bandwidth): [a-zA-Z0-9.]+(,)?)+[^,]}$",
-         "required": "false"
-     },
-     {
-        "name":"wait-duration",
-         "short_description":"Wait Duration [*Ingress only*]",
-         "description": "Ensure that it is at least about twice of test_duration",
-         "type":"number",
-         "variable":"WAIT_DURATION",
-         "default":"300",
-         "required": "false"
-     }
-
-
+        "name": "execution",
+        "short_description": "Execution [common]",
+        "description": "Execute each of the egress option as a single scenario(parallel) or as separate scenario(serial).",
+        "type": "enum",
+        "variable": "EXECUTION",
+        "allowed_values": "parallel,serial",
+        "separator": ",",
+        "default": "parallel",
+        "required": "false"
+    },
+    {
+        "name": "instance-count",
+        "short_description": "Instance Count [common]",
+        "description": "Targeted instance count matching the label selector.",
+        "type": "number",
+        "variable": "INSTANCE_COUNT",
+        "default": "1",
+        "required": "false"
+    },
+    {
+        "name": "node-name",
+        "short_description": "Node Name [*Egress only*]",
+        "description": "Node name to inject faults in case of targeting a specific node; Can set multiple node names separated by a comma",
+        "type": "string",
+        "variable": "NODE_NAME",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "interfaces",
+        "short_description": "Interfaces [*Egress only*]",
+        "description": "List of interface on which to apply the network restriction. eg. [eth0,eth1,eth2]",
+        "type": "string",
+        "variable": "INTERFACES",
+        "default": "[]",
+        "validator": "^\\[\\]$|^\\[([a-zA-Z0-9]+(,)?)*\\[^,]]$",
+        "required": "false"
+    },
+    {
+        "name": "egress",
+        "short_description": "Egress [*Egress only*]",
+        "description": "Dictonary of values to set network latency(latency: 50ms), packet loss(loss: 0.02), bandwidth restriction(bandwidth: 100mbit) eg. {bandwidth: 100mbit}",
+        "type": "string",
+        "variable": "EGRESS",
+        "default": "{bandwidth: 100mbit}",
+        "validator": "^{((latency|loss|bandwidth): [a-zA-Z0-9.]+(,)?)+[^,]}$",
+        "required": "false"
+    },
+    {
+        "name": "target-node-interface",
+        "short_description": "Target Node and Interfaces [*Ingress only*]",
+        "description": "Dictionary with key as node name(s) and value as a list of its interfaces to test. For example: {ip-10-0-216-2.us-west-2.compute.internal: [ens5]}",
+        "type": "string",
+        "variable": "TARGET_NODE_AND_INTERFACE",
+        "default": "",
+        "validator": "^{([a-zA-Z0-9-.]+: \\[(([A-Za-z0-9]+(,)?)+)\\](,)?)+[^,]}$",
+        "required": "false"
+    },
+    {
+        "name": "network-params",
+        "short_description": "Network Params [*Ingress only*]",
+        "description": "latency, loss and bandwidth are the three supported network parameters to alter for the chaos test. For example: {latency: 50ms, loss: 0.02}",
+        "type": "string",
+        "variable": "NETWORK_PARAMS",
+        "default": "",
+        "validator": "^{((latency|loss|bandwidth): [a-zA-Z0-9.]+(,)?)+[^,]}$",
+        "required": "false"
+    },
+    {
+        "name": "wait-duration",
+        "short_description": "Wait Duration [*Ingress only*]",
+        "description": "Ensure that it is at least about twice of test_duration",
+        "type": "number",
+        "variable": "WAIT_DURATION",
+        "default": "300",
+        "required": "false"
+    }
 ]
