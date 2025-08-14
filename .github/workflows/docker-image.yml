@@ -23,6 +23,25 @@ jobs:
         bash build.sh
     - name: Build the Docker images
       run: docker compose build --parallel
+    - name: Save the Docker images
+      run: | 
+        mkdir krkn-hub-images
+        cd krkn-hub-images
+        IMAGE_IDS=$(podman images -n -a --format "{{.ID}}")
+        for ID in $IMAGE_IDS; do
+            IMAGE_NAME=$(podman images --filter "id=$ID" --format "{{.Repository}}:{{.Tag}}" | head -n 1)
+            # Replace slashes and colons in image name for valid filenames
+            FILENAME=$(echo "$IMAGE_NAME" | sed 's/\//_/g' | sed 's/:/-/g' | sed 's/\.//g')
+            echo "Saving image: $IMAGE_NAME (ID: $ID) to krkn-hub-images/$FILENAME.tar"
+            docker save -o "$FILENAME.tar" "$ID"
+        done
+
+    - name: Upload Docker saved images
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: krkn-hub-images
+        path: krkn-hub-images
     - name: Login in quay
       if: ${{ github.ref == 'refs/heads/main' }}
       run: docker login quay.io -u ${QUAY_USER} -p ${QUAY_TOKEN}
