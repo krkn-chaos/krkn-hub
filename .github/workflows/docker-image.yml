@@ -27,12 +27,10 @@ jobs:
       run: | 
         mkdir krkn-hub-images
         cd krkn-hub-images
-        IMAGE_IDS=$(docker images -a --format "{{.ID}}")
+        IMAGE_IDS=$(docker images -a --format "{{.Repository}}:{{.Tag}}")
         for ID in $IMAGE_IDS; do
-            IMAGE_NAME=$(docker images --filter "id=$ID" --format "{{.Repository}}:{{.Tag}}" | head -n 1)
-            # Replace slashes and colons in image name for valid filenames
-            FILENAME=$(echo "$IMAGE_NAME" | sed 's/\//_/g' | sed 's/:/-/g' | sed 's/\.//g')
-            echo "Saving image: $IMAGE_NAME (ID: $ID) to krkn-hub-images/$FILENAME.tar"
+            FILENAME=$(echo "$ID" | sed 's/\//_/g' | sed 's/:/-/g' | sed 's/\.//g')
+            echo "Saving image: $ID to krkn-hub-images/$FILENAME.tar"
             docker save -o "$FILENAME.tar" "$ID"
         done
 
