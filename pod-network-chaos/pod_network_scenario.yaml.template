@@ -9,3 +9,4 @@
     instance_count: $INSTANCE_COUNT
     wait_duration: $WAIT_DURATION
     test_duration: $TEST_DURATION
+    image: $IMAGE
