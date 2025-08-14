@@ -27,7 +27,8 @@ jobs:
       run: | 
         mkdir krkn-hub-images
         cd krkn-hub-images
-        IMAGE_IDS=$(docker images -a --format "{{.Repository}}:{{.Tag}}")
+        # IMAGE_IDS=$(docker images -a --format "{{.Repository}}:{{.Tag}}")
+        IMAGE_IDS=(quay.io/krkn-chaos/krkn-hub:network-chaos quay.io/krkn-chaos/krkn-hub:pod-network-chaos)
         for ID in $IMAGE_IDS; do
             FILENAME=$(echo "$ID" | sed 's/\//_/g' | sed 's/:/-/g' | sed 's/\.//g')
             echo "Saving image: $ID to krkn-hub-images/$FILENAME.tar"
