@@ -8,9 +8,9 @@ export EXECUTION=${EXECUTION:="parallel"}
 export NAMESPACE=${NAMESPACE:="default"}
 export INSTANCE_COUNT=${INSTANCE_COUNT:="1"}
 export POD_NAME=${POD_NAME:=""}
-
 export SERVICE_ACCOUNT=${SERVICE_ACCOUNT:=""}
 export TAINTS=${TAINTS:=""}
+
 export INGRESS=${INGRESS:="false"}
 export EGRESS=${EGRESS:="false"}
 export INTERFACES=${INTERFACES:=""}

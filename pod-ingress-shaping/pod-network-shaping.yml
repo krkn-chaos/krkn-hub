@@ -1,5 +1,5 @@
 - id: pod_ingress_shaping
-  image: docker.io/fedora/tools       # scenario workload image
+  image: quay.io/krkn-chaos/krkn:tools       # scenario workload image
   wait_duration: <time_duration>      # Default is 300. Ensure that it is at least about twice of test_duration
   test_duration: <time_duration>      # Default is 120
   label_selector: <label_selector>    # When pod_name is not specified, pod with matching label_selector is selected for chaos scenario

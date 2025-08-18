@@ -5,7 +5,7 @@
       "description":"The network chaos injection workload container image",
       "variable":"IMAGE",
       "type":"string",
-      "default":"docker.io/fedora/tools",
+      "default":"quay.io/krkn-chaos/krkn:tools",
       "required":"false"
    },
    {
