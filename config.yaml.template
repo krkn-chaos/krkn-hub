@@ -67,3 +67,10 @@ health_checks:                                                  # Utilizing heal
           auth: "$HEALTH_CHECK_AUTH"
           exit_on_failure: $HEALTH_CHECK_EXIT_ON_FAILURE
           verify_url: $HEALTH_CHECK_VERIFY
+
+kubevirt_checks:                                            # Utilizing virt check endpoints to observe ssh ability to VMI's during chaos injection.
+    interval: $KUBE_VIRT_CHECK_INTERVAL                                             # Interval in seconds to perform virt checks, default value is 2 seconds
+    namespace: $KUBE_VIRT_NAMESPACE                                             # Namespace where to find VMI's
+    name: $KUBE_VIRT_NAME                                                  # Regex Name style of VMI's to watch, optional, will watch all VMI names in the namespace if left blank
+    only_failures: $KUBE_VIRT_FAILURES                                    # Boolean of whether to show all VMI's failures and successful ssh connection (False), or only failure status' (True) 
+    disconnected: $KUBE_VIRT_DISCONNECTED                                     # Boolean of how to try to connect to the VMIs; if True will use the ip_address to try ssh from within a node, if false will use the name and uses virtctl to try to connect; Default is False
