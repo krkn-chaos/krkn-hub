@@ -24,6 +24,9 @@
     "chaos_duration": {
       "type": "integer"
     },
+    "privileged": {
+      "type": "boolean"
+    },
     "plan": {
       "type": "array",
       "minItems": 1,
@@ -55,14 +58,22 @@
                       "type": "string"
                     }
                   },
-                  "required": ["duration", "status", "mime_type", "payload"]
+                  "required": [
+                    "duration",
+                    "status",
+                    "mime_type",
+                    "payload"
+                  ]
                 }
               }
             },
             "additionalProperties": false
           }
         },
-        "required": ["resource", "steps"]
+        "required": [
+          "resource",
+          "steps"
+        ]
       }
     }
   },
