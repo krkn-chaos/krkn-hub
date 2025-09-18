@@ -9,6 +9,24 @@
         "required":"false"
     },
     {
+        "name":"node-names",
+	    "short_description":"Node names",
+        "description":"Node names to target",
+        "variable":"NODE_NAMES",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
+        "name":"node-label-selector",
+	    "short_description":"Node label selector",
+        "description":"Label selector to target nodes",
+        "variable":"NODE_LABEL_SELECTOR",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
         "name":"pod-label",
 	    "short_description":"Pod label",
         "description":"Label of the pod(s) to target",
