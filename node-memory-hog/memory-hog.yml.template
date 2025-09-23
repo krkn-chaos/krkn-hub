@@ -4,6 +4,7 @@ workers: $NUMBER_OF_WORKERS
 namespace: $NAMESPACE
 image: $IMAGE
 node-selector: $NODE_SELECTOR
+node-name: $NODE_NAME
 number-of-nodes: $NUMBER_OF_NODES
 taints: $TAINTS
 vm-bytes: $MEMORY_CONSUMPTION_PERCENTAGE
