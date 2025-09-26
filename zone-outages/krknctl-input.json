@@ -36,6 +36,7 @@
         "type": "string",
         "default": "",
         "validator": "^$|^\\[([a-zA-Z0-9._-](,)?)+[^,]\\]$",
+        "validation_message": "Subnet ID must be in the following format: [subnet_id_1, subnet_id_2]",
         "required": "false"
     },
     {

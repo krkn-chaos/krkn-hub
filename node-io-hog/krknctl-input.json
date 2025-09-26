@@ -9,11 +9,12 @@
     },
     {
         "name":"io-block-size",
-	    "short_description":"I/O Block Size",
-        "description":"sSze of each write in bytes. Size can be from 1 byte to 4 Megabytes (allowed suffix are b,k,m)",
+	    "short_description":"I/O block size",
+        "description":"Size of each write in bytes. Size can be from 1 byte to 4 Megabytes (allowed suffix are b,k,m)",
         "variable":"IO_BLOCK_SIZE",
         "type":"string",
         "validator":"^[0-9]+[bkm]$",
+        "validation_message": "I/O Block size must be in the format: 4m (allowed suffix are b,k,m)",
         "default":"1m",
         "required":"false"
     },
@@ -28,11 +29,12 @@
     },
     {
         "name":"io-write-bytes",
-	    "short_description":"I/O Write Bytes",
+	    "short_description":"I/O write bytes",
         "description":"string writes N bytes for each hdd process. The size can be expressed as % of free space on the file system or in units of Bytes, KBytes, MBytes and GBytes using the suffix b, k, m or g",
         "variable":"IO_WRITE_BYTES",
         "type":"string",
         "validator":"^[0-9]+[%bkmg]$",
+        "validation_message": "I/O write bytes must be in the format: 4m or 45% (for the device filling percentage) allowed suffix are %,b,k,m",
         "default":"10m"
     },
     {
@@ -58,6 +60,7 @@
          "variable":"NODE_SELECTOR",
          "type":"string",
          "validator": "^$|^.+\\=.*$",
+         "validation_message": "Node selector must be in the format: key=value",
          "default":"",
          "required": "false"
      },

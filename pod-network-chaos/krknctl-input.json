@@ -50,6 +50,7 @@
         "variable": "TRAFFIC_TYPE",
         "type": "string",
         "validator": "^\\[ingress\\]$|^\\[egress\\]$|^\\[ingress,egress\\]$",
+        "validation_message": "List of directions can be [ingress], [egress] or both of them [ingress,egress]",
         "default": "[ingress,egress]",
         "required": "false"
     },
@@ -60,6 +61,7 @@
         "variable": "INGRESS_PORTS",
         "type": "string",
         "validator": "^\\[\\]$|^\\[([0-9]+(,)?)+[^,]\\]$",
+        "validation_message": "Ingress ports can be a list of port numbers comma separated on square brackets eg. [22,80] or an empty list []",
         "default": "[]",
         "required": "false"
     },
@@ -70,6 +72,7 @@
         "variable": "EGRESS_PORTS",
         "type": "string",
         "validator": "^\\[\\]$|^\\[([0-9]+(,)?)+[^,]\\]$",
+        "validation_message": "Egress ports can be a list of port numbers comma separated on square brackets eg. [22,80] or an empty list []",
         "default": "[]",
         "required": "false"
     },

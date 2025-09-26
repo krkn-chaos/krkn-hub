@@ -23,17 +23,18 @@
         "type":"string",
         "variable":"POD_SELECTOR",
         "validator": "\\{[a-zA-Z0-9-_]+\\: [a-zA-Z0-9-_]+\\}",
+        "validation_message": "Pod selector must be in the following format: \"{app: foo}\"",
 	    "required": "true"
     },
     {
         "name":"block-traffic-type",
-         "short_description":"Pod Selector",
+         "short_description":"Block traffic direction",
          "description": "It can be [Ingress] or [Egress] or [Ingress, Egress]",
          "type":"string",
          "variable":"BLOCK_TRAFFIC_TYPE",
          "validator": "^\\[Ingress\\]$|^\\[Egress\\]$|^\\[Ingress, Egress\\]$",
+         "validation_message": "Block traffic direction can be [Ingress] or [Egress] or [Ingress, Egress]",
          "default":"[Ingress, Egress]",
          "required": "false"
      }
-
 ]

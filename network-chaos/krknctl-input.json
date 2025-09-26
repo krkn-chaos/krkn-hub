@@ -73,16 +73,18 @@
         "variable": "INTERFACES",
         "default": "[]",
         "validator": "^\\[\\]$|^\\[([a-zA-Z0-9]+(,)?)*\\[^,]]$",
+        "validation_message": "Interfaces must be in the format: [eth0,eth1,eth2]",
         "required": "false"
     },
     {
         "name": "egress",
         "short_description": "Egress [*Egress only*]",
-        "description": "Dictonary of values to set network latency(latency: 50ms), packet loss(loss: 0.02), bandwidth restriction(bandwidth: 100mbit) eg. {bandwidth: 100mbit}",
+        "description": "Dictionary of values to set network latency(latency: 50ms), packet loss(loss: 0.02), bandwidth restriction(bandwidth: 100mbit) eg. {bandwidth: 100mbit}",
         "type": "string",
         "variable": "EGRESS",
         "default": "{bandwidth: 100mbit}",
         "validator": "^{((latency|loss|bandwidth): [a-zA-Z0-9.]+(,)?)+[^,]}$",
+        "validation_message": "Egress shaping must be in the format: {bandwidth/latency/loss: 100mbit/10ms/40%}",
         "required": "false"
     },
     {
@@ -93,6 +95,7 @@
         "variable": "TARGET_NODE_AND_INTERFACE",
         "default": "",
         "validator": "^{([a-zA-Z0-9-.]+: \\[(([A-Za-z0-9]+(,)?)+)\\](,)?)+[^,]}$",
+        "validation_message": "Target node interface must be in the format: ip-10-0-216-2.us-west-2.compute.internal: [ens5]}",
         "required": "false"
     },
     {
@@ -101,8 +104,9 @@
         "description": "latency, loss and bandwidth are the three supported network parameters to alter for the chaos test. For example: {latency: 50ms, loss: 0.02}",
         "type": "string",
         "variable": "NETWORK_PARAMS",
-        "default": "",
+        "default": "Ingress shaping must be in the format: {bandwidth/latency/loss: 100mbit/10ms/40%}",
         "validator": "^{((latency|loss|bandwidth): [a-zA-Z0-9.]+(,)?)+[^,]}$",
+        "validation_message": "Ingress shaping must be in the format: {bandwidth/latency/loss: 100mbit/10ms/40%}",
         "required": "false"
     },
     {

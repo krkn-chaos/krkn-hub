@@ -37,6 +37,7 @@
          "variable":"NODE_SELECTOR",
          "type":"string",
          "validator": "^$|^.+\\=.*$",
+         "validation_message": "Node selector must be in the format: key=value",
          "default":"",
          "required": "false"
      },
