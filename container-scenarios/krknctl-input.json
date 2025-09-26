@@ -17,6 +17,7 @@
          "type":"string",
          "default":"k8s-app=etcd",
          "validator":"^.+\\=.+$",
+         "validation_message": "Label selector must be in the format: key=value",
          "required":"false"
      },
      {
@@ -45,6 +46,7 @@
         "type":"string",
         "default":"1",
         "validator":"^[1-9]$",
+        "validation_message": "Kill signal must be a number between 1 and 9",
         "required":"false"
     },
     {

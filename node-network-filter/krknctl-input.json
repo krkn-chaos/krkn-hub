@@ -15,6 +15,7 @@
     "variable": "NODE_SELECTOR",
     "type": "string",
     "validator": "^$|^.+\\=.*$",
+    "validation_message": "Node selector must be in the format: key=value",
     "default": "",
     "required": "false"
   },
@@ -79,6 +80,7 @@
     "type": "string",
     "default": "",
     "validator": "^$|^[a-zA-Z0-9]+(,[a-zA-Z0-9]+)*$",
+    "validation_message": "Network interfaces must be a list of comma separated interface names: eth0,eth1,ethN",
     "required": "false"
   },
   {
@@ -88,6 +90,7 @@
     "variable": "PORTS",
     "type": "string",
     "validator": "^\\d+(,\\d+)*$",
+    "validation_message": "Network ports must be a list of comma separated port numbers: 8080,8081,8082",
     "required": "true"
   },
   {
@@ -107,6 +110,7 @@
     "type": "string",
     "default": "tcp",
     "validator": "^$|^tcp$|^udp$|^tcp,udp$|^udp,tcp$",
+    "validation_message": "Network protocol can be utp, tcp or both of them comma separated tcp,udp",
     "required": "false"
   },
   {

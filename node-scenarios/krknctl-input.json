@@ -25,6 +25,7 @@
         "variable": "NODE_NAME",
         "type": "string",
         "validator": "^$|^([a-zA-Z0-9.-_]+(,)?)+[^,]$",
+        "validation_message": "node name can be one or more node names comma separated: e.g node-name or node-name-1,node-name2",
         "default": "",
         "required": "false"
     },
