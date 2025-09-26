@@ -38,6 +38,7 @@
         "type":"string",
         "default":"[]",
         "validator":"^\\[\\]$|^\\[([a-zA-Z0-9._-](,)?)+[^,]\\]$",
+        "validation_message": "Object names must be one or a list of pods or node names comma separated in square brackets: [node] or [pod-1,pod-2], default []",
         "required":"false"
     },
     {

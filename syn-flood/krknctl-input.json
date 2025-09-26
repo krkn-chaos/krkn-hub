@@ -86,6 +86,7 @@
         "variable":"NODE_SELECTORS",
         "type":"string",
         "validator":"^$|^(([a-zA-Z0-9._-]+\\=[a-zA-Z0-9._-]+)(;)?)+[^;]$",
+        "validation_message": "node selector must be in the format key=value or a list of semicolon-separated selectors key=value;key2=value2;key3=value3",
         "default":"",
         "required":"false"
     }
