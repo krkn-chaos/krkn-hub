@@ -36,6 +36,15 @@
         "required":"false"
     },
     {
+        "name":"exclude-label",
+	    "short_description":"Pod exclude label",
+        "description":"Label for excluding one or more pods from chaos",
+        "variable":"EXCLUDE_LABEL",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
         "name":"name-pattern",
 	    "short_description":"Pod label",
         "description":"Regex pattern to match the pods in NAMESPACE when POD_LABEL is not specified",
