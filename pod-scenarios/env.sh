@@ -3,6 +3,7 @@
 # Vars and respective defaults
 export NAMESPACE=${NAMESPACE:="openshift-.*"}
 export POD_LABEL=${POD_LABEL:=""}
+export EXCLUDE_LABEL=${EXCLUDE_LABEL:=""}
 export NAME_PATTERN=${NAME_PATTERN:=".*"}
 export DISRUPTION_COUNT=${DISRUPTION_COUNT:=1}
 export KILL_TIMEOUT=${KILL_TIMEOUT:=180}
