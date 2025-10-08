@@ -26,6 +26,15 @@
         "required": "false"
     },
     {
+        "name":"exclude-label",
+	    "short_description":"Pod exclude label",
+        "description":"Label for excluding one or more pods from chaos",
+        "variable":"EXCLUDE_LABEL",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
         "name": "pod-name",
         "short_description": "Pod name",
         "description": "When label_selector is not specified, pod matching the name will be selected for the chaos scenario",

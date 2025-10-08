@@ -5,6 +5,7 @@
     ingress_ports: $INGRESS_PORTS
     egress_ports: $EGRESS_PORTS                     
     label_selector: $LABEL_SELECTOR
+    exclude_label: $EXCLUDE_LABEL
     pod_name: $POD_NAME
     instance_count: $INSTANCE_COUNT
     wait_duration: $WAIT_DURATION
