@@ -1,0 +1,24 @@
+# Dockerfile for kraken
+
+FROM quay.io/krkn-chaos/krkn:latest
+
+ENV KUBECONFIG /home/krkn/.kube/config
+
+# Copy configurations
+COPY metrics_config.yaml.template /home/krkn/kraken/config/kube_burner.yaml.template
+COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
+
+COPY pod-egress-shaping/env.sh /home/krkn/env.sh
+COPY env.sh /home/krkn/main_env.sh
+COPY pod-egress-shaping/run.sh /home/krkn/run.sh
+COPY pod-egress-shaping/pod-network-shaping.yml /home/krkn/kraken/scenarios/kube/pod-network-shaping.yml
+COPY common_run.sh /home/krkn/common_run.sh
+
+LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
+LABEL krknctl.title="Pod Ingress Shaping"
+LABEL krknctl.description="This scenario will shape pod's ingress latency, packet loss and network bandwidth"
+
+LABEL krknctl.input_fields='$KRKNCTL_INPUT'
+
+ENTRYPOINT /home/krkn/run.sh
+
