@@ -5,3 +5,4 @@ scenarios:
       vm_name: $VM_NAME
       namespace: $NAMESPACE
       timeout: $TIMEOUT
+      kill_count: $KILL_COUNT
