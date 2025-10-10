@@ -6,6 +6,7 @@ export NODE_CPU_CORE=${NODE_CPU_CORE:=""}
 export NODE_CPU_PERCENTAGE=${NODE_CPU_PERCENTAGE:="50"}
 export NAMESPACE=${NAMESPACE:="default"}
 export NODE_SELECTOR=${NODE_SELECTOR:=""}
+export NODE_NAME=${NODE_NAME:=""}
 export NUMBER_OF_NODES=${NUMBER_OF_NODES:=""}
 export TAINTS=${TAINTS:="[]"}
 export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-hog"}
