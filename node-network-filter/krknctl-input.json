@@ -79,8 +79,8 @@
     "variable": "INTERFACES",
     "type": "string",
     "default": "",
-    "validator": "^$|^[a-zA-Z0-9]+(,[a-zA-Z0-9]+)*$",
-    "validation_message": "Network interfaces must be a list of comma separated interface names: eth0,eth1,ethN",
+    "validator": "^$|^[a-zA-Z0-9-.]+(,[a-zA-Z0-9-.]+)*",
+    "validation_message": "Network interfaces must be in the format: eth0 or a comma separated list eth0,eth1,eth2,eth-1,eth.1",
     "required": "false"
   },
   {
