@@ -16,7 +16,7 @@ USER krkn
 
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Kubevirt Outage Scenarios"
-LABEL krknctl.description="Scenario to delete a vm in a CNV cluster"
+LABEL krknctl.description="Scenario to delete a VMI in a CNV/Virtualization cluster"
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
 ENTRYPOINT /home/krkn/run.sh

@@ -19,6 +19,15 @@
         "required": "false"
     },
     {
+        "name":"exclude-label",
+	    "short_description":"Node exclude label",
+        "description":"Label for excluding one or more nodes from chaos",
+        "variable":"EXCLUDE_LABEL",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
         "name": "node-name",
         "short_description": "Node Name",
         "description": "Node name to inject faults in case of targeting a specific node; Can set multiple node names separated by a comma",
