@@ -25,5 +25,14 @@
         "type": "number",
         "default": "60",
         "required": "false"
+    },
+    {
+        "name": "kill-count",
+        "short_description": "Kill Count",
+        "description": "Number of VMs to kill",
+        "variable": "KILL_COUNT",
+        "type": "number",
+        "default": "1",
+        "required": "false"
     }
 ]
