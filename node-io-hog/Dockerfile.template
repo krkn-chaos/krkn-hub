@@ -15,7 +15,7 @@ COPY common_run.sh /home/krkn/common_run.sh
 
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="I/O Hog"
-LABEL krknctl.description="This scenario is based on the arcaflow arcaflow-plugin-stressng plugin. The purpose of this scenario is to create disk pressure on a particular node of the Kubernetes/OpenShift cluster for a time span. The scenario allows to attach a node path to the pod as a hostPath volume."
+LABEL krknctl.description="The purpose of this scenario is to create disk pressure on a particular node of the Kubernetes/OpenShift cluster for a time span. The scenario allows to attach a node path to the pod as a hostPath volume."
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 

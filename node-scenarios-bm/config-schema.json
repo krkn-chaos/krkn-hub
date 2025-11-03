@@ -1,101 +1,151 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
-  "properties": {
-    "node_scenarios": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "actions": {
-            "type": "array",
-            "items": {
-              "type": "string"
+   "$schema":"http://json-schema.org/draft-07/schema#",
+   "type":"object",
+   "properties":{
+      "node_scenarios":{
+         "type":"array",
+         "items":{
+            "type":"object",
+            "properties":{
+               "actions":{
+                  "type":"array",
+                  "items":{
+                     "type":"string"
+                  },
+                  "description":"List of node chaos scenarios to be injected."
+               },
+               "node_name":{
+                  "type":"string",
+                  "description":"Node on which scenario has to be injected. Optional if label_selector is specified."
+               },
+               "label_selector":{
+                  "type":"string",
+                  "description":"Label selector to choose a node when node_name is not specified."
+               },
+               "instance_count":{
+                  "type":"integer",
+                  "minimum":1,
+                  "description":"Number of nodes to perform action/select that match the label selector."
+               },
+               "runs":{
+                  "type":"integer",
+                  "minimum":1,
+                  "description":"Number of times to inject each scenario under actions (on the same node)."
+               },
+               "timeout":{
+                  "type":"integer",
+                  "minimum":0,
+                  "description":"Duration to wait for completion of node scenario injection (in seconds)."
+               },
+               "duration":{
+                  "type":"integer",
+                  "minimum":0,
+                  "description":"Duration to stop the node before running the start action (in seconds)."
+               },
+               "cloud_type":{
+                  "type":"string",
+                  "enum":[
+                     "bm"
+                  ],
+                  "description":"Cloud type on which Kubernetes/OpenShift runs (e.g., 'bm' for baremetal)."
+               },
+               "parallel":{
+                  "type":"boolean",
+                  "description":"Flag to run scenario actions in parallel."
+               },
+               "kube_check":{
+                  "type":"boolean",
+                  "description":"Flag to enable Kubernetes health checks."
+               },
+               "bmc_user":{
+                  "type":"string",
+                  "description":"Default IPMI username for baremetal nodes. Optional if specified for all machines."
+               },
+               "bmc_password":{
+                  "type":"string",
+                  "description":"Default IPMI password for baremetal nodes. Optional if specified for all machines."
+               },
+               "bmc_info":{
+                  "type":"object",
+                  "description":"Per-machine BMC information for baremetal nodes. Optional if no per-machine info is needed.",
+                  "additionalProperties":{
+                     "type":"object",
+                     "properties":{
+                        "disks": {
+                           "type": "array",
+                           "items": { "type": "string" },
+                           "description": "List of disk devices to detach/attach."
+                        },
+                        "bmc_addr":{
+                           "type":"string",
+                           "description":"IPMI BMC address for the baremetal node. Optional if available via 'oc get bmh'."
+                        },
+                        "bmc_user":{
+                           "type":"string",
+                           "description":"IPMI username for the specific baremetal node. Overrides the default bmc_user."
+                        },
+                        "bmc_password":{
+                           "type":"string",
+                           "description":"IPMI password for the specific baremetal node. Overrides the default bmc_password."
+                        }
+                     },
+                     "additionalProperties":false
+                  }
+               }
             },
-            "description": "List of node chaos scenarios to be injected."
-          },
-          "node_name": {
-            "type": "string",
-            "description": "Node on which scenario has to be injected. Optional if label_selector is specified."
-          },
-          "label_selector": {
-            "type": "string",
-            "description": "Label selector to choose a node when node_name is not specified."
-          },
-          "instance_count": {
-            "type": "integer",
-            "minimum": 1,
-            "description": "Number of nodes to perform action/select that match the label selector."
-          },
-          "runs": {
-            "type": "integer",
-            "minimum": 1,
-            "description": "Number of times to inject each scenario under actions (on the same node)."
-          },
-          "timeout": {
-            "type": "integer",
-            "minimum": 0,
-            "description": "Duration to wait for completion of node scenario injection (in seconds)."
-          },
-          "duration": {
-            "type": "integer",
-            "minimum": 0,
-            "description": "Duration to stop the node before running the start action (in seconds)."
-          },
-          "cloud_type": {
-            "type": "string",
-            "enum": ["bm"],
-            "description": "Cloud type on which Kubernetes/OpenShift runs (e.g., 'bm' for baremetal)."
-          },
-          "parallel": {
-            "type": "boolean",
-            "description": "Cloud type on which Kubernetes/OpenShift runs (e.g., 'bm' for baremetal)."
-          },
-          "kube_check": {
-            "type":"boolean",
-            "description": "Cloud type on which Kubernetes/OpenShift runs (e.g., 'bm' for baremetal)."
-          },
-          "bmc_user": {
-            "type": "string",
-            "description": "Default IPMI username for baremetal nodes. Optional if specified for all machines."
-          },
-          "bmc_password": {
-            "type": "string",
-            "description": "Default IPMI password for baremetal nodes. Optional if specified for all machines."
-          },
-          "bmc_info": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "bmc_addr": {
-                  "type": "string",
-                  "description": "IPMI BMC address for the baremetal node. Optional if available via 'oc get bmh'."
-                },
-                "bmc_user": {
-                  "type": "string",
-                  "description": "IPMI username for the specific baremetal node. Overrides the default bmc_user."
-                },
-                "bmc_password": {
-                  "type": "string",
-                  "description": "IPMI password for the specific baremetal node. Overrides the default bmc_password."
-                }
-              },
-              "required": ["bmc_addr"],
-              "additionalProperties": false
+
+            "if": {
+               "properties": {
+                  "actions": {
+                     "contains": {
+                        "const": "node_disk_detach_attach_scenarios"
+                     }
+                  }
+               },
+               "required": ["actions"]
             },
-            "description": "Per-machine BMC information for baremetal nodes. Optional if no per-machine info is needed."
-          }
-        },
-        "required": ["actions"],
-        "anyOf": [
-          { "required": ["node_name"] },
-          { "required": ["label_selector"] }
-        ],
-        "additionalProperties": false
+            "then": {
+               "properties": {
+                  "bmc_info": {
+                     "additionalProperties": {
+                        "not": { "required": ["bmc_addr"] }
+                     }
+                  }
+               }
+            },
+            "else": {
+
+               "properties": {
+                  "bmc_info": {
+                     "additionalProperties": {
+                        "required": ["bmc_addr"]
+                     }
+                  }
+               }
+            },
+
+
+            "required":[
+               "actions"
+            ],
+            "anyOf":[
+               {
+                  "required":[
+                     "node_name"
+                  ]
+               },
+               {
+                  "required":[
+                     "label_selector"
+                  ]
+               }
+            ],
+            "additionalProperties":false
+         }
       }
-    }
-  },
-  "required": ["node_scenarios"],
-  "additionalProperties": false
+   },
+   "required":[
+      "node_scenarios"
+   ],
+   "additionalProperties":false
 }
