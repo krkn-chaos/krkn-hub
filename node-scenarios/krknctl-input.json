@@ -19,12 +19,22 @@
         "required": "false"
     },
     {
+        "name":"exclude-label",
+	    "short_description":"Node exclude label",
+        "description":"Label for excluding one or more nodes from chaos",
+        "variable":"EXCLUDE_LABEL",
+        "type":"string",
+        "default":"",
+        "required":"false"
+    },
+    {
         "name": "node-name",
         "short_description": "Node Name",
         "description": "Node name to inject faults in case of targeting a specific node; Can set multiple node names separated by a comma",
         "variable": "NODE_NAME",
         "type": "string",
         "validator": "^$|^([a-zA-Z0-9.-_]+(,)?)+[^,]$",
+        "validation_message": "node name can be one or more node names comma separated: e.g node-name or node-name-1,node-name2",
         "default": "",
         "required": "false"
     },
@@ -74,7 +84,7 @@
         "description": "Cloud platform on top of which cluster is running, supported platforms - aws, azure, gcp, vmware, ibmcloud, bm",
         "variable": "CLOUD_TYPE",
         "type": "enum",
-        "allowed_values": "aws,azure,gcp,vmware,ibmcloud,bm",
+        "allowed_values": "aws,azure,gcp,vmware,ibmcloud,ibmcloudpower,bm",
         "separator": ",",
         "default": "aws",
         "required": "false"
@@ -199,6 +209,24 @@
         "short_description": "IBM Cloud URL [*IBM Cloud only*]",
         "description": "IBM Cloud URL",
         "variable": "IBMC_URL",
+        "type": "string",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "ibmc-power-address",
+        "short_description": "IBM Cloud Power URL [*IBM Power Cloud only*]",
+        "description": "IBM Cloud Power URL",
+        "variable": "IBMC_POWER_URL",
+        "type": "string",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "ibmc-cnr",
+        "short_description": "IBM Cloud Power Workspace CNR [*IBM Power Cloud only*]",
+        "description": "IBM Cloud Power Workspace CNR",
+        "variable": "IBMC_POWER_CRN",
         "type": "string",
         "default": "",
         "required": "false"

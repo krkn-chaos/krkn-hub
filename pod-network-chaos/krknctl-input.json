@@ -8,6 +8,15 @@
         "required": "true"
     },
     {
+        "name": "image",
+        "short_description": "Image",
+        "description": "Network chaos helper image",
+        "variable": "IMAGE",
+        "type": "string",
+        "default": "quay.io/krkn-chaos/krkn:tools",
+        "required": "false"
+    },
+    {
         "name": "label-selector",
         "short_description": "Label selector",
         "description": "When pod_name is not specified, pod matching the label will be selected for the chaos scenario",
@@ -15,6 +24,15 @@
         "type": "string",
         "default": "",
         "required": "false"
+    },
+    {
+        "name":"exclude-label",
+	    "short_description":"Pod exclude label",
+        "description":"Label for excluding one or more pods from chaos",
+        "variable":"EXCLUDE_LABEL",
+        "type":"string",
+        "default":"",
+        "required":"false"
     },
     {
         "name": "pod-name",
@@ -41,6 +59,7 @@
         "variable": "TRAFFIC_TYPE",
         "type": "string",
         "validator": "^\\[ingress\\]$|^\\[egress\\]$|^\\[ingress,egress\\]$",
+        "validation_message": "List of directions can be [ingress], [egress] or both of them [ingress,egress]",
         "default": "[ingress,egress]",
         "required": "false"
     },
@@ -51,6 +70,7 @@
         "variable": "INGRESS_PORTS",
         "type": "string",
         "validator": "^\\[\\]$|^\\[([0-9]+(,)?)+[^,]\\]$",
+        "validation_message": "Ingress ports can be a list of port numbers comma separated on square brackets eg. [22,80] or an empty list []",
         "default": "[]",
         "required": "false"
     },
@@ -61,6 +81,7 @@
         "variable": "EGRESS_PORTS",
         "type": "string",
         "validator": "^\\[\\]$|^\\[([0-9]+(,)?)+[^,]\\]$",
+        "validation_message": "Egress ports can be a list of port numbers comma separated on square brackets eg. [22,80] or an empty list []",
         "default": "[]",
         "required": "false"
     },

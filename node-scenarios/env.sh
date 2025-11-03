@@ -3,6 +3,7 @@
 # Vars and respective defaults
 export ACTION=${ACTION:="node_stop_start_scenario"}
 export LABEL_SELECTOR=${LABEL_SELECTOR:="node-role.kubernetes.io/worker"}
+export EXCLUDE_LABEL=${EXCLUDE_LABEL:=""}
 export NODE_NAME=${NODE_NAME:=""}
 export INSTANCE_COUNT=${INSTANCE_COUNT:=1}
 export RUNS=${RUNS:=1}

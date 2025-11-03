@@ -11,7 +11,7 @@ fi
 checks
 
 # Substitute config with environment vars defined
-if [[ "$CLOUD_TYPE" == "bm" ]]; then
+if [[ "$CLOUD_TYPE" == "bm" || "$CLOUD_TYPE" == "baremetal" ]]; then
     envsubst < /home/krkn/kraken/scenarios/baremetal_node_scenario.yaml.template > /home/krkn/kraken/scenarios/node_scenario.yaml  
 else
   envsubst < /home/krkn/kraken/scenarios/node_scenario.yaml.template > /home/krkn/kraken/scenarios/node_scenario.yaml

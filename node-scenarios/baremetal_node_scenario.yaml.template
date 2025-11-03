@@ -3,6 +3,7 @@ node_scenarios:
     - $ACTION
     node_name: $NODE_NAME                                           # Node on which scenario has to be injected.
     label_selector: $LABEL_SELECTOR                                 # When node_name is not specified, a node with matching label_selector is selected for node chaos scenario injection.
+    exclude_label: $EXCLUDE_LABEL
     instance_count: $INSTANCE_COUNT                                 # Number of nodes to perform action/select that match the label selector.
     runs: $RUNS                                                     # Number of times to inject each scenario under actions (will perform on same node each time).
     timeout: $TIMEOUT                                               # Duration to wait for completion of node scenario injection.

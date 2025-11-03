@@ -5,3 +5,6 @@
     kill: $DISRUPTION_COUNT
     timeout: $KILL_TIMEOUT
     krkn_pod_recovery_time: $EXPECTED_RECOVERY_TIME
+    node_names: $NODE_NAMES
+    node_label_selector: $NODE_LABEL_SELECTOR
+    exclude_label: $EXCLUDE_LABEL
