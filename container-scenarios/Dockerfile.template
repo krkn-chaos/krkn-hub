@@ -16,7 +16,7 @@ USER krkn
 
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Container Scenarios"
-LABEL krknctl.description="Scenario to block the traffic ( Ingress/Egress ) of an application matching the labels for the specified duration of time to understand the behavior of the service/other services which depend on it during downtime. This helps with planning the requirements accordingly, be it improving the timeouts or tweaking the alerts etc."
+LABEL krknctl.description="Scenario to kill a container in a pod and see the effect it has on other services running and see how long it takes to get back running"
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
