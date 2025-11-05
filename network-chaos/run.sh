@@ -4,9 +4,11 @@ source /home/krkn/main_env.sh
 source /home/krkn/env.sh
 source /home/krkn/common_run.sh
 
+extra_var=""
 if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
   ls -la /home/krkn/.kube
+  extra_var="--debug True"
 fi
 
 checks
@@ -28,4 +30,4 @@ cat /home/krkn/kraken/scenarios/network_chaos.yaml
 
 # Run Kraken
 cd /home/krkn/kraken
-python3.9 run_kraken.py --config=config/network_chaos_config.yaml
+python3.9 run_kraken.py --config=config/network_chaos_config.yaml $extra_var

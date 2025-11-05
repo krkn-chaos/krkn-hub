@@ -33,10 +33,11 @@ envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/con
 
 # Run Kraken
 cd /home/krkn/kraken
-
+extra_var=""
 if [[ $KRKN_DEBUG == "True" ]];then
   cat /home/krkn/kraken/scenarios/node_scenarios_bm.yaml
   cat /home/krkn/kraken/config/node_scenarios_bm.yaml
+  extra_var="--debug True"
 fi
 
-python3.9 run_kraken.py --config=config/node_scenarios_bm.yaml
+python3.9 run_kraken.py --config=config/node_scenarios_bm.yaml $extra_var

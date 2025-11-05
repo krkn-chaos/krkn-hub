@@ -19,4 +19,4 @@ LABEL krknctl.title="Kubevirt Outage Scenarios"
 LABEL krknctl.description="Scenario to delete a VMI in a CNV/Virtualization cluster"
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
-ENTRYPOINT /home/krkn/run.sh
+ENTRYPOINT /home/krkn/kraken/containers/setup-ssh.sh && /home/krkn/run.sh

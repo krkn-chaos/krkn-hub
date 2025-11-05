@@ -17,4 +17,4 @@ LABEL krknctl.description="The purpose of this scenario is to create cpu pressur
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
-ENTRYPOINT /home/krkn/run.sh
+ENTRYPOINT /home/krkn/kraken/containers/setup-ssh.sh && /home/krkn/run.sh

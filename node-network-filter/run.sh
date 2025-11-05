@@ -53,11 +53,12 @@ envsubst < $KRAKEN_FOLDER/config/config.yaml.template > $KRAKEN_FOLDER/config/ne
 checks
 
 cd $KRAKEN_FOLDER
-
+extra_var=""
 if [[ $KRKN_DEBUG == "True" ]];then
   cat $SCENARIO_FOLDER/network-filter.yml
   cat $KRAKEN_FOLDER/config/network-filter-config.yaml
+  extra_var="--debug True"
 fi
 
 
-python3.9 run_kraken.py --config=$KRAKEN_FOLDER/config/network-filter-config.yaml
+python3.9 run_kraken.py --config=$KRAKEN_FOLDER/config/network-filter-config.yaml $extra_var

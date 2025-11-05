@@ -23,4 +23,4 @@ the following documentation (https://github.com/krkn-chaos/krkn-hub/blob/main/do
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
-ENTRYPOINT /home/krkn/run.sh
+ENTRYPOINT /home/krkn/kraken/containers/setup-ssh.sh && /home/krkn/run.sh

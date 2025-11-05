@@ -20,4 +20,4 @@ LABEL krknctl.description="This scenario disrupts the pods matching the label in
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
-ENTRYPOINT /home/krkn/run.sh
+ENTRYPOINT /home/krkn/kraken/containers/setup-ssh.sh && /home/krkn/run.sh
