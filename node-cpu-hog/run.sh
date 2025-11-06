@@ -23,12 +23,13 @@ checks
 
 # Run Kraken
 cd $KRAKEN_FOLDER
-
+extra_var=""
 if [[ $KRKN_DEBUG == "True" ]];then
   cat scenarios/kube/cpu-hog.yml
   cat config/cpu_config.yaml
+  extra_var="--debug True"
 fi
 
-python3.9 run_kraken.py --config=config/cpu_config.yaml
+python3.9 run_kraken.py --config=config/cpu_config.yaml $extra_var
 
 

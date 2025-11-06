@@ -22,4 +22,4 @@ https://github.com/krkn-chaos/krkn/blob/master/docs/time_scenarios.md"
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
-ENTRYPOINT /home/krkn/run.sh
+ENTRYPOINT /home/krkn/kraken/containers/setup-ssh.sh && /home/krkn/run.sh

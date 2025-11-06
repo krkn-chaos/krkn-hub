@@ -3,9 +3,10 @@
 source /home/krkn/main_env.sh
 source /home/krkn/env.sh
 source /home/krkn/common_run.sh
-
+extra_var=""
 if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
+  extra_var="--debug True"
 fi
 
 checks
@@ -20,4 +21,4 @@ envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/con
 
 # Run Kraken
 cd /home/krkn/kraken
-python3.9 run_kraken.py --config=config/zone_config.yaml
+python3.9 run_kraken.py --config=config/zone_config.yaml $extra_var

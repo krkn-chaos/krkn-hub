@@ -23,10 +23,11 @@ fi
 
 # Run Kraken
 cd /home/krkn/kraken
-
+extra_var=""
 if [[ $KRKN_DEBUG == "True" ]];then
   cat /home/krkn/kraken/config/pod_network_scenario_config.yaml
   cat /home/krkn/kraken/scenarios/pod_network_scenario.yaml
+  extra_var="--debug True"
 fi
 
-python3.9 run_kraken.py --config=/home/krkn/kraken/config/pod_network_scenario_config.yaml
+python3.9 run_kraken.py --config=/home/krkn/kraken/config/pod_network_scenario_config.yaml $extra_var

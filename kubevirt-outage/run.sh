@@ -18,12 +18,13 @@ envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/con
 
 # Run Kraken
 cd /home/krkn/kraken
-
+extra_var=""
 if [[ $KRKN_DEBUG == "True" ]];then
   cat config/kubevirt_scenario_config.yaml
   cat scenarios/kubevirt_scenario.yaml
+  extra_var="--debug True"
 fi
 
 
 
-python3.9 run_kraken.py --config=config/kubevirt_scenario_config.yaml
+python3.9 run_kraken.py --config=config/kubevirt_scenario_config.yaml $extra_var

@@ -19,6 +19,4 @@ LABEL krknctl.description="Scenario to block the traffic ( Ingress/Egress ) of a
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
-
-
-ENTRYPOINT /home/krkn/run.sh
+ENTRYPOINT /home/krkn/kraken/containers/setup-ssh.sh && /home/krkn/run.sh

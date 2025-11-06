@@ -7,9 +7,10 @@ SCENARIO_FOLDER="$KRAKEN_FOLDER/scenarios/syn-flood"
 source $ROOT_FOLDER/main_env.sh
 source $ROOT_FOLDER/env.sh
 source $ROOT_FOLDER/common_run.sh
-
+extra_var=""
 if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
+  extra_var="--debug True"
 fi
 
 # Substitute config with environment vars defined
@@ -23,6 +24,6 @@ checks
 
 # Run Kraken
 cd $KRAKEN_FOLDER
-python3.9 run_kraken.py --config=config/syn_flood_config.yaml
+python3.9 run_kraken.py --config=config/syn_flood_config.yaml $extra_var
 
 

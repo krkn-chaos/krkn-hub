@@ -35,10 +35,11 @@ envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/con
 
 # Run Kraken
 cd /home/krkn/kraken
-
+extra_var=""
 if [[ $KRKN_DEBUG == "True" ]];then
   cat scenarios/service_hijacking.yaml
   cat config/service_hijacking_config.yaml
+  extra_var="--debug True"
 fi
 
-python3.9 run_kraken.py --config=config/service_hijacking_config.yaml
+python3.9 run_kraken.py --config=config/service_hijacking_config.yaml $extra_var
