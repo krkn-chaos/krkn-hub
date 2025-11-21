@@ -70,3 +70,5 @@ export KUBE_VIRT_NAME=${KUBE_VIRT_NAME:=""}
 export KUBE_VIRT_FAILURES=${KUBE_VIRT_FAILURES:=False}
 export KUBE_VIRT_DISCONNECTED=${KUBE_VIRT_DISCONNECTED:=False}
 export KUBE_VIRT_SSH_NODE=${KUBE_VIRT_SSH_NODE:""}
+export KUBE_VIRT_NODE_NAME=${KUBE_VIRT_NODE_NAME:""}                                     # Filter only VMI's running a specific node name
+export KUBE_VIRT_EXIT_ON_FAIL=${KUBE_VIRT_EXIT_ON_FAIL:False}
