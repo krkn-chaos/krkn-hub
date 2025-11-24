@@ -1,40 +1,50 @@
 [
     {
-	   "name":"chaos-duration",
-       	"short_description":"Chaos Duration",
-        "description":"Set chaos duration (in sec) as desired",
-        "variable":"DURATION",
-        "type":"number",
-        "default":"600",
-        "required":"false"
+        "name": "chaos-duration",
+        "short_description": "Chaos Duration",
+        "description": "Set chaos duration (in sec) as desired",
+        "variable": "DURATION",
+        "type": "number",
+        "default": "600",
+        "required": "false"
     },
     {
-        "name":"namespace",
-	    "short_description":"Namespace",
-        "description":"Namespace to target - all application routes will go inaccessible if pod selector is empty ( Required )",
-        "variable":"NAMESPACE",
-        "type":"string",
-        "required":"true"
+        "name": "namespace",
+        "short_description": "Namespace",
+        "description": "Namespace to target - all application routes will go inaccessible if pod selector is empty ( Required )",
+        "variable": "NAMESPACE",
+        "type": "string",
+        "required": "true"
     },
     {
-	    "name":"pod-selector",
-        "short_description":"Pod Selector",
+        "name": "pod-selector",
+        "short_description": "Pod Selector",
         "description": "Pods to target. For example \"{app: foo}\"",
-        "type":"string",
-        "variable":"POD_SELECTOR",
+        "type": "string",
+        "variable": "POD_SELECTOR",
         "validator": "\\{[a-zA-Z0-9-_]+\\: [a-zA-Z0-9-_]+\\}",
         "validation_message": "Pod selector must be in the following format: \"{app: foo}\"",
-	    "required": "true"
+        "required": "true"
     },
     {
-        "name":"block-traffic-type",
-         "short_description":"Block traffic direction",
-         "description": "It can be [Ingress] or [Egress] or [Ingress, Egress]",
-         "type":"string",
-         "variable":"BLOCK_TRAFFIC_TYPE",
-         "validator": "^\\[Ingress\\]$|^\\[Egress\\]$|^\\[Ingress, Egress\\]$",
-         "validation_message": "Block traffic direction can be [Ingress] or [Egress] or [Ingress, Egress]",
-         "default":"[Ingress, Egress]",
-         "required": "false"
-     }
+        "name": "exclude-selector",
+        "short_description": "Exclude Pod Selector",
+        "description": "Pods to exclude from targetting. For example \"{app: foo}\"",
+        "type": "string",
+        "variable": "EXCLUDE_LABEL",
+        "validator": "\\{[a-zA-Z0-9-_]+\\: [a-zA-Z0-9-_]+\\}",
+        "validation_message": "Exclude Pod selector must be in the following format: \"{app: foo}\"",
+        "required": "false"
+    },
+    {
+        "name": "block-traffic-type",
+        "short_description": "Block traffic direction",
+        "description": "It can be [Ingress] or [Egress] or [Ingress, Egress]",
+        "type": "string",
+        "variable": "BLOCK_TRAFFIC_TYPE",
+        "validator": "^\\[Ingress\\]$|^\\[Egress\\]$|^\\[Ingress, Egress\\]$",
+        "validation_message": "Block traffic direction can be [Ingress] or [Egress] or [Ingress, Egress]",
+        "default": "[Ingress, Egress]",
+        "required": "false"
+    }
 ]
