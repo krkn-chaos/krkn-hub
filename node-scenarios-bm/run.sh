@@ -24,7 +24,7 @@ if ! echo "$SCENARIO_BASE64" | base64 -d >> /home/krkn/kraken/scenarios/node_sce
   exit 1
 fi
 
-python3.9 /home/krkn/validate_config.py -y /home/krkn/kraken/scenarios/node_scenarios_bm.yaml \
+python3.11 /home/krkn/validate_config.py -y /home/krkn/kraken/scenarios/node_scenarios_bm.yaml \
                              -s /home/krkn/kraken/scenarios/node-scenarios-bm.json
 
 # replace env variables
@@ -40,4 +40,4 @@ if [[ $KRKN_DEBUG == "True" ]];then
   extra_var="--debug True"
 fi
 
-python3.9 run_kraken.py --config=config/node_scenarios_bm.yaml $extra_var
+python3.11 run_kraken.py --config=config/node_scenarios_bm.yaml $extra_var

@@ -37,7 +37,7 @@ source $ROOT_FOLDER/common_run.sh
 cd $KRAKEN_FOLDER
 
 
-python3.9 utils/chaos_recommender/chaos_recommender.py \
+python3.11 utils/chaos_recommender/chaos_recommender.py \
 -o -k $KRKN_KUBE_CONFIG \
 -M $MEM_TESTS \
 -G $GENERIC_TESTS \

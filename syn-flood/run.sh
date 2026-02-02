@@ -24,6 +24,6 @@ checks
 
 # Run Kraken
 cd $KRAKEN_FOLDER
-python3.9 run_kraken.py --config=config/syn_flood_config.yaml $extra_var
+python3.11 run_kraken.py --config=config/syn_flood_config.yaml $extra_var
 
 

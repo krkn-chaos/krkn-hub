@@ -30,4 +30,4 @@ cat /home/krkn/kraken/scenarios/network_chaos.yaml
 
 # Run Kraken
 cd /home/krkn/kraken
-python3.9 run_kraken.py --config=config/network_chaos_config.yaml $extra_var
+python3.11 run_kraken.py --config=config/network_chaos_config.yaml $extra_var

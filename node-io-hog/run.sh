@@ -28,4 +28,4 @@ if [[ $KRKN_DEBUG == "True" ]];then
   extra_var="--debug True"
 fi
 
-python3.9 run_kraken.py --config=config/io-config.yaml $extra_var
+python3.11 run_kraken.py --config=config/io-config.yaml $extra_var
