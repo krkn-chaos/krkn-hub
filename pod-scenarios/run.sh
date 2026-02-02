@@ -30,4 +30,4 @@ if [[ $KRKN_DEBUG == "True" ]];then
 fi
 
 
-python3.9 run_kraken.py --config=/home/krkn/kraken/config/pod_scenario_config.yaml $extra_var
+python3.11 run_kraken.py --config=/home/krkn/kraken/config/pod_scenario_config.yaml $extra_var

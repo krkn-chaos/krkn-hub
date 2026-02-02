@@ -23,4 +23,4 @@ envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/con
 cd /home/krkn/kraken
 
 
-python3.9 run_kraken.py --config=config/app_outage_config.yaml $extra_var
+python3.11 run_kraken.py --config=config/app_outage_config.yaml $extra_var

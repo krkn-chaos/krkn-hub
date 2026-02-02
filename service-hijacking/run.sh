@@ -25,7 +25,7 @@ if ! echo "$SCENARIO_BASE64" | base64 -d >> /home/krkn/kraken/scenarios/service_
 fi
 # Validate scenario against schema
 
-python3.9 /home/krkn/validate_config.py -y /home/krkn/kraken/scenarios/service_hijacking.yaml \
+python3.11 /home/krkn/validate_config.py -y /home/krkn/kraken/scenarios/service_hijacking.yaml \
                              -s /home/krkn/kraken/scenarios/service-hijacking-schema.json
 
 
@@ -42,4 +42,4 @@ if [[ $KRKN_DEBUG == "True" ]];then
   extra_var="--debug True"
 fi
 
-python3.9 run_kraken.py --config=config/service_hijacking_config.yaml $extra_var
+python3.11 run_kraken.py --config=config/service_hijacking_config.yaml $extra_var

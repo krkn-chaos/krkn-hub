@@ -24,4 +24,4 @@ if [[ $KRKN_DEBUG == "True" ]];then
 fi
 
 
-python3.9 run_kraken.py --config=config/namespace_config.yaml $extra_var
+python3.11 run_kraken.py --config=config/namespace_config.yaml $extra_var
