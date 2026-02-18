@@ -114,3 +114,13 @@ services:
         context: ./
         dockerfile: ./kubevirt-outage/Dockerfile
       image: quay.io/krkn-chaos/krkn-hub:kubevirt-outage
+    pod-network-chaos-ng:
+      build:
+        context: ./
+        dockerfile: ./pod-network-chaos-ng/Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:pod-network-chaos-ng
+    node-network-chaos-ng:
+      build:
+        context: ./
+        dockerfile: ./node-network-chaos-ng/Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:node-network-chaos-ng
