@@ -1,3 +1,3 @@
 # Node CPU Hog Scenario Docs
 
-See [doc](https://github.com/redhat-chaos/krkn-hub/blob/main/docs/syn-flood.md) for how to run and all the variables listed
+See [doc](https://krkn-chaos.dev/docs/scenarios/syn-flood-scenario/#tab-krkn-hub) for how to run and all the variables listed
