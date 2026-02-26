@@ -1,3 +1,3 @@
 # Zone OutageScenario Docs
 
-See [doc](https://github.com/redhat-chaos/krkn-hub/blob/main/docs/zone-outages.md) for how to run and all the variables listed
+See [doc](https://krkn-chaos.dev/docs/scenarios/zone-outage-scenarios/#tab-krkn-hub) for how to run and all the variables listed

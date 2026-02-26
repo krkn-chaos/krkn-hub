@@ -1,3 +1,3 @@
 # PVC Scenario Docs
 
-See [doc](https://github.com/redhat-chaos/krkn-hub/blob/main/docs/pvc-scenarios.md) for how to run and all the variables listed
+See [doc](https://krkn-chaos.dev/docs/scenarios/pvc-scenario/#tab-krkn-hub) for how to run and all the variables listed

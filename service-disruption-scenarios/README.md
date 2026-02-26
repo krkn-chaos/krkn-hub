@@ -1,3 +1,3 @@
 # Namespace Scenario Docs
 
-See [doc](https://github.com/redhat-chaos/krkn-hub/blob/main/docs/namespace-scenarios.md) for how to run and all the variables listed
+See [doc](https://krkn-chaos.dev/docs/scenarios/service-disruption-scenarios/#tab-krkn-hub) for how to run and all the variables listed

@@ -1,3 +1,3 @@
 # Pod Network Chaos Scenario Docs
 
-See [doc](https://github.com/redhat-chaos/krkn-hub/blob/main/docs/pod-network-chaos.md) for how to run and all the variables listed
+See [doc](https://krkn-chaos.dev/docs/scenarios/pod-network-scenario/#tab-krkn-hub) for how to run and all the variables listed

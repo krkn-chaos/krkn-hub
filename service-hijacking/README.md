@@ -1,1 +1,1 @@
-See [doc](https://github.com/redhat-chaos/krkn-hub/blob/main/docs/service-hijacking.md) for how to run and all the variables listed
+See [doc](https://krkn-chaos.dev/docs/scenarios/service-hijacking-scenario/#tab-krkn-hub) for how to run and all the variables listed

@@ -1,3 +1,3 @@
 # Network Chaos docs
 
-See [doc](../docs/node-network-filter.md) for how to run and all the variables listed
+See [doc](https://krkn-chaos.dev/docs/scenarios/network-chaos-ng-scenarios/node-network-filter/#tab-krkn-hub) for how to run and all the variables listed
