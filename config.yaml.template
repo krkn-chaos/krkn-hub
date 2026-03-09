@@ -56,6 +56,7 @@ elastic:
     metrics_index: "$ES_METRICS_INDEX"
     alerts_index: "$ES_ALERTS_INDEX"
     telemetry_index: "$ES_TELEMETRY_INDEX"
+    run_tag: "$ES_RUN_TAG"
 
 health_checks:                                                  # Utilizing health check endpoints to observe application behavior during chaos injection.
     interval: $HEALTH_CHECK_INTERVAL

@@ -26,6 +26,7 @@ export ES_PORT=${ES_PORT:=443}
 export ES_USERNAME=${ES_USERNAME:=elastic}
 export ES_PASSWORD=${ES_PASSWORD}
 export ES_VERIFY_CERTS=${ES_VERIFY_CERTS:=False}
+export ES_RUN_TAG=${ES_RUN_TAG:=""}
 
 export ES_METRICS_INDEX=${ES_METRICS_INDEX:=krkn-metrics}
 export ES_ALERTS_INDEX=${ES_ALERTS_INDEX:=krkn-alerts}
