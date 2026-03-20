@@ -1,0 +1,24 @@
+# Dockerfile for kraken
+
+FROM quay.io/krkn-chaos/krkn:latest
+
+ENV KUBECONFIG /home/krkn/.kube/config
+
+# Copy configurations
+COPY metrics_config.yaml.template /home/krkn/kraken/config/kube_burner.yaml.template
+COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
+
+COPY node-network-filter/env.sh /home/krkn/env.sh
+COPY env.sh /home/krkn/main_env.sh
+COPY node-network-filter/run.sh /home/krkn/run.sh
+COPY node-network-filter/network-chaos.yml /home/krkn/kraken/scenarios/kube/network-chaos.yml
+COPY common_run.sh /home/krkn/common_run.sh
+
+LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
+LABEL krknctl.title="Node Network Chaos"
+LABEL krknctl.description="Scenario to introduce network latency, packet loss, and bandwidth restriction in the Node's host network interface. The purpose of this scenario is to observe faults caused by random variations in the network (NG version)."
+
+LABEL krknctl.input_fields='$KRKNCTL_INPUT'
+
+ENTRYPOINT /home/krkn/run.sh
+
