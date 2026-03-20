@@ -73,3 +73,9 @@ export KUBE_VIRT_DISCONNECTED=${KUBE_VIRT_DISCONNECTED:=False}
 export KUBE_VIRT_SSH_NODE=${KUBE_VIRT_SSH_NODE:""}
 export KUBE_VIRT_NODE_NAME=${KUBE_VIRT_NODE_NAME:""}                                     # Filter only VMI's running a specific node name
 export KUBE_VIRT_EXIT_ON_FAIL=${KUBE_VIRT_EXIT_ON_FAIL:False}
+
+# resiliency score
+export RESILIENCY_RUN_MODE=${RESILIENCY_RUN_MODE:="standalone"}
+export RESILIENCY_RUN_MODE=$($RESILIENCY_SCORE  && echo "detailed" || echo "standalone")
+export RESILIENCY_RUN_MODE=$($DISABLE_RESILIENCY_SCORE  && echo "disabled" || echo $RESILIENCY_RUN_MODE)
+export RESILIENCY_FILE=${RESILIENCY_FILE:="config/alerts.yaml"}
