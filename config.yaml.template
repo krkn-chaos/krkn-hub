@@ -76,3 +76,6 @@ kubevirt_checks:                                            # Utilizing virt che
     ssh_node: $KUBE_VIRT_SSH_NODE
     node_names: $KUBE_VIRT_NODE_NAME                                          # Filter only VMI's running a specific node name
     exit_on_failure: $KUBE_VIRT_EXIT_ON_FAIL                                     # If value is True and VMI's are failing post chaos returns failure, values can be True/False
+resiliency:
+  resiliency_run_mode: $RESILIENCY_RUN_MODE
+  resiliency_file: $RESILIENCY_FILE
