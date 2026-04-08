@@ -59,6 +59,11 @@ services:
         context: ./
         dockerfile: ./node-io-hog/Dockerfile
       image: quay.io/krkn-chaos/krkn-hub:node-io-hog
+    node-interface-down:
+      build:
+        context: ./
+        dockerfile: ./node-interface-down/Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:node-interface-down
     node-network-filter:
       build:
         context: ./
