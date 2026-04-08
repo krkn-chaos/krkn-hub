@@ -1,0 +1,22 @@
+# Dockerfile for kraken
+
+FROM quay.io/krkn-chaos/krkn:latest
+
+ENV KUBECONFIG /home/krkn/.kube/config
+
+# Copy configurations
+COPY metrics_config.yaml.template /home/krkn/kraken/config/kube_burner.yaml.template
+COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
+
+COPY node-interface-down/env.sh /home/krkn/env.sh
+COPY env.sh /home/krkn/main_env.sh
+COPY node-interface-down/run.sh /home/krkn/run.sh
+COPY node-interface-down/node-interface-down.yml /home/krkn/kraken/scenarios/kube/node-interface-down.yml
+COPY common_run.sh /home/krkn/common_run.sh
+
+LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
+LABEL krknctl.title="Node Interface Down"
+LABEL krknctl.description="This scenario brings down one or more network interfaces on target nodes to simulate a network outage. A workload pod is scheduled on each target node, the specified interfaces are taken down for the configured duration, then recovered automatically. The node's readiness is monitored after recovery."
+LABEL krknctl.input_fields='$KRKNCTL_INPUT'
+
+ENTRYPOINT /home/krkn/kraken/containers/setup-ssh.sh && /home/krkn/run.sh
