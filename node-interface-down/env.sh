@@ -1,0 +1,14 @@
+export TEST_DURATION=${TOTAL_CHAOS_DURATION:="60"}
+export LABEL_SELECTOR=${NODE_SELECTOR:=""}
+export NAMESPACE=${NAMESPACE:="default"}
+export INSTANCE_COUNT=${INSTANCE_COUNT:="1"}
+export EXECUTION=${EXECUTION:="parallel"}
+export INTERFACES=${INTERFACES:=""}
+export RECOVERY_TIME=${RECOVERY_TIME:="0"}
+export WAIT_DURATION=${WAIT_DURATION:="0"}
+export SCENARIO_TYPE=${SCENARIO_TYPE:=network_chaos_ng_scenarios}
+export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kube/node-interface-down.yml}
+export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-network-chaos:latest"}
+export NODE_NAME=${NODE_NAME:=""}
+export TAINTS=${TAINTS:=""}
+export SERVICE_ACCOUNT=${SERVICE_ACCOUNT:=""}

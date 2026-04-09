@@ -1,0 +1,116 @@
+[
+  {
+    "name": "test-duration",
+    "short_description": "Test Duration",
+    "description": "Duration in seconds the node interface(s) will be brought down",
+    "variable": "TOTAL_CHAOS_DURATION",
+    "type": "number",
+    "default": "60",
+    "required": "false"
+  },
+  {
+    "name": "node-selector",
+    "short_description": "Node Selector",
+    "description": "Node selector to target nodes in the format \"<selector>=<value>\". A workload pod will be scheduled on each selected node. If left empty a random node will be selected",
+    "variable": "NODE_SELECTOR",
+    "type": "string",
+    "validator": "^$|^.+\\=.*$",
+    "validation_message": "Node selector must be in the format: key=value",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "node-name",
+    "short_description": "Node Name",
+    "description": "The specific node name to target. If set, takes precedence over node-selector",
+    "variable": "NODE_NAME",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "namespace",
+    "short_description": "Namespace",
+    "description": "Namespace where the scenario workload pod will be deployed",
+    "variable": "NAMESPACE",
+    "type": "string",
+    "default": "default",
+    "required": "false"
+  },
+  {
+    "name": "instance-count",
+    "short_description": "Instance Count",
+    "description": "Number of nodes to target when multiple nodes match the node-selector",
+    "variable": "INSTANCE_COUNT",
+    "type": "number",
+    "default": "1",
+    "required": "false"
+  },
+  {
+    "name": "execution",
+    "short_description": "Execution Mode",
+    "description": "When multiple nodes are targeted, execute the scenario on all of them in parallel or serial",
+    "variable": "EXECUTION",
+    "type": "enum",
+    "allowed_values": "parallel,serial",
+    "separator": ",",
+    "default": "parallel",
+    "required": "false"
+  },
+  {
+    "name": "interfaces",
+    "short_description": "Interfaces",
+    "description": "Comma-separated list of network interfaces to bring down (e.g. eth0,eth1). If empty, the default interface is auto-detected",
+    "variable": "INTERFACES",
+    "type": "string",
+    "default": "",
+    "validator": "^$|^[a-zA-Z0-9-.]+(,[a-zA-Z0-9-.]+)*$",
+    "validation_message": "Interfaces must be a comma-separated list: eth0 or eth0,eth1,eth2",
+    "required": "false"
+  },
+  {
+    "name": "recovery-time",
+    "short_description": "Recovery Time",
+    "description": "Additional time in seconds to wait after the node becomes Ready again before proceeding (allows the node to stabilize)",
+    "variable": "RECOVERY_TIME",
+    "type": "number",
+    "default": "0",
+    "required": "false"
+  },
+  {
+    "name": "wait-duration",
+    "short_description": "Wait Duration",
+    "description": "Time in seconds to wait between scenarios when multiple scenario configs are defined in the same file",
+    "variable": "WAIT_DURATION",
+    "type": "number",
+    "default": "0",
+    "required": "false"
+  },
+  {
+    "name": "image",
+    "short_description": "Workload Image",
+    "description": "The container image used to run the interface-down workload on the node",
+    "variable": "IMAGE",
+    "type": "string",
+    "default": "quay.io/krkn-chaos/krkn-network-chaos:latest",
+    "required": "false"
+  },
+  {
+    "name": "service-account",
+    "short_description": "Service Account",
+    "description": "The service account associated with the scenario workload pod",
+    "variable": "SERVICE_ACCOUNT",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "taints",
+    "short_description": "Taints",
+    "description": "Comma-separated list of tolerations to assign to the workload pod so it can be scheduled on tainted nodes",
+    "variable": "TAINTS",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  }
+]
