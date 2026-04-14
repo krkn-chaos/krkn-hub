@@ -1,0 +1,25 @@
+# Dockerfile for kraken
+
+FROM quay.io/krkn-chaos/krkn:latest
+
+ENV KUBECONFIG /home/krkn/.kube/config
+
+# Copy configurations
+
+COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
+COPY http-load/env.sh /home/krkn/env.sh
+COPY http-load/build_config_file.py /home/krkn/build_config_file.py
+COPY env.sh /home/krkn/main_env.sh
+COPY http-load/run.sh /home/krkn/run.sh
+COPY common_run.sh /home/krkn/common_run.sh
+
+LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
+LABEL krknctl.title="HTTP Load"
+LABEL krknctl.description="This scenario generates distributed HTTP load against one or more target endpoints \
+using Vegeta load testing pods deployed inside the cluster. For more details, please refer to \
+the following documentation (https://github.com/krkn-chaos/krkn-hub/blob/main/docs/http-load.md)."
+
+
+LABEL krknctl.input_fields='$KRKNCTL_INPUT'
+
+ENTRYPOINT /home/krkn/kraken/containers/setup-ssh.sh && /home/krkn/run.sh

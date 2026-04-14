@@ -119,3 +119,8 @@ services:
         context: ./
         dockerfile: ./kubevirt-outage/Dockerfile
       image: quay.io/krkn-chaos/krkn-hub:kubevirt-outage
+    http-load:
+      build:
+        context: ./
+        dockerfile: ./http-load/Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:http-load
