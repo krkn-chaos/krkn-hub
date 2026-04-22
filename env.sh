@@ -78,4 +78,4 @@ export KUBE_VIRT_EXIT_ON_FAIL=${KUBE_VIRT_EXIT_ON_FAIL:False}
 export RESILIENCY_RUN_MODE=${RESILIENCY_RUN_MODE:="standalone"}
 export RESILIENCY_RUN_MODE=$([ "$RESILIENCY_SCORE" = "true" ] && echo "detailed" || echo "standalone")
 export RESILIENCY_RUN_MODE=$([ "$DISABLE_RESILIENCY_SCORE" = "true" ] && echo "disabled" || echo "$RESILIENCY_RUN_MODE")
-export RESILIENCY_FILE=${RESILIENCY_FILE:="config/alerts.yaml"}
+export RESILIENCY_FILE=${RESILIENCY_FILE:=$ALERTS_PATH}
