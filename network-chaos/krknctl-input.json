@@ -72,7 +72,7 @@
         "type": "string",
         "variable": "INTERFACES",
         "default": "[]",
-        "validator": "^\\[\\]$|^\\[([a-zA-Z0-9]+(,)?)*\\[^,]]$",
+        "validator": "^\\[\\]$|^\\[([a-zA-Z0-9._-]+(,)?)*[^,]\\]$",
         "validation_message": "Interfaces must be in the format: [eth0,eth1,eth2]",
         "required": "false"
     },
@@ -93,7 +93,7 @@
         "description": "Dictionary with key as node name(s) and value as a list of its interfaces to test. For example: {ip-10-0-216-2.us-west-2.compute.internal: [ens5]}",
         "type": "string",
         "variable": "TARGET_NODE_AND_INTERFACE",
-        "validator": "^{([a-zA-Z0-9-.]+: \\[(([A-Za-z0-9]+(,)?)+)\\](,)?)+[^,]}$",
+        "validator": "^{([a-zA-Z0-9-.]+: \\[(([A-Za-z0-9._-]+(,)?)+)\\](,)?)+[^,]}$",
         "validation_message": "Target node interface must be in the format: ip-10-0-216-2.us-west-2.compute.internal: [ens5]}",
         "required": "false"
     },
