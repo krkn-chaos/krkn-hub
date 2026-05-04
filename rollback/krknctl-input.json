@@ -1,0 +1,11 @@
+[
+    {
+        "name":"run-uuid",
+        "short_description":"Run UUID that needs to be rolled back",
+        "description":"Krkn Run UUID that needs to be rolled back.",
+        "variable":"RUN_UUID",
+        "type":"string",
+        "default":"",
+        "required":"true"
+    }
+  ]
