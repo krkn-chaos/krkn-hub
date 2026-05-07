@@ -16,6 +16,7 @@ COPY service-hijacking/validate_config.py /home/krkn/validate_config.py
 
 COPY common_run.sh /home/krkn/common_run.sh
 
+LABEL krknctl.has_rollback="true"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Service Hijacking"
 LABEL krknctl.description="Service Hijacking Scenarios aim to simulate fake HTTP responses from a workload targeted \

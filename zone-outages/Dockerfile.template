@@ -14,6 +14,7 @@ COPY zone-outages/zone_outage_scenario.yaml.template /home/krkn/kraken/scenarios
 COPY zone-outages/zone_outage_scenario_gcp.yaml.template /home/krkn/kraken/scenarios/zone_outage_scenario_gcp.yaml.template
 COPY common_run.sh /home/krkn/common_run.sh
 
+LABEL krknctl.has_rollback="true"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Zone outage"
 LABEL krknctl.description="This scenario disrupts a targeted zone in the public cloud by blocking egress and ingress traffic \

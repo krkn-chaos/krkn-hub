@@ -11,6 +11,7 @@ COPY node-cpu-hog/run.sh /home/krkn/run.sh
 COPY node-cpu-hog/cpu-hog.yml.template /home/krkn/kraken/scenarios/kube/cpu-hog.yml.template
 COPY common_run.sh /home/krkn/common_run.sh
 
+LABEL krknctl.has_rollback="true"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="CPU Hog"
 LABEL krknctl.description="The purpose of this scenario is to create cpu pressure on a particular node of the Kubernetes/OpenShift cluster for a time span"
