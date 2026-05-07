@@ -13,6 +13,7 @@ COPY application-outages/run.sh /home/krkn/run.sh
 COPY common_run.sh /home/krkn/common_run.sh
 COPY application-outages/app_outages.yaml.template /home/krkn/kraken/scenarios/app_outage.yaml.template
 
+LABEL krknctl.is_a_scenario="true"
 LABEL krknctl.has_rollback="true"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Application Outages"

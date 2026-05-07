@@ -18,6 +18,7 @@ COPY common_run.sh /home/krkn/common_run.sh
 COPY node-scenarios/node_scenario.yaml.template /home/krkn/kraken/scenarios/node_scenario.yaml.template
 COPY node-scenarios/baremetal_node_scenario.yaml.template /home/krkn/kraken/scenarios/baremetal_node_scenario.yaml.template
 
+LABEL krknctl.is_a_scenario="true"
 LABEL krknctl.has_rollback="false"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Node scenarios"

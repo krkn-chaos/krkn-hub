@@ -9,6 +9,7 @@ COPY rollback/run.sh /home/krkn/run.sh
 COPY env.sh /home/krkn/main_env.sh
 COPY common_run.sh /home/krkn/common_run.sh
 
+LABEL krknctl.is_a_scenario="false"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Rollback"
 LABEL krknctl.description="This scenario will rollback a scenario based on the run uuid passed as parameter"

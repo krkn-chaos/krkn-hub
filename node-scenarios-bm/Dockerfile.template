@@ -20,6 +20,7 @@ COPY env.sh /home/krkn/main_env.sh
 COPY node-scenarios-bm/run.sh /home/krkn/run.sh
 COPY common_run.sh /home/krkn/common_run.sh
 
+LABEL krknctl.is_a_scenario="true"
 LABEL krknctl.has_rollback="false"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Node scenarios Bare Metal"
