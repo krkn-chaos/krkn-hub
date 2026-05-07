@@ -1,0 +1,16 @@
+FROM quay.io/krkn-chaos/krkn:latest
+
+ENV KUBECONFIG /home/krkn/.kube/config
+
+# Copy configurations
+COPY rollback/config.yaml.template /home/krkn/kraken/config/config.yaml.template
+COPY rollback/env.sh /home/krkn/env.sh
+COPY rollback/run.sh /home/krkn/run.sh
+COPY env.sh /home/krkn/main_env.sh
+COPY common_run.sh /home/krkn/common_run.sh
+
+LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
+LABEL krknctl.title="Rollback"
+LABEL krknctl.description="This scenario will rollback a scenario based on the run uuid passed as parameter"
+LABEL krknctl.input_fields='$KRKNCTL_INPUT'
+ENTRYPOINT /home/krkn/run.sh
