@@ -40,20 +40,36 @@ jobs:
           sudo docker image prune -af
           sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache
           df -h
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
       - name: Add krknctl metadata to Dockerfiles
         run: |
           bash build.sh
-      - name: Build the Docker image
-        run: docker compose build ${{ matrix.scenario }}
+      - name: Get image config
+        id: config
+        run: |
+          IMAGE=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].image')
+          DOCKERFILE=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].build.dockerfile')
+          echo "image=$IMAGE" >> $GITHUB_OUTPUT
+          echo "dockerfile=$DOCKERFILE" >> $GITHUB_OUTPUT
       - name: Login in quay
         if: ${{ github.ref == 'refs/heads/main' }}
-        run: docker login quay.io -u ${QUAY_USER} -p ${QUAY_TOKEN}
-        env:
-          QUAY_USER: ${{ secrets.QUAY_USERNAME }}
-          QUAY_TOKEN: ${{ secrets.QUAY_PASSWORD }}
-      - name: Push the Docker image
-        if: ${{ github.ref == 'refs/heads/main' }}
-        run: docker compose push ${{ matrix.scenario }}
+        uses: docker/login-action@v3
+        with:
+          registry: quay.io
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_PASSWORD }}
+      - name: Build and push multi-platform image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ${{ steps.config.outputs.dockerfile }}
+          platforms: linux/amd64,linux/arm64
+          push: ${{ github.ref == 'refs/heads/main' }}
+          tags: ${{ steps.config.outputs.image }}
+          provenance: false
 
   notify:
     runs-on: ubuntu-latest
