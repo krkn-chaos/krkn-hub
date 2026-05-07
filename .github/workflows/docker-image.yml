@@ -18,6 +18,11 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@main
+    - name: Free disk space
+      run: |
+        sudo docker image prune -af
+        sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache
+        df -h
     - name: Add krknctl metadata to Dockerfiles
       run: |
         bash build.sh
