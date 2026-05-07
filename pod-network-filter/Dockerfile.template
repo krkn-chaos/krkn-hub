@@ -14,6 +14,8 @@ COPY pod-network-filter/run.sh /home/krkn/run.sh
 COPY pod-network-filter/network-filter.yml /home/krkn/kraken/scenarios/kube/network-filter.yml
 COPY common_run.sh /home/krkn/common_run.sh
 
+LABEL krknctl.is_a_scenario="true"
+LABEL krknctl.has_rollback="false"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Pod Network Filter"
 LABEL krknctl.description="This scenario will create iptables rules on the target pod to block incoming/outgoing traffic on specified ports and interfaces."

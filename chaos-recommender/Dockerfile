@@ -4,6 +4,7 @@ FROM quay.io/krkn-chaos/krkn:latest
 
 ENV KUBECONFIG /home/krkn/.kube/config
 
+LABEL krknctl.is_a_scenario="false"
 # Copy configurations
 COPY env.sh /home/krkn/main_env.sh
 COPY chaos-recommender/run.sh /home/krkn/run.sh

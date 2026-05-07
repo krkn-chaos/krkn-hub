@@ -14,6 +14,8 @@ COPY node-network-filter/run.sh /home/krkn/run.sh
 COPY node-network-filter/network-filter.yml /home/krkn/kraken/scenarios/kube/network-filter.yml
 COPY common_run.sh /home/krkn/common_run.sh
 
+LABEL krknctl.is_a_scenario="true"
+LABEL krknctl.has_rollback="false"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Node Network Filter"
 LABEL krknctl.description="This scenario will create iptables rules on the target nodes to block incoming/outgoing traffic on specified ports and interfaces."

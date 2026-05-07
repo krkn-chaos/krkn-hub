@@ -14,6 +14,8 @@ COPY node-memory-hog/run.sh /home/krkn/run.sh
 COPY node-memory-hog/memory-hog.yml.template /home/krkn/kraken/scenarios/kube/memory-hog.yml.template
 COPY common_run.sh /home/krkn/common_run.sh
 
+LABEL krknctl.is_a_scenario="true"
+LABEL krknctl.has_rollback="true"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Memory Hog"
 LABEL krknctl.description="The purpose of this scenario is to create Virtual Memory pressure on a particular node of the Kubernetes/OpenShift cluster for a time span."
