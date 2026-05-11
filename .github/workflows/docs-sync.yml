@@ -1,0 +1,170 @@
+name: Docs Sync - Auto PR on Merge
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+jobs:
+  sync-docs:
+    # Only run when a PR is actually merged, not just closed
+    if: github.event.pull_request.merged == true
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout krkn-hub repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # Need parent commit to get the diff
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install PyGithub google-generativeai
+
+      - name: Clone bot repo
+        run: |
+          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/Aditya-ad48/krkn-docs-bot.git /tmp/krkn-docs-bot
+
+      - name: Get diff of merged PR
+        id: get_diff
+        run: |
+          # Get the diff of the merged PR
+          git diff HEAD~1 HEAD -- '*.sh' '*.json' > /tmp/upstream.diff
+          echo "Diff contents:"
+          cat /tmp/upstream.diff
+
+          # Check if any relevant files changed
+          CHANGED=$(git diff HEAD~1 HEAD --name-only -- '*.sh' '*.json')
+          echo "Changed files: $CHANGED"
+          echo "changed_files=$CHANGED" >> $GITHUB_OUTPUT
+
+          # Get short SHA for branch naming
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          echo "short_sha=$SHORT_SHA" >> $GITHUB_OUTPUT
+
+      - name: Run docs sync bot
+        if: steps.get_diff.outputs.changed_files != ''
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          UPSTREAM_PR: ${{ github.event.pull_request.html_url }}
+          SHORT_SHA: ${{ steps.get_diff.outputs.short_sha }}
+        run: |
+          python3 << 'PYEOF'
+          import sys, os, subprocess
+
+          sys.path.insert(0, '/tmp/krkn-docs-bot')
+          sys.path.insert(0, '/tmp/krkn-docs-bot/bot')
+
+          from bot.detector import detect_from_diff, detect_divergences, parse_env_sh, parse_krknctl_json, UPSTREAM_TO_TAB
+          from bot.generator import generate_updated_tab
+          from bot.pr_creator import create_draft_pr
+
+          diff = open('/tmp/upstream.diff').read()
+          if not diff.strip():
+              print("No relevant changes in diff. Skipping.")
+              sys.exit(0)
+
+          upstream_pr = os.environ.get('UPSTREAM_PR', '')
+          short_sha = os.environ.get('SHORT_SHA', 'unknown')
+          gh_token = os.environ.get('GH_TOKEN', '')
+
+          # Find which upstream files changed and are mapped to website docs
+          changed_and_mapped = []
+          for line in diff.splitlines():
+              if line.startswith('+++ b/'):
+                  filepath = line[6:]  # remove '+++ b/'
+                  if filepath in UPSTREAM_TO_TAB:
+                      changed_and_mapped.append(filepath)
+
+          if not changed_and_mapped:
+              print("No mapped files changed. Skipping.")
+              sys.exit(0)
+
+          print(f"Mapped files changed: {changed_and_mapped}")
+
+          for upstream_file in changed_and_mapped:
+              print(f"\nProcessing: {upstream_file}")
+
+              try:
+                  result = detect_from_diff(diff, upstream_file)
+              except ValueError as e:
+                  print(f"  Skipping: {e}")
+                  continue
+
+              if not result.changed_fields:
+                  print(f"  No doc-impacting changes detected.")
+                  continue
+
+              # Try to find matching krknctl-input.json for descriptions
+              scenario_dir = upstream_file.split('/')[0]
+              krknctl_path = f"{scenario_dir}/krknctl-input.json"
+              divergences = []
+
+              try:
+                  with open(krknctl_path) as f:
+                      krknctl_content = f.read()
+                  krknctl_params = parse_krknctl_json(krknctl_content)
+
+                  # Enrich changed_fields with descriptions
+                  for cf in result.changed_fields:
+                      if cf.name in krknctl_params:
+                          raw = krknctl_params[cf.name]
+                          cf.description = raw['description'] if isinstance(raw, dict) else None
+
+                  # Check divergences
+                  env_lines = [
+                      line[1:] for line in diff.splitlines()
+                      if line.startswith('+') and not line.startswith('+++')
+                  ]
+                  env_params = parse_env_sh('\n'.join(env_lines))
+                  divergences = detect_divergences(env_params, krknctl_params)
+
+              except FileNotFoundError:
+                  print(f"  No krknctl-input.json found for {scenario_dir} — skipping description enrichment")
+
+              # Read current website tab file via GitHub API
+              from github import Github, GithubException
+              g = Github(gh_token)
+              website_repo = g.get_repo('Aditya-ad48/website')
+              tab_path = result.target_tab
+
+              try:
+                  contents = website_repo.get_contents(tab_path, ref='main')
+                  current_tab_content = contents.decoded_content.decode('utf-8')
+              except GithubException:
+                  print(f"  Could not fetch {tab_path} from website repo. Skipping.")
+                  continue
+
+              all_params = [cf.name for cf in result.changed_fields]
+
+              updated_content = generate_updated_tab(
+                  current_tab_content,
+                  result.changed_fields,
+                  result.scenario,
+                  all_params
+              )
+
+              pr_url = create_draft_pr(
+                  github_token=gh_token,
+                  website_repo_name='Aditya-ad48/website',
+                  base_branch='main',
+                  scenario=result.scenario,
+                  upstream_sha=short_sha,
+                  upstream_pr_url=upstream_pr,
+                  upstream_file=upstream_file,
+                  target_tab_path=tab_path,
+                  new_tab_content=updated_content,
+                  changed_fields=result.changed_fields,
+                  divergences=divergences,
+                  diff=diff,
+              )
+              print(f"  Draft PR created: {pr_url}")
+
+          PYEOF
