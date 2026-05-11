@@ -23,3 +23,4 @@ export BMC_USER=${BMC_USER:=""}
 export BMC_PASSWORD=${BMC_PASSWORD:=""}
 export BMC_ADDR=${BMC_ADDR:=""}
 export DISKS=${DISKS:=""}
+export TEST_TIMEOUT=${TEST_TIMEOUT:="300"}
