@@ -1,0 +1,17 @@
+export TEST_DURATION=${TOTAL_CHAOS_DURATION:="60"}
+export VMI_NAME=${VMI_NAME:=""}
+export LABEL_SELECTOR=${LABEL_SELECTOR:=""}
+export NAMESPACE=${NAMESPACE:="default"}
+export INSTANCE_COUNT=${INSTANCE_COUNT:="1"}
+export EXECUTION=${EXECUTION:="parallel"}
+export INGRESS=${INGRESS:="true"}
+export EGRESS=${EGRESS:="true"}
+export INTERFACES=${INTERFACES:=""}
+export LATENCY=${LATENCY:=""}
+export LOSS=${LOSS:=""}
+export BANDWIDTH=${BANDWIDTH:=""}
+export SCENARIO_TYPE=${SCENARIO_TYPE:=network_chaos_ng_scenarios}
+export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kube/vmi-network-chaos.yml}
+export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-network-chaos:latest"}
+export TAINTS=${TAINTS:=""}
+export SERVICE_ACCOUNT=${SERVICE_ACCOUNT:=""}

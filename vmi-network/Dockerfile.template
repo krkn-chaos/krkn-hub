@@ -1,0 +1,25 @@
+# Dockerfile for kraken
+
+FROM quay.io/krkn-chaos/krkn:latest
+
+ENV KUBECONFIG /home/krkn/.kube/config
+
+# Copy configurations
+COPY metrics_config.yaml.template /home/krkn/kraken/config/kube_burner.yaml.template
+COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
+
+COPY vmi-network/env.sh /home/krkn/env.sh
+COPY env.sh /home/krkn/main_env.sh
+COPY vmi-network/run.sh /home/krkn/run.sh
+COPY vmi-network/vmi-network-chaos.yml /home/krkn/kraken/scenarios/kube/vmi-network-chaos.yml
+COPY common_run.sh /home/krkn/common_run.sh
+
+LABEL krknctl.is_a_scenario="true"
+LABEL krknctl.has_rollback="false"
+LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
+LABEL krknctl.title="VMI Network Chaos"
+LABEL krknctl.description="This scenario injects network degradation into a KubeVirt VirtualMachineInstance (VMI) by applying tc traffic control rules to simulate latency, packet loss, or bandwidth restrictions on the VMI's network interface."
+
+LABEL krknctl.input_fields='$KRKNCTL_INPUT'
+
+ENTRYPOINT /home/krkn/kraken/containers/setup-ssh.sh && /home/krkn/run.sh

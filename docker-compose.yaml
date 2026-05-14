@@ -119,6 +119,16 @@ services:
         context: ./
         dockerfile: ./kubevirt-outage/Dockerfile
       image: quay.io/krkn-chaos/krkn-hub:kubevirt-outage
+    vmi-network-filter:
+      build:
+        context: ./
+        dockerfile: ./vmi-network-filter/Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:vmi-network-filter
+    vmi-network:
+      build:
+        context: ./
+        dockerfile: ./vmi-network/Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:vmi-network
     http-load:
       build:
         context: ./
