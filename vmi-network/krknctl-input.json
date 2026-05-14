@@ -1,0 +1,147 @@
+[
+  {
+    "name": "chaos-duration",
+    "short_description": "Chaos Duration",
+    "description": "Set chaos duration (in sec) as desired",
+    "variable": "TOTAL_CHAOS_DURATION",
+    "type": "number",
+    "default": "60",
+    "required": "false"
+  },
+  {
+    "name": "vmi-name",
+    "short_description": "VMI Name",
+    "description": "The VirtualMachineInstance name to target (if label selector not specified)",
+    "variable": "VMI_NAME",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "label-selector",
+    "short_description": "Label Selector",
+    "description": "VMI label selector used to target one or more VMIs by label",
+    "variable": "LABEL_SELECTOR",
+    "type": "string",
+    "validator": "^$|^.+\\=.*$",
+    "validation_message": "Label selector must be in the format: key=value",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "namespace",
+    "short_description": "Namespace",
+    "description": "Namespace where the target VMI is running",
+    "variable": "NAMESPACE",
+    "type": "string",
+    "default": "default",
+    "required": "false"
+  },
+  {
+    "name": "instance-count",
+    "short_description": "Number of instances to target",
+    "description": "Number of instances to target if more than one is selected by the LABEL_SELECTOR",
+    "variable": "INSTANCE_COUNT",
+    "type": "number",
+    "default": "1",
+    "required": "false"
+  },
+  {
+    "name": "execution",
+    "short_description": "Execution mode",
+    "description": "When multiple VMIs are selected the execution on all of them can be performed in parallel or serial",
+    "variable": "EXECUTION",
+    "type": "enum",
+    "allowed_values": "parallel,serial",
+    "separator": ",",
+    "default": "parallel",
+    "required": "false"
+  },
+  {
+    "name": "ingress",
+    "short_description": "Apply chaos to incoming traffic",
+    "description": "Incoming network traffic will have chaos applied",
+    "variable": "INGRESS",
+    "type": "boolean",
+    "required": "true"
+  },
+  {
+    "name": "egress",
+    "short_description": "Apply chaos to outgoing traffic",
+    "description": "Outgoing network traffic will have chaos applied",
+    "variable": "EGRESS",
+    "type": "boolean",
+    "required": "true"
+  },
+  {
+    "name": "interfaces",
+    "short_description": "Network interfaces to apply chaos (comma separated)",
+    "description": "Network interfaces to apply chaos on (if more than one separated by comma eg. eth0,eth1,eth2)",
+    "variable": "INTERFACES",
+    "type": "string",
+    "default": "",
+    "validator": "^$|^[a-zA-Z0-9-.]+(,[a-zA-Z0-9-.]+)*",
+    "validation_message": "Network interfaces must be in the format: eth0 or a comma separated list eth0,eth1,eth2",
+    "required": "false"
+  },
+  {
+    "name": "latency",
+    "short_description": "Network latency to inject (eg. 50ms)",
+    "description": "Network latency to inject into the target VMI traffic (eg. 50ms, 100ms)",
+    "variable": "LATENCY",
+    "type": "string",
+    "default": "",
+    "validator": "^$|^[0-9]+(ms|s)$",
+    "validation_message": "Latency must be a value followed by ms or s, eg. 50ms or 2s",
+    "required": "false"
+  },
+  {
+    "name": "loss",
+    "short_description": "Packet loss percentage (eg. 0.02 for 2%)",
+    "description": "Packet loss percentage to inject into the target VMI traffic (eg. 0.02 for 2%, 0.5 for 50%)",
+    "variable": "LOSS",
+    "type": "string",
+    "default": "",
+    "validator": "^$|^0?(\\.[0-9]+)?$|^1(\\.0+)?$",
+    "validation_message": "Loss must be a decimal value between 0 and 1, eg. 0.02 for 2%",
+    "required": "false"
+  },
+  {
+    "name": "bandwidth",
+    "short_description": "Bandwidth limit to inject (eg. 100mbit)",
+    "description": "Bandwidth limit to inject into the target VMI traffic (eg. 100mbit, 1gbit)",
+    "variable": "BANDWIDTH",
+    "type": "string",
+    "default": "",
+    "validator": "^$|^[0-9]+(mbit|gbit|kbit)$",
+    "validation_message": "Bandwidth must be a value followed by mbit, gbit or kbit, eg. 100mbit",
+    "required": "false"
+  },
+  {
+    "name": "image",
+    "short_description": "The network chaos injection workload container image",
+    "description": "The network chaos injection workload container image",
+    "variable": "IMAGE",
+    "type": "string",
+    "default": "quay.io/krkn-chaos/krkn-network-chaos:latest",
+    "required": "false"
+  },
+  {
+    "name": "taints",
+    "short_description": "The list of tolerations for the network chaos workload",
+    "description": "The list of tolerations that can be assigned to the network chaos workload (comma separated)",
+    "variable": "TAINTS",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "service-account",
+    "short_description": "The service account for the VMI network chaos workload",
+    "description": "The service account associated with the VMI Network Chaos workload",
+    "variable": "SERVICE_ACCOUNT",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  }
+]
