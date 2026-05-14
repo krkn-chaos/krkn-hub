@@ -35,7 +35,7 @@ telemetry:
     password: $TELEMETRY_PASSWORD                           # telemetry service password
     prometheus_backup: $TELEMETRY_PROMETHEUS_BACKUP         # enables/disables prometheus data collection
     full_prometheus_backup: $TELEMETRY_FULL_PROMETHEUS_BACKUP  # if is set to False only the /prometheus/wal folder will be downloaded.
-    backup_threads: $TELEMTRY_BACKUP_THREADS                   # number of telemetry download/upload threads
+    backup_threads: $TELEMETRY_BACKUP_THREADS                   # number of telemetry download/upload threads
     archive_path: $TELEMETRY_ARCHIVE_PATH                      # local path where the archive files will be temporarly stored
     max_retries: $TELEMETRY_MAX_RETRIES                        # maximum number of upload retries (if 0 will retry forever)
     telemetry_group: $TELEMETRY_GROUP                          # if set will archive the telemetry in the S3 bucket on a folder named after the value, otherwise will use "default"
