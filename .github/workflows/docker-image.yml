@@ -52,7 +52,9 @@ jobs:
         run: |
           IMAGE=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].image')
           DOCKERFILE=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].build.dockerfile')
+          MULTI_IMAGE=$(echo "$IMAGE" | sed 's|/krkn-hub:|/krkn-hub-multi:|')
           echo "image=$IMAGE" >> $GITHUB_OUTPUT
+          echo "multi_image=$MULTI_IMAGE" >> $GITHUB_OUTPUT
           echo "dockerfile=$DOCKERFILE" >> $GITHUB_OUTPUT
       - name: Login in quay
         if: ${{ github.ref == 'refs/heads/main' }}
@@ -66,11 +68,20 @@ jobs:
         with:
           context: .
           file: ${{ steps.config.outputs.dockerfile }}
-          #platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm64
+          push: ${{ github.ref == 'refs/heads/main' }}
+          tags: ${{ steps.config.outputs.multi_image }}
+          cache-to: type=gha,scope=${{ matrix.scenario }},mode=max
+      - name: Build and push linux/amd64 image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ${{ steps.config.outputs.dockerfile }}
           platforms: linux/amd64
           push: ${{ github.ref == 'refs/heads/main' }}
           tags: ${{ steps.config.outputs.image }}
           provenance: false
+          cache-from: type=gha,scope=${{ matrix.scenario }}
 
   notify:
     runs-on: ubuntu-latest
