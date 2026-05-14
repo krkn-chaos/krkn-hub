@@ -40,4 +40,5 @@ check_cluster_version() {
 
 checks() {
   check_oc
+  check_kubectl
 }
