@@ -4,7 +4,7 @@ COPY dummy-scenario/run.sh /home/krkn
 
 LABEL krknctl.title.global="Krkn Base Image"
 LABEL krknctl.description.global="This is the krkn base image."
-LABEL krknctl.input_fields.global='$KRKNCTL_GLOBAL_INPUT'
+LABEL krknctl.input_fields.global='[]'
 
 LABEL krknctl.is_a_scenario="true"
 LABEL krknctl.has_rollback="true"
