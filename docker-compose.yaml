@@ -139,3 +139,8 @@ services:
         context: ./
         dockerfile: ./rollback/Dockerfile
       image: quay.io/krkn-chaos/krkn-hub:rollback
+    dummy-scenario:
+      build:
+        context: ./
+        dockerfile: ./dummy-scenario/Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:dummy-scenario
