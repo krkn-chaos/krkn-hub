@@ -1,0 +1,105 @@
+[
+  {
+    "name": "pvc-name",
+    "short_description": "PVC name",
+    "description": "Target PVC name. If set, pod_name is auto-resolved from PVC",
+    "variable": "PVC_NAME",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "pod-name",
+    "short_description": "Pod name",
+    "description": "Target pod name. Ignored if PVC_NAME is set",
+    "variable": "POD_NAME",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "namespace",
+    "short_description": "Namespace",
+    "description": "Namespace of the target pod/PVC",
+    "variable": "NAMESPACE",
+    "type": "string",
+    "default": "default",
+    "required": "true"
+  },
+  {
+    "name": "mount-path",
+    "short_description": "Mount path",
+    "description": "Specific mount path to throttle (optional)",
+    "variable": "MOUNT_PATH",
+    "type": "string",
+    "validator": "^$|^/[a-zA-Z0-9._/\\-]+$",
+    "validation_message": "Mount path must be an absolute path like /data",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "throttle-type",
+    "short_description": "Throttle mode",
+    "description": "Throttle mode to apply",
+    "variable": "THROTTLE_TYPE",
+    "type": "enum",
+    "allowed_values": "bandwidth,iops,both",
+    "separator": ",",
+    "default": "bandwidth",
+    "required": "false"
+  },
+  {
+    "name": "read-iops",
+    "short_description": "Read IOPS",
+    "description": "Maximum read IOPS (used for iops/both)",
+    "variable": "READ_IOPS",
+    "type": "number",
+    "default": "100",
+    "required": "false"
+  },
+  {
+    "name": "write-iops",
+    "short_description": "Write IOPS",
+    "description": "Maximum write IOPS (used for iops/both)",
+    "variable": "WRITE_IOPS",
+    "type": "number",
+    "default": "50",
+    "required": "false"
+  },
+  {
+    "name": "read-bps",
+    "short_description": "Read bandwidth",
+    "description": "Maximum read bytes/sec (supports values like 1Mi, 512Ki, 1000000)",
+    "variable": "READ_BPS",
+    "type": "string",
+    "default": "1Mi",
+    "required": "false"
+  },
+  {
+    "name": "write-bps",
+    "short_description": "Write bandwidth",
+    "description": "Maximum write bytes/sec (supports values like 512Ki, 1Mi, 500000)",
+    "variable": "WRITE_BPS",
+    "type": "string",
+    "default": "512Ki",
+    "required": "false"
+  },
+  {
+    "name": "duration",
+    "short_description": "Duration",
+    "description": "Duration to hold throttling (supports values like 30s, 1m, 120)",
+    "variable": "DURATION",
+    "type": "string",
+    "default": "1m",
+    "required": "false"
+  },
+  {
+    "name": "image",
+    "short_description": "Helper pod image",
+    "description": "Image used for privileged helper pod that writes cgroup values",
+    "variable": "IMAGE",
+    "type": "string",
+    "default": "quay.io/krkn-chaos/krkn:tools",
+    "required": "false"
+  }
+]

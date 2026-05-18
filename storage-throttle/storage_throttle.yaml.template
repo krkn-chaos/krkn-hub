@@ -1,0 +1,12 @@
+storage_throttle_scenario:
+  pvc_name: $PVC_NAME            # Target PVC name. If set, pod_name is auto-resolved from PVC.
+  pod_name: $POD_NAME            # Target pod name. Ignored if pvc_name is set.
+  namespace: $NAMESPACE          # Namespace of the target PVC/pod
+  mount_path: $MOUNT_PATH        # Specific mount path to throttle. If empty, first PVC mount is used.
+  throttle_type: $THROTTLE_TYPE  # "iops", "bandwidth", or "both"
+  read_iops: $READ_IOPS          # Max read IOPS (used when throttle_type is "iops" or "both")
+  write_iops: $WRITE_IOPS        # Max write IOPS (used when throttle_type is "iops" or "both")
+  read_bps: $READ_BPS            # Max read bytes/sec (used when throttle_type is "bandwidth" or "both")
+  write_bps: $WRITE_BPS          # Max write bytes/sec (used when throttle_type is "bandwidth" or "both")
+  duration: $DURATION            # How long to hold the throttle (supports suffixes: s, m, h)
+  image: $IMAGE                  # Image used for privileged helper pod on target node
