@@ -3,6 +3,7 @@
 # Vars and respective defaults
 export NAMESPACE=${NAMESPACE:=""}
 export VM_NAME=${VM_NAME:=""}
+export LABEL_SELECTOR=${LABEL_SELECTOR:=""}
 export TIMEOUT=${TIMEOUT:=60}
 export KILL_COUNT=${KILL_COUNT:=1}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=kubevirt_vm_outage}
