@@ -3,6 +3,7 @@ scenarios:
     scenario: kubevirt_vm_outage
     parameters:
       vm_name: $VM_NAME
+      label_selector: $LABEL_SELECTOR
       namespace: $NAMESPACE
       timeout: $TIMEOUT
       kill_count: $KILL_COUNT

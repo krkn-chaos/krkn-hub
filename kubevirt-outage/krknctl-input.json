@@ -11,11 +11,20 @@
     {
         "name": "vm-name",
         "short_description": "VM Name",
-        "description": "Name of the vm to delete",
+        "description": "Name of the vm to delete. Optional if label-selector is set",
         "type": "string",
         "variable": "VM_NAME",
         "default": "",
-        "required": "true"
+        "required": "false"
+    },
+    {
+        "name": "label-selector",
+        "short_description": "Label Selector",
+        "description": "Label selector to target VMs (e.g. app=myvm). Optional if vm-name is set",
+        "type": "string",
+        "variable": "LABEL_SELECTOR",
+        "default": "",
+        "required": "false"
     },
     {
         "name": "timeout",
