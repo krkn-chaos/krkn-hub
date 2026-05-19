@@ -54,6 +54,7 @@
     "type": "enum",
     "allowed_values": "parallel,serial",
     "separator": ",",
+    "default": "parallel",
     "required": "false"
   },
   {
@@ -62,7 +63,8 @@
     "description": "Incoming network traffic will be filtered",
     "variable": "INGRESS",
     "type": "boolean",
-    "required": "true"
+    "default": "false",
+    "required": "false"
   },
   {
     "name": "egress",
@@ -70,7 +72,8 @@
     "description": "Outgoing network traffic will be filtered",
     "variable": "EGRESS",
     "type": "boolean",
-    "required": "true"
+    "default": "false",
+    "required": "false"
   },
   {
     "name": "interfaces",

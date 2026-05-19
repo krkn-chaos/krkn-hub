@@ -2,7 +2,7 @@
 
 # Vars and respective defaults
 export NAMESPACE=${NAMESPACE:="openshift-etcd"}
-export LABEL_SELECTOR=${LABEL_SELECTOR:="''"}
+export LABEL_SELECTOR=${LABEL_SELECTOR:=""}
 export RUNS=${RUNS:=1}
 export DELETE_COUNT=${DELETE_COUNT:=1}
 export SLEEP=${SLEEP:=15}

@@ -4,7 +4,7 @@
 export ACTION=${ACTION:="skew_date"}
 export OBJECT_TYPE=${OBJECT_TYPE:="pod"}
 export LABEL_SELECTOR=${LABEL_SELECTOR:="k8s-app=etcd"}
-export OBJECT_NAME=${OBJECT_NAME:=""}
+export OBJECT_NAME=${OBJECT_NAME:="[]"}
 export NAMESPACE=${NAMESPACE:=""}
 export CONTAINER_NAME=${CONTAINER_NAME:=""}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=time_scenarios}
