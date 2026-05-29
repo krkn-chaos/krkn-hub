@@ -1,0 +1,14 @@
+name: Manage Stale Issues and Pull Requests
+
+on:
+  schedule:
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    uses: krkn-chaos/actions/.github/workflows/stale.yml@main
