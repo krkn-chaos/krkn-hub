@@ -54,6 +54,7 @@
     "type": "enum",
     "allowed_values": "parallel,serial",
     "separator": ",",
+    "default": "parallel",
     "required": "false"
   },
   {

@@ -5,7 +5,7 @@
         "description":"Targeted namespace in the cluster ( supports regex )",
         "variable":"NAMESPACE",
         "type":"string",
-        "default":"openshift-*",
+        "default":"openshift-.*",
         "required":"false"
     },
     {
