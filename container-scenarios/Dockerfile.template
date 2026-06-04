@@ -18,7 +18,7 @@ LABEL krknctl.is_a_scenario="true"
 LABEL krknctl.has_rollback="false"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Container Scenarios"
-LABEL krknctl.description="Scenario to kill a container in a pod and see the effect it has on other services running and see how long it takes to get back running"
+LABEL krknctl.description="Scenario to kill a container in a pod and see the effect it has on other services running and see how long it takes to get back running. More information can be found at https://krkn-chaos.dev/docs/scenarios/container-scenario/"
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 

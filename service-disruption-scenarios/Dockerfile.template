@@ -19,7 +19,7 @@ LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Service Disruption"
 LABEL krknctl.description="Using this type of scenario configuration one is able to delete crucial objects in a specific namespace, \
 or a namespace matching a certain regex string. For more details documentation can be found here \
-https://github.com/krkn-chaos/krkn/blob/main/docs/service_disruption_scenarios.md"
+https://krkn-chaos.dev/docs/scenarios/service-disruption-scenarios/"
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 

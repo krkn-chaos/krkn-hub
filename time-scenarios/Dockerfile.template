@@ -19,7 +19,7 @@ LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Time skew"
 LABEL krknctl.description="This scenario skews the date and time of the nodes and pods matching \
 the label on a Kubernetes/OpenShift cluster. More information can be found here \
-https://github.com/krkn-chaos/krkn/blob/master/docs/time_scenarios.md"
+https://krkn-chaos.dev/docs/scenarios/time-scenarios/"
 
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'

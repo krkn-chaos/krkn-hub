@@ -24,7 +24,7 @@ here Right now power outage and cluster shutdown are one in the same. We origina
 stop all the nodes and then start them back up how a customer would shut their cluster down.In a real life \
 chaos scenario though, we figured this scenario was close to if the power went out on the aws side so all of \
 our ec2 nodes would be stopped/powered off. We tried to look at if aws cli had a way to forcefully poweroff \
-the nodes (not gracefully) and they don't currently support so this scenario is as close as we can get to \"pulling the plug\""
+the nodes (not gracefully) and they don't currently support so this scenario is as close as we can get to \"pulling the plug\". More information can be found at https://krkn-chaos.dev/docs/scenarios/power-outage-scenarios/"
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 

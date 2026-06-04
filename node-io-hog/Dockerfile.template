@@ -17,7 +17,7 @@ LABEL krknctl.is_a_scenario="true"
 LABEL krknctl.has_rollback="true"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="I/O Hog"
-LABEL krknctl.description="The purpose of this scenario is to create disk pressure on a particular node of the Kubernetes/OpenShift cluster for a time span. The scenario allows to attach a node path to the pod as a hostPath volume."
+LABEL krknctl.description="The purpose of this scenario is to create disk pressure on a particular node of the Kubernetes/OpenShift cluster for a time span. The scenario allows to attach a node path to the pod as a hostPath volume. More information can be found at https://krkn-chaos.dev/docs/scenarios/hog-scenarios/io-hog-scenario/"
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 

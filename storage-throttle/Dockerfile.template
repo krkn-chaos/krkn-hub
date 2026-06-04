@@ -17,7 +17,7 @@ LABEL krknctl.is_a_scenario="true"
 LABEL krknctl.has_rollback="true"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Storage I/O Throttle"
-LABEL krknctl.description="This scenario applies read/write IOPS and bandwidth throttling to a pod volume using cgroups v1/v2 through a privileged helper pod."
+LABEL krknctl.description="This scenario applies read/write IOPS and bandwidth throttling to a pod volume using cgroups v1/v2 through a privileged helper pod. More information can be found at https://krkn-chaos.dev/docs/scenarios/storage-throttle-scenario/"
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 

@@ -19,7 +19,7 @@ LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="HTTP Load"
 LABEL krknctl.description="This scenario generates distributed HTTP load against one or more target endpoints \
 using Vegeta load testing pods deployed inside the cluster. For more details, please refer to \
-the following documentation (https://github.com/krkn-chaos/krkn-hub/blob/main/docs/http-load.md)."
+the following documentation (https://krkn-chaos.dev/docs/scenarios/http-load-scenario/)."
 
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'

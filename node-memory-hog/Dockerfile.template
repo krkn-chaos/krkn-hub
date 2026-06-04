@@ -18,7 +18,7 @@ LABEL krknctl.is_a_scenario="true"
 LABEL krknctl.has_rollback="true"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Memory Hog"
-LABEL krknctl.description="The purpose of this scenario is to create Virtual Memory pressure on a particular node of the Kubernetes/OpenShift cluster for a time span."
+LABEL krknctl.description="The purpose of this scenario is to create Virtual Memory pressure on a particular node of the Kubernetes/OpenShift cluster for a time span. More information can be found at https://krkn-chaos.dev/docs/scenarios/hog-scenarios/memory-hog-scenario/"
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
