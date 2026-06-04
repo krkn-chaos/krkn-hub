@@ -83,7 +83,7 @@
         "type": "string",
         "variable": "EGRESS",
         "default": "{bandwidth: 100mbit}",
-        "validator": "^{((latency|loss|bandwidth): '?[a-zA-Z0-9.]+'?(,)?)+[^,]}$",
+        "validator": "^{(latency|loss|bandwidth): '?[a-zA-Z0-9.]+'?(,\\s*(latency|loss|bandwidth): '?[a-zA-Z0-9.]+'?)*}$",
         "validation_message": "Egress shaping must be in the format: {bandwidth/latency/loss: 100mbit/10ms/0.02}",
         "required": "false"
     },
@@ -103,7 +103,7 @@
         "description": "latency, loss and bandwidth are the three supported network parameters to alter for the chaos test. For example: {latency: 50ms, loss: '0.02'}",
         "type": "string",
         "variable": "NETWORK_PARAMS",
-        "validator": "^{((latency|loss|bandwidth): '?[a-zA-Z0-9.]+'?(,)?)+[^,]}$",
+        "validator": "^{(latency|loss|bandwidth): '?[a-zA-Z0-9.]+'?(,\\s*(latency|loss|bandwidth): '?[a-zA-Z0-9.]+'?)*}$",
         "validation_message": "Ingress shaping must be in the format: {bandwidth/latency/loss: 100mbit/10ms/'0.02'}",
         "required": "false"
     },
