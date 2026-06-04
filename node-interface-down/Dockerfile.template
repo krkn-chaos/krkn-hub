@@ -18,7 +18,7 @@ LABEL krknctl.is_a_scenario="true"
 LABEL krknctl.has_rollback="false"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Node Interface Down"
-LABEL krknctl.description="This scenario brings down one or more network interfaces on target nodes to simulate a network outage. A workload pod is scheduled on each target node, the specified interfaces are taken down for the configured duration, then recovered automatically. The node's readiness is monitored after recovery."
+LABEL krknctl.description="This scenario brings down one or more network interfaces on target nodes to simulate a network outage. A workload pod is scheduled on each target node, the specified interfaces are taken down for the configured duration, then recovered automatically. The node's readiness is monitored after recovery. More information can be found at https://krkn-chaos.dev/docs/scenarios/network-chaos-ng-scenarios/node-interface-down/"
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
 ENTRYPOINT /home/krkn/kraken/containers/setup-ssh.sh && /home/krkn/run.sh

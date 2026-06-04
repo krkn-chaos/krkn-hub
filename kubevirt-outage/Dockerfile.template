@@ -18,7 +18,7 @@ LABEL krknctl.is_a_scenario="true"
 LABEL krknctl.has_rollback="false"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Kubevirt Outage Scenarios"
-LABEL krknctl.description="Scenario to delete a VMI in a CNV/Virtualization cluster"
+LABEL krknctl.description="Scenario to delete a VMI in a CNV/Virtualization cluster. More information can be found at https://krkn-chaos.dev/docs/scenarios/kubevirt-vm-outage-scenario/"
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
 ENTRYPOINT /home/krkn/kraken/containers/setup-ssh.sh && /home/krkn/run.sh

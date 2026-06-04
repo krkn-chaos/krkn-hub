@@ -20,7 +20,7 @@ LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Zone outage"
 LABEL krknctl.description="This scenario disrupts a targeted zone in the public cloud by blocking egress and ingress traffic \
 to understand the impact on both Kubernetes/OpenShift platforms control plane as well as applications running on the worker \
-nodes in that zone. More information is documented here https://github.com/krkn-chaos/krkn/blob/master/docs/zone_outage.md"
+nodes in that zone. More information is documented here https://krkn-chaos.dev/docs/scenarios/zone-outage-scenarios/"
 
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'

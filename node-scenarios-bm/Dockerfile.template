@@ -25,7 +25,7 @@ LABEL krknctl.has_rollback="false"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Node scenarios Bare Metal"
 LABEL krknctl.description="This scenario disrupts the node(s) matching the label on a Bare Metal Kubernetes/OpenShift \
-cluster. Actions/disruptions supported are listed. For further infos visit https://github.com/krkn-chaos/krkn/blob/main/docs/node_scenarios.md"
+cluster. Actions/disruptions supported are listed. For further infos visit https://krkn-chaos.dev/docs/scenarios/node-scenarios/"
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 

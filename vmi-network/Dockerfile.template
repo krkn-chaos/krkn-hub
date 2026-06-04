@@ -18,7 +18,7 @@ LABEL krknctl.is_a_scenario="true"
 LABEL krknctl.has_rollback="false"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="VMI Network Chaos"
-LABEL krknctl.description="This scenario injects network degradation into a KubeVirt VirtualMachineInstance (VMI) by applying tc traffic control rules to simulate latency, packet loss, or bandwidth restrictions on the VMI's network interface."
+LABEL krknctl.description="This scenario injects network degradation into a KubeVirt VirtualMachineInstance (VMI) by applying tc traffic control rules to simulate latency, packet loss, or bandwidth restrictions on the VMI's network interface. More information can be found at https://krkn-chaos.dev/docs/scenarios/network-chaos-ng-scenarios/vmi-network-chaos/"
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 

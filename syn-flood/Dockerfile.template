@@ -20,7 +20,7 @@ LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Syn flood"
 LABEL krknctl.description="This scenario simulates a user-defined surge of TCP SYN requests directed at one or more services deployed \
 within the cluster or an external target reachable by the cluster. For more details, please refer to \
-the following documentation (https://github.com/krkn-chaos/krkn-hub/blob/main/docs/syn-flood.md)."
+the following documentation (https://krkn-chaos.dev/docs/scenarios/syn-flood-scenario/)."
 
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'

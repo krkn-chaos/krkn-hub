@@ -18,7 +18,7 @@ LABEL krknctl.is_a_scenario="true"
 LABEL krknctl.has_rollback="false"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="VMI Network Filter"
-LABEL krknctl.description="This scenario creates tc traffic control rules on the target KubeVirt VirtualMachineInstance (VMI) to block incoming/outgoing traffic on specified ports and protocols. It auto-detects the VMI network interface from the binding mode (bridge, masquerade, etc.) unless an interface is explicitly provided."
+LABEL krknctl.description="This scenario creates tc traffic control rules on the target KubeVirt VirtualMachineInstance (VMI) to block incoming/outgoing traffic on specified ports and protocols. It auto-detects the VMI network interface from the binding mode (bridge, masquerade, etc.) unless an interface is explicitly provided. More information can be found at https://krkn-chaos.dev/docs/scenarios/network-chaos-ng-scenarios/vmi-network-filter/"
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 

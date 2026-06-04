@@ -18,7 +18,7 @@ LABEL krknctl.is_a_scenario="true"
 LABEL krknctl.has_rollback="false"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Pod Network Filter"
-LABEL krknctl.description="This scenario will create iptables rules on the target pod to block incoming/outgoing traffic on specified ports and interfaces."
+LABEL krknctl.description="This scenario will create iptables rules on the target pod to block incoming/outgoing traffic on specified ports and interfaces. More information can be found at https://krkn-chaos.dev/docs/scenarios/network-chaos-ng-scenarios/pod-network-filter/"
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
