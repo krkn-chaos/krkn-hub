@@ -1,0 +1,91 @@
+[
+    {
+        "name": "targets",
+        "short_description": "Target Hosts",
+        "description": "Comma-separated list of target host IPs or hostnames (e.g., 192.168.1.100,192.168.1.101)",
+        "variable": "TARGETS",
+        "type": "string",
+        "required": "true"
+    },
+    {
+        "name": "ssh-user",
+        "short_description": "SSH User",
+        "description": "SSH username for connecting to target hosts",
+        "variable": "SSH_USER",
+        "type": "string",
+        "default": "root",
+        "required": "false"
+    },
+    {
+        "name": "ssh-private-key",
+        "short_description": "SSH Private Key Path",
+        "description": "Path to SSH private key file inside the container",
+        "variable": "SSH_PRIVATE_KEY",
+        "type": "string",
+        "default": "/home/krkn/.ssh/id_rsa",
+        "required": "false"
+    },
+    {
+        "name": "ssh-port",
+        "short_description": "SSH Port",
+        "description": "SSH port for connecting to target hosts",
+        "variable": "SSH_PORT",
+        "type": "number",
+        "default": "22",
+        "required": "false"
+    },
+    {
+        "name": "duration",
+        "short_description": "Duration",
+        "description": "Duration in seconds for network chaos to be applied",
+        "variable": "DURATION",
+        "type": "number",
+        "default": "300",
+        "required": "false"
+    },
+    {
+        "name": "interfaces",
+        "short_description": "Network Interfaces",
+        "description": "List of interfaces to apply chaos on (e.g., [eth0,eth1]). Empty list auto-detects.",
+        "variable": "INTERFACES",
+        "type": "string",
+        "default": "[]",
+        "required": "false"
+    },
+    {
+        "name": "execution",
+        "short_description": "Execution Mode",
+        "description": "Execute chaos parameters as a single scenario (parallel) or separate scenarios (serial)",
+        "variable": "EXECUTION",
+        "type": "enum",
+        "allowed_values": "parallel,serial",
+        "separator": ",",
+        "default": "serial",
+        "required": "false"
+    },
+    {
+        "name": "latency",
+        "short_description": "Network Latency",
+        "description": "Network latency to inject (e.g., 100ms, 500ms)",
+        "variable": "LATENCY",
+        "type": "string",
+        "default": "100ms",
+        "required": "false"
+    },
+    {
+        "name": "loss",
+        "short_description": "Packet Loss",
+        "description": "Packet loss percentage to inject (e.g., 0.02 for 2%)",
+        "variable": "LOSS",
+        "type": "string",
+        "required": "false"
+    },
+    {
+        "name": "bandwidth",
+        "short_description": "Bandwidth Limit",
+        "description": "Bandwidth restriction to apply (e.g., 100mbit)",
+        "variable": "BANDWIDTH",
+        "type": "string",
+        "required": "false"
+    }
+]

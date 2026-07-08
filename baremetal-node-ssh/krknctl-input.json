@@ -1,0 +1,77 @@
+[
+    {
+        "name": "targets",
+        "short_description": "Target Hosts",
+        "description": "Comma-separated list of target host IPs or hostnames (e.g., 192.168.1.100,192.168.1.101)",
+        "variable": "TARGETS",
+        "type": "string",
+        "required": "true"
+    },
+    {
+        "name": "ssh-user",
+        "short_description": "SSH User",
+        "description": "SSH username for connecting to target hosts",
+        "variable": "SSH_USER",
+        "type": "string",
+        "default": "root",
+        "required": "false"
+    },
+    {
+        "name": "ssh-private-key",
+        "short_description": "SSH Private Key Path",
+        "description": "Path to SSH private key file inside the container",
+        "variable": "SSH_PRIVATE_KEY",
+        "type": "string",
+        "default": "/home/krkn/.ssh/id_rsa",
+        "required": "false"
+    },
+    {
+        "name": "ssh-port",
+        "short_description": "SSH Port",
+        "description": "SSH port for connecting to target hosts",
+        "variable": "SSH_PORT",
+        "type": "number",
+        "default": "22",
+        "required": "false"
+    },
+    {
+        "name": "action",
+        "short_description": "Action",
+        "description": "Node disruption action to perform: node_reboot_scenario, node_crash_scenario, or stop_start_helper_node_scenario",
+        "variable": "ACTION",
+        "type": "enum",
+        "allowed_values": "node_reboot_scenario,node_crash_scenario,stop_start_helper_node_scenario",
+        "separator": ",",
+        "default": "node_reboot_scenario",
+        "required": "false"
+    },
+    {
+        "name": "runs",
+        "short_description": "Runs",
+        "description": "Number of times to execute the action",
+        "variable": "RUNS",
+        "type": "number",
+        "default": "1",
+        "required": "false"
+    },
+    {
+        "name": "timeout",
+        "short_description": "Timeout",
+        "description": "Timeout in seconds to wait for node to recover after disruption",
+        "variable": "TIMEOUT",
+        "type": "number",
+        "default": "360",
+        "required": "false"
+    },
+    {
+        "name": "soft-reboot",
+        "short_description": "Soft Reboot",
+        "description": "Use soft reboot (true) or hard reboot via sysrq (false)",
+        "variable": "SOFT_REBOOT",
+        "type": "enum",
+        "allowed_values": "true,false",
+        "separator": ",",
+        "default": "true",
+        "required": "false"
+    }
+]

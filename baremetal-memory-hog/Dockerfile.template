@@ -1,0 +1,13 @@
+FROM quay.io/krkn-chaos/krkn:latest
+
+# Copy configurations
+COPY baremetal-memory-hog/env.sh /home/krkn/env.sh
+COPY env.sh /home/krkn/main_env.sh
+COPY baremetal-memory-hog/run.sh /home/krkn/run.sh
+
+LABEL krknctl.title="Baremetal Memory Hog"
+LABEL krknctl.description="Memory stress test on baremetal/standalone hosts via SSH using stress-ng. Targets hosts directly without requiring Kubernetes."
+
+LABEL krknctl.input_fields='$KRKNCTL_INPUT'
+
+ENTRYPOINT /home/krkn/run.sh

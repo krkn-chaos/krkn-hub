@@ -1,0 +1,61 @@
+[
+    {
+        "name": "targets",
+        "short_description": "Target Hosts",
+        "description": "Comma-separated list of target host IPs or hostnames to stress (e.g., 192.168.1.100,192.168.1.101)",
+        "variable": "TARGETS",
+        "type": "string",
+        "required": "true"
+    },
+    {
+        "name": "ssh-user",
+        "short_description": "SSH User",
+        "description": "SSH username for connecting to target hosts",
+        "variable": "SSH_USER",
+        "type": "string",
+        "default": "root",
+        "required": "false"
+    },
+    {
+        "name": "ssh-private-key",
+        "short_description": "SSH Private Key Path",
+        "description": "Path to SSH private key file inside the container",
+        "variable": "SSH_PRIVATE_KEY",
+        "type": "string",
+        "default": "/home/krkn/.ssh/id_rsa",
+        "required": "false"
+    },
+    {
+        "name": "ssh-port",
+        "short_description": "SSH Port",
+        "description": "SSH port for connecting to target hosts",
+        "variable": "SSH_PORT",
+        "type": "number",
+        "default": "22",
+        "required": "false"
+    },
+    {
+        "name": "cpu-cores",
+        "short_description": "CPU Cores",
+        "description": "Number of CPU cores (workers) to stress. 0 means all available cores.",
+        "variable": "NODE_CPU_CORE",
+        "type": "number",
+        "default": "0"
+    },
+    {
+        "name": "cpu-percentage",
+        "short_description": "CPU Percentage",
+        "description": "Percentage of CPU to consume per core",
+        "variable": "NODE_CPU_PERCENTAGE",
+        "type": "number",
+        "default": "50"
+    },
+    {
+        "name": "chaos-duration",
+        "short_description": "Chaos Duration",
+        "description": "Duration of CPU stress in seconds",
+        "variable": "TOTAL_CHAOS_DURATION",
+        "type": "number",
+        "default": "60"
+    }
+]

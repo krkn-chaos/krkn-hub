@@ -1,0 +1,13 @@
+FROM quay.io/krkn-chaos/krkn:latest
+
+# Copy configurations
+COPY baremetal-network-chaos/env.sh /home/krkn/env.sh
+COPY env.sh /home/krkn/main_env.sh
+COPY baremetal-network-chaos/run.sh /home/krkn/run.sh
+
+LABEL krknctl.title="Baremetal Network Chaos"
+LABEL krknctl.description="Network chaos (latency, packet loss, bandwidth restriction) on baremetal/standalone hosts via SSH using tc. Targets hosts directly without requiring Kubernetes."
+
+LABEL krknctl.input_fields='$KRKNCTL_INPUT'
+
+ENTRYPOINT /home/krkn/run.sh
