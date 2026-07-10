@@ -152,5 +152,5 @@ services:
     node-network-chaos:
       build:
         context: ./
-        dockerfile: ./node-network-chaos/Dockerfile.template
+        dockerfile: ./node-network-chaos/Dockerfile
       image: quay.io/krkn-chaos/krkn-hub:node-network-chaos
