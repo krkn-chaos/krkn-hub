@@ -20,8 +20,8 @@ CONFIG_TEMPLATE="$KRAKEN_FOLDER/config/config.yaml.template"
 CONFIG_OUT="$KRAKEN_FOLDER/config/node-network-chaos-config.yaml"
 
 # ── 1. Source environment ─────────────────────────────────────────────────────
+source "$ROOT_FOLDER/env.sh"        # scenario-specific defaults FIRST
 source "$ROOT_FOLDER/main_env.sh"   # global krkn-hub defaults (kubeconfig, cerberus, etc.)
-source "$ROOT_FOLDER/env.sh"        # scenario-specific defaults (this image's env.sh)
 source "$ROOT_FOLDER/common_run.sh" # defines the checks() helper function
 
 if [[ "$KRKN_DEBUG" == "True" ]]; then
