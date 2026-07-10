@@ -1,0 +1,141 @@
+[
+  {
+    "name": "label-selector",
+    "short_description": "Node label selector",
+    "description": "Label selector to target one or more nodes (e.g. node-role.kubernetes.io/worker). If omitted, NODE_NAME is used instead.",
+    "variable": "LABEL_SELECTOR",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "node-name",
+    "short_description": "Target node name",
+    "description": "Exact node name to target when label-selector is not specified.",
+    "variable": "NODE_NAME",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "instance-count",
+    "short_description": "Number of nodes to target",
+    "description": "How many nodes matching the selector to apply chaos on simultaneously.",
+    "variable": "INSTANCE_COUNT",
+    "type": "number",
+    "default": "1",
+    "required": "false"
+  },
+  {
+    "name": "interfaces",
+    "short_description": "Network interfaces",
+    "description": "YAML-style list of interface names to shape (e.g. [br-ex] or [eth0,eth1]). Leave empty to target all interfaces.",
+    "variable": "INTERFACES",
+    "type": "string",
+    "default": "[]",
+    "required": "false"
+  },
+  {
+    "name": "traffic-type",
+    "short_description": "Traffic direction(s)",
+    "description": "Direction of traffic to shape. Accepted values: [egress], [ingress], or [egress,ingress].",
+    "variable": "TRAFFIC_TYPE",
+    "type": "string",
+    "default": "[egress]",
+    "required": "false"
+  },
+  {
+    "name": "latency",
+    "short_description": "Network latency to inject",
+    "description": "Artificial delay to add to matching packets. Format: <number><unit> where unit is us, ms, or s (e.g. 200ms).",
+    "variable": "LATENCY",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "loss",
+    "short_description": "Packet loss percentage",
+    "description": "Percentage of packets to drop. Digits only, no % symbol (e.g. 10 means 10%).",
+    "variable": "LOSS",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "bandwidth",
+    "short_description": "Bandwidth limit",
+    "description": "Maximum throughput for matching traffic. Format: <number><unit> where unit is bit, kbit, mbit, gbit, or tbit (e.g. 100mbit).",
+    "variable": "BANDWIDTH",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "test-duration",
+    "short_description": "Chaos duration (seconds)",
+    "description": "How long (in seconds) to hold the tc rules before cleanup.",
+    "variable": "TEST_DURATION",
+    "type": "number",
+    "default": "120",
+    "required": "false"
+  },
+  {
+    "name": "execution",
+    "short_description": "Execution mode",
+    "description": "Whether to apply chaos to all target nodes in parallel or one at a time.",
+    "variable": "EXECUTION",
+    "type": "enum",
+    "allowed_values": "parallel,serial",
+    "separator": ",",
+    "default": "parallel",
+    "required": "false"
+  },
+  {
+    "name": "force",
+    "short_description": "Force qdisc replacement",
+    "description": "When true, removes any pre-existing tc qdiscs on the interface before applying new rules.",
+    "variable": "FORCE",
+    "type": "enum",
+    "allowed_values": "true,false",
+    "separator": ",",
+    "default": "false",
+    "required": "false"
+  },
+  {
+    "name": "namespace",
+    "short_description": "Deployment namespace",
+    "description": "Kubernetes namespace where the scenario helper pod will be scheduled.",
+    "variable": "NAMESPACE",
+    "type": "string",
+    "default": "default",
+    "required": "false"
+  },
+  {
+    "name": "image",
+    "short_description": "Helper pod image",
+    "description": "Container image used for the chaos helper pod that applies tc rules on the node.",
+    "variable": "IMAGE",
+    "type": "string",
+    "default": "quay.io/krkn-chaos/krkn:tools",
+    "required": "false"
+  },
+  {
+    "name": "service-account",
+    "short_description": "Service account name",
+    "description": "Kubernetes service account to assign to the helper pod (leave empty to use the namespace default).",
+    "variable": "SERVICE_ACCOUNT",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "taints",
+    "short_description": "Node taints to tolerate",
+    "description": "YAML-style list of node taints the helper pod should tolerate (e.g. [NoSchedule]).",
+    "variable": "TAINTS",
+    "type": "string",
+    "default": "[]",
+    "required": "false"
+  }
+]

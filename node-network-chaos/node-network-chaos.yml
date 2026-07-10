@@ -1,0 +1,26 @@
+# node-network-chaos.yml — seed scenario YAML for the node-network-chaos krknctl image.
+#
+# This file is the starting state. run.sh will mutate every field using `yq`
+# before krkn reads it. Key names MUST match the fields in NetworkChaosConfig
+# (krkn/scenario_plugins/network_chaos_ng/models.py).
+#
+# id: node_network_chaos  ← registered in network_chaos_factory.py
+# plugin type: network_chaos_ng_scenarios  ← set in krkn config.yaml
+- id: node_network_chaos
+  image: "quay.io/krkn-chaos/krkn:tools"
+  wait_duration: 0
+  test_duration: 120
+  label_selector: ""
+  service_account: ""
+  taints: []
+  namespace: "default"
+  instance_count: 1
+  target: ""
+  execution: parallel
+  interfaces: []
+  ingress: false
+  egress: true
+  latency: ""
+  loss: ""
+  bandwidth: ""
+  force: false
