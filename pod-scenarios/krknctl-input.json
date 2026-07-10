@@ -1,83 +1,83 @@
 [
     {
-	    "name":"namespace",
-       	"short_description":"Namespace",
-        "description":"Targeted namespace in the cluster ( supports regex )",
-        "variable":"NAMESPACE",
-        "type":"string",
-        "default":"openshift-.*",
-        "required":"false"
+        "name": "namespace",
+        "short_description": "Namespace",
+        "description": "Targeted namespace in the cluster ( supports regex )",
+        "variable": "NAMESPACE",
+        "type": "string",
+        "default": "openshift-.*",
+        "required": "false"
     },
     {
-        "name":"node-names",
-	    "short_description":"Node names",
-        "description":"Node names to target",
-        "variable":"NODE_NAMES",
-        "type":"string",
-        "default":"",
-        "required":"false"
+        "name": "node-names",
+        "short_description": "Node names",
+        "description": "Node names to target",
+        "variable": "NODE_NAMES",
+        "type": "string",
+        "default": "",
+        "required": "false"
     },
     {
-        "name":"node-label-selector",
-	    "short_description":"Node label selector",
-        "description":"Label selector to target nodes",
-        "variable":"NODE_LABEL_SELECTOR",
-        "type":"string",
-        "default":"",
-        "required":"false"
+        "name": "node-label-selector",
+        "short_description": "Node label selector",
+        "description": "Label selector to target nodes",
+        "variable": "NODE_LABEL_SELECTOR",
+        "type": "string",
+        "default": "",
+        "required": "false"
     },
     {
-        "name":"pod-label",
-	    "short_description":"Pod label",
-        "description":"Label of the pod(s) to target",
-        "variable":"POD_LABEL",
-        "type":"string",
-        "default":"",
-        "required":"false"
+        "name": "pod-label",
+        "short_description": "Pod label",
+        "description": "Label of the pod(s) to target",
+        "variable": "POD_LABEL",
+        "type": "string",
+        "default": "",
+        "required": "false"
     },
     {
-        "name":"exclude-label",
-	    "short_description":"Pod exclude label",
-        "description":"Label for excluding one or more pods from chaos",
-        "variable":"EXCLUDE_LABEL",
-        "type":"string",
-        "default":"",
-        "required":"false"
+        "name": "exclude-label",
+        "short_description": "Pod exclude label",
+        "description": "Label for excluding one or more pods from chaos",
+        "variable": "EXCLUDE_LABEL",
+        "type": "string",
+        "default": "",
+        "required": "false"
     },
     {
-        "name":"name-pattern",
-	    "short_description":"Pod label",
-        "description":"Regex pattern to match the pods in NAMESPACE when POD_LABEL is not specified",
-        "variable":"NAME_PATTERN",
-        "type":"string",
-        "default":".*",
-        "required":"false"
+        "name": "name-pattern",
+        "short_description": "Name Pattern",
+        "description": "Regex pattern to match the pods in NAMESPACE when POD_LABEL is not specified",
+        "variable": "NAME_PATTERN",
+        "type": "string",
+        "default": ".*",
+        "required": "false"
     },
     {
-        "name":"disruption-count",
-	    "short_description":"Disruption count",
-        "description":"Number of pods to disrupt",
-        "variable":"DISRUPTION_COUNT",
-        "type":"number",
-        "default":"1",
-        "required":"false"
+        "name": "disruption-count",
+        "short_description": "Disruption count",
+        "description": "Number of pods to disrupt",
+        "variable": "DISRUPTION_COUNT",
+        "type": "number",
+        "default": "1",
+        "required": "false"
     },
     {
-        "name":"kill-timeout",
-	    "short_description":"Kill timeout",
-        "description":"Timeout to wait for the target pod(s) to be removed in seconds",
-        "variable":"KILL_TIMEOUT",
-        "type":"number",
-        "default":"180",
-        "required":"false"
+        "name": "kill-timeout",
+        "short_description": "Kill timeout",
+        "description": "Timeout to wait for the target pod(s) to be removed in seconds",
+        "variable": "KILL_TIMEOUT",
+        "type": "number",
+        "default": "180",
+        "required": "false"
     },
     {
-        "name":"expected-recovery-time",
-	    "short_description":"Expected recovery time",
-        "description":"Fails if the pod disrupted do not recover within the timeout set",
-        "variable":"EXPECTED_RECOVERY_TIME",
-        "type":"number",
-        "default":"120",
-        "required":"false"
+        "name": "expected-recovery-time",
+        "short_description": "Expected recovery time",
+        "description": "Fails if the pod disrupted do not recover within the timeout set",
+        "variable": "EXPECTED_RECOVERY_TIME",
+        "type": "number",
+        "default": "120",
+        "required": "false"
     }
 ]
