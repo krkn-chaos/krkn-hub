@@ -21,7 +21,7 @@ export EXECUTION=${EXECUTION:="parallel"}             # parallel | serial
 # ── Kubernetes context ────────────────────────────────────────────────────────
 export NAMESPACE=${NAMESPACE:="default"}              # namespace for the helper pod
 export SERVICE_ACCOUNT=${SERVICE_ACCOUNT:=""}         # optional service account
-export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn:tools"} # helper pod image
+export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-network-chaos:latest"} # helper pod image
 export TAINTS=${TAINTS:="[]"}                         # node taints (YAML array string)
 
 # ── Network interfaces ────────────────────────────────────────────────────────

@@ -117,7 +117,7 @@
     "description": "Container image used for the chaos helper pod that applies tc rules on the node.",
     "variable": "IMAGE",
     "type": "string",
-    "default": "quay.io/krkn-chaos/krkn:tools",
+    "default": "quay.io/krkn-chaos/krkn-network-chaos:latest",
     "required": "false"
   },
   {

@@ -7,7 +7,7 @@
 # id: node_network_chaos  ← registered in network_chaos_factory.py
 # plugin type: network_chaos_ng_scenarios  ← set in krkn config.yaml
 - id: node_network_chaos
-  image: "quay.io/krkn-chaos/krkn:tools"
+  image: "quay.io/krkn-chaos/krkn-network-chaos:latest"
   wait_duration: 0
   test_duration: 120
   label_selector: ""

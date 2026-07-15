@@ -1,35 +1,16 @@
-# Dockerfile.template — node-network-chaos krknctl scenario image.
-#
-# Build hierarchy:
-#   quay.io/krkn-chaos/krkn:latest   (base: Python runtime + krkn source)
-#       └── quay.io/krkn-chaos/krkn-hub:node-network-chaos  (this image)
-#
-# At build time krkn-hub's build.sh runs compile_dockerfile.sh which substitutes
-# $KRKNCTL_INPUT with the minified JSON from node-network-chaos/krknctl-input.json.
-#
-# The image is published to: quay.io/krkn-chaos/krkn-hub:node-network-chaos
-
 FROM quay.io/krkn-chaos/krkn:latest
 
 ENV KUBECONFIG /home/krkn/.kube/config
 
-# ── Shared krkn-hub templates ─────────────────────────────────────────────────
-# These two templates are shared by every scenario image.
 COPY metrics_config.yaml.template /home/krkn/kraken/config/kube_burner.yaml.template
 COPY config.yaml.template         /home/krkn/kraken/config/config.yaml.template
 
-# ── Scenario-specific files ───────────────────────────────────────────────────
-# env.sh       — default environment variable values for this scenario
-# run.sh       — entrypoint: populates YAML, generates config, runs krkn
-# common_run.sh — shared helpers (checks, logging) from krkn-hub root
-# node-network-chaos.yml — seed scenario YAML mutated at runtime by run.sh
 COPY node-network-chaos/env.sh                 /home/krkn/env.sh
 COPY env.sh                                    /home/krkn/main_env.sh
 COPY node-network-chaos/run.sh                 /home/krkn/run.sh
 COPY common_run.sh                             /home/krkn/common_run.sh
 COPY node-network-chaos/node-network-chaos.yml /home/krkn/kraken/scenarios/kube/node-network-chaos.yml
 
-# ── krknctl metadata labels ───────────────────────────────────────────────────
 # krknctl reads these labels to populate `krknctl list` and `krknctl run --help`.
 # $KRKNCTL_INPUT is substituted at build time with the minified JSON from
 # node-network-chaos/krknctl-input.json (see krkn-hub build.sh / compile_dockerfile.sh).
