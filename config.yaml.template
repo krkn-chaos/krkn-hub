@@ -80,3 +80,5 @@ kubevirt_checks:                                            # Utilizing virt che
 resiliency:
   resiliency_run_mode: $RESILIENCY_RUN_MODE
   resiliency_file: $RESILIENCY_FILE
+
+$TRIGGERS_BLOCK

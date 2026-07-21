@@ -1,0 +1,24 @@
+name: Unit Tests
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    name: Run lightweight unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install gettext (envsubst)
+        run: sudo apt-get update && sudo apt-get install -y gettext-base
+
+      - name: Run triggers config unit test
+        run: bash CI/tests/test_triggers_config.sh
