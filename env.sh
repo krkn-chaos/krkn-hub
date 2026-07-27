@@ -96,51 +96,37 @@ export TRIGGERS_ON_TIMEOUT=${TRIGGERS_ON_TIMEOUT:="skip"}
 
 # centralized config template block used by envsubst in config.yaml.template
 export TRIGGERS_BLOCK=""
-if [[ -n "$TRIGGER_COMMAND" ]] || [[ -n "$TRIGGER_HTTP_URL" ]]; then
-  export TRIGGERS_BLOCK=$(cat <<EOF
-triggers:
-  mode: "$TRIGGERS_MODE"
-  timeout: $TRIGGERS_TIMEOUT
-  interval: $TRIGGERS_INTERVAL
-  on_timeout: "$TRIGGERS_ON_TIMEOUT"
-  conditions:
-EOF
-)
+
+build_triggers_block() {
+  local block=""
+  block+="triggers:\n"
+  block+="  mode: \"$TRIGGERS_MODE\"\n"
+  block+="  timeout: $TRIGGERS_TIMEOUT\n"
+  block+="  interval: $TRIGGERS_INTERVAL\n"
+  block+="  on_timeout: \"$TRIGGERS_ON_TIMEOUT\"\n"
+  block+="  conditions:\n"
 
   if [[ -n "$TRIGGER_COMMAND" ]]; then
-    TRIGGER_COMMAND_INDENTED=$(printf '%s\n' "$TRIGGER_COMMAND" | sed 's/^/        /')
-    export TRIGGERS_BLOCK=$(cat <<EOF
-$TRIGGERS_BLOCK
-    - type: command
-      inline: |-
-$TRIGGER_COMMAND_INDENTED
-      expected_rc: $TRIGGER_EXPECTED_RC
-EOF
-)
+    local indented
+    indented=$(printf '%s\n' "$TRIGGER_COMMAND" | sed 's/^/        /')
+    block+="    - type: command\n"
+    block+="      inline: |-\n"
+    block+="$indented\n"
+    block+="      expected_rc: $TRIGGER_EXPECTED_RC\n"
   fi
 
   if [[ -n "$TRIGGER_HTTP_URL" ]]; then
-    export TRIGGERS_BLOCK=$(cat <<EOF
-$TRIGGERS_BLOCK
-    - type: http
-      url: "$TRIGGER_HTTP_URL"
-      method: "$TRIGGER_HTTP_METHOD"
-      expected_status: $TRIGGER_HTTP_EXPECTED_STATUS
-EOF
-)
-    if [[ -n "$TRIGGER_HTTP_BEARER_TOKEN" ]]; then
-      export TRIGGERS_BLOCK=$(cat <<EOF
-$TRIGGERS_BLOCK
-      bearer_token: "$TRIGGER_HTTP_BEARER_TOKEN"
-EOF
-)
-    fi
-    if [[ -n "$TRIGGER_HTTP_BODY_CONTAINS" ]]; then
-      export TRIGGERS_BLOCK=$(cat <<EOF
-$TRIGGERS_BLOCK
-      body_contains: "$TRIGGER_HTTP_BODY_CONTAINS"
-EOF
-)
-    fi
+    block+="    - type: http\n"
+    block+="      url: \"$TRIGGER_HTTP_URL\"\n"
+    block+="      method: \"$TRIGGER_HTTP_METHOD\"\n"
+    block+="      expected_status: $TRIGGER_HTTP_EXPECTED_STATUS\n"
+    [[ -n "$TRIGGER_HTTP_BEARER_TOKEN" ]] && block+="      bearer_token: \"$TRIGGER_HTTP_BEARER_TOKEN\"\n"
+    [[ -n "$TRIGGER_HTTP_BODY_CONTAINS" ]] && block+="      body_contains: \"$TRIGGER_HTTP_BODY_CONTAINS\"\n"
   fi
+
+  printf '%b' "$block"
+}
+
+if [[ -n "$TRIGGER_COMMAND" ]] || [[ -n "$TRIGGER_HTTP_URL" ]]; then
+  export TRIGGERS_BLOCK="$(build_triggers_block)"
 fi
