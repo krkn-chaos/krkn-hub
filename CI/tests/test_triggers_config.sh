@@ -23,6 +23,8 @@ render() {
     set -a
     unset TRIGGER_COMMAND TRIGGER_EXPECTED_RC TRIGGERS_MODE \
       TRIGGERS_TIMEOUT TRIGGERS_INTERVAL TRIGGERS_ON_TIMEOUT TRIGGERS_BLOCK \
+      TRIGGER_HTTP_URL TRIGGER_HTTP_METHOD TRIGGER_HTTP_EXPECTED_STATUS \
+      TRIGGER_HTTP_BEARER_TOKEN TRIGGER_HTTP_BODY_CONTAINS \
       RESILIENCY_SCORE DISABLE_RESILIENCY_SCORE
     # Apply case-specific exports, then source shared defaults / TRIGGERS_BLOCK builder.
     eval "$@"
@@ -54,5 +56,19 @@ echo "$out" | grep -q 'timeout: 120' || fail "timeout not rendered"
 echo "$out" | grep -q 'interval: 7' || fail "interval not rendered"
 echo "$out" | grep -q 'expected_rc: 0' || fail "expected_rc not rendered"
 echo "$out" | grep -q 'kubectl get ns default' || fail "command not inlined into triggers block"
+
+# Case 3: TRIGGER_HTTP_URL set -> HTTP block generated
+out="$(
+  render "export TRIGGER_HTTP_URL='http://example.com'; \
+          export TRIGGER_HTTP_EXPECTED_STATUS='201'; \
+          export TRIGGER_HTTP_BEARER_TOKEN='my-token'; \
+          export TRIGGER_HTTP_BODY_CONTAINS='ready'"
+)"
+echo "$out" | grep -q '^triggers:' || fail "triggers missing when TRIGGER_HTTP_URL is set"
+echo "$out" | grep -q 'type: http' || fail "type: http missing"
+echo "$out" | grep -q 'url: "http://example.com"' || fail "HTTP URL missing"
+echo "$out" | grep -q 'expected_status: 201' || fail "expected_status not rendered"
+echo "$out" | grep -q 'bearer_token: "my-token"' || fail "bearer_token not rendered"
+echo "$out" | grep -q 'body_contains: "ready"' || fail "body_contains not rendered"
 
 echo "PASS: triggers config rendering"
