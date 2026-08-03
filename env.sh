@@ -90,6 +90,11 @@ export TRIGGER_HTTP_METHOD=${TRIGGER_HTTP_METHOD:="GET"}
 export TRIGGER_HTTP_EXPECTED_STATUS=${TRIGGER_HTTP_EXPECTED_STATUS:="200"}
 export TRIGGER_HTTP_BEARER_TOKEN=${TRIGGER_HTTP_BEARER_TOKEN:=""}
 export TRIGGER_HTTP_BODY_CONTAINS=${TRIGGER_HTTP_BODY_CONTAINS:=""}
+export TRIGGER_K8S_API_VERSION=${TRIGGER_K8S_API_VERSION:=""}
+export TRIGGER_K8S_KIND=${TRIGGER_K8S_KIND:=""}
+export TRIGGER_K8S_NAME=${TRIGGER_K8S_NAME:=""}
+export TRIGGER_K8S_NAMESPACE=${TRIGGER_K8S_NAMESPACE:=""}
+export TRIGGER_K8S_CONDITION=${TRIGGER_K8S_CONDITION:=""}
 export TRIGGERS_MODE=${TRIGGERS_MODE:="all_of"}
 export TRIGGERS_TIMEOUT=${TRIGGERS_TIMEOUT:="300"}
 export TRIGGERS_INTERVAL=${TRIGGERS_INTERVAL:="5"}
@@ -125,9 +130,18 @@ build_triggers_block() {
     [[ -n "$TRIGGER_HTTP_BODY_CONTAINS" ]] && block+="      body_contains: \"$TRIGGER_HTTP_BODY_CONTAINS\"\n"
   fi
 
+  if [[ -n "$TRIGGER_K8S_API_VERSION" ]]; then
+    block+="    - type: k8s\n"
+    block+="      apiVersion: \"$TRIGGER_K8S_API_VERSION\"\n"
+    block+="      kind: \"$TRIGGER_K8S_KIND\"\n"
+    block+="      name: \"$TRIGGER_K8S_NAME\"\n"
+    [[ -n "$TRIGGER_K8S_NAMESPACE" ]] && block+="      namespace: \"$TRIGGER_K8S_NAMESPACE\"\n"
+    block+="      condition: \"$TRIGGER_K8S_CONDITION\"\n"
+  fi
+
   printf '%b' "$block"
 }
 
-if [[ -n "$TRIGGER_COMMAND" ]] || [[ -n "$TRIGGER_HTTP_URL" ]]; then
+if [[ -n "$TRIGGER_COMMAND" ]] || [[ -n "$TRIGGER_HTTP_URL" ]] || [[ -n "$TRIGGER_K8S_API_VERSION" ]]; then
   export TRIGGERS_BLOCK="$(build_triggers_block)"
 fi

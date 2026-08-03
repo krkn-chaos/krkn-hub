@@ -25,6 +25,8 @@ render() {
       TRIGGERS_TIMEOUT TRIGGERS_INTERVAL TRIGGERS_ON_TIMEOUT TRIGGERS_BLOCK \
       TRIGGER_HTTP_URL TRIGGER_HTTP_METHOD TRIGGER_HTTP_EXPECTED_STATUS \
       TRIGGER_HTTP_BEARER_TOKEN TRIGGER_HTTP_BODY_CONTAINS \
+      TRIGGER_K8S_API_VERSION TRIGGER_K8S_KIND TRIGGER_K8S_NAME \
+      TRIGGER_K8S_NAMESPACE TRIGGER_K8S_CONDITION \
       RESILIENCY_SCORE DISABLE_RESILIENCY_SCORE
     # Apply case-specific exports, then source shared defaults / TRIGGERS_BLOCK builder.
     eval "$@"
@@ -70,5 +72,34 @@ echo "$out" | grep -q 'url: "http://example.com"' || fail "HTTP URL missing"
 echo "$out" | grep -q 'expected_status: 201' || fail "expected_status not rendered"
 echo "$out" | grep -q 'bearer_token: "my-token"' || fail "bearer_token not rendered"
 echo "$out" | grep -q 'body_contains: "ready"' || fail "body_contains not rendered"
+
+# Case 4: TRIGGER_K8S_API_VERSION set -> k8s block generated
+out="$(
+  render "export TRIGGER_K8S_API_VERSION='apps/v1'; \
+          export TRIGGER_K8S_KIND='Deployment'; \
+          export TRIGGER_K8S_NAME='nginx'; \
+          export TRIGGER_K8S_NAMESPACE='default'; \
+          export TRIGGER_K8S_CONDITION='status.readyReplicas >= 1'"
+)"
+echo "$out" | grep -q '^triggers:' || fail "triggers missing when TRIGGER_K8S_API_VERSION is set"
+echo "$out" | grep -q 'type: k8s' || fail "type: k8s missing"
+echo "$out" | grep -q 'apiVersion: "apps/v1"' || fail "apiVersion not rendered"
+echo "$out" | grep -q 'kind: "Deployment"' || fail "kind not rendered"
+echo "$out" | grep -q 'name: "nginx"' || fail "k8s name not rendered"
+echo "$out" | grep -q 'namespace: "default"' || fail "namespace not rendered"
+echo "$out" | grep -q 'condition: "status.readyReplicas >= 1"' || fail "condition not rendered"
+
+# Case 5: TRIGGER_K8S without namespace (cluster-scoped resource)
+out="$(
+  render "export TRIGGER_K8S_API_VERSION='v1'; \
+          export TRIGGER_K8S_KIND='Namespace'; \
+          export TRIGGER_K8S_NAME='kube-system'; \
+          export TRIGGER_K8S_CONDITION='status.phase == Active'"
+)"
+echo "$out" | grep -q 'type: k8s' || fail "type: k8s missing for cluster-scoped resource"
+# Ensure no namespace line appears in the k8s trigger block (indented under type: k8s)
+if echo "$out" | grep -A5 'type: k8s' | grep -q 'namespace:'; then
+  fail "namespace rendered in k8s block for cluster-scoped resource"
+fi
 
 echo "PASS: triggers config rendering"
