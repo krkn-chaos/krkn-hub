@@ -19,6 +19,7 @@ export CAPTURE_METRICS=${CAPTURE_METRICS:=False}
 export ENABLE_ALERTS=${ENABLE_ALERTS:=False}
 export ALERTS_PATH=${ALERTS_PATH:=config/alerts.yaml}
 export METRICS_PATH=${METRICS_PATH:=config/metrics-aggregated.yaml}
+export GENERATE_PDF_REPORT=${GENERATE_PDF_REPORT:=True}
 
 export ENABLE_ES=${ENABLE_ES:=False}
 export ES_SERVER=${ES_SERVER:=http://0.0.0.0}
