@@ -38,7 +38,7 @@
     {
         "name": "kill-count",
         "short_description": "Kill Count",
-        "description": "Number of VMs to kill",
+        "description": "Number of VMIs to kill (performed serially)",
         "variable": "KILL_COUNT",
         "type": "number",
         "default": "1",

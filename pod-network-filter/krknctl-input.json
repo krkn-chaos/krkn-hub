@@ -117,7 +117,7 @@
   {
     "name": "taints",
     "short_description": "The list of tolerations that can be assigned to the network filter workload",
-    "description": "The list of tolerations that can be assigned to the network filter workload (comma separated)",
+    "description": "Comma-separated taints for which tolerations are derived for the workload, e.g. node-role.kubernetes.io/master:NoSchedule",
     "variable": "TAINTS",
     "type": "string",
     "default": "",

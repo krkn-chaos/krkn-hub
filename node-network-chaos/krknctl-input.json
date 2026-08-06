@@ -11,7 +11,7 @@
   {
     "name": "node-name",
     "short_description": "Target node name",
-    "description": "Exact node name to target when label-selector is not specified.",
+    "description": "Exact node name to target when --label-selector is not specified",
     "variable": "NODE_NAME",
     "type": "string",
     "default": "",
@@ -20,7 +20,7 @@
   {
     "name": "instance-count",
     "short_description": "Number of nodes to target",
-    "description": "How many nodes matching the selector to apply chaos on simultaneously.",
+    "description": "Number of nodes matching the selector to apply chaos on simultaneously",
     "variable": "INSTANCE_COUNT",
     "type": "number",
     "default": "1",
@@ -47,7 +47,7 @@
   {
     "name": "latency",
     "short_description": "Network latency to inject",
-    "description": "Artificial delay to add to matching packets. Format: <number><unit> where unit is us, ms, or s (e.g. 200ms).",
+    "description": "Artificial delay to add to matching packets. Format: <number><unit> where unit is us, ms, or s (e.g. 200ms). Leave empty to skip",
     "variable": "LATENCY",
     "type": "string",
     "default": "",
@@ -56,7 +56,7 @@
   {
     "name": "loss",
     "short_description": "Packet loss percentage",
-    "description": "Percentage of packets to drop. Digits only, no % symbol (e.g. 10 means 10%).",
+    "description": "Percentage of packets to drop. Digits only, no % symbol (e.g. 10 means 10%). Leave empty to skip",
     "variable": "LOSS",
     "type": "string",
     "default": "",
@@ -65,7 +65,7 @@
   {
     "name": "bandwidth",
     "short_description": "Bandwidth limit",
-    "description": "Maximum throughput for matching traffic. Format: <number><unit> where unit is bit, kbit, mbit, gbit, or tbit (e.g. 100mbit).",
+    "description": "Maximum throughput for matching traffic. Format: <number><unit> where unit is bit, kbit, mbit, gbit, or tbit (e.g. 100mbit). Leave empty to skip",
     "variable": "BANDWIDTH",
     "type": "string",
     "default": "",
@@ -94,7 +94,7 @@
   {
     "name": "force",
     "short_description": "Force qdisc replacement",
-    "description": "When true, removes any pre-existing tc qdiscs on the interface before applying new rules.",
+    "description": "When true, removes any pre-existing tc qdiscs on the interface before applying new rules. Use with caution",
     "variable": "FORCE",
     "type": "enum",
     "allowed_values": "true,false",

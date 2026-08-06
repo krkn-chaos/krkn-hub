@@ -245,7 +245,7 @@
     {
         "name": "disable-ssl-verification",
         "short_description": "Disable SSL Verification [*IBM Cloud only*]",
-        "description": "Disable SSL certificate verification",
+        "description": "Disable SSL verification, to avoid certificate errors",
         "variable": "DISABLE_SSL_VERIFICATION",
         "type": "enum",
         "allowed_values": "true,false,True,False",

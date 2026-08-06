@@ -11,7 +11,7 @@
     {
         "name": "node-names",
         "short_description": "Node names",
-        "description": "Node names to target",
+        "description": "Name of the node(s) to target. Example: [\"worker-node-1\",\"worker-node-2\",\"master-node-1\"]",
         "variable": "NODE_NAMES",
         "type": "string",
         "default": "",
@@ -29,7 +29,7 @@
     {
         "name": "pod-label",
         "short_description": "Pod label",
-        "description": "Label of the pod(s) to target",
+        "description": "Label of the pod(s) to target ex. \"app=test\"",
         "variable": "POD_LABEL",
         "type": "string",
         "default": "",
@@ -38,7 +38,7 @@
     {
         "name": "exclude-label",
         "short_description": "Pod exclude label",
-        "description": "Label for excluding one or more pods from chaos",
+        "description": "Pods matching this label will be excluded from the chaos even if they match other criteria",
         "variable": "EXCLUDE_LABEL",
         "type": "string",
         "default": "",

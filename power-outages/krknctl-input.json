@@ -11,7 +11,7 @@
     {
         "name": "cloud-type",
         "short_description": "Cloud Type",
-        "description": "Cloud platform on top of which cluster is running",
+        "description": "Cloud platform on top of which cluster is running, supported platforms - aws, azure, gcp, vmware, ibmcloud, bm",
         "variable": "CLOUD_TYPE",
         "type": "enum",
         "allowed_values": "aws,azure,gcp,vmware,ibmcloud,bm",

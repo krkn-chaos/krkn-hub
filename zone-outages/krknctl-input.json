@@ -2,7 +2,7 @@
     {
         "name": "cloud-type",
         "short_description": "Cloud Type",
-        "description": "Cloud platform on top of which cluster is running",
+        "description": "Cloud platform on top of which cluster is running, supported platforms - aws, gcp",
         "variable": "CLOUD_TYPE",
         "type": "enum",
         "allowed_values": "aws,gcp",
@@ -72,7 +72,7 @@
     {
         "name": "zone",
         "short_description": "ZONE",
-        "description": "cluster zone to target",
+        "description": "cluster zone to target (only for gcp cloud type)",
         "variable": "ZONE",
         "type": "string",
         "default": "",
