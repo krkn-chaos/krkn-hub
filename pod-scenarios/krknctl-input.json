@@ -63,6 +63,17 @@
         "required": "false"
     },
     {
+        "name": "execution",
+        "short_description": "Execution mode",
+        "description": "When multiple pods are targeted, delete them in serial (one at a time) or in parallel (concurrently)",
+        "variable": "EXECUTION",
+        "type": "enum",
+        "allowed_values": "serial,parallel",
+        "separator": ",",
+        "default": "serial",
+        "required": "false"
+    },
+    {
         "name": "kill-timeout",
         "short_description": "Kill timeout",
         "description": "Timeout to wait for the target pod(s) to be removed in seconds",
