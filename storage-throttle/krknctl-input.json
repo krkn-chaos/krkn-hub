@@ -2,7 +2,7 @@
   {
     "name": "pvc-name",
     "short_description": "PVC name",
-    "description": "Target PVC name. If set, pod_name is auto-resolved from PVC",
+    "description": "Target PVC name. If set, --pod-name is auto-resolved from PVC",
     "variable": "PVC_NAME",
     "type": "string",
     "default": "",
@@ -11,7 +11,7 @@
   {
     "name": "pod-name",
     "short_description": "Pod name",
-    "description": "Target pod name. Ignored if PVC_NAME is set",
+    "description": "Target pod name. Ignored if --pvc-name is set",
     "variable": "POD_NAME",
     "type": "string",
     "default": "",
@@ -29,7 +29,7 @@
   {
     "name": "mount-path",
     "short_description": "Mount path",
-    "description": "Specific mount path to throttle (optional)",
+    "description": "Specific mount path to throttle (absolute path, example: /data)",
     "variable": "MOUNT_PATH",
     "type": "string",
     "validator": "^$|^/[a-zA-Z0-9._/\\-]+$",
@@ -40,7 +40,7 @@
   {
     "name": "throttle-type",
     "short_description": "Throttle mode",
-    "description": "Throttle mode to apply",
+    "description": "Throttle mode to apply (bandwidth, iops, both)",
     "variable": "THROTTLE_TYPE",
     "type": "enum",
     "allowed_values": "bandwidth,iops,both",

@@ -22,7 +22,7 @@
   {
     "name": "node-name",
     "short_description": "Node Name",
-    "description": "The Node name to target (if label selector not specified)",
+    "description": "Specific node name to target (alternative to node-selector)",
     "variable": "NODE_NAME",
     "type": "string",
     "default": "",
@@ -76,7 +76,7 @@
   {
     "name": "interfaces",
     "short_description": "Network interfaces to filter outgoing traffic (if more than one separated by comma)",
-    "description": "Network interfaces to filter outgoing traffic (if more than one separated by comma eg. eth0,eth1,eth2)",
+    "description": "Network interfaces for outgoing traffic (comma-separated, e.g. eth0,eth1). Optional, empty uses workload defaults",
     "variable": "INTERFACES",
     "type": "string",
     "default": "",
@@ -117,7 +117,7 @@
   {
     "name": "taints",
     "short_description": "The list of tolerations that can be assigned to the network filter workload",
-    "description": "The list of tolerations that can be assigned to the network filter workload (comma separated)",
+    "description": "Comma-separated taints for which tolerations are derived for the workload, e.g. node-role.kubernetes.io/master:NoSchedule",
     "variable": "TAINTS",
     "type": "string",
     "default": "",

@@ -2,7 +2,7 @@
     {
         "name":"scenario-file-path",
         "short_description":"Scenario file path",
-        "description": "The absolute path of the scenario file compiled following the documentation",
+        "description": "Absolute path to the baremetal node-scenarios YAML file. krknctl base64-encodes it and supplies it as SCENARIO_BASE64 to the container",
         "variable": "SCENARIO_BASE64",
         "type": "file_base64",
         "required": "true"

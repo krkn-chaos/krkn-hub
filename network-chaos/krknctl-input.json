@@ -12,7 +12,7 @@
     {
         "name": "image",
         "short_description": "Image",
-        "description": "Network chaos helper image",
+        "description": "Image used to disrupt network on a pod",
         "variable": "IMAGE",
         "type": "string",
         "default": "quay.io/krkn-chaos/krkn:tools",

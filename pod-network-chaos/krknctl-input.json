@@ -10,7 +10,7 @@
     {
         "name": "image",
         "short_description": "Image",
-        "description": "Network chaos helper image",
+        "description": "Image used to disrupt network on a pod",
         "variable": "IMAGE",
         "type": "string",
         "default": "quay.io/krkn-chaos/krkn:tools",
@@ -28,7 +28,7 @@
     {
         "name":"exclude-label",
 	    "short_description":"Pod exclude label",
-        "description":"Label for excluding one or more pods from chaos",
+        "description":"Pods matching this label will be excluded from the chaos even if they match other criteria",
         "variable":"EXCLUDE_LABEL",
         "type":"string",
         "default":"",
