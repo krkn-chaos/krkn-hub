@@ -102,4 +102,5 @@ if echo "$out" | grep -A5 'type: k8s' | grep -q 'namespace:'; then
   fail "namespace rendered in k8s block for cluster-scoped resource"
 fi
 
+
 echo "PASS: triggers config rendering"
