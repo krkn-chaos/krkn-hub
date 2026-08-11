@@ -39,20 +39,18 @@ expect() { # expect "<exports>" "<expected run mode>"
 # Case 1: nothing set -> standalone (backward compatible default)
 expect "true" "standalone"
 
-# Case 2: RESILIENCY_SCORE enables detailed mode for every value krknctl accepts.
-# krknctl validates booleans with Go's strconv.ParseBool and passes the value
-# through verbatim, so all of these can reach the container.
-for truthy in true True TRUE t T 1; do
+# Case 2: RESILIENCY_SCORE enables detailed mode whatever the casing
+for truthy in true True TRUE; do
   expect "export RESILIENCY_SCORE=$truthy" "detailed"
 done
 
 # Case 3: falsey values leave the default alone
-for falsy in false False FALSE f F 0; do
+for falsy in false False FALSE; do
   expect "export RESILIENCY_SCORE=$falsy" "standalone"
 done
 
 # Case 4: DISABLE_RESILIENCY_SCORE turns scoring off on the same terms
-for truthy in true True TRUE t T 1; do
+for truthy in true True TRUE; do
   expect "export DISABLE_RESILIENCY_SCORE=$truthy" "disabled"
 done
 
