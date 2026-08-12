@@ -9,3 +9,4 @@
     node_names: $NODE_NAMES
     node_label_selector: $NODE_LABEL_SELECTOR
     exclude_label: $EXCLUDE_LABEL
+    force: $FORCE

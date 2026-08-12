@@ -90,5 +90,14 @@
         "type": "number",
         "default": "120",
         "required": "false"
+    },
+    {
+        "name": "force",
+        "short_description": "Force delete",
+        "description": "When true, pods are killed immediately (grace_period_seconds=0) without waiting for graceful termination. When false (default), pods are deleted gracefully respecting terminationGracePeriodSeconds",
+        "variable": "FORCE",
+        "type": "boolean",
+        "default": "false",
+        "required": "false"
     }
 ]
