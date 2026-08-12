@@ -111,7 +111,7 @@
     {
         "name": "vsphere-ip",
         "short_description": "VSphere IP [*VSphere only*]",
-        "description": "VSpere IP Address",
+        "description": "vSphere IP address",
         "variable": "VSPHERE_IP",
         "type": "string",
         "default": "",
@@ -120,7 +120,7 @@
     {
         "name": "vsphere-username",
         "short_description": "VSphere Username [*VSphere only*]",
-        "description": "VSpere IP Address",
+        "description": "vSphere username",
         "variable": "VSPHERE_USERNAME",
         "type": "string",
         "default": "",
@@ -130,7 +130,7 @@
     {
         "name": "vsphere-password",
         "short_description": "VSphere Password [*VSphere only*]",
-        "description": "VSpere password",
+        "description": "vSphere password",
         "variable": "VSPHERE_PASSWORD",
         "type": "string",
         "default": "",
