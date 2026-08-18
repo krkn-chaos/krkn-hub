@@ -27,6 +27,7 @@ render() {
       TRIGGER_HTTP_BEARER_TOKEN TRIGGER_HTTP_BODY_CONTAINS \
       TRIGGER_K8S_API_VERSION TRIGGER_K8S_KIND TRIGGER_K8S_NAME \
       TRIGGER_K8S_NAMESPACE TRIGGER_K8S_CONDITION \
+      TRIGGER_PROM_QUERY TRIGGER_PROM_URL TRIGGER_PROM_TOKEN \
       RESILIENCY_SCORE DISABLE_RESILIENCY_SCORE
     # Apply case-specific exports, then source shared defaults / TRIGGERS_BLOCK builder.
     eval "$@"
@@ -100,6 +101,29 @@ echo "$out" | grep -q 'type: k8s' || fail "type: k8s missing for cluster-scoped 
 # Ensure no namespace line appears in the k8s trigger block (indented under type: k8s)
 if echo "$out" | grep -A5 'type: k8s' | grep -q 'namespace:'; then
   fail "namespace rendered in k8s block for cluster-scoped resource"
+fi
+
+# Case 6: TRIGGER_PROM_QUERY set -> prometheus block generated with token
+out="$(
+  render "export TRIGGER_PROM_QUERY='avg(rate(container_cpu_usage_seconds_total[5m])) > 0.8'; \
+          export TRIGGER_PROM_URL='http://prometheus:9090'; \
+          export TRIGGER_PROM_TOKEN='prom-secret-token'"
+)"
+echo "$out" | grep -q '^triggers:' || fail "triggers missing when TRIGGER_PROM_QUERY is set"
+echo "$out" | grep -q 'type: prometheus' || fail "type: prometheus missing"
+echo "$out" | grep -q 'query: "avg(rate(container_cpu_usage_seconds_total\[5m\])) > 0.8"' || fail "prometheus query not rendered"
+echo "$out" | grep -q 'prometheus_url: "http://prometheus:9090"' || fail "prometheus_url not rendered"
+echo "$out" | grep -q 'prometheus_bearer_token: "prom-secret-token"' || fail "prometheus_bearer_token not rendered"
+
+# Case 7: TRIGGER_PROM_QUERY set without token -> no bearer_token line
+out="$(
+  render "export TRIGGER_PROM_QUERY='up{job=\"krkn\"} == 1'; \
+          export TRIGGER_PROM_URL='http://prom.local:9090'"
+)"
+echo "$out" | grep -q 'type: prometheus' || fail "type: prometheus missing without token"
+echo "$out" | grep -q 'prometheus_url: "http://prom.local:9090"' || fail "prometheus_url not rendered without token"
+if echo "$out" | grep -A5 'type: prometheus' | grep -q 'prometheus_bearer_token:'; then
+  fail "prometheus_bearer_token rendered when TRIGGER_PROM_TOKEN is empty"
 fi
 
 echo "PASS: triggers config rendering"

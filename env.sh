@@ -95,6 +95,9 @@ export TRIGGER_K8S_KIND=${TRIGGER_K8S_KIND:=""}
 export TRIGGER_K8S_NAME=${TRIGGER_K8S_NAME:=""}
 export TRIGGER_K8S_NAMESPACE=${TRIGGER_K8S_NAMESPACE:=""}
 export TRIGGER_K8S_CONDITION=${TRIGGER_K8S_CONDITION:=""}
+export TRIGGER_PROM_QUERY=${TRIGGER_PROM_QUERY:=""}
+export TRIGGER_PROM_URL=${TRIGGER_PROM_URL:=""}
+export TRIGGER_PROM_TOKEN=${TRIGGER_PROM_TOKEN:=""}
 export TRIGGERS_MODE=${TRIGGERS_MODE:="all_of"}
 export TRIGGERS_TIMEOUT=${TRIGGERS_TIMEOUT:="300"}
 export TRIGGERS_INTERVAL=${TRIGGERS_INTERVAL:="5"}
@@ -139,9 +142,16 @@ build_triggers_block() {
     block+="      condition: \"$TRIGGER_K8S_CONDITION\"\n"
   fi
 
+  if [[ -n "$TRIGGER_PROM_QUERY" ]]; then
+    block+="    - type: prometheus\n"
+    block+="      query: \"$TRIGGER_PROM_QUERY\"\n"
+    block+="      prometheus_url: \"$TRIGGER_PROM_URL\"\n"
+    [[ -n "$TRIGGER_PROM_TOKEN" ]] && block+="      prometheus_bearer_token: \"$TRIGGER_PROM_TOKEN\"\n"
+  fi
+
   printf '%b' "$block"
 }
 
-if [[ -n "$TRIGGER_COMMAND" ]] || [[ -n "$TRIGGER_HTTP_URL" ]] || [[ -n "$TRIGGER_K8S_API_VERSION" ]]; then
+if [[ -n "$TRIGGER_COMMAND" ]] || [[ -n "$TRIGGER_HTTP_URL" ]] || [[ -n "$TRIGGER_K8S_API_VERSION" ]] || [[ -n "$TRIGGER_PROM_QUERY" ]]; then
   export TRIGGERS_BLOCK="$(build_triggers_block)"
 fi
