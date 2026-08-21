@@ -6,5 +6,5 @@ image: $IMAGE
 node-selector: $NODE_SELECTOR
 number-of-nodes: $NUMBER_OF_NODES
 taints: $TAINTS
-vm-bytes: $MEMORY_CONSUMPTION_PERCENTAGE
+memory-vm-bytes: $MEMORY_CONSUMPTION_PERCENTAGE
 
