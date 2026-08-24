@@ -119,11 +119,16 @@ services:
         context: ./
         dockerfile: ./syn-flood/Dockerfile
       image: quay.io/krkn-chaos/krkn-hub:syn-flood
-    kubevirt-outage:
+    kubevirt-outage:  # Deprecated: use vmi-outage instead
       build:
         context: ./
         dockerfile: ./kubevirt-outage/Dockerfile
       image: quay.io/krkn-chaos/krkn-hub:kubevirt-outage
+    vmi-outage:
+      build:
+        context: ./
+        dockerfile: ./vmi-outage/Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:vmi-outage
     vmi-network-filter:
       build:
         context: ./
