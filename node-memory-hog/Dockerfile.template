@@ -15,6 +15,7 @@ COPY node-memory-hog/memory-hog.yml.template /home/krkn/kraken/scenarios/kube/me
 COPY common_run.sh /home/krkn/common_run.sh
 
 LABEL krknctl.is_a_scenario="true"
+LABEL krknctl.privileged="true"
 LABEL krknctl.has_rollback="true"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Memory Hog"
