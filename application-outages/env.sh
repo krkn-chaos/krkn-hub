@@ -2,7 +2,7 @@
 
 # Vars and respective defaults
 export DURATION=${DURATION:=600}
-export NAMESPACE=${NAMESPACE:=<namespace>}
+export NAMESPACE=${NAMESPACE:=default}
 export POD_SELECTOR=${POD_SELECTOR:="{}"}
 export EXCLUDE_LABEL=${EXCLUDE_LABEL:=""}
 export BLOCK_TRAFFIC_TYPE=${BLOCK_TRAFFIC_TYPE:=- Ingress}
