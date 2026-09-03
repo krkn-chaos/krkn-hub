@@ -75,8 +75,9 @@ jobs:
       # Sign the scenario image so krknctl / krkn-operator (via the shared
       # pkg/verify package) can verify it before running. Sign by the digest
       # emitted by build-push-action (anti-TOCTOU): consumers resolve the tag ->
-      # this digest and find the signature. Key-based, --tlog-upload=false, to
-      # match the ecosystem's offline verification policy (no Fulcio/Rekor).
+      # this digest and find the signature. Key-based, signed with a
+      # no-transparency-log signing-config, to match the ecosystem's offline
+      # verification policy (no Fulcio/Rekor/TSA).
       - name: Install cosign
         if: ${{ github.ref == 'refs/heads/main' }}
         uses: sigstore/cosign-installer@v4.1.2
@@ -91,7 +92,15 @@ jobs:
           set -euo pipefail
           REF="${IMAGE%:*}@${DIGEST}"
           echo "Signing ${REF}"
-          cosign sign --yes --tlog-upload=false --key env://COSIGN_PRIVATE_KEY "${REF}"
+          # cosign 2.6+ deprecated --tlog-upload and made --tlog-upload=false
+          # incompatible with its signing-config flow. Sign key-based/offline
+          # (no Fulcio/Rekor/TSA) via a signing-config whose transparency-log and
+          # timestamp services are stripped. The config is vendored in-repo
+          # (.github/cosign/signing-config.json) so we don't depend on an upstream
+          # file that could move or disappear; signature format is unchanged, so
+          # offline verification in pkg/verify (krknctl / krkn-operator) is
+          # unaffected.
+          cosign sign --yes --signing-config "${GITHUB_WORKSPACE}/.github/cosign/signing-config.json" --key env://COSIGN_PRIVATE_KEY "${REF}"
           # Self-check: fail the build if the signature does not verify with the
           # public half of the signing key (derived on the fly, no extra secret).
           cosign public-key --key env://COSIGN_PRIVATE_KEY > /tmp/cosign.pub
@@ -169,7 +178,15 @@ jobs:
           set -euo pipefail
           REF="${IMAGE%:*}@${DIGEST}"
           echo "Signing ${REF}"
-          cosign sign --yes --tlog-upload=false --key env://COSIGN_PRIVATE_KEY "${REF}"
+          # cosign 2.6+ deprecated --tlog-upload and made --tlog-upload=false
+          # incompatible with its signing-config flow. Sign key-based/offline
+          # (no Fulcio/Rekor/TSA) via a signing-config whose transparency-log and
+          # timestamp services are stripped. The config is vendored in-repo
+          # (.github/cosign/signing-config.json) so we don't depend on an upstream
+          # file that could move or disappear; signature format is unchanged, so
+          # offline verification in pkg/verify (krknctl / krkn-operator) is
+          # unaffected.
+          cosign sign --yes --signing-config "${GITHUB_WORKSPACE}/.github/cosign/signing-config.json" --key env://COSIGN_PRIVATE_KEY "${REF}"
           cosign public-key --key env://COSIGN_PRIVATE_KEY > /tmp/cosign.pub
           cosign verify --insecure-ignore-tlog=true --key /tmp/cosign.pub "${REF}"
 
