@@ -77,9 +77,13 @@ export KUBE_VIRT_NODE_NAME=${KUBE_VIRT_NODE_NAME:=""}                           
 export KUBE_VIRT_EXIT_ON_FAIL=${KUBE_VIRT_EXIT_ON_FAIL:=False}
 
 # resiliency score
+# The booleans are matched case-insensitively, so true, True and TRUE all work.
+export RESILIENCY_SCORE=${RESILIENCY_SCORE:=False}
+export DISABLE_RESILIENCY_SCORE=${DISABLE_RESILIENCY_SCORE:=False}
+export RESILIENCY_RUN_MODE=${RESILIENCY_RUN_MODE,,}
 export RESILIENCY_RUN_MODE=${RESILIENCY_RUN_MODE:="standalone"}
-export RESILIENCY_RUN_MODE=$([ "$RESILIENCY_SCORE" = "true" ] && echo "detailed" || echo "standalone")
-export RESILIENCY_RUN_MODE=$([ "$DISABLE_RESILIENCY_SCORE" = "true" ] && echo "disabled" || echo "$RESILIENCY_RUN_MODE")
+export RESILIENCY_RUN_MODE=$([[ "${RESILIENCY_SCORE,,}" =~ ^true$ ]] && echo "detailed" || echo "$RESILIENCY_RUN_MODE")
+export RESILIENCY_RUN_MODE=$([[ "${DISABLE_RESILIENCY_SCORE,,}" =~ ^true$ ]] && echo "disabled" || echo "$RESILIENCY_RUN_MODE")
 export RESILIENCY_FILE=${RESILIENCY_FILE:=$ALERTS_PATH}
 
 # chaos triggers (optional, backward compatible when TRIGGER_COMMAND is empty)
