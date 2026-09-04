@@ -109,6 +109,28 @@
         "required": "false"
     },
     {
+        "name": "verify-session",
+        "short_description": "Verify Session [*VMware only*]",
+        "description": "Verify the vSphere client session using certificates",
+        "variable": "VERIFY_SESSION",
+        "type": "enum",
+        "allowed_values": "true,false",
+        "separator": ",",
+        "default": "false",
+        "required": "false"
+    },
+    {
+        "name": "skip-openshift-checks",
+        "short_description": "Skip OpenShift Checks [*VMware only*]",
+        "description": "Skip waiting for node status changes on OpenShift before completing the scenario",
+        "variable": "SKIP_OPENSHIFT_CHECKS",
+        "type": "enum",
+        "allowed_values": "true,false",
+        "separator": ",",
+        "default": "false",
+        "required": "false"
+    },
+    {
         "name": "vsphere-ip",
         "short_description": "VSphere IP [*VSphere only*]",
         "description": "vSphere IP address",
