@@ -63,7 +63,8 @@
         "type": "string",
         "variable": "NODE_NAME",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "group": "egress"
     },
     {
         "name": "interfaces",
@@ -74,7 +75,8 @@
         "default": "[]",
         "validator": "^\\[\\]$|^\\[([a-zA-Z0-9._-]+(,)?)*[^,]\\]$",
         "validation_message": "Interfaces must be in the format: [eth0,eth1,eth2]",
-        "required": "false"
+        "required": "false",
+        "group": "egress"
     },
     {
         "name": "egress",
@@ -85,7 +87,8 @@
         "default": "{bandwidth: 100mbit}",
         "validator": "^{((latency|loss|bandwidth): [a-zA-Z0-9.]+(,)?)+[^,]}$",
         "validation_message": "Egress shaping must be in the format: {bandwidth/latency/loss: 100mbit/10ms/40%}",
-        "required": "false"
+        "required": "false",
+        "group": "egress"
     },
     {
         "name": "target-node-interface",
@@ -95,7 +98,8 @@
         "variable": "TARGET_NODE_AND_INTERFACE",
         "validator": "^{([a-zA-Z0-9-.]+: \\[(([A-Za-z0-9._-]+(,)?)+)\\](,)?)+}$",
         "validation_message": "Target node interface must be in the format: ip-10-0-216-2.us-west-2.compute.internal: [ens5]}",
-        "required": "false"
+        "required": "false",
+        "group": "ingress"
     },
     {
         "name": "network-params",
@@ -105,7 +109,8 @@
         "variable": "NETWORK_PARAMS",
         "validator": "^{((latency|loss|bandwidth): [a-zA-Z0-9.]+(,)?)+[^,]}$",
         "validation_message": "Ingress shaping must be in the format: {bandwidth/latency/loss: 100mbit/10ms/40%}",
-        "required": "false"
+        "required": "false",
+        "group": "ingress"
     },
     {
         "name": "wait-duration",
@@ -114,6 +119,7 @@
         "type": "number",
         "variable": "WAIT_DURATION",
         "default": "300",
-        "required": "false"
+        "required": "false",
+        "group": "ingress"
     }
 ]
