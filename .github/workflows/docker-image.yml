@@ -53,6 +53,7 @@ jobs:
           IMAGE=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].image')
           CONTEXT=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].build.context')
           DOCKERFILE=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].build.dockerfile')
+          DOCKERFILE="${CONTEXT%/}/${DOCKERFILE#./}"
           echo "image=$IMAGE" >> $GITHUB_OUTPUT
           echo "context=$CONTEXT" >> $GITHUB_OUTPUT
           echo "dockerfile=$DOCKERFILE" >> $GITHUB_OUTPUT
@@ -136,6 +137,7 @@ jobs:
           IMAGE=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].image')
           CONTEXT=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].build.context')
           DOCKERFILE=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].build.dockerfile')
+          DOCKERFILE="${CONTEXT%/}/${DOCKERFILE#./}"
 
           # Transform krkn-hub to krkn-hub-multiarch for this job
           # Skip cerberus images (they stay amd64-only)
