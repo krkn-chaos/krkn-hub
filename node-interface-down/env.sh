@@ -8,7 +8,7 @@ export RECOVERY_TIME=${RECOVERY_TIME:="0"}
 export WAIT_DURATION=${WAIT_DURATION:="0"}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=network_chaos_ng_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kube/node-interface-down.yml}
-export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-network-chaos:latest"}
+export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-hub:workload-krkn-network-chaos"}
 export NODE_NAME=${NODE_NAME:=""}
 export TAINTS=${TAINTS:=""}
 export SERVICE_ACCOUNT=${SERVICE_ACCOUNT:=""}

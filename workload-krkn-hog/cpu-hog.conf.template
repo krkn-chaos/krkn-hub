@@ -1,0 +1,4 @@
+cpu $NUM_CPU 
+cpu-method $CPU_METHOD 
+timeout $DURATION 
+cpu-load $LOAD_PERCENTAGE

@@ -10,4 +10,4 @@ export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kube/memory-hog.yml}
 export NODE_SELECTOR=${NODE_SELECTOR:=""}
 export TAINTS=${TAINTS:="[]"}
 export NUMBER_OF_NODES=${NUMBER_OF_NODES:=""}
-export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-hog"}
+export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-hub:workload-krkn-hog"}

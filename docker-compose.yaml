@@ -159,3 +159,38 @@ services:
         context: ./
         dockerfile: ./node-network-chaos/Dockerfile
       image: quay.io/krkn-chaos/krkn-hub:node-network-chaos
+    workload-krkn-hog:
+      build:
+        context: ./workload-krkn-hog
+        dockerfile: ./Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:workload-krkn-hog
+    workload-krkn-http-load:
+      build:
+        context: ./workload-krkn-http-load
+        dockerfile: ./Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:workload-krkn-http-load
+    workload-krkn-network-chaos:
+      build:
+        context: ./workload-krkn-network-chaos
+        dockerfile: ./Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:workload-krkn-network-chaos
+    workload-krkn-syn-flood:
+      build:
+        context: ./workload-krkn-syn-flood
+        dockerfile: ./Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:workload-krkn-syn-flood
+    workload-krkn-service-hijacking:
+      build:
+        context: ./workload-krkn-service-hijacking
+        dockerfile: ./Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:workload-krkn-service-hijacking
+    workload-krkn-tools:
+      build:
+        context: ./workload-krkn-tools
+        dockerfile: ./Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:workload-krkn-tools
+    workload-kubectl-kustomize:
+      build:
+        context: ./workload-kubectl-kustomize
+        dockerfile: ./Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:workload-kubectl-kustomize
