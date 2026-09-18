@@ -57,6 +57,13 @@
         "required": "false"
     },
     {
+        "name": "egress-group",
+        "variable": "egress",
+        "short_description": "Egress options",
+        "description": "Options that apply when TRAFFIC_TYPE is egress.",
+        "type": "Group"
+    },
+    {
         "name": "node-name",
         "short_description": "Node Name [*Egress only*]",
         "description": "Node name to inject faults in case of targeting a specific node; Can set multiple node names separated by a comma.",
@@ -91,6 +98,13 @@
         "group": "egress"
     },
     {
+        "name": "ingress-group",
+        "variable": "ingress",
+        "short_description": "Ingress options",
+        "description": "Options that apply when TRAFFIC_TYPE is ingress.",
+        "type": "Group"
+    },
+    {
         "name": "target-node-interface",
         "short_description": "Target Node and Interfaces [*Ingress only*]",
         "description": "Dictionary with key as node name(s) and value as a list of its interfaces to test. For example: {ip-10-0-216-2.us-west-2.compute.internal: [ens5]}.",
@@ -114,12 +128,11 @@
     },
     {
         "name": "wait-duration",
-        "short_description": "Wait Duration [*Ingress only*]",
+        "short_description": "Wait Duration [common]",
         "description": "Ensure that it is at least about twice of test_duration.",
         "type": "number",
         "variable": "WAIT_DURATION",
         "default": "300",
-        "required": "false",
-        "group": "ingress"
+        "required": "false"
     }
 ]
