@@ -35,6 +35,8 @@ def request_handler(params: str = None):
     else:
         return Response(f"{request.method} on {path} not allowed", status=405)
 
+    elapsed = time.time() - time_keeper.start_time
+    step_deadline = 0
     for request_step in steps:
         if validate_step(request_step):
             return Response(
@@ -47,7 +49,8 @@ def request_handler(params: str = None):
                 status=500,
             )
 
-        if time.time() - time_keeper.start_time <= request_step["duration"]:
+        step_deadline += request_step["duration"]
+        if elapsed <= step_deadline:
             __add_stat_row(
                 path=path,
                 response_body=request_step["payload"],

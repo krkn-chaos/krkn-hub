@@ -10,6 +10,8 @@ def validate_step(step: dict[Any]) -> Optional[str]:
         errors.append("status")
     if "mime_type" not in step:
         errors.append("mime_type")
+    if "payload" not in step:
+        errors.append("payload")
 
     if len(errors) > 0:
         return ", ".join(errors)

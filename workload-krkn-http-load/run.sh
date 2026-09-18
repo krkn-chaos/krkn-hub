@@ -27,7 +27,6 @@ TARGETS_JSON=$(echo "$_TARGETS_JSON_BASE64" | base64 -d)
 TARGET_COUNT=$(echo "$TARGETS_JSON" | wc -l | tr -d ' ')
 
 echo "Targets ($TARGET_COUNT endpoint(s)):"
-echo "$TARGETS_JSON"
 echo "==============================="
 
 VEGETA_FLAGS="-format=json"

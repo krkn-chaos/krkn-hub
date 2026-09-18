@@ -1,6 +1,8 @@
 import json
 import time
 
+from app import method_steps, time_keeper
+
 
 def test_plan_get_list_index(app, client, time_keeper):
     time_keeper.set_time()
@@ -15,6 +17,33 @@ def test_plan_get_list_index(app, client, time_keeper):
     assert result.status_code == 201
     expected = {"status": "resource created"}
     assert expected == json.loads(result.get_data(as_text=True))
+
+
+def test_plan_uses_cumulative_step_durations(client, monkeypatch):
+    steps = [
+        {"duration": 5, "status": 500, "mime_type": "text/plain", "payload": "first"},
+        {"duration": 5, "status": 201, "mime_type": "text/plain", "payload": "second"},
+        {"duration": 5, "status": 202, "mime_type": "text/plain", "payload": "third"},
+    ]
+    monkeypatch.setitem(method_steps, ("GET", "/list/index.php"), steps)
+    monkeypatch.setattr(time, "time", lambda: 0)
+    time_keeper.start_time = 0
+    monkeypatch.setattr(time, "time", lambda: 6)
+
+    result = client.get("/list/index.php")
+
+    assert result.status_code == 201
+    assert result.get_data(as_text=True) == "second"
+
+
+def test_plan_without_payload_returns_validation_error(client, monkeypatch):
+    steps = [{"duration": 5, "status": 500, "mime_type": "text/plain"}]
+    monkeypatch.setitem(method_steps, ("GET", "/list/index.php"), steps)
+
+    result = client.get("/list/index.php")
+
+    assert result.status_code == 500
+    assert '"payload"' in result.get_data(as_text=True)
 
 
 def test_plan_post_list_index(app, client, time_keeper):
