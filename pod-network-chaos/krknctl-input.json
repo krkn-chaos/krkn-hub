@@ -13,7 +13,7 @@
         "description": "Image used to disrupt network on a pod",
         "variable": "IMAGE",
         "type": "string",
-        "default": "quay.io/krkn-chaos/krkn:tools",
+        "default": "quay.io/krkn-chaos/krkn-hub-multiarch:workload-krkn-tools",
         "required": "false"
     },
     {

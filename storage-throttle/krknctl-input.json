@@ -99,7 +99,7 @@
     "description": "Image used for privileged helper pod that writes cgroup values",
     "variable": "IMAGE",
     "type": "string",
-    "default": "quay.io/krkn-chaos/krkn:tools",
+    "default": "quay.io/krkn-chaos/krkn-hub-multiarch:workload-krkn-tools",
     "required": "false"
   }
 ]
