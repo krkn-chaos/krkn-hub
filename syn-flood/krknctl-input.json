@@ -76,7 +76,7 @@
         "description":"The container image that will be used to perform the scenario",
         "variable":"IMAGE",
         "type":"string",
-        "default":"quay.io/krkn-chaos/krkn-syn-flood:latest",
+        "default":"quay.io/krkn-chaos/krkn-hub:workload-krkn-syn-flood",
         "required":"false"
     },
     {

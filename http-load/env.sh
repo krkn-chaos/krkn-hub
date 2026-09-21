@@ -2,7 +2,7 @@
 export RUNS=${RUNS:="1"}
 export NUMBER_OF_PODS=${NUMBER_OF_PODS:="2"}
 export NAMESPACE=${NAMESPACE:="default"}
-export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-http-load:latest"}
+export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-hub:workload-krkn-http-load"}
 export NODE_SELECTORS=${NODE_SELECTORS:=""}
 export TARGET_ENDPOINTS=${TARGET_ENDPOINTS:=""}
 export RATE=${RATE:="50/1s"}

@@ -14,7 +14,7 @@ def main():
     runs = os.getenv("RUNS", "1")
     number_of_pods = os.getenv("NUMBER_OF_PODS", "2")
     namespace = os.getenv("NAMESPACE", "default")
-    image = os.getenv("IMAGE", "quay.io/krkn-chaos/krkn-http-load:latest")
+    image = os.getenv("IMAGE", "quay.io/krkn-chaos/krkn-hub:workload-krkn-http-load")
     node_selectors = os.getenv("NODE_SELECTORS", "")
     target_endpoints = os.getenv("TARGET_ENDPOINTS", "")
     rate = os.getenv("RATE", "50/1s")

@@ -64,7 +64,7 @@
          "description":"The hog container image. Can be changed if the hog image is mirrored on a private repository",
          "variable":"IMAGE",
          "type":"string",
-         "default":"quay.io/krkn-chaos/krkn-hog",
+         "default":"quay.io/krkn-chaos/krkn-hub:workload-krkn-hog",
          "required": "false"
      }
 

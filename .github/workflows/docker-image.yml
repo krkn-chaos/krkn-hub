@@ -51,8 +51,11 @@ jobs:
         id: config
         run: |
           IMAGE=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].image')
+          CONTEXT=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].build.context')
           DOCKERFILE=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].build.dockerfile')
+          DOCKERFILE="${CONTEXT%/}/${DOCKERFILE#./}"
           echo "image=$IMAGE" >> $GITHUB_OUTPUT
+          echo "context=$CONTEXT" >> $GITHUB_OUTPUT
           echo "dockerfile=$DOCKERFILE" >> $GITHUB_OUTPUT
       - name: Login in quay
         if: ${{ github.ref == 'refs/heads/main' }}
@@ -65,7 +68,7 @@ jobs:
         id: build
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: ${{ steps.config.outputs.context }}
           file: ${{ steps.config.outputs.dockerfile }}
           #platforms: linux/amd64,linux/arm64
           platforms: linux/amd64
@@ -132,7 +135,9 @@ jobs:
         id: config
         run: |
           IMAGE=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].image')
+          CONTEXT=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].build.context')
           DOCKERFILE=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].build.dockerfile')
+          DOCKERFILE="${CONTEXT%/}/${DOCKERFILE#./}"
 
           # Transform krkn-hub to krkn-hub-multiarch for this job
           # Skip cerberus images (they stay amd64-only)
@@ -143,6 +148,7 @@ jobs:
           fi
 
           echo "image=$MULTIARCH_IMAGE" >> $GITHUB_OUTPUT
+          echo "context=$CONTEXT" >> $GITHUB_OUTPUT
           echo "dockerfile=$DOCKERFILE" >> $GITHUB_OUTPUT
       - name: Login in quay
         if: ${{ github.ref == 'refs/heads/main' && steps.config.outputs.image != '' }}
@@ -156,7 +162,7 @@ jobs:
         if: ${{ steps.config.outputs.image != '' }}
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: ${{ steps.config.outputs.context }}
           file: ${{ steps.config.outputs.dockerfile }}
           platforms: linux/amd64,linux/arm64
           push: ${{ github.ref == 'refs/heads/main' }}

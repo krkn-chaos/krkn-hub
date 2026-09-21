@@ -14,4 +14,4 @@
   taints: []
   protocols:
     - tcp
-  image: quay.io/krkn-chaos/krkn-network-chaos:latest
+  image: quay.io/krkn-chaos/krkn-hub:workload-krkn-network-chaos

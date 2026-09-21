@@ -111,7 +111,7 @@
     "description": "The network chaos injection workload container image",
     "variable": "IMAGE",
     "type": "string",
-    "default": "quay.io/krkn-chaos/krkn-network-chaos:latest",
+    "default": "quay.io/krkn-chaos/krkn-hub:workload-krkn-network-chaos",
     "required": "false"
   },
   {

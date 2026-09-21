@@ -8,7 +8,7 @@ export NAMESPACE=${NAMESPACE:="default"}
 export NODE_SELECTOR=${NODE_SELECTOR:=""}
 export NUMBER_OF_NODES=${NUMBER_OF_NODES:=""}
 export TAINTS=${TAINTS:="[]"}
-export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-hog"}
+export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-hub:workload-krkn-hog"}
 
 export SCENARIO_TYPE=${SCENARIO_TYPE:=hog_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kube/cpu-hog.yml}
