@@ -5,7 +5,14 @@ export CERBERUS_ENABLED=${CERBERUS_ENABLED:=False}
 export CERBERUS_URL=${CERBERUS_URL:=http://0.0.0.0:8080}
 export KRKN_KUBE_CONFIG=${KRKN_KUBE_CONFIG:=/home/krkn/.kube/config}
 export DISABLE_IMAGE_SIGNATURE=${DISABLE_IMAGE_SIGNATURE:=False}
-export IMAGE_SIGNATURE_VERIFICATION_ENABLED=$([ "$DISABLE_IMAGE_SIGNATURE" = "true" ] && echo "False" || echo "True")
+case "$(printf '%s' "$DISABLE_IMAGE_SIGNATURE" | tr '[:upper:]' '[:lower:]')" in
+    true)
+        export IMAGE_SIGNATURE_VERIFICATION_ENABLED=False
+        ;;
+    *)
+        export IMAGE_SIGNATURE_VERIFICATION_ENABLED=True
+        ;;
+esac
 export WAIT_DURATION=${WAIT_DURATION:=60}
 export ITERATIONS=${ITERATIONS:=1}
 export DAEMON_MODE=${DAEMON_MODE:=False}
