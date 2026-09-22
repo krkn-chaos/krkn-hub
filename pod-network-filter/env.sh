@@ -9,7 +9,7 @@ export INTERFACES=${INTERFACES:=""}
 export PORTS=${PORTS:=""}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=network_chaos_ng_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kube/network-filter.yml}
-export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-hub:workload-krkn-network-chaos"}
+export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-hub-multiarch:workload-krkn-network-chaos"}
 export PROTOCOLS=${PROTOCOLS:="tcp"}
 export POD_NAME=${POD_NAME:=""}
 export TAINTS=${TAINTS:=""}

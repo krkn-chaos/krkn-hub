@@ -13,4 +13,4 @@ export INSTANCE_COUNT=${INSTANCE_COUNT:=1}
 export TEST_DURATION=${TEST_DURATION:=120}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=pod_network_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/pod_network_scenario.yaml}
-export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn:tools"}
+export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-hub-multiarch:workload-krkn-tools"}

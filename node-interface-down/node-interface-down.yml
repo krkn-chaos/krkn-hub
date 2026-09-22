@@ -12,4 +12,4 @@
   interfaces: []
   taints: []
   recovery_time: 0
-  image: quay.io/krkn-chaos/krkn-hub:workload-krkn-network-chaos
+  image: quay.io/krkn-chaos/krkn-hub-multiarch:workload-krkn-network-chaos
