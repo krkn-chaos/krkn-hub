@@ -1,5 +1,7 @@
 kraken:
     kubeconfig_path: $KRKN_KUBE_CONFIG                   # Path to kubeconfig
+    image_signature_verification_enabled: $IMAGE_SIGNATURE_VERIFICATION_ENABLED  # Verify workload image signatures before deployment
+    image_signature_public_key: cosign.pub                # Relative to the Krkn repository root
     exit_on_failure: False                                 # Exit when a post action scenario fails
     port: $PORT
     publish_kraken_status: $PUBLISH_KRAKEN_STATUS
