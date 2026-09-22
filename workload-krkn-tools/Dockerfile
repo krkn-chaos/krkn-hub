@@ -18,6 +18,7 @@ RUN dnf -y update && \
         nmap-ncat \
         procps-ng \
         psmisc \
+        systemd \
         tcpdump \
         util-linux \
         which \
@@ -27,6 +28,6 @@ RUN dnf -y update && \
 LABEL krknctl.is_a_scenario="false"
 LABEL krknctl.privileged="true"
 LABEL krknctl.title="Krkn Network Tools Workload"
-LABEL krknctl.description="Privileged helper image providing host network and storage administration tools for Krkn scenarios."
+LABEL krknctl.description="Privileged helper image providing host network, storage, and time administration tools for Krkn scenarios."
 
 CMD ["/usr/bin/bash"]
