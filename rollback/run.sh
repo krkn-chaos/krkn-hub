@@ -9,6 +9,20 @@ source "$ROOT_FOLDER/main_env.sh"
 
 : "${UUID:?UUID cannot be empty}"
 
+case "$ROLLBACK_VERSIONS_DIRECTORY" in
+  *$'\n'*|*$'\r'*)
+    echo "ROLLBACK_VERSIONS_DIRECTORY cannot contain newlines" >&2
+    exit 1
+    ;;
+esac
+
+# Render the path as a YAML single-quoted scalar. YAML escapes single quotes
+# by doubling them, which keeps paths containing spaces, '#', ':' and quotes
+# valid after envsubst renders the configuration.
+escaped_rollback_directory=$(printf '%s' "$ROLLBACK_VERSIONS_DIRECTORY" | sed "s/'/''/g")
+ROLLBACK_VERSIONS_DIRECTORY_YAML="'$escaped_rollback_directory'"
+export ROLLBACK_VERSIONS_DIRECTORY_YAML
+
 envsubst < "$KRAKEN_FOLDER/config/config.yaml.template" > "$KRAKEN_FOLDER/config/config.yaml"
 
 rollback_args=(
