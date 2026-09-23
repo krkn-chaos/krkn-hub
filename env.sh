@@ -29,6 +29,7 @@ export ENABLE_ALERTS=${ENABLE_ALERTS:=False}
 export ALERTS_PATH=${ALERTS_PATH:=config/alerts.yaml}
 export METRICS_PATH=${METRICS_PATH:=config/metrics-aggregated.yaml}
 export REPORT_FORMATS=${REPORT_FORMATS:="[pdf,html]"}
+export ROLLBACK_VERSIONS_DIRECTORY=${ROLLBACK_VERSIONS_DIRECTORY:="/home/krkn/kraken-rollback"}
 
 export ENABLE_ES=${ENABLE_ES:=False}
 export ES_SERVER=${ES_SERVER:=http://0.0.0.0}
