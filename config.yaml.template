@@ -63,12 +63,29 @@ elastic:
 
 health_checks:                                                  # Utilizing health check endpoints to observe application behavior during chaos injection.
     interval: $HEALTH_CHECK_INTERVAL
+    run_during: $HEALTH_CHECK_RUN_DURING                         # pre, during, post, or a list of phases
+    only_failures: $HEALTH_CHECK_ONLY_FAILURES
     config:
         - url: "$HEALTH_CHECK_URL"
           bearer_token: "$HEALTH_CHECK_BEARER_TOKEN"
           auth: "$HEALTH_CHECK_AUTH"
           exit_on_failure: $HEALTH_CHECK_EXIT_ON_FAILURE
           verify_url: $HEALTH_CHECK_VERIFY
+
+object_state_checks:                                             # Monitor Kubernetes object conditions during chaos injection.
+    interval: $OBJECT_STATE_CHECK_INTERVAL
+    run_during: $OBJECT_STATE_CHECK_RUN_DURING                    # pre, during, post, or a list of phases
+    exit_on_failure: $OBJECT_STATE_CHECK_EXIT_ON_FAILURE
+    only_failures: $OBJECT_STATE_CHECK_ONLY_FAILURES
+    config:
+        - name: "$OBJECT_STATE_CHECK_NAME"
+          kind: "$OBJECT_STATE_CHECK_KIND"
+          object_name: "$OBJECT_STATE_CHECK_OBJECT_NAME"
+          namespace: "$OBJECT_STATE_CHECK_NAMESPACE"
+          label_selector: "$OBJECT_STATE_CHECK_LABEL_SELECTOR"
+          condition:
+              type: "$OBJECT_STATE_CHECK_CONDITION_TYPE"
+              status: "$OBJECT_STATE_CHECK_CONDITION_STATUS"
 
 kubevirt_checks:                                            # Utilizing virt check endpoints to observe ssh ability to VMI's during chaos injection.
     interval: $KUBE_VIRT_CHECK_INTERVAL                                             # Interval in seconds to perform virt checks, default value is 2 seconds
