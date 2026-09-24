@@ -40,6 +40,15 @@
         "required": "false"
     },
     {
+        "name": "default-acl-id",
+        "short_description": "Default ACL ID [*AWS only*]",
+        "description": "ID of an existing network ACL to use instead of creating a new one. If provided, this ACL will not be deleted after the scenario",
+        "variable": "DEFAULT_ACL_ID",
+        "type": "string",
+        "default": "",
+        "required": "false"
+    },
+    {
         "name": "aws-access-key-id",
         "short_description": "AWS Access Key Id[*AWS only*]",
         "description": "AWS Access Key Id",
