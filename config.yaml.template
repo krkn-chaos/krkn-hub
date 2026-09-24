@@ -24,6 +24,9 @@ performance_monitoring:
     enable_metrics: $CAPTURE_METRICS
     metrics_profile: $METRICS_PATH
     alert_profile: $ALERTS_PATH                           # Path to alert profile with the prometheus queries
+    run_during: $ALERTS_RUN_DURING                         # pre, during, post, or a list of phases
+    exit_on_failure: $ALERTS_EXIT_ON_FAILURE               # Fail on critical/error alert health-check failures
+    only_failures: $ALERTS_ONLY_FAILURES                   # Only include failed alert evaluations in telemetry
     check_critical_alerts: $CHECK_CRITICAL_ALERTS         # When enabled will check prometheus for critical alerts firing post chaos
 
 tunings:
