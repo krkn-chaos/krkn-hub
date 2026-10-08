@@ -2,7 +2,7 @@
     {
         "name": "traffic-type",
         "short_description": "Traffic Type",
-        "description": "Selects the network chaos scenario type can be ingress or egress",
+        "description": "Selects the network chaos scenario type can be ingress or egress.",
         "variable": "TRAFFIC_TYPE",
         "type": "enum",
         "allowed_values": "ingress,egress",
@@ -12,10 +12,10 @@
     {
         "name": "image",
         "short_description": "Image",
-        "description": "Network chaos helper image",
+        "description": "Image used to disrupt network on a pod.",
         "variable": "IMAGE",
         "type": "string",
-        "default": "quay.io/krkn-chaos/krkn:tools",
+        "default": "quay.io/krkn-chaos/krkn-hub-multiarch:workload-krkn-tools",
         "required": "false"
     },
     {
@@ -57,60 +57,79 @@
         "required": "false"
     },
     {
+        "name": "egress-group",
+        "variable": "egress",
+        "short_description": "Egress options",
+        "description": "Options that apply when TRAFFIC_TYPE is egress.",
+        "type": "Group"
+    },
+    {
         "name": "node-name",
         "short_description": "Node Name [*Egress only*]",
-        "description": "Node name to inject faults in case of targeting a specific node; Can set multiple node names separated by a comma",
+        "description": "Node name to inject faults in case of targeting a specific node; Can set multiple node names separated by a comma.",
         "type": "string",
         "variable": "NODE_NAME",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "group": "egress"
     },
     {
         "name": "interfaces",
         "short_description": "Interfaces [*Egress only*]",
-        "description": "List of interface on which to apply the network restriction. eg. [eth0,eth1,eth2]",
+        "description": "List of interface on which to apply the network restriction. eg. [eth0,eth1,eth2].",
         "type": "string",
         "variable": "INTERFACES",
         "default": "[]",
         "validator": "^\\[\\]$|^\\[([a-zA-Z0-9._-]+(,)?)*[^,]\\]$",
         "validation_message": "Interfaces must be in the format: [eth0,eth1,eth2]",
-        "required": "false"
+        "required": "false",
+        "group": "egress"
     },
     {
         "name": "egress",
         "short_description": "Egress [*Egress only*]",
-        "description": "Dictionary of values to set network latency(latency: 50ms), packet loss(loss: 0.02), bandwidth restriction(bandwidth: 100mbit) eg. {bandwidth: 100mbit}",
+        "description": "Dictionary of values to set network latency(latency: 50ms), packet loss(loss: 0.02), bandwidth restriction(bandwidth: 100mbit) eg. {bandwidth: 100mbit}.",
         "type": "string",
         "variable": "EGRESS",
         "default": "{bandwidth: 100mbit}",
         "validator": "^{((latency|loss|bandwidth): [a-zA-Z0-9.]+(,)?)+[^,]}$",
         "validation_message": "Egress shaping must be in the format: {bandwidth/latency/loss: 100mbit/10ms/40%}",
-        "required": "false"
+        "required": "false",
+        "group": "egress"
+    },
+    {
+        "name": "ingress-group",
+        "variable": "ingress",
+        "short_description": "Ingress options",
+        "description": "Options that apply when TRAFFIC_TYPE is ingress.",
+        "type": "Group"
     },
     {
         "name": "target-node-interface",
         "short_description": "Target Node and Interfaces [*Ingress only*]",
-        "description": "Dictionary with key as node name(s) and value as a list of its interfaces to test. For example: {ip-10-0-216-2.us-west-2.compute.internal: [ens5]}",
+        "description": "Dictionary with key as node name(s) and value as a list of its interfaces to test. For example: {ip-10-0-216-2.us-west-2.compute.internal: [ens5]}.",
         "type": "string",
         "variable": "TARGET_NODE_AND_INTERFACE",
         "validator": "^{([a-zA-Z0-9-.]+: \\[(([A-Za-z0-9._-]+(,)?)+)\\](,)?)+}$",
         "validation_message": "Target node interface must be in the format: ip-10-0-216-2.us-west-2.compute.internal: [ens5]}",
-        "required": "false"
+        "required": "false",
+        "group": "ingress"
     },
     {
         "name": "network-params",
         "short_description": "Network Params [*Ingress only*]",
-        "description": "latency, loss and bandwidth are the three supported network parameters to alter for the chaos test. For example: {latency: 50ms, loss: 0.02}",
+        "description": "latency, loss and bandwidth are the three supported network parameters to alter for the chaos test. For example: {latency: 50ms, loss: 0.02}.",
         "type": "string",
         "variable": "NETWORK_PARAMS",
         "validator": "^{((latency|loss|bandwidth): [a-zA-Z0-9.]+(,)?)+[^,]}$",
         "validation_message": "Ingress shaping must be in the format: {bandwidth/latency/loss: 100mbit/10ms/40%}",
-        "required": "false"
+        "required": "false",
+        "group": "ingress"
     },
     {
         "name": "wait-duration",
-        "short_description": "Wait Duration [*Ingress only*]",
-        "description": "Ensure that it is at least about twice of test_duration",
+        "short_description": "Wait Duration [common]",
+        "description": "Ensure that it is at least about twice of test_duration.",
         "type": "number",
         "variable": "WAIT_DURATION",
         "default": "300",

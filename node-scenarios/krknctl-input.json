@@ -109,9 +109,31 @@
         "required": "false"
     },
     {
+        "name": "verify-session",
+        "short_description": "Verify Session [*VMware only*]",
+        "description": "Verify the vSphere client session using certificates",
+        "variable": "VERIFY_SESSION",
+        "type": "enum",
+        "allowed_values": "true,false",
+        "separator": ",",
+        "default": "false",
+        "required": "false"
+    },
+    {
+        "name": "skip-openshift-checks",
+        "short_description": "Skip OpenShift Checks [*VMware only*]",
+        "description": "Skip waiting for node status changes on OpenShift before completing the scenario",
+        "variable": "SKIP_OPENSHIFT_CHECKS",
+        "type": "enum",
+        "allowed_values": "true,false",
+        "separator": ",",
+        "default": "false",
+        "required": "false"
+    },
+    {
         "name": "vsphere-ip",
         "short_description": "VSphere IP [*VSphere only*]",
-        "description": "VSpere IP Address",
+        "description": "vSphere IP address",
         "variable": "VSPHERE_IP",
         "type": "string",
         "default": "",
@@ -120,7 +142,7 @@
     {
         "name": "vsphere-username",
         "short_description": "VSphere Username [*VSphere only*]",
-        "description": "VSpere IP Address",
+        "description": "vSphere username",
         "variable": "VSPHERE_USERNAME",
         "type": "string",
         "default": "",
@@ -130,7 +152,7 @@
     {
         "name": "vsphere-password",
         "short_description": "VSphere Password [*VSphere only*]",
-        "description": "VSpere password",
+        "description": "vSphere password",
         "variable": "VSPHERE_PASSWORD",
         "type": "string",
         "default": "",
@@ -245,7 +267,7 @@
     {
         "name": "disable-ssl-verification",
         "short_description": "Disable SSL Verification [*IBM Cloud only*]",
-        "description": "Disable SSL certificate verification",
+        "description": "Disable SSL verification, to avoid certificate errors",
         "variable": "DISABLE_SSL_VERIFICATION",
         "type": "enum",
         "allowed_values": "true,false,True,False",

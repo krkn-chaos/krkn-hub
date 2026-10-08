@@ -1,0 +1,11 @@
+This directory is deprecated and maintained only for backwards compatibility.
+
+New users should use: vmi-outage/
+
+The kubevirt-outage container image will continue to work but will be removed
+in a future release. Please migrate to vmi-outage.
+
+Migration is simple - just change your container image from:
+  quay.io/krkn-chaos/krkn-hub:kubevirt-outage
+to:
+  quay.io/krkn-chaos/krkn-hub:vmi-outage

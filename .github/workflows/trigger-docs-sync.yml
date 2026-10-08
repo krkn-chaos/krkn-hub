@@ -1,0 +1,82 @@
+name: Trigger docs sync
+
+# Part of the krkn docs-sync bot: krkn-chaos/website#320.
+#
+#   Watches   env.sh, */env.sh, */krknctl-input.json
+#   Sends     every scenario the push touched to Doc Sync on krkn-chaos/website
+#   Changes   nothing here: its app token is scoped to the website
+#
+# push, not pull_request: a fork PR gets no secrets, and a merge is a push anyway.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - env.sh
+      - '*/env.sh'
+      - '*/krknctl-input.json'
+
+permissions:
+  contents: read
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # both ends of the push must be present to diff
+          persist-credentials: false
+
+      - name: Find the changed scenarios
+        id: scenario
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          base="$BEFORE"
+          git cat-file -e "$BEFORE^{commit}" 2>/dev/null \
+            || base="$(git hash-object -t tree /dev/null)"
+          # git, not the compare API: that response is capped at 300 files, and
+          # going over it would drop scenarios silently.
+          files=$(git diff --name-only "$base" "$AFTER")
+          # A single push can touch several scenarios; sync every one, not just
+          # the first. The root env.sh holds the krkn-hub global params, which are
+          # generated under the "globals" scenario rather than from a directory.
+          scenarios=$(
+            { echo "$files" | grep -E '^[a-z0-9-]+/(env\.sh|krknctl-input\.json)$' | cut -d/ -f1
+              if echo "$files" | grep -qx 'env\.sh'; then echo globals; fi
+            } | sort -u | paste -sd' ' -
+          )
+          if [ -n "$scenarios" ]; then
+            echo "relevant=true" >> "$GITHUB_OUTPUT"
+            echo "names=$scenarios" >> "$GITHUB_OUTPUT"
+            echo "Changed: $scenarios"
+          else
+            echo "relevant=false" >> "$GITHUB_OUTPUT"
+            echo "No env.sh / krknctl-input.json changed; skipping."
+          fi
+
+      - name: Mint a website-scoped app token
+        if: steps.scenario.outputs.relevant == 'true'
+        id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          app-id: ${{ secrets.DOC_SYNC_BOT_APP_ID }}
+          private-key: ${{ secrets.DOC_SYNC_BOT_APP_PRIVATE_KEY }}
+          owner: krkn-chaos
+          repositories: website
+
+      - name: Dispatch doc-sync on the website
+        if: steps.scenario.outputs.relevant == 'true'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          # Through the environment, never into the script text: an expression is
+          # substituted before bash parses it, so a name could run commands.
+          SCENARIOS: ${{ steps.scenario.outputs.names }}
+        run: |
+          # One dispatch carrying every changed scenario; the bot opens a single PR.
+          gh workflow run doc-sync.lock.yml \
+            --repo krkn-chaos/website \
+            -f scenarios="$SCENARIOS"

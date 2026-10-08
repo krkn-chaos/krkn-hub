@@ -67,7 +67,7 @@
      {
         "name":"taints",
 	    "short_description":"Node Taints",
-        "description":"List of taints for which tolerations need to created. For example [\"node-role.kubernetes.io/master:NoSchedule\"]",
+        "description":"List of taints for which tolerations need to be created. For example [\"node-role.kubernetes.io/master:NoSchedule\"]",
         "variable":"TAINTS",
         "type":"string",
         "default":"[]",
@@ -87,7 +87,7 @@
          "description":"The hog container image. Can be changed if the hog image is mirrored on a private repository",
          "variable":"IMAGE",
          "type":"string",
-         "default":"quay.io/krkn-chaos/krkn-hog",
+         "default":"quay.io/krkn-chaos/krkn-hub-multiarch:workload-krkn-hog",
          "required": "false"
      }
 

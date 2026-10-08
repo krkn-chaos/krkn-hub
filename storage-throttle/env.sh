@@ -11,6 +11,6 @@ export WRITE_IOPS=${WRITE_IOPS:="50"}
 export READ_BPS=${READ_BPS:="1Mi"}
 export WRITE_BPS=${WRITE_BPS:="512Ki"}
 export DURATION=${DURATION:="1m"}
-export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn:tools"}
+export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-hub-multiarch:workload-krkn-tools"}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=storage_throttle_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/storage_throttle.yaml}

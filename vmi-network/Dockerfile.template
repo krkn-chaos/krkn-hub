@@ -15,6 +15,7 @@ COPY vmi-network/vmi-network-chaos.yml /home/krkn/kraken/scenarios/kube/vmi-netw
 COPY common_run.sh /home/krkn/common_run.sh
 
 LABEL krknctl.is_a_scenario="true"
+LABEL krknctl.privileged="false"
 LABEL krknctl.has_rollback="false"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="VMI Network Chaos"

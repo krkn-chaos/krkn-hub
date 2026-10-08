@@ -1,16 +1,16 @@
-FROM registry.access.redhat.com/ubi9-minimal:9.6-1752587672
-RUN groupadd -g 1001 krkn && useradd -m -u 1001 -g krkn krkn
-COPY dummy-scenario/run.sh /home/krkn
+FROM quay.io/krkn-chaos/krkn:latest
 
-LABEL krknctl.title.global="Krkn Base Image"
-LABEL krknctl.description.global="This is the krkn base image."
-LABEL krknctl.input_fields.global='[]'
+# Global input fields (cerberus, telemetry, ES, health-checks, ...) are inherited
+# from the krkn base image, so they don't need to be redeclared here.
+COPY dummy-scenario/run.sh /home/krkn/run.sh
 
 LABEL krknctl.is_a_scenario="true"
+LABEL krknctl.privileged="false"
 LABEL krknctl.has_rollback="true"
 LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
 LABEL krknctl.title="Dummy Scenario"
 LABEL krknctl.description="The dummy scenario simply waits for a specified amount of time without introducing any chaos. It serves as a root node in a flat graph structure to run multiple scenarios in parallel or can be used for testing purposes."
+
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
-USER krkn
+
 ENTRYPOINT ["bash", "/home/krkn/run.sh"]

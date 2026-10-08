@@ -29,7 +29,7 @@
     {
         "name": "exclude-selector",
         "short_description": "Exclude Pod Selector",
-        "description": "Pods to exclude from targetting. For example \"{app: foo}\"",
+        "description": "Pods to exclude after using pod-selector to target. For example \"{app: foo}\"",
         "type": "string",
         "variable": "EXCLUDE_LABEL",
         "validator": "\\{[a-zA-Z0-9-_]+\\: [a-zA-Z0-9-_]+\\}",

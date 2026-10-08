@@ -15,7 +15,7 @@ environment variable for the chaos injection container to autoconnect.
 ```
 $ podman run  --name=<container_name> \
               -e SCENARIO_BASE64="$(base64 -w0 <scenario_file>)" \
-              -v <path_to_kubeconfig>:/home/krkn/.kube/config:Z quay.io/krkn-chaos/krkn-hub:service-hijacking
+              -v <path_to_kubeconfig>:/home/krkn/.kube/config:Z quay.io/krkn-chaos/krkn-hub-multiarch:service-hijacking
               
 $ podman logs -f <container_name or container_id> # Streams Kraken logs
 $ podman inspect <container-name or container-id> --format "{{.State.ExitCode}}" # Outputs exit code which can considered as pass/fail for the scenario
@@ -26,19 +26,19 @@ $ export SCENARIO_BASE64="$(base64 -w0 <scenario_file>)"
 $ docker run $(./get_docker_params.sh) --name=<container_name> \
                                        --net=host \
                                        -v <path-to-kube-config>:/home/krkn/.kube/config:Z \
-                                       -d quay.io/krkn-chaos/krkn-hub:service-hijacking
+                                       -d quay.io/krkn-chaos/krkn-hub-multiarch:service-hijacking
 OR 
 $ docker run --name=<container_name> -e SCENARIO_BASE64="$(base64 -w0 <scenario_file>)" \
                                      --net=host \
                                      -v <path-to-kube-config>:/home/krkn/.kube/config:Z \
-                                     -d quay.io/krkn-chaos/krkn-hub:service-hijacking
+                                     -d quay.io/krkn-chaos/krkn-hub-multiarch:service-hijacking
 
 $ docker logs -f <container_name or container_id> # Streams Kraken logs
 $ docker inspect <container-name or container-id> --format "{{.State.ExitCode}}" # Outputs exit code which can considered as pass/fail for the scenario
 ```
 
 **TIP**: Because the container runs with a non-root user, ensure the kube config is globally readable before mounting it in the container. You can achieve this with the following commands:
-```kubectl config view --flatten > ~/kubeconfig && chmod 444 ~/kubeconfig && docker run $(./get_docker_params.sh) --name=<container_name> --net=host -v ~kubeconfig:/home/krkn/.kube/config:Z -d quay.io/krkn-chaos/krkn-hub:<scenario>```
+```kubectl config view --flatten > ~/kubeconfig && chmod 444 ~/kubeconfig && docker run $(./get_docker_params.sh) --name=<container_name> --net=host -v ~kubeconfig:/home/krkn/.kube/config:Z -d quay.io/krkn-chaos/krkn-hub-multiarch:<scenario>```
 #### Supported parameters
 
 The following environment variables can be set on the host running the container to tweak the scenario/faults being injected:
@@ -62,6 +62,5 @@ $ podman run -e SCENARIO_BASE64="$(base64 -w0 <scenario_file>)" \
              -v <path-to-custom-metrics-profile>:/home/krkn/kraken/config/metrics-aggregated.yaml \
              -v <path-to-custom-alerts-profile>:/home/krkn/kraken/config/alerts \
              -v <path-to-kube-config>:/home/krkn/.kube/config:Z \
-             -d quay.io/krkn-chaos/krkn-hub:service-hijacking
+             -d quay.io/krkn-chaos/krkn-hub-multiarch:service-hijacking
 ```
-

@@ -2,7 +2,7 @@
     {
         "name":"object-type",
         "short_description":"Object type",
-        "description":"Object to target. Supported options: pod, node",
+        "description":"Object to target. Supported options: pod or node",
         "variable":"OBJECT_TYPE",
         "type":"enum",
         "allowed_values":"pod,node",
@@ -22,7 +22,7 @@
     {
         "name":"action",
         "short_description":"Action",
-        "description":"Action to run. Supported actions: skew_time, skew_date",
+        "description":"Action to run. Supported actions: skew_time or skew_date",
         "variable":"ACTION",
         "type":"enum",
         "allowed_values":"skew_time,skew_date",

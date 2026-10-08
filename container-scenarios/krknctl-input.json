@@ -32,7 +32,7 @@
     {
         "name": "disruption-count",
         "short_description": "Disruption Count",
-        "description": "Number of container to disrupt",
+        "description": "Number of containers to disrupt",
         "type": "number",
         "variable": "DISRUPTION_COUNT",
         "default": "1",

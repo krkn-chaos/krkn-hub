@@ -1,0 +1,4 @@
+vm-bytes $VM_BYTES
+vm $VM_WORKERS
+timeout $DURATION
+vm-keep

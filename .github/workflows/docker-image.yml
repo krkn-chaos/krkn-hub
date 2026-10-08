@@ -51,8 +51,11 @@ jobs:
         id: config
         run: |
           IMAGE=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].image')
+          CONTEXT=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].build.context')
           DOCKERFILE=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].build.dockerfile')
+          DOCKERFILE="${CONTEXT%/}/${DOCKERFILE#./}"
           echo "image=$IMAGE" >> $GITHUB_OUTPUT
+          echo "context=$CONTEXT" >> $GITHUB_OUTPUT
           echo "dockerfile=$DOCKERFILE" >> $GITHUB_OUTPUT
       - name: Login in quay
         if: ${{ github.ref == 'refs/heads/main' }}
@@ -62,15 +65,49 @@ jobs:
           username: ${{ secrets.QUAY_USERNAME }}
           password: ${{ secrets.QUAY_PASSWORD }}
       - name: Build and push multi-platform image
+        id: build
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: ${{ steps.config.outputs.context }}
           file: ${{ steps.config.outputs.dockerfile }}
           #platforms: linux/amd64,linux/arm64
           platforms: linux/amd64
           push: ${{ github.ref == 'refs/heads/main' }}
           tags: ${{ steps.config.outputs.image }}
           provenance: false
+      # Sign the scenario image so krknctl / krkn-operator (via the shared
+      # pkg/verify package) can verify it before running. Sign by the digest
+      # emitted by build-push-action (anti-TOCTOU): consumers resolve the tag ->
+      # this digest and find the signature. Key-based, signed with a
+      # no-transparency-log signing-config, to match the ecosystem's offline
+      # verification policy (no Fulcio/Rekor/TSA).
+      - name: Install cosign
+        if: ${{ github.ref == 'refs/heads/main' }}
+        uses: sigstore/cosign-installer@v4.1.2
+      - name: Sign scenario image with cosign
+        if: ${{ github.ref == 'refs/heads/main' }}
+        env:
+          COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+          COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
+          IMAGE: ${{ steps.config.outputs.image }}
+          DIGEST: ${{ steps.build.outputs.digest }}
+        run: |
+          set -euo pipefail
+          REF="${IMAGE%:*}@${DIGEST}"
+          echo "Signing ${REF}"
+          # cosign 2.6+ deprecated --tlog-upload and made --tlog-upload=false
+          # incompatible with its signing-config flow. Sign key-based/offline
+          # (no Fulcio/Rekor/TSA) via a signing-config whose transparency-log and
+          # timestamp services are stripped. The config is vendored in-repo
+          # (.github/cosign/signing-config.json) so we don't depend on an upstream
+          # file that could move or disappear; signature format is unchanged, so
+          # offline verification in pkg/verify (krknctl / krkn-operator) is
+          # unaffected.
+          cosign sign --yes --signing-config "${GITHUB_WORKSPACE}/.github/cosign/signing-config.json" --key env://COSIGN_PRIVATE_KEY "${REF}"
+          # Self-check: fail the build if the signature does not verify with the
+          # public half of the signing key (derived on the fly, no extra secret).
+          cosign public-key --key env://COSIGN_PRIVATE_KEY > /tmp/cosign.pub
+          cosign verify --insecure-ignore-tlog=true --key /tmp/cosign.pub "${REF}"
 
   build-multiarch:
     runs-on: ubuntu-latest
@@ -98,7 +135,9 @@ jobs:
         id: config
         run: |
           IMAGE=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].image')
+          CONTEXT=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].build.context')
           DOCKERFILE=$(docker compose config --format json | jq -r '.services["${{ matrix.scenario }}"].build.dockerfile')
+          DOCKERFILE="${CONTEXT%/}/${DOCKERFILE#./}"
 
           # Transform krkn-hub to krkn-hub-multiarch for this job
           # Skip cerberus images (they stay amd64-only)
@@ -109,6 +148,7 @@ jobs:
           fi
 
           echo "image=$MULTIARCH_IMAGE" >> $GITHUB_OUTPUT
+          echo "context=$CONTEXT" >> $GITHUB_OUTPUT
           echo "dockerfile=$DOCKERFILE" >> $GITHUB_OUTPUT
       - name: Login in quay
         if: ${{ github.ref == 'refs/heads/main' && steps.config.outputs.image != '' }}
@@ -118,15 +158,43 @@ jobs:
           username: ${{ secrets.QUAY_USERNAME }}
           password: ${{ secrets.QUAY_PASSWORD }}
       - name: Build and push multi-platform image
+        id: build
         if: ${{ steps.config.outputs.image != '' }}
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: ${{ steps.config.outputs.context }}
           file: ${{ steps.config.outputs.dockerfile }}
           platforms: linux/amd64,linux/arm64
           push: ${{ github.ref == 'refs/heads/main' }}
           tags: ${{ steps.config.outputs.image }}
           provenance: false
+      # Sign the multi-arch scenario image by its manifest-list digest, same
+      # policy as build-amd64. Skipped for cerberus (empty image, amd64-only).
+      - name: Install cosign
+        if: ${{ github.ref == 'refs/heads/main' && steps.config.outputs.image != '' }}
+        uses: sigstore/cosign-installer@v4.1.2
+      - name: Sign scenario image with cosign
+        if: ${{ github.ref == 'refs/heads/main' && steps.config.outputs.image != '' }}
+        env:
+          COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+          COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
+          IMAGE: ${{ steps.config.outputs.image }}
+          DIGEST: ${{ steps.build.outputs.digest }}
+        run: |
+          set -euo pipefail
+          REF="${IMAGE%:*}@${DIGEST}"
+          echo "Signing ${REF}"
+          # cosign 2.6+ deprecated --tlog-upload and made --tlog-upload=false
+          # incompatible with its signing-config flow. Sign key-based/offline
+          # (no Fulcio/Rekor/TSA) via a signing-config whose transparency-log and
+          # timestamp services are stripped. The config is vendored in-repo
+          # (.github/cosign/signing-config.json) so we don't depend on an upstream
+          # file that could move or disappear; signature format is unchanged, so
+          # offline verification in pkg/verify (krknctl / krkn-operator) is
+          # unaffected.
+          cosign sign --yes --signing-config "${GITHUB_WORKSPACE}/.github/cosign/signing-config.json" --key env://COSIGN_PRIVATE_KEY "${REF}"
+          cosign public-key --key env://COSIGN_PRIVATE_KEY > /tmp/cosign.pub
+          cosign verify --insecure-ignore-tlog=true --key /tmp/cosign.pub "${REF}"
 
   notify:
     runs-on: ubuntu-latest
