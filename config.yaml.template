@@ -8,6 +8,7 @@ kraken:
     signal_state: $SIGNAL_STATE                            # Will wait for the RUN signal when set to PAUSE before running the scenarios
     signal_address: $SIGNAL_ADDRESS                        # Signal listening address
     report_formats: $REPORT_FORMATS                        # PDF/HTML summary of scenario outputs
+    rollback_versions_directory: $ROLLBACK_VERSIONS_DIRECTORY
     chaos_scenarios:                                       # List of policies/chaos scenarios to load
         - $SCENARIO_TYPE:                                  # List of chaos time scenarios to load
             - $SCENARIO_FILE
