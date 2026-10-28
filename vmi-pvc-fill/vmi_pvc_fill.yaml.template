@@ -1,0 +1,13 @@
+vmi_pvc_fill_scenario:
+  vmi_name: "$VMI_NAME"
+  namespace: "$NAMESPACE"
+  pvc_name: "$PVC_NAME"
+  pod_name: "$POD_NAME"
+  device_path: "$DEVICE_PATH"
+  mount_path: "$MOUNT_PATH"
+  filesystem: "$FILESYSTEM"
+  fill_percentage: $FILL_PERCENTAGE
+  duration: $DURATION
+  format_device: $FORMAT_DEVICE
+  username: "$USERNAME"
+  identity_file: "$IDENTITY_FILE"

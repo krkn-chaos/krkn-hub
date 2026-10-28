@@ -89,6 +89,11 @@ services:
         context: ./
         dockerfile: ./pvc-scenario/Dockerfile
       image: quay.io/krkn-chaos/krkn-hub:pvc-scenarios
+    vmi-pvc-fill:
+      build:
+        context: ./
+        dockerfile: ./vmi-pvc-fill/Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:vmi-pvc-fill
     storage-throttle:
       build:
         context: ./
