@@ -1,33 +1,35 @@
 #!/bin/bash
-# Source env.sh to read all the vars
-source /home/krkn/main_env.sh
-source /home/krkn/env.sh
-source /home/krkn/common_run.sh
+# Scenario-local container entry (hub docs / krkn-skills expect run.sh here).
+# Dockerfile: COPY pod-scenarios/run.sh → /home/krkn/run.sh
+#
+#   run.sh
+#     → source prep_env.sh          (shared env + template render)
+#     → source prep_args_shell.sh   (build cliArgs[@])
+#     → python run_kraken.py "${cliArgs[@]}"
+#
+# Python package route does NOT use this file: source prep_env.sh, then
+# prep_args_python.BuildArgs() (see fxtKrkn).
+# No -x here: tracing would expand secrets from sourced env.sh into logs.
+# prep_env.sh enables set -x only when KRKN_DEBUG=True, after env is sourced.
+set -euo pipefail; shopt -s inherit_errexit
 
-if [[ $KRKN_DEBUG == "True" ]];then
-  set -ex
-  ls -la /home/krkn/.kube
-fi
+typeset _runSrc="${BASH_SOURCE[0]:-$0}"
+typeset scriptDir="${_runSrc%/*}"
+[[ "${scriptDir}" == "${_runSrc}" ]] && scriptDir=.
+[[ "${scriptDir}" == /* ]] || scriptDir="$(pwd)/${scriptDir}"
 
-checks
+# Image: prep_* sit beside this run.sh under /home/krkn/.
+# Package checkout: prep_* live in this scenario directory.
+typeset prepDir="${scriptDir}"
+[[ -f "${prepDir}/prep_env.sh" ]] || prepDir="${scriptDir}/pod-scenarios"
 
-# Substitute config with environment vars defined
-if [[ -z "$POD_LABEL" ]]; then
-  envsubst < /home/krkn/kraken/scenarios/pod_scenario_namespace.yaml.template > /home/krkn/kraken/scenarios/pod_scenario.yaml
-else  
-  envsubst < /home/krkn/kraken/scenarios/pod_scenario.yaml.template > /home/krkn/kraken/scenarios/pod_scenario.yaml
-fi
-envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/config/pod_scenario_config.yaml
+# shellcheck disable=SC1091
+source "${prepDir}/prep_env.sh"
+# shellcheck disable=SC1091
+source "${prepDir}/prep_args_shell.sh"
 
-# Run Kraken
-cd /home/krkn/kraken
+cd "${KRKN_HUB__KRAKEN_DIR}"
+typeset krknPy="${KRKN_PYTHON:-python3.11}"
+"${krknPy}" run_kraken.py "${cliArgs[@]}"
 
-extra_var=""
-if [[ $KRKN_DEBUG == "True" ]];then
-  cat /home/krkn/kraken/config/pod_scenario_config.yaml
-  cat /home/krkn/kraken/scenarios/pod_scenario.yaml
-  extra_var="--debug True"
-fi
-
-
-python3.11 run_kraken.py --config=/home/krkn/kraken/config/pod_scenario_config.yaml $extra_var
+true
