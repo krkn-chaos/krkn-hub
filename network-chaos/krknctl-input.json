@@ -57,13 +57,21 @@
         "required": "false"
     },
     {
+        "name": "egress-group",
+        "variable": "egress",
+        "short_description": "Egress options",
+        "description": "Options that apply when TRAFFIC_TYPE is egress.",
+        "type": "Group"
+    },
+    {
         "name": "node-name",
         "short_description": "Node Name [*Egress only*]",
         "description": "Node name to inject faults in case of targeting a specific node; Can set multiple node names separated by a comma.",
         "type": "string",
         "variable": "NODE_NAME",
         "default": "",
-        "required": "false"
+        "required": "false",
+        "group": "egress"
     },
     {
         "name": "interfaces",
@@ -74,7 +82,8 @@
         "default": "[]",
         "validator": "^\\[\\]$|^\\[([a-zA-Z0-9._-]+(,)?)*[^,]\\]$",
         "validation_message": "Interfaces must be in the format: [eth0,eth1,eth2]",
-        "required": "false"
+        "required": "false",
+        "group": "egress"
     },
     {
         "name": "egress",
@@ -85,7 +94,15 @@
         "default": "{bandwidth: 100mbit}",
         "validator": "^{((latency|loss|bandwidth): [a-zA-Z0-9.]+(,)?)+[^,]}$",
         "validation_message": "Egress shaping must be in the format: {bandwidth/latency/loss: 100mbit/10ms/40%}",
-        "required": "false"
+        "required": "false",
+        "group": "egress"
+    },
+    {
+        "name": "ingress-group",
+        "variable": "ingress",
+        "short_description": "Ingress options",
+        "description": "Options that apply when TRAFFIC_TYPE is ingress.",
+        "type": "Group"
     },
     {
         "name": "target-node-interface",
@@ -95,7 +112,8 @@
         "variable": "TARGET_NODE_AND_INTERFACE",
         "validator": "^{([a-zA-Z0-9-.]+: \\[(([A-Za-z0-9._-]+(,)?)+)\\](,)?)+}$",
         "validation_message": "Target node interface must be in the format: ip-10-0-216-2.us-west-2.compute.internal: [ens5]}",
-        "required": "false"
+        "required": "false",
+        "group": "ingress"
     },
     {
         "name": "network-params",
@@ -105,11 +123,12 @@
         "variable": "NETWORK_PARAMS",
         "validator": "^{((latency|loss|bandwidth): [a-zA-Z0-9.]+(,)?)+[^,]}$",
         "validation_message": "Ingress shaping must be in the format: {bandwidth/latency/loss: 100mbit/10ms/40%}",
-        "required": "false"
+        "required": "false",
+        "group": "ingress"
     },
     {
         "name": "wait-duration",
-        "short_description": "Wait Duration [*Ingress only*]",
+        "short_description": "Wait Duration [common]",
         "description": "Ensure that it is at least about twice of test_duration.",
         "type": "number",
         "variable": "WAIT_DURATION",

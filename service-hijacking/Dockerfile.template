@@ -24,7 +24,7 @@ LABEL krknctl.title="Service Hijacking"
 LABEL krknctl.description="Service Hijacking Scenarios aim to simulate fake HTTP responses from a workload targeted \
 by a Service already deployed in the cluster. This scenario is executed by deploying a custom-made web service and \
 modifying the target Service selector to direct traffic to this web service for a specified duration.\
-Please refer to the documentation for the scenario file syntax https://krkn-chaos.dev/docs/scenarios/service-hijacking-scenario/"
+Please refer to the documentation for the scenario file syntax https://krkn-chaos.dev/docs/scenarios/service-hijacking/"
 
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'

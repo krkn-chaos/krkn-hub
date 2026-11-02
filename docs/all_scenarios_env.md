@@ -26,6 +26,20 @@ CAPTURE_METRICS   | Captures metrics as specified in the profile from in-cluster
 ENABLE_ALERTS     | Evaluates expressions from in-cluster prometheus and exits 0 or 1 based on the severity set. [Default profile](https://github.com/redhat-chaos/krkn/blob/master/config/alerts). More details can be found [here](https://github.com/redhat-chaos/krkn#alerts) | False |
 ALERTS_PATH       | Path to the alerts file to use when ENABLE_ALERTS is set | config/alerts |
 CHECK_CRITICAL_ALERTS | When enabled will check prometheus for critical alerts firing post chaos | False |
+HEALTH_CHECK_INTERVAL | How often to check configured HTTP health check URLs, in seconds | 2 |
+HEALTH_CHECK_RUN_DURING | HTTP health check phases: pre, during, post, or a list of phases | during |
+HEALTH_CHECK_ONLY_FAILURES | Only emit telemetry for failed HTTP health checks | False |
+OBJECT_STATE_CHECK_INTERVAL | How often to check Kubernetes object state, in seconds | 2 |
+OBJECT_STATE_CHECK_RUN_DURING | Object state check phases: pre, during, post, or a list of phases | during |
+OBJECT_STATE_CHECK_EXIT_ON_FAILURE | Fail the run when an object state check fails | False |
+OBJECT_STATE_CHECK_ONLY_FAILURES | Only emit telemetry for failed object state checks | False |
+OBJECT_STATE_CHECK_NAME | Name of the object state check; empty disables the check | _blank_ |
+OBJECT_STATE_CHECK_KIND | Kubernetes object kind to check | Pod |
+OBJECT_STATE_CHECK_OBJECT_NAME | Object name or regular expression | _blank_ |
+OBJECT_STATE_CHECK_NAMESPACE | Namespace containing the objects to check | _blank_ |
+OBJECT_STATE_CHECK_LABEL_SELECTOR | Kubernetes label selector | _blank_ |
+OBJECT_STATE_CHECK_CONDITION_TYPE | Object condition type | Ready |
+OBJECT_STATE_CHECK_CONDITION_STATUS | Expected object condition status | True |
 TELEMETRY_ENABLED | Enable/disables the telemetry collection feature | False |
 TELEMETRY_API_URL | telemetry service endpoint | https://ulnmf9xv7j.execute-api.us-west-2.amazonaws.com/production |
 TELEMETRY_USERNAME | telemetry service username | redhat-chaos |
