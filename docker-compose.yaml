@@ -144,11 +144,11 @@ services:
         context: ./
         dockerfile: ./http-load/Dockerfile
       image: quay.io/krkn-chaos/krkn-hub:http-load
-    rollback:
+    workload-rollback:
       build:
         context: ./
-        dockerfile: ./rollback/Dockerfile
-      image: quay.io/krkn-chaos/krkn-hub:rollback
+        dockerfile: ./workload-rollback/Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:workload-rollback
     dummy-scenario:
       build:
         context: ./
