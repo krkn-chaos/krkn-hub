@@ -3,6 +3,7 @@
 # Vars and respective defaults
 export PVC_NAME=${PVC_NAME:=""}
 export POD_NAME=${POD_NAME:=""}
+export VMI_NAME=${VMI_NAME:=""}
 export NAMESPACE=${NAMESPACE:="default"}
 export MOUNT_PATH=${MOUNT_PATH:=""}
 export THROTTLE_TYPE=${THROTTLE_TYPE:="bandwidth"}

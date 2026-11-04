@@ -1,6 +1,7 @@
 storage_throttle_scenario:
-  pvc_name: $PVC_NAME            # Target PVC name. If set, pod_name is auto-resolved from PVC.
-  pod_name: $POD_NAME            # Target pod name. Ignored if pvc_name is set.
+  pvc_name: $PVC_NAME            # PVC whose volume to throttle; also resolves the pod when vmi_name is empty.
+  pod_name: $POD_NAME            # Target pod name. Used when vmi_name and pvc_name are empty.
+  vmi_name: $VMI_NAME            # Optional VMI name; resolves its current virt-launcher pod.
   namespace: $NAMESPACE          # Namespace of the target PVC/pod
   mount_path: $MOUNT_PATH        # Specific mount path to throttle. If empty, first PVC mount is used.
   throttle_type: $THROTTLE_TYPE  # "iops", "bandwidth", or "both"
