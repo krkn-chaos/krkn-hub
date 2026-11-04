@@ -1,0 +1,18 @@
+FROM quay.io/krkn-chaos/krkn:latest
+
+ENV KUBECONFIG=/home/krkn/.kube/config
+
+COPY workload-trigger/config.yaml.template /home/krkn/kraken/config/trigger_config.yaml.template
+COPY metrics_config.yaml.template /home/krkn/kraken/config/kube_burner.yaml.template
+COPY env.sh /home/krkn/main_env.sh
+COPY workload-trigger/run.sh /home/krkn/run.sh
+
+LABEL krknctl.is_a_scenario="false"
+LABEL krknctl.node_type="trigger"
+LABEL krknctl.privileged="false"
+LABEL krknctl.has_rollback="false"
+LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
+LABEL krknctl.title="Wait for Trigger"
+LABEL krknctl.description="Waits for configured Krkn trigger conditions and exits without injecting chaos."
+
+ENTRYPOINT ["bash", "/home/krkn/run.sh"]
