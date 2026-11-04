@@ -2,7 +2,7 @@
   {
     "name": "pvc-name",
     "short_description": "PVC name",
-    "description": "Target PVC name. If set, --pod-name is auto-resolved from PVC",
+    "description": "PVC whose volume should be throttled. If VMI_NAME is empty, its mounted pod is resolved automatically.",
     "variable": "PVC_NAME",
     "type": "string",
     "default": "",
@@ -11,8 +11,17 @@
   {
     "name": "pod-name",
     "short_description": "Pod name",
-    "description": "Target pod name. Ignored if --pvc-name is set",
+    "description": "Target pod name. Ignored when VMI_NAME or PVC_NAME is set.",
     "variable": "POD_NAME",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "vmi-name",
+    "short_description": "VMI name",
+    "description": "Target VMI name. Resolves its current virt-launcher pod; use pvc-name to select a specific PVC when the VMI has multiple PVCs.",
+    "variable": "VMI_NAME",
     "type": "string",
     "default": "",
     "required": "false"
