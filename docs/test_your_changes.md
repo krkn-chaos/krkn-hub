@@ -1,5 +1,23 @@
 # How to Test Your Changes/Additions 
 
+## Unit tests (no cluster needed)
+
+Lightweight tests that don't need a cluster or a container runtime live in `CI/tests/`. GitHub Actions runs all of them on every pull request.
+
+Run them locally from the repo root:
+
+```bash
+bash CI/run_unit_tests.sh
+```
+
+They need `envsubst` (from the `gettext` package) and `jq`.
+
+### Adding a new unit test
+
+1. Create `CI/tests/test_<what_it_checks>.sh`. Any file matching `test_*.sh` in that folder is picked up automatically, so you don't need to edit the workflow.
+2. Exit with `0` on success and non-zero on failure. Print a `PASS: ...` or `FAIL: ...` line so problems are easy to spot in the CI log.
+3. Don't depend on a cluster, Docker/Podman or network access.
+
 ## Install Podman/Docker Compose
 You can use either podman-compose or docker-compose for this step
 
