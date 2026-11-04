@@ -149,6 +149,11 @@ services:
         context: ./
         dockerfile: ./workload-rollback/Dockerfile
       image: quay.io/krkn-chaos/krkn-hub:workload-rollback
+    rollback:
+      build:
+        context: ./
+        dockerfile: ./workload-rollback/Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:rollback
     dummy-scenario:
       build:
         context: ./
