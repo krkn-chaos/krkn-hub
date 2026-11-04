@@ -3,62 +3,32 @@
 ROOT_FOLDER="/home/krkn"
 KRAKEN_FOLDER="$ROOT_FOLDER/kraken"
 SCENARIO_FOLDER="$KRAKEN_FOLDER/scenarios/kube"
+SCENARIO_FILE="$SCENARIO_FOLDER/network-filter.yml"
+CONFIG_FILE="$KRAKEN_FOLDER/config/network-filter-config.yaml"
 
-# Source env.sh to read all the vars
-source $ROOT_FOLDER/main_env.sh
-source $ROOT_FOLDER/env.sh
-source $ROOT_FOLDER/common_run.sh
+source "$ROOT_FOLDER/main_env.sh"
+source "$ROOT_FOLDER/env.sh"
+source "$ROOT_FOLDER/common_run.sh"
 
-if [[ $KRKN_DEBUG == "True" ]];then
+if [[ "$KRKN_DEBUG" == "True" ]]; then
   set -ex
 fi
 
-yq -i ".[0].test_duration=$TEST_DURATION" $SCENARIO_FOLDER/network-filter.yml
-yq -i ".[0].label_selector=\"$LABEL_SELECTOR\"" $SCENARIO_FOLDER/network-filter.yml
-yq -i ".[0].namespace=\"$NAMESPACE\"" $SCENARIO_FOLDER/network-filter.yml
-yq -i ".[0].instance_count=$INSTANCE_COUNT" $SCENARIO_FOLDER/network-filter.yml
-yq -i ".[0].execution=\"$EXECUTION\"" $SCENARIO_FOLDER/network-filter.yml
-yq -i ".[0].ingress=$INGRESS" $SCENARIO_FOLDER/network-filter.yml
-yq -i ".[0].egress=$EGRESS" $SCENARIO_FOLDER/network-filter.yml
-yq -i ".[0].image=\"$IMAGE\"" $SCENARIO_FOLDER/network-filter.yml
-yq -i ".[0].target=\"$NODE_NAME\"" $SCENARIO_FOLDER/network-filter.yml
-yq -i ".[0].service_account=\"$SERVICE_ACCOUNT\"" $SCENARIO_FOLDER/network-filter.yml
+INTERFACES_YAML="$(python3.11 -c 'import json, os; print(json.dumps([name for name in os.environ.get("INTERFACES", "").split(",") if name]))')" || {
+  echo "Unable to encode INTERFACES as a YAML sequence" >&2
+  exit 1
+}
+export INTERFACES_YAML
 
-IFS=',' read -ra array <<< "$INTERFACES"
-
-for ((i=0; i<${#array[@]}; i++)); do
-  yq -i ".[0].interfaces[$i]=\"${array[$i]}\"" $SCENARIO_FOLDER/network-filter.yml
-done
-
-IFS=',' read -ra array <<< "$PORTS"
-
-for ((i=0; i<${#array[@]}; i++)); do
-  yq -i ".[0].ports[$i]=${array[$i]}" $SCENARIO_FOLDER/network-filter.yml
-done
-
-IFS=',' read -ra array <<< "$PROTOCOLS"
-
-for ((i=0; i<${#array[@]}; i++)); do
-  yq -i ".[0].protocols[$i]=\"${array[$i]}\"" $SCENARIO_FOLDER/network-filter.yml
-done
-
-IFS=',' read -ra array <<< "$TAINTS"
-
-for ((i=0; i<${#array[@]}; i++)); do
-  yq -i ".[0].taints[$i]=\"${array[$i]}\"" $SCENARIO_FOLDER/network-filter.yml
-done
-
-envsubst < $KRAKEN_FOLDER/config/config.yaml.template > $KRAKEN_FOLDER/config/network-filter-config.yaml
-
+envsubst < "$KRAKEN_FOLDER/scenarios/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_FILE"
+envsubst < "$KRAKEN_FOLDER/config/config.yaml.template" > "$CONFIG_FILE"
 checks
 
-cd $KRAKEN_FOLDER
+cd "$KRAKEN_FOLDER"
 extra_var=""
-if [[ $KRKN_DEBUG == "True" ]];then
-  cat $SCENARIO_FOLDER/network-filter.yml
-  cat $KRAKEN_FOLDER/config/network-filter-config.yaml
+if [[ "$KRKN_DEBUG" == "True" ]]; then
+  cat "$SCENARIO_FILE" "$CONFIG_FILE"
   extra_var="--debug True"
 fi
 
-
-python3.11 run_kraken.py --config=$KRAKEN_FOLDER/config/network-filter-config.yaml $extra_var
+python3.11 run_kraken.py --config="$CONFIG_FILE" $extra_var
