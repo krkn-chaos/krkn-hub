@@ -1,0 +1,113 @@
+[
+  {
+    "name": "vmi-name",
+    "short_description": "VMI name",
+    "description": "Target VirtualMachineInstance. Required for block PVCs; optional for filesystem PVCs when PVC_NAME or POD_NAME is provided.",
+    "variable": "VMI_NAME",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "pvc-name",
+    "short_description": "PVC name",
+    "description": "PVC attached to the VMI, or the PVC mounted in the target pod for filesystem mode.",
+    "variable": "PVC_NAME",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "pod-name",
+    "short_description": "Pod name",
+    "description": "Pod that mounts the filesystem PVC. Used when VMI_NAME and PVC_NAME are not provided.",
+    "variable": "POD_NAME",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "namespace",
+    "short_description": "Namespace",
+    "description": "Namespace containing the VMI, PVC, or pod.",
+    "variable": "NAMESPACE",
+    "type": "string",
+    "default": "default",
+    "required": "false"
+  },
+  {
+    "name": "device-path",
+    "short_description": "Guest block device",
+    "description": "Device path inside the VMI guest for block mode, for example /dev/vdb. Not the virt-launcher pod path.",
+    "variable": "DEVICE_PATH",
+    "type": "string",
+    "default": "",
+    "required": "false"
+  },
+  {
+    "name": "mount-path",
+    "short_description": "Guest mount path",
+    "description": "Mount path inside the VMI guest when filling a block PVC.",
+    "variable": "MOUNT_PATH",
+    "type": "string",
+    "default": "/mnt/krkn-data",
+    "required": "false"
+  },
+  {
+    "name": "filesystem",
+    "short_description": "Filesystem type",
+    "description": "Filesystem to create or mount on the guest block device.",
+    "variable": "FILESYSTEM",
+    "type": "enum",
+    "allowed_values": "ext4,xfs",
+    "separator": ",",
+    "default": "ext4",
+    "required": "false"
+  },
+  {
+    "name": "fill-percentage",
+    "short_description": "Fill percentage",
+    "description": "Target PVC filesystem usage from 1 to 99 percent; must be above current usage. Defaults to 50 when unset or blank.",
+    "variable": "FILL_PERCENTAGE",
+    "type": "number",
+    "default": "50",
+    "required": "false"
+  },
+  {
+    "name": "duration",
+    "short_description": "Duration",
+    "description": "How long to hold the PVC at the target fill percentage, in seconds.",
+    "variable": "DURATION",
+    "type": "number",
+    "default": "60",
+    "required": "false"
+  },
+  {
+    "name": "format-device",
+    "short_description": "Format guest device",
+    "description": "Create a filesystem on the guest block device before filling it. This erases existing data on that device.",
+    "variable": "FORMAT_DEVICE",
+    "type": "boolean",
+    "default": "false",
+    "required": "false"
+  },
+  {
+    "name": "username",
+    "short_description": "Guest SSH username",
+    "description": "SSH username used by virtctl for guest block mode.",
+    "variable": "USERNAME",
+    "type": "string",
+    "default": "root",
+    "required": "false"
+  },
+  {
+    "name": "identity-file",
+    "short_description": "Guest SSH private key",
+    "description": "Private key path inside the container that matches a public key authorized in the guest. Needed for guest block mode.",
+    "variable": "IDENTITY_FILE",
+    "type": "file",
+    "mount_path": "/home/krkn/.ssh/vmi-pvc-fill-key",
+    "default": "",
+    "required": "false"
+  }
+]

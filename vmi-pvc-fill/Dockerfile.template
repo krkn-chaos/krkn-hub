@@ -1,0 +1,23 @@
+# Dockerfile for the VMI PVC Fill scenario
+
+FROM quay.io/krkn-chaos/krkn:latest
+
+ENV KUBECONFIG /home/krkn/.kube/config
+
+COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
+COPY metrics_config.yaml.template /home/krkn/kraken/config/kube_burner.yaml.template
+COPY vmi-pvc-fill/env.sh /home/krkn/env.sh
+COPY env.sh /home/krkn/main_env.sh
+COPY vmi-pvc-fill/run.sh /home/krkn/run.sh
+COPY common_run.sh /home/krkn/common_run.sh
+COPY vmi-pvc-fill/vmi_pvc_fill.yaml.template /home/krkn/kraken/scenarios/kubevirt/vmi_pvc_fill.yaml.template
+
+LABEL krknctl.is_a_scenario="true"
+LABEL krknctl.has_rollback="true"
+LABEL krknctl.kubeconfig_path="/home/krkn/.kube/config"
+LABEL krknctl.title="VMI PVC Fill"
+LABEL krknctl.description="Fills a PVC attached to a KubeVirt VMI, either through a filesystem mount or from inside the guest for block volumes. Formatting a block device erases its existing data. More information: https://krkn-chaos.dev/docs/scenarios/vmi-pvc-fill/"
+
+LABEL krknctl.input_fields='$KRKNCTL_INPUT'
+
+ENTRYPOINT /home/krkn/kraken/containers/setup-ssh.sh && /home/krkn/run.sh
