@@ -7,3 +7,11 @@ scenarios:
       namespace: $NAMESPACE
       timeout: $TIMEOUT
       kill_count: $KILL_COUNT
+      wait_for_guest_ping: $WAIT_FOR_GUEST_PING
+      guest_ping_timeout: $GUEST_PING_TIMEOUT
+      guest_ping_interval: $GUEST_PING_INTERVAL
+      guest_ping_method: $GUEST_PING_METHOD
+      guest_ping_port: $GUEST_PING_PORT
+      guest_ping_namespace: $GUEST_PING_NAMESPACE
+      guest_ping_pod: $GUEST_PING_POD
+      guest_ping_settle_seconds: $GUEST_PING_SETTLE_SECONDS
