@@ -43,5 +43,77 @@
         "type": "number",
         "default": "1",
         "required": "false"
+    },
+    {
+        "name": "wait-for-guest-ping",
+        "short_description": "Wait for guest ping",
+        "description": "After VMI is Running, wait until guest is reachable (ICMP or TCP) and record guest_reachable_time MTTR",
+        "variable": "WAIT_FOR_GUEST_PING",
+        "type": "boolean",
+        "default": "False",
+        "required": "false"
+    },
+    {
+        "name": "guest-ping-timeout",
+        "short_description": "Guest ping timeout",
+        "description": "Seconds to wait for first guest reachability after VMI Running",
+        "variable": "GUEST_PING_TIMEOUT",
+        "type": "number",
+        "default": "300",
+        "required": "false"
+    },
+    {
+        "name": "guest-ping-interval",
+        "short_description": "Guest ping interval",
+        "description": "Seconds between guest reachability probes",
+        "variable": "GUEST_PING_INTERVAL",
+        "type": "number",
+        "default": "2",
+        "required": "false"
+    },
+    {
+        "name": "guest-ping-method",
+        "short_description": "Guest ping method",
+        "description": "Reachability probe: icmp (system ping) or tcp",
+        "variable": "GUEST_PING_METHOD",
+        "type": "string",
+        "default": "icmp",
+        "required": "false"
+    },
+    {
+        "name": "guest-ping-port",
+        "short_description": "Guest ping TCP port",
+        "description": "TCP port used when guest-ping-method=tcp",
+        "variable": "GUEST_PING_PORT",
+        "type": "number",
+        "default": "22",
+        "required": "false"
+    },
+    {
+        "name": "guest-ping-namespace",
+        "short_description": "Guest ping helper namespace",
+        "description": "Namespace for the probe pod; empty defaults to the VMI namespace",
+        "variable": "GUEST_PING_NAMESPACE",
+        "type": "string",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "guest-ping-pod",
+        "short_description": "Guest ping diagnosis pod",
+        "description": "Reuse a pre-created probe pod (e.g. krkn-guest-ping-diagnosis from guest-ping-diagnosis-pod.yaml). Empty creates an ephemeral helper before chaos starts",
+        "variable": "GUEST_PING_POD",
+        "type": "string",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "guest-ping-settle-seconds",
+        "short_description": "Guest ping settle seconds",
+        "description": "Seconds to sleep after the helper probe pod is Ready, before deleting the VMI",
+        "variable": "GUEST_PING_SETTLE_SECONDS",
+        "type": "number",
+        "default": "5",
+        "required": "false"
     }
 ]
