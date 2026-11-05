@@ -4,20 +4,23 @@ on:
     types: [opened, edited, synchronize]
     branches:
         - main
+permissions:
+  contents: read
+  pull-requests: read
+
 jobs:
   check-docs:
     name: Check Documentation Update
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Check if Documentation is Required
         id: check_docs
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
         run: |
           echo "Checking PR body for documentation checkbox..."
           # Read the PR body from the GitHub event payload
-          if echo "${{ github.event.pull_request.body }}" | grep -qi '\[x\].*documentation needed'; then
+          if grep -qi '\[x\].*documentation needed' <<< "$PR_BODY"; then
             echo "Documentation required detected."
             echo "docs_required=true" >> $GITHUB_OUTPUT
           else
@@ -29,10 +32,9 @@ jobs:
         if: steps.check_docs.outputs.docs_required == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FEATURE_BRANCH: ${{ github.head_ref }}
+          REPO_OWNER: ${{ github.repository_owner }}
         run: |
-          # Retrieve feature branch and repository owner from the GitHub context
-          FEATURE_BRANCH="${{ github.head_ref }}"
-          REPO_OWNER="${{ github.repository_owner }}"
           WEBSITE_REPO="website"
           echo "Searching for a merged documentation PR for feature branch: $FEATURE_BRANCH in $REPO_OWNER/$WEBSITE_REPO..."
           MERGED_PR=$(gh pr list --repo "$REPO_OWNER/$WEBSITE_REPO" --state merged --json headRefName,title,url | jq -r \
