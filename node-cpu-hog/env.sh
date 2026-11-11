@@ -12,3 +12,4 @@ export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-hub-multiarch:workload-krkn-hog"}
 
 export SCENARIO_TYPE=${SCENARIO_TYPE:=hog_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kube/cpu-hog.yml}
+export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=kube/cpu-hog.yml.template}

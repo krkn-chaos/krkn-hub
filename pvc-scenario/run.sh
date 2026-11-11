@@ -1,12 +1,15 @@
 #!/bin/bash
+ROOT_FOLDER="${ROOT_FOLDER:-/home/krkn}"
+KRAKEN_FOLDER="${KRAKEN_FOLDER:-$ROOT_FOLDER/kraken}"
 # Source env.sh to read all the vars
-source /home/krkn/main_env.sh
-source /home/krkn/env.sh
-source /home/krkn/common_run.sh
+source "$ROOT_FOLDER/main_env.sh"
+source "$ROOT_FOLDER/env.sh"
+source "$ROOT_FOLDER/common_run.sh"
+SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER")"
 extra_var=""
 if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
-  ls -la /home/krkn/.kube
+  ls -la "$ROOT_FOLDER/.kube"
   extra_var="--debug True"
 fi
 
@@ -14,11 +17,11 @@ checks
 config_setup
 
 # Substitute config with environment vars defined
-envsubst < /home/krkn/kraken/scenarios/pvc_scenario.yaml.template > /home/krkn/kraken/scenarios/pvc_scenario.yaml
-envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/config/config.yaml
+envsubst < "$KRAKEN_FOLDER/scenarios/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_PATH"
+envsubst < "$KRAKEN_FOLDER/config/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/config.yaml"
 
 # Run Kraken
-cd /home/krkn/kraken
+cd "$KRAKEN_FOLDER"
 
 
 python3.11 run_kraken.py --config config/config.yaml $extra_var

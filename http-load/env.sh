@@ -16,4 +16,4 @@ export HTTP2=${HTTP2:="true"}
 export INSECURE=${INSECURE:="false"}
 
 export SCENARIO_TYPE=${SCENARIO_TYPE:=http_load_scenarios}
-export SCENARIO_FILE=${SCENARIO_FILE:="$KRAKEN_FOLDER/scenarios/http-load.yaml"}
+export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/http-load.yaml}

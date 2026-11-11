@@ -13,6 +13,20 @@ export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/network_chaos.yaml}
 export TRAFFIC_TYPE=${TRAFFIC_TYPE:=egress}
 export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-hub-multiarch:workload-krkn-tools"}
 
+case "$TRAFFIC_TYPE" in
+  egress)
+    export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=network_chaos_egress.yaml.template}
+    ;;
+  ingress)
+    export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=network_chaos_ingress.yaml.template}
+    export SCENARIO_TYPE="ingress_node_scenarios"
+    ;;
+  *)
+    echo "Supported TRAFFIC_TYPE options are egress or ingress, please check" >&2
+    return 1
+    ;;
+esac
+
 # Ingress vars
 export TARGET_NODE_AND_INTERFACE=${TARGET_NODE_AND_INTERFACE:=""}
 export NETWORK_PARAMS=${NETWORK_PARAMS:=""}

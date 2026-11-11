@@ -11,7 +11,7 @@ COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
 COPY vmi-network/env.sh /home/krkn/env.sh
 COPY env.sh /home/krkn/main_env.sh
 COPY vmi-network/run.sh /home/krkn/run.sh
-COPY vmi-network/vmi-network-chaos.yml /home/krkn/kraken/scenarios/kube/vmi-network-chaos.yml
+COPY vmi-network/vmi-network-chaos.yml.template /home/krkn/kraken/scenarios/kube/vmi-network-chaos.yml.template
 COPY common_run.sh /home/krkn/common_run.sh
 
 LABEL krknctl.is_a_scenario="true"

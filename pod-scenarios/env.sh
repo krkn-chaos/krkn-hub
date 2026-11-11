@@ -14,3 +14,9 @@ export NODE_NAMES=${NODE_NAMES:=""}
 export FORCE=${FORCE:=false}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=pod_disruption_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/pod_scenario.yaml}
+
+if [[ -z "$POD_LABEL" ]]; then
+  export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=pod_scenario_namespace.yaml.template}
+else
+  export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=pod_scenario.yaml.template}
+fi

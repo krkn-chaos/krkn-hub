@@ -1,0 +1,17 @@
+- id: vmi_network_chaos
+  wait_duration: 0
+  test_duration: $TEST_DURATION
+  label_selector: "$LABEL_SELECTOR"
+  service_account: "$SERVICE_ACCOUNT"
+  namespace: "$NAMESPACE"
+  instance_count: $INSTANCE_COUNT
+  execution: $EXECUTION
+  ingress: $INGRESS
+  egress: $EGRESS
+  target: "$VMI_NAME"
+  interfaces: $INTERFACES_YAML
+  latency: $LATENCY_YAML
+  loss: $LOSS_YAML
+  bandwidth: $BANDWIDTH_YAML
+  taints: $TAINTS_YAML
+  image: "$IMAGE"

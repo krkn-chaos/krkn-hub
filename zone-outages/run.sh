@@ -1,8 +1,11 @@
 #!/bin/bash
+ROOT_FOLDER="${ROOT_FOLDER:-/home/krkn}"
+KRAKEN_FOLDER="${KRAKEN_FOLDER:-$ROOT_FOLDER/kraken}"
 # Source env.sh to read all the vars
-source /home/krkn/main_env.sh
-source /home/krkn/env.sh
-source /home/krkn/common_run.sh
+source "$ROOT_FOLDER/main_env.sh"
+source "$ROOT_FOLDER/env.sh"
+source "$ROOT_FOLDER/common_run.sh"
+SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER")"
 extra_var=""
 if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
@@ -11,14 +14,10 @@ fi
 
 checks
 
-if [[ "$CLOUD_TYPE" == "gcp" ]]; then
 # Substitute config with environment vars defined
-  envsubst < /home/krkn/kraken/scenarios/zone_outage_scenario_gcp.yaml.template > /home/krkn/kraken/scenarios/zone_outage.yaml
-else 
-  envsubst < /home/krkn/kraken/scenarios/zone_outage_scenario.yaml.template > /home/krkn/kraken/scenarios/zone_outage.yaml
-fi 
-envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/config/zone_config.yaml
+envsubst < "$KRAKEN_FOLDER/scenarios/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_PATH"
+envsubst < "$KRAKEN_FOLDER/config/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/zone_config.yaml"
 
 # Run Kraken
-cd /home/krkn/kraken
+cd "$KRAKEN_FOLDER"
 python3.11 run_kraken.py --config=config/zone_config.yaml $extra_var

@@ -11,4 +11,5 @@ export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-hub-multiarch:workload-krkn-syn-f
 export NODE_SELECTORS=${NODE_SELECTORS:=""}
 
 export SCENARIO_TYPE=${SCENARIO_TYPE:=syn_flood_scenarios}
-export SCENARIO_FILE=${SCENARIO_FILE:="$KRAKEN_FOLDER/scenarios/syn-flood.yaml"}
+export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/syn-flood.yaml}
+export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=syn-flood.yaml.template}

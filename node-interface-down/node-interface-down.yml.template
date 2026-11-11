@@ -1,0 +1,15 @@
+- id: node_interface_down
+  wait_duration: $WAIT_DURATION
+  test_duration: $TEST_DURATION
+  label_selector: "$LABEL_SELECTOR"
+  service_account: "$SERVICE_ACCOUNT"
+  namespace: "$NAMESPACE"
+  instance_count: $INSTANCE_COUNT
+  execution: $EXECUTION
+  ingress: true
+  egress: true
+  target: "$NODE_NAME"
+  interfaces: $INTERFACES_YAML
+  taints: $TAINTS_YAML
+  recovery_time: $RECOVERY_TIME
+  image: "$IMAGE"

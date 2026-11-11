@@ -3,4 +3,4 @@
 # Vars and respective defaults
 export SCENARIO_BASE64=${SCENARIO_BASE64:=1}
 export SCENARIO_TYPE="service_hijacking_scenarios"
-export SCENARIO_FILE="scenarios/service_hijacking.yaml"
+export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/service_hijacking.yaml}

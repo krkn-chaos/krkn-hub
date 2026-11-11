@@ -12,3 +12,4 @@ export KILL_COUNT=${KILL_COUNT:=1}
 # Legacy scenario type name - still supported by krkn for backwards compatibility
 export SCENARIO_TYPE=${SCENARIO_TYPE:=kubevirt_vm_outage}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kubevirt_scenario.yaml}
+export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=kubevirt_scenario.yaml.template}

@@ -1,53 +1,32 @@
 #!/bin/bash
 
-ROOT_FOLDER="/home/krkn"
-KRAKEN_FOLDER="$ROOT_FOLDER/kraken"
-SCENARIO_FOLDER="$KRAKEN_FOLDER/scenarios/kube"
-
+ROOT_FOLDER="${ROOT_FOLDER:-/home/krkn}"
+KRAKEN_FOLDER="${KRAKEN_FOLDER:-$ROOT_FOLDER/kraken}"
 # Source env.sh to read all the vars
-source $ROOT_FOLDER/main_env.sh
-source $ROOT_FOLDER/env.sh
-source $ROOT_FOLDER/common_run.sh
+source "$ROOT_FOLDER/main_env.sh"
+source "$ROOT_FOLDER/env.sh"
+source "$ROOT_FOLDER/common_run.sh"
+SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER")"
+
+export_csv_yaml_sequence INTERFACES_YAML "$INTERFACES" || exit 1
+export_csv_yaml_sequence TAINTS_YAML "$TAINTS" || exit 1
 
 if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
 fi
 
-yq -i ".[0].test_duration=$TEST_DURATION" $SCENARIO_FOLDER/node-interface-down.yml
-yq -i ".[0].label_selector=\"$LABEL_SELECTOR\"" $SCENARIO_FOLDER/node-interface-down.yml
-yq -i ".[0].namespace=\"$NAMESPACE\"" $SCENARIO_FOLDER/node-interface-down.yml
-yq -i ".[0].instance_count=$INSTANCE_COUNT" $SCENARIO_FOLDER/node-interface-down.yml
-yq -i ".[0].execution=\"$EXECUTION\"" $SCENARIO_FOLDER/node-interface-down.yml
-yq -i ".[0].image=\"$IMAGE\"" $SCENARIO_FOLDER/node-interface-down.yml
-yq -i ".[0].target=\"$NODE_NAME\"" $SCENARIO_FOLDER/node-interface-down.yml
-yq -i ".[0].service_account=\"$SERVICE_ACCOUNT\"" $SCENARIO_FOLDER/node-interface-down.yml
-yq -i ".[0].recovery_time=$RECOVERY_TIME" $SCENARIO_FOLDER/node-interface-down.yml
-yq -i ".[0].wait_duration=$WAIT_DURATION" $SCENARIO_FOLDER/node-interface-down.yml
+envsubst < "$KRAKEN_FOLDER/scenarios/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_PATH"
 
-if [[ -n "$INTERFACES" ]]; then
-  IFS=',' read -ra array <<< "$INTERFACES"
-  for ((i=0; i<${#array[@]}; i++)); do
-    yq -i ".[0].interfaces[$i]=\"${array[$i]}\"" $SCENARIO_FOLDER/node-interface-down.yml
-  done
-fi
-
-if [[ -n "$TAINTS" ]]; then
-  IFS=',' read -ra array <<< "$TAINTS"
-  for ((i=0; i<${#array[@]}; i++)); do
-    yq -i ".[0].taints[$i]=\"${array[$i]}\"" $SCENARIO_FOLDER/node-interface-down.yml
-  done
-fi
-
-envsubst < $KRAKEN_FOLDER/config/config.yaml.template > $KRAKEN_FOLDER/config/node-interface-down-config.yaml
+envsubst < "$KRAKEN_FOLDER/config/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/node-interface-down-config.yaml"
 
 checks
 
-cd $KRAKEN_FOLDER
+cd "$KRAKEN_FOLDER"
 extra_var=""
 if [[ $KRKN_DEBUG == "True" ]];then
-  cat $SCENARIO_FOLDER/node-interface-down.yml
-  cat $KRAKEN_FOLDER/config/node-interface-down-config.yaml
+  cat "$SCENARIO_PATH"
+  cat "$KRAKEN_FOLDER/config/node-interface-down-config.yaml"
   extra_var="--debug True"
 fi
 
-python3.11 run_kraken.py --config=$KRAKEN_FOLDER/config/node-interface-down-config.yaml $extra_var
+python3.11 run_kraken.py --config="$KRAKEN_FOLDER/config/node-interface-down-config.yaml" $extra_var

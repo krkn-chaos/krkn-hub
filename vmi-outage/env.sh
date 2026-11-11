@@ -8,3 +8,4 @@ export TIMEOUT=${TIMEOUT:=60}
 export KILL_COUNT=${KILL_COUNT:=1}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=vmi_outage}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/vmi_scenario.yaml}
+export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=vmi_scenario.yaml.template}

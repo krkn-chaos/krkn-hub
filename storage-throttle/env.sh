@@ -15,3 +15,4 @@ export DURATION=${DURATION:="1m"}
 export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-hub-multiarch:workload-krkn-tools"}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=storage_throttle_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/storage_throttle.yaml}
+export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=storage_throttle.yaml.template}

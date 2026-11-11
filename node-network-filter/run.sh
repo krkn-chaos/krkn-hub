@@ -1,33 +1,32 @@
 #!/bin/bash
 
-ROOT_FOLDER="/home/krkn"
-KRAKEN_FOLDER="$ROOT_FOLDER/kraken"
-SCENARIO_FOLDER="$KRAKEN_FOLDER/scenarios/kube"
-SCENARIO_FILE="$SCENARIO_FOLDER/network-filter.yml"
-CONFIG_FILE="$KRAKEN_FOLDER/config/network-filter-config.yaml"
+ROOT_FOLDER="${ROOT_FOLDER:-/home/krkn}"
+KRAKEN_FOLDER="${KRAKEN_FOLDER:-$ROOT_FOLDER/kraken}"
 
 source "$ROOT_FOLDER/main_env.sh"
 source "$ROOT_FOLDER/env.sh"
 source "$ROOT_FOLDER/common_run.sh"
 
+SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER")"
+CONFIG_FILE="$KRAKEN_FOLDER/config/network-filter-config.yaml"
+
+export_csv_yaml_sequence INTERFACES_YAML "$INTERFACES" || exit 1
+export_csv_yaml_sequence PORTS_YAML "$PORTS" number || exit 1
+export_csv_yaml_sequence PROTOCOLS_YAML "$PROTOCOLS" || exit 1
+export_csv_yaml_sequence TAINTS_YAML "$TAINTS" || exit 1
+
 if [[ "$KRKN_DEBUG" == "True" ]]; then
   set -ex
 fi
 
-INTERFACES_YAML="$(python3.11 -c 'import json, os; print(json.dumps([name for name in os.environ.get("INTERFACES", "").split(",") if name]))')" || {
-  echo "Unable to encode INTERFACES as a YAML sequence" >&2
-  exit 1
-}
-export INTERFACES_YAML
-
-envsubst < "$KRAKEN_FOLDER/scenarios/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_FILE"
-envsubst < "$KRAKEN_FOLDER/config/config.yaml.template" > "$CONFIG_FILE"
+envsubst < "$KRAKEN_FOLDER/scenarios/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_PATH"
+envsubst < "$KRAKEN_FOLDER/config/$CONFIG_FILE_TEMPLATE" > "$CONFIG_FILE"
 checks
 
 cd "$KRAKEN_FOLDER"
 extra_var=""
 if [[ "$KRKN_DEBUG" == "True" ]]; then
-  cat "$SCENARIO_FILE" "$CONFIG_FILE"
+  cat "$SCENARIO_PATH" "$CONFIG_FILE"
   extra_var="--debug True"
 fi
 

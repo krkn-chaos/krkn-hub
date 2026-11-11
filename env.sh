@@ -14,6 +14,7 @@ case "$(printf '%s' "$DISABLE_IMAGE_SIGNATURE" | tr '[:upper:]' '[:lower:]')" in
         ;;
 esac
 export WAIT_DURATION=${WAIT_DURATION:=60}
+export CONFIG_FILE_TEMPLATE=${CONFIG_FILE_TEMPLATE:=config.yaml.template}
 export ITERATIONS=${ITERATIONS:=1}
 export DAEMON_MODE=${DAEMON_MODE:=False}
 export RETRY_WAIT=${RETRY_WAIT:=120}

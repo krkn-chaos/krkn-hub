@@ -1,8 +1,10 @@
 #!/bin/bash
+ROOT_FOLDER="${ROOT_FOLDER:-/home/krkn}"
+KRAKEN_FOLDER="${KRAKEN_FOLDER:-$ROOT_FOLDER/kraken}"
 # Source env.sh to read all the vars
-source /home/krkn/main_env.sh
-source /home/krkn/env.sh
-source /home/krkn/common_run.sh
+source "$ROOT_FOLDER/main_env.sh"
+source "$ROOT_FOLDER/env.sh"
+source "$ROOT_FOLDER/common_run.sh"
 
 if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
@@ -11,22 +13,19 @@ fi
 checks
 
 # Substitute config with environment vars defined
-if [[ "$CLOUD_TYPE" == "bm" || "$CLOUD_TYPE" == "baremetal" ]]; then
-    envsubst < /home/krkn/kraken/scenarios/baremetal_node_scenario.yaml.template > /home/krkn/kraken/scenarios/node_scenario.yaml  
-else
-  envsubst < /home/krkn/kraken/scenarios/node_scenario.yaml.template > /home/krkn/kraken/scenarios/node_scenario.yaml
-fi
+SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER")"
+envsubst < "$KRAKEN_FOLDER/scenarios/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_PATH"
 
 # Setup config
-envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/config/node_scenario_config.yaml
+envsubst < "$KRAKEN_FOLDER/config/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/node_scenario_config.yaml"
 
 # Run Kraken
-cd /home/krkn/kraken
+cd "$KRAKEN_FOLDER"
 
 extra_var=""
 if [[ $KRKN_DEBUG == "True" ]];then
   cat config/node_scenario_config.yaml
-  cat scenarios/node_scenario.yaml
+  cat "$SCENARIO_PATH"
   extra_var="--debug True"
 fi
 
