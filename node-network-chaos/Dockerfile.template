@@ -9,7 +9,7 @@ COPY node-network-chaos/env.sh                 /home/krkn/env.sh
 COPY env.sh                                    /home/krkn/main_env.sh
 COPY node-network-chaos/run.sh                 /home/krkn/run.sh
 COPY common_run.sh                             /home/krkn/common_run.sh
-COPY node-network-chaos/node-network-chaos.yml /home/krkn/kraken/scenarios/kube/node-network-chaos.yml
+COPY node-network-chaos/node-network-chaos.yml.template /home/krkn/kraken/scenarios/kube/node-network-chaos.yml.template
 
 # krknctl reads these labels to populate `krknctl list` and `krknctl run --help`.
 # $KRKNCTL_INPUT is substituted at build time with the minified JSON from

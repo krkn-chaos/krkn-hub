@@ -41,6 +41,7 @@ export BANDWIDTH=${BANDWIDTH:=""}                     # e.g. "100mbit" (units: b
 # ── Timing ────────────────────────────────────────────────────────────────────
 export TEST_DURATION=${TEST_DURATION:="120"}          # seconds to hold chaos
 export WAIT_DURATION=${WAIT_DURATION:="0"}            # post-chaos wait (seconds)
+export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=kube/node-network-chaos.yml.template}
 
 # ── Safety ────────────────────────────────────────────────────────────────────
 # force=true removes any pre-existing tc qdiscs before applying new ones.
