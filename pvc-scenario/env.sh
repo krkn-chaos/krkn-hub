@@ -8,5 +8,6 @@ export FILL_PERCENTAGE=${FILL_PERCENTAGE:="50"}
 export DURATION=${DURATION:="60"}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=pvc_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/pvc_scenario.yaml}
+export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=pvc_scenario.yaml.template}
 export BLOCK_SIZE=${BLOCK_SIZE:="102400"}
 

@@ -15,3 +15,4 @@ export USERNAME="${USERNAME:-root}"
 export IDENTITY_FILE="${IDENTITY_FILE:-}"
 export SCENARIO_TYPE="${SCENARIO_TYPE:-vmi_pvc_fill_scenarios}"
 export SCENARIO_FILE="${SCENARIO_FILE:-scenarios/kubevirt/vmi_pvc_fill.yaml}"
+export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=kubevirt/vmi_pvc_fill.yaml.template}

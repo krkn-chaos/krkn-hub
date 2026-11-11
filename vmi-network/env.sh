@@ -12,6 +12,7 @@ export LOSS=${LOSS:=""}
 export BANDWIDTH=${BANDWIDTH:=""}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=network_chaos_ng_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kube/vmi-network-chaos.yml}
+export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=kube/vmi-network-chaos.yml.template}
 export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-hub-multiarch:workload-krkn-network-chaos"}
 export TAINTS=${TAINTS:=""}
 export SERVICE_ACCOUNT=${SERVICE_ACCOUNT:=""}

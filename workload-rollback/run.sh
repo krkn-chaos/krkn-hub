@@ -1,8 +1,8 @@
 #!/bin/bash
 set -eo pipefail
 
-ROOT_FOLDER="/home/krkn"
-KRAKEN_FOLDER="$ROOT_FOLDER/kraken"
+ROOT_FOLDER="${ROOT_FOLDER:-/home/krkn}"
+KRAKEN_FOLDER="${KRAKEN_FOLDER:-$ROOT_FOLDER/kraken}"
 
 source "$ROOT_FOLDER/env.sh"
 source "$ROOT_FOLDER/main_env.sh"
@@ -23,7 +23,7 @@ escaped_rollback_directory=$(printf '%s' "$ROLLBACK_VERSIONS_DIRECTORY" | sed "s
 ROLLBACK_VERSIONS_DIRECTORY_YAML="'$escaped_rollback_directory'"
 export ROLLBACK_VERSIONS_DIRECTORY_YAML
 
-envsubst < "$KRAKEN_FOLDER/config/config.yaml.template" > "$KRAKEN_FOLDER/config/config.yaml"
+envsubst < "$KRAKEN_FOLDER/config/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/config.yaml"
 
 rollback_args=(
   --config "$KRAKEN_FOLDER/config/config.yaml"

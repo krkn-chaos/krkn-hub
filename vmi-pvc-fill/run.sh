@@ -1,8 +1,11 @@
 #!/bin/bash
+ROOT_FOLDER="${ROOT_FOLDER:-/home/krkn}"
+KRAKEN_FOLDER="${KRAKEN_FOLDER:-$ROOT_FOLDER/kraken}"
 # Source environment variables and common setup
-source /home/krkn/main_env.sh
-source /home/krkn/env.sh
-source /home/krkn/common_run.sh
+source "$ROOT_FOLDER/main_env.sh"
+source "$ROOT_FOLDER/env.sh"
+source "$ROOT_FOLDER/common_run.sh"
+SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER")"
 
 if [[ $KRKN_DEBUG == "True" ]]; then
   set -ex
@@ -10,13 +13,13 @@ fi
 
 checks
 
-envsubst < /home/krkn/kraken/scenarios/kubevirt/vmi_pvc_fill.yaml.template > /home/krkn/kraken/scenarios/kubevirt/vmi_pvc_fill.yaml
-envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/config/vmi_pvc_fill_config.yaml
+envsubst < "$KRAKEN_FOLDER/scenarios/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_PATH"
+envsubst < "$KRAKEN_FOLDER/config/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/vmi_pvc_fill_config.yaml"
 
-cd /home/krkn/kraken
+cd "$KRAKEN_FOLDER"
 extra_var=""
 if [[ $KRKN_DEBUG == "True" ]]; then
-  cat scenarios/kubevirt/vmi_pvc_fill.yaml
+  cat "$SCENARIO_PATH"
   extra_var="--debug True"
 fi
 

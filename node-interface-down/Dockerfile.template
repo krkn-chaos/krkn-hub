@@ -11,7 +11,7 @@ COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
 COPY node-interface-down/env.sh /home/krkn/env.sh
 COPY env.sh /home/krkn/main_env.sh
 COPY node-interface-down/run.sh /home/krkn/run.sh
-COPY node-interface-down/node-interface-down.yml /home/krkn/kraken/scenarios/kube/node-interface-down.yml
+COPY node-interface-down/node-interface-down.yml.template /home/krkn/kraken/scenarios/kube/node-interface-down.yml.template
 COPY common_run.sh /home/krkn/common_run.sh
 
 LABEL krknctl.is_a_scenario="true"

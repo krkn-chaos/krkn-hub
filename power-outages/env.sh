@@ -6,3 +6,4 @@ export CLOUD_TYPE=${CLOUD_TYPE:="aws"}
 export TIMEOUT=${TIMEOUT:=180}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=cluster_shut_down_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/cluster_shut_down_scenario.yml}
+export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=shutdown_scenario.yaml.template}

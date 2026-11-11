@@ -1,12 +1,13 @@
 #!/bin/bash
-ROOT_FOLDER="/home/krkn"
-KRAKEN_FOLDER="$ROOT_FOLDER/kraken"
+ROOT_FOLDER="${ROOT_FOLDER:-/home/krkn}"
+KRAKEN_FOLDER="${KRAKEN_FOLDER:-$ROOT_FOLDER/kraken}"
 SCENARIO_FOLDER="$KRAKEN_FOLDER/scenarios/syn-flood"
 
 # Source env.sh to read all the vars
-source $ROOT_FOLDER/main_env.sh
-source $ROOT_FOLDER/env.sh
-source $ROOT_FOLDER/common_run.sh
+source "$ROOT_FOLDER/main_env.sh"
+source "$ROOT_FOLDER/env.sh"
+source "$ROOT_FOLDER/common_run.sh"
+SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER")"
 extra_var=""
 if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
@@ -14,16 +15,16 @@ if [[ $KRKN_DEBUG == "True" ]];then
 fi
 
 # Substitute config with environment vars defined
-envsubst < $KRAKEN_FOLDER/scenarios/syn-flood.yaml.template > $KRAKEN_FOLDER/scenarios/syn-flood.yaml
-envsubst < $KRAKEN_FOLDER/config/config.yaml.template > $KRAKEN_FOLDER/config/syn_flood_config.yaml
+envsubst < "$KRAKEN_FOLDER/scenarios/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_PATH"
+envsubst < "$KRAKEN_FOLDER/config/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/syn_flood_config.yaml"
 
-cat $KRAKEN_FOLDER/config/syn_flood_config.yaml
-cat $KRAKEN_FOLDER/scenarios/syn-flood.yaml
+cat "$KRAKEN_FOLDER/config/syn_flood_config.yaml"
+cat "$SCENARIO_PATH"
 
 checks
 
 # Run Kraken
-cd $KRAKEN_FOLDER
+cd "$KRAKEN_FOLDER"
 python3.11 run_kraken.py --config=config/syn_flood_config.yaml $extra_var
 
 

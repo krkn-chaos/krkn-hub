@@ -18,6 +18,12 @@ export SKIP_OPENSHIFT_CHECKS=${SKIP_OPENSHIFT_CHECKS:="false"}
 export KUBE_CHECK=${KUBE_CHECK:=True}
 export DISABLE_SSL_VERIFICATION=${DISABLE_SSL_VERIFICATION:=False}
 
+if [[ "$CLOUD_TYPE" == "bm" || "$CLOUD_TYPE" == "baremetal" ]]; then
+  export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=baremetal_node_scenario.yaml.template}
+else
+  export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=node_scenario.yaml.template}
+fi
+
 # Baremetal vars
 export BMC_USER=${BMC_USER:=""}
 export BMC_PASSWORD=${BMC_PASSWORD:=""}

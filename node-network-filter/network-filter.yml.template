@@ -9,8 +9,8 @@
   ingress: $INGRESS
   egress: $EGRESS
   target: "$NODE_NAME"
-  interfaces: ${INTERFACES_YAML}
-  ports: [${PORTS}]
-  taints: [${TAINTS}]
-  protocols: [${PROTOCOLS}]
+  interfaces: $INTERFACES_YAML
+  ports: $PORTS_YAML
+  taints: $TAINTS_YAML
+  protocols: $PROTOCOLS_YAML
   image: "$IMAGE"

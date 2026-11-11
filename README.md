@@ -6,6 +6,48 @@ Hosts container images and wrapper for running scenarios supported by [Krkn](htt
 [Krkn-Hub Documentation](https://krkn-chaos.dev/docs/krkn-hub/) is your go-to resource for all things Krkn-Hub.  
 The documentation provides detailed information about the supported scenarios, how to configure and run them using Krkn-Hub, and insights into leveraging the tool for chaos testing. It also includes setup instructions, usage examples, and best practices for integrating Krkn-Hub into your Kubernetes workflows.  
 
+## Reusable scenario runner conventions
+
+Scenario `env.sh` files define the scenario output path and input template so
+the same `run.sh` can be reused with caller-provided environment variables.
+Keep the defaults overridable:
+
+```bash
+export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/app_outage.yaml}
+export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=app_outage.yaml.template}
+```
+
+`SCENARIO_FILE` names the rendered scenario. Relative paths are resolved under
+`KRAKEN_FOLDER`; absolute paths are preserved. `SCENARIO_TEMPLATE_FILE` is
+relative to `$KRAKEN_FOLDER/scenarios/`. Include a subdirectory when the
+template is nested, such as `kube/io-hog.yml.template`.
+
+Source `common_run.sh` before calling `resolve_scenario_path`, then use the
+resolved path for rendering and all later reads or modifications:
+
+```bash
+source "$ROOT_FOLDER/env.sh"
+source "$ROOT_FOLDER/common_run.sh"
+SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER")"
+
+envsubst < "$KRAKEN_FOLDER/scenarios/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_PATH"
+```
+
+If a scenario uses different templates based on another variable, select the
+default in `env.sh` while preserving an explicit `SCENARIO_TEMPLATE_FILE`
+override:
+
+```bash
+if [[ "$CLOUD_TYPE" == "gcp" ]]; then
+  export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=zone_outage_scenario_gcp.yaml.template}
+else
+  export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=zone_outage_scenario.yaml.template}
+fi
+```
+
+Keep configuration template/output paths specific to the scenario, and quote
+`ROOT_FOLDER` and `KRAKEN_FOLDER` whenever they are used as paths.
+
 <!-- ### Supported chaos scenarios
 
 Scenario   | Description                                                      | Working

@@ -1,29 +1,30 @@
 #!/bin/bash
 
-ROOT_FOLDER="/home/krkn"
-KRAKEN_FOLDER="$ROOT_FOLDER/kraken"
+ROOT_FOLDER="${ROOT_FOLDER:-/home/krkn}"
+KRAKEN_FOLDER="${KRAKEN_FOLDER:-$ROOT_FOLDER/kraken}"
 SCENARIO_FOLDER="$KRAKEN_FOLDER/scenarios/kube"
 
 # Source env.sh to read all the vars
-source $ROOT_FOLDER/main_env.sh
-source $ROOT_FOLDER/env.sh
-source $ROOT_FOLDER/common_run.sh
+source "$ROOT_FOLDER/main_env.sh"
+source "$ROOT_FOLDER/env.sh"
+source "$ROOT_FOLDER/common_run.sh"
+SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER")"
 
 if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
 fi
 
-envsubst < $KRAKEN_FOLDER/scenarios/kube/io-hog.yml.template > $KRAKEN_FOLDER/scenarios/kube/io-hog.yml
+envsubst < "$KRAKEN_FOLDER/scenarios/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_PATH"
 # Substitute config with environment vars defined
-envsubst < $KRAKEN_FOLDER/config/config.yaml.template > $KRAKEN_FOLDER/config/io-config.yaml
+envsubst < "$KRAKEN_FOLDER/config/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/io-config.yaml"
 
 checks
 
 # Run Kraken
-cd $KRAKEN_FOLDER
+cd "$KRAKEN_FOLDER"
 extra_var=""
 if [[ $KRKN_DEBUG == "True" ]];then
-  cat scenarios/kube/io-hog.yml
+  cat "$SCENARIO_PATH"
   cat config/io-config.yaml
   extra_var="--debug True"
 fi

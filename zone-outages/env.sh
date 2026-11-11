@@ -10,3 +10,9 @@ export DEFAULT_ACL_ID=${DEFAULT_ACL_ID:=""}
 export ZONE=${ZONE:=""}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=zone_outages_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/zone_outage.yaml}
+
+if [[ "$CLOUD_TYPE" == "gcp" ]]; then
+  export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=zone_outage_scenario_gcp.yaml.template}
+else
+  export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=zone_outage_scenario.yaml.template}
+fi

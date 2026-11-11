@@ -10,3 +10,4 @@ export CONTAINER_NAME=${CONTAINER_NAME:=etcd}
 export ACTION=${ACTION:=1}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=container_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/container_scenario.yaml}
+export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=container_scenario.yaml.template}

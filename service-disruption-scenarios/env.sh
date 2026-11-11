@@ -8,3 +8,4 @@ export DELETE_COUNT=${DELETE_COUNT:=1}
 export SLEEP=${SLEEP:=15}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=service_disruption_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/namespace_scenario.yaml}
+export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=namespace_scenario.yaml.template}

@@ -1,8 +1,11 @@
 #!/bin/bash
+ROOT_FOLDER="${ROOT_FOLDER:-/home/krkn}"
+KRAKEN_FOLDER="${KRAKEN_FOLDER:-$ROOT_FOLDER/kraken}"
 # Source env.sh to read all the vars
-source /home/krkn/main_env.sh
-source /home/krkn/env.sh
-source /home/krkn/common_run.sh
+source "$ROOT_FOLDER/main_env.sh"
+source "$ROOT_FOLDER/env.sh"
+source "$ROOT_FOLDER/common_run.sh"
+SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER")"
 
 if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
@@ -11,15 +14,15 @@ fi
 checks
 
 # Substitute config with environment vars defined
-envsubst < /home/krkn/kraken/scenarios/shutdown_scenario.yaml.template > /home/krkn/kraken/scenarios/cluster_shut_down_scenario.yml
-envsubst < /home/krkn/kraken/config/config.yaml.template > /home/krkn/kraken/config/shut_down_config.yaml
+envsubst < "$KRAKEN_FOLDER/scenarios/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_PATH"
+envsubst < "$KRAKEN_FOLDER/config/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/shut_down_config.yaml"
 
 # Run Kraken
-cd /home/krkn/kraken
+cd "$KRAKEN_FOLDER"
 extra_var=""
 if [[ $KRKN_DEBUG == "True" ]];then
   cat config/shut_down_config.yaml
-  cat scenarios/cluster_shut_down_scenario.yml
+  cat "$SCENARIO_PATH"
   extra_var="--debug True"
 fi
 

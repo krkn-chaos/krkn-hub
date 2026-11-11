@@ -2,14 +2,14 @@
 
 set -ex
 
-ROOT_FOLDER="/home/krkn"
+ROOT_FOLDER="${ROOT_FOLDER:-/home/krkn}"
 KUBECONFIG_PATH="$ROOT_FOLDER/.kube/config"
-KRAKEN_FOLDER="$ROOT_FOLDER/kraken"
+KRAKEN_FOLDER="${KRAKEN_FOLDER:-$ROOT_FOLDER/kraken}"
 
 # Source env.sh to read all the vars
-source $ROOT_FOLDER/main_env.sh
-source $ROOT_FOLDER/env.sh
-source $ROOT_FOLDER/common_run.sh
+source "$ROOT_FOLDER/main_env.sh"
+source "$ROOT_FOLDER/env.sh"
+source "$ROOT_FOLDER/common_run.sh"
 
 [ ! -f "$KUBECONFIG_PATH" ] && echo "error: kubeconfig file not found in $KUBECONFIG_PATH,\
   run the recommender image with the -v\
@@ -34,7 +34,7 @@ source $ROOT_FOLDER/common_run.sh
   with the -e MEMORY_THRESHOLD=<memory_threshold, for example 0.5> option" && exit 1
 
 # Run Kraken
-cd $KRAKEN_FOLDER
+cd "$KRAKEN_FOLDER"
 
 
 python3.11 utils/chaos_recommender/chaos_recommender.py \

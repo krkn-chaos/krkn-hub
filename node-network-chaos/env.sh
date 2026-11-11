@@ -46,3 +46,5 @@ export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=kube/node-network-chaos.
 # ── Safety ────────────────────────────────────────────────────────────────────
 # force=true removes any pre-existing tc qdiscs before applying new ones.
 export FORCE=${FORCE:="false"}                        # true | false
+
+export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kube/node-network-chaos.yml}

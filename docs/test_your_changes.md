@@ -16,17 +16,39 @@ To get latest podman-compose features we need, use this installation command
 ## Current list of Scenario Types
 
 Scenario Types:
-* pod-scenarios
-* node-scenarios
-* zone-outages
-* time-scenarios
-* cerberus
-* cluster-shutdown
+* application-outages
 * container-scenarios
+* http-load
+* kubevirt-outage (deprecated; use `vmi-outage`)
+* network-chaos
 * node-cpu-hog
+* node-interface-down
 * node-io-hog
 * node-memory-hog
-* application-outages
+* node-network-chaos
+* node-network-filter
+* node-scenarios
+* node-scenarios-bm
+* pod-network-chaos
+* pod-network-filter
+* pod-scenarios
+* power-outages
+* pvc-scenarios
+* service-disruption-scenarios
+* service-hijacking
+* storage-throttle
+* syn-flood
+* time-scenarios
+* vmi-network
+* vmi-network-filter
+* vmi-outage
+* vmi-pvc-fill
+* workload-rollback
+* zone-outages
+
+Utilities:
+* cerberus
+* chaos-recommender
 
 ## Adding a New Scenario
 1. Create folder with scenario name
@@ -40,12 +62,13 @@ Scenario Types:
 3. Add defaults for any environment variables in an "env.sh" file
 
     a.  See [env.sh](../application-outages/env.sh) for example
+
     
 4. Create script to run.sh chaos scenario
     a. See [run.sh](../application-outages/run.sh) for example
     
     b. edit line 16 with your scenario yaml template
-
+    
     c. edit line 17 and 23 with your yaml config location
 
 5. Create Dockerfile template

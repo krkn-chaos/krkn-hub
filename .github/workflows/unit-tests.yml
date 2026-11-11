@@ -22,3 +22,6 @@ jobs:
 
       - name: Run triggers config unit test
         run: bash CI/tests/test_triggers_config.sh
+
+      - name: Run CSV YAML sequence unit test
+        run: bash CI/tests/test_csv_to_yaml_sequence.sh
