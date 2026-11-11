@@ -9,6 +9,7 @@ export SCENARIO_TYPE=${SCENARIO_TYPE:=hog_scenarios}
 export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kube/memory-hog.yml}
 export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=kube/memory-hog.yml.template}
 export NODE_SELECTOR=${NODE_SELECTOR:=""}
+export NODE_NAME=${NODE_NAME:=""}
 export TAINTS=${TAINTS:="[]"}
 export NUMBER_OF_NODES=${NUMBER_OF_NODES:=""}
 export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-hub-multiarch:workload-krkn-hog"}
