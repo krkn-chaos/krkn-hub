@@ -204,3 +204,9 @@ services:
         context: ./workload-kubectl-kustomize
         dockerfile: ./Dockerfile
       image: quay.io/krkn-chaos/krkn-hub:workload-kubectl-kustomize
+
+    trigger:
+      build:
+        context: ./
+        dockerfile: ./workload-trigger/Dockerfile
+      image: quay.io/krkn-chaos/krkn-hub:trigger
