@@ -10,7 +10,7 @@ license="Apache-2.0"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-flask = "^2.3.2"
+flask = ">=2.3.2,<4.0.0"
 PyYAML = "^6.0.1"
 pytest = "^8.2.0"
 coverage = "^7.5.0"
