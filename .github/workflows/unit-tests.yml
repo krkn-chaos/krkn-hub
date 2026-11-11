@@ -17,11 +17,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install gettext (envsubst)
-        run: sudo apt-get update && sudo apt-get install -y gettext-base
+      - name: Install test dependencies (envsubst, jq)
+        run: sudo apt-get update && sudo apt-get install -y gettext-base jq
 
-      - name: Run triggers config unit test
-        run: bash CI/tests/test_triggers_config.sh
-
-      - name: Run CSV YAML sequence unit test
-        run: bash CI/tests/test_csv_to_yaml_sequence.sh
+      - name: Run all unit tests in CI/tests
+        run: bash CI/run_unit_tests.sh
