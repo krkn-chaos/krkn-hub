@@ -22,3 +22,6 @@ jobs:
 
       - name: Run triggers config unit test
         run: bash CI/tests/test_triggers_config.sh
+
+      - name: Run resiliency config unit test
+        run: bash CI/tests/test_resiliency_config.sh
