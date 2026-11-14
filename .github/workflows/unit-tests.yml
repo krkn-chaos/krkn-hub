@@ -17,8 +17,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install test dependencies (envsubst, jq)
-        run: sudo apt-get update && sudo apt-get install -y gettext-base jq
+      - name: Install test dependencies (envsubst, jq, PyYAML)
+        run: sudo apt-get update && sudo apt-get install -y gettext-base jq python3-yaml
 
       - name: Run all unit tests in CI/tests
         run: bash CI/run_unit_tests.sh
