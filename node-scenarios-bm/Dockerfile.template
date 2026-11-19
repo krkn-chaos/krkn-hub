@@ -10,7 +10,6 @@ USER krkn
 
 # Copy configurations
 COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
-COPY metrics_config.yaml.template /home/krkn/kraken/config/kube_burner.yaml.template
 
 COPY node-scenarios-bm/config-schema.json /home/krkn/kraken/scenarios/node-scenarios-bm.json
 COPY node-scenarios-bm/validate_config.py /home/krkn/validate_config.py
