@@ -1,4 +1,5 @@
 hdd $HDD_WORKERS
 hdd-bytes $HDD_BYTES
 hdd-write-size $HDD_WRITE_SIZE
+hdd-opts $HDD_OPTS
 timeout $DURATION
