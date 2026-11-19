@@ -2,7 +2,6 @@ FROM quay.io/krkn-chaos/krkn:latest
 
 ENV KUBECONFIG /home/krkn/.kube/config
 
-COPY metrics_config.yaml.template /home/krkn/kraken/config/kube_burner.yaml.template
 COPY config.yaml.template         /home/krkn/kraken/config/config.yaml.template
 
 COPY node-network-chaos/env.sh                 /home/krkn/env.sh
