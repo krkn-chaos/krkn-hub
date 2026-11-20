@@ -15,3 +15,9 @@ export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-hub-multiarch:workload-krkn-netwo
 export PROTOCOLS=${PROTOCOLS:="tcp"}
 export TAINTS=${TAINTS:=""}
 export SERVICE_ACCOUNT=${SERVICE_ACCOUNT:=""}
+
+# Derive YAML sequences from the CSV inputs above
+export_csv_yaml_sequence INTERFACES_YAML "$INTERFACES" || return 1
+export_csv_yaml_sequence PORTS_YAML "$PORTS" number || return 1
+export_csv_yaml_sequence PROTOCOLS_YAML "$PROTOCOLS" || return 1
+export_csv_yaml_sequence TAINTS_YAML "$TAINTS" || return 1
