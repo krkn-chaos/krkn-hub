@@ -2,35 +2,25 @@
 
 ROOT_FOLDER="${ROOT_FOLDER:-/home/krkn}"
 KRAKEN_FOLDER="${KRAKEN_FOLDER:-$ROOT_FOLDER/kraken}"
+# Source env.sh to read all the vars
 source "$ROOT_FOLDER/main_env.sh"
-source "$ROOT_FOLDER/env.sh"
 source "$ROOT_FOLDER/common_run.sh"
+source "$ROOT_FOLDER/env.sh"
 SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER")"
 CONFIG_FILE="$KRAKEN_FOLDER/config/vmi-network-chaos-config.yaml"
 
-export_csv_yaml_sequence INTERFACES_YAML "$INTERFACES" || exit 1
-export_csv_yaml_sequence TAINTS_YAML "$TAINTS" || exit 1
 
-LATENCY_YAML=null
-LOSS_YAML=null
-BANDWIDTH_YAML=null
-if [[ -n "$LATENCY" ]]; then LATENCY_YAML="\"$LATENCY\""; fi
-if [[ -n "$LOSS" ]]; then LOSS_YAML="\"$LOSS\""; fi
-if [[ -n "$BANDWIDTH" ]]; then BANDWIDTH_YAML="\"$BANDWIDTH\""; fi
-export LATENCY_YAML LOSS_YAML BANDWIDTH_YAML
-
+extra_var=""
 if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
 fi
 
 envsubst < "$KRAKEN_FOLDER/scenarios/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_PATH"
-
 envsubst < "$KRAKEN_FOLDER/config/$CONFIG_FILE_TEMPLATE" > "$CONFIG_FILE"
 
 checks
 
 cd "$KRAKEN_FOLDER"
-extra_var=""
 if [[ $KRKN_DEBUG == "True" ]];then
   cat "$SCENARIO_PATH"
   extra_var="--debug True"
