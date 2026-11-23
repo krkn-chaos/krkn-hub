@@ -5,7 +5,9 @@ KRAKEN_FOLDER="${KRAKEN_FOLDER:-$ROOT_FOLDER/kraken}"
 source "$ROOT_FOLDER/main_env.sh"
 source "$ROOT_FOLDER/env.sh"
 source "$ROOT_FOLDER/common_run.sh"
-SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER")"
+SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER/scenarios")"
+# the config template references $SCENARIO_FILE: hand it the absolute path
+export SCENARIO_FILE="$SCENARIO_PATH"
 
 if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
@@ -28,11 +30,11 @@ if ! echo "$SCENARIO_BASE64" | base64 -d >> "$SCENARIO_PATH"; then
 fi
 
 python3.11 "$ROOT_FOLDER/validate_config.py" -y "$SCENARIO_PATH" \
-                             -s "$KRAKEN_FOLDER/scenarios/node-scenarios-bm.json"
+                             -s "$ROOT_FOLDER/node-scenarios-bm.json"
 
 # replace env variables
 
-envsubst < "$KRAKEN_FOLDER/config/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/node_scenarios_bm.yaml"
+envsubst < "$ROOT_FOLDER/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/node_scenarios_bm.yaml"
 
 # Run Kraken
 cd "$KRAKEN_FOLDER"

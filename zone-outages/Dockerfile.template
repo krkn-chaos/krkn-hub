@@ -2,16 +2,17 @@
 
 FROM quay.io/krkn-chaos/krkn:latest
 
-ENV KUBECONFIG /home/krkn/.kube/config
+ENV ROOT_FOLDER /home/krkn
+ENV KUBECONFIG ${ROOT_FOLDER}/.kube/config
 
 # Copy configurations
-COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
-COPY zone-outages/env.sh /home/krkn/env.sh
-COPY env.sh /home/krkn/main_env.sh
-COPY zone-outages/run.sh /home/krkn/run.sh
-COPY zone-outages/zone_outage_scenario.yaml.template /home/krkn/kraken/scenarios/zone_outage_scenario.yaml.template
-COPY zone-outages/zone_outage_scenario_gcp.yaml.template /home/krkn/kraken/scenarios/zone_outage_scenario_gcp.yaml.template
-COPY common_run.sh /home/krkn/common_run.sh
+COPY config.yaml.template ${ROOT_FOLDER}/config.yaml.template
+COPY zone-outages/env.sh ${ROOT_FOLDER}/env.sh
+COPY env.sh ${ROOT_FOLDER}/main_env.sh
+COPY zone-outages/run.sh ${ROOT_FOLDER}/run.sh
+COPY zone-outages/zone_outage_scenario.yaml.template ${ROOT_FOLDER}/zone_outage_scenario.yaml.template
+COPY zone-outages/zone_outage_scenario_gcp.yaml.template ${ROOT_FOLDER}/zone_outage_scenario_gcp.yaml.template
+COPY common_run.sh ${ROOT_FOLDER}/common_run.sh
 
 LABEL krknctl.is_a_scenario="true"
 LABEL krknctl.privileged="false"
@@ -25,4 +26,4 @@ nodes in that zone. More information is documented here https://krkn-chaos.dev/d
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
-ENTRYPOINT /home/krkn/kraken/containers/setup-ssh.sh && /home/krkn/run.sh
+ENTRYPOINT /home/krkn/kraken/containers/setup-ssh.sh && ${ROOT_FOLDER}/run.sh

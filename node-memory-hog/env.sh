@@ -6,8 +6,8 @@ export NUMBER_OF_WORKERS=${NUMBER_OF_WORKERS:=1}
 export TOTAL_CHAOS_DURATION=${TOTAL_CHAOS_DURATION:="60"}
 export NAMESPACE=${NAMESPACE:="default"}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=hog_scenarios}
-export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/kube/memory-hog.yml}
-export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=kube/memory-hog.yml.template}
+export SCENARIO_FILE=${SCENARIO_FILE:=memory-hog.yml}
+export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=memory-hog.yml.template}
 export NODE_SELECTOR=${NODE_SELECTOR:=""}
 export TAINTS=${TAINTS:="[]"}
 export NUMBER_OF_NODES=${NUMBER_OF_NODES:=""}

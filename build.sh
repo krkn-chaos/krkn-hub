@@ -4,5 +4,8 @@ service-disruption-scenarios service-hijacking syn-flood time-scenarios zone-out
  dummy-scenario storage-throttle node-network-chaos vmi-pvc-fill workload-trigger)
 for i in "${SCENARIOS[@]}"; do
     export KRKNCTL_INPUT=$(cat $i/krknctl-input.json|tr -d "\n")
-    envsubst < $i/Dockerfile.template > $i/Dockerfile
+    # Restricted substitution: only $KRKNCTL_INPUT is expanded here. ${ROOT_FOLDER}
+    # must survive into the generated Dockerfile so Docker's own ENV replacement
+    # in COPY destinations applies at build time.
+    envsubst '$KRKNCTL_INPUT' < $i/Dockerfile.template > $i/Dockerfile
 done;

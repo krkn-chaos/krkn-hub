@@ -6,32 +6,66 @@ Hosts container images and wrapper for running scenarios supported by [Krkn](htt
 [Krkn-Hub Documentation](https://krkn-chaos.dev/docs/krkn-hub/) is your go-to resource for all things Krkn-Hub.  
 The documentation provides detailed information about the supported scenarios, how to configure and run them using Krkn-Hub, and insights into leveraging the tool for chaos testing. It also includes setup instructions, usage examples, and best practices for integrating Krkn-Hub into your Kubernetes workflows.  
 
+## Image layout and path conventions
+
+**All kraken-hub-owned files are copied to `ROOT_FOLDER` (`/home/krkn`), never
+into the kraken source checkout.** Historically the scenario templates and
+configs were placed inside the kraken git tree
+(`/home/krkn/kraken/scenarios/...`), which coupled kraken-hub files to kraken's
+internal directory layout and made the wrapper scripts hard to reuse. The
+convention now is:
+
+- `ROOT_FOLDER` (default `/home/krkn`, declared as `ENV ROOT_FOLDER` in every
+  scenario Dockerfile) is the home for everything kraken-hub copies into the
+  image: `run.sh`, `env.sh` (scenario defaults), `main_env.sh` (global
+  defaults), `common_run.sh` (shared helpers), the scenario template(s) and
+  `config.yaml.template`. Dockerfile `COPY` destinations use
+  `${ROOT_FOLDER}/...` so the layout stays consistent and overridable.
+- `KRAKEN_FOLDER` (default `$ROOT_FOLDER/kraken`) is the kraken checkout that
+  comes from the base image. Only files krkn itself consumes at runtime are
+  written there — the rendered krkn config (`$KRAKEN_FOLDER/config/`). The
+  rendered scenario file lives at `ROOT_FOLDER` too, and krkn receives its
+  absolute path via the config.
+- `env.sh` files keep defaults as bare filenames (no paths). `SCENARIO_FILE`
+  names the rendered scenario file, `SCENARIO_TEMPLATE_FILE` the input
+  template; both resolve under `ROOT_FOLDER`:
+
+```bash
+export SCENARIO_FILE=${SCENARIO_FILE:=app_outage.yaml}
+export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=app_outage.yaml.template}
+```
+
+If your group builds its own images or runner scripts on top of kraken-hub,
+align with this layout: copy your files to `${ROOT_FOLDER}`, reference them
+through the `ROOT_FOLDER`/`KRAKEN_FOLDER` variables, and do not place anything
+inside the kraken checkout.
+
 ## Reusable scenario runner conventions
 
 Scenario `env.sh` files define the scenario output path and input template so
 the same `run.sh` can be reused with caller-provided environment variables.
-Keep the defaults overridable:
+Keep the defaults overridable (see above).
+
+Source `main_env.sh`, the scenario `env.sh` and `common_run.sh` before calling
+`resolve_scenario_path`, then use the resolved path for rendering and all
+later reads or modifications. `resolve_scenario_path` joins relative names
+under `ROOT_FOLDER` and preserves absolute paths:
 
 ```bash
-export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/app_outage.yaml}
-export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=app_outage.yaml.template}
-```
-
-`SCENARIO_FILE` names the rendered scenario. Relative paths are resolved under
-`KRAKEN_FOLDER`; absolute paths are preserved. `SCENARIO_TEMPLATE_FILE` is
-relative to `$KRAKEN_FOLDER/scenarios/`. Include a subdirectory when the
-template is nested, such as `kube/io-hog.yml.template`.
-
-Source `common_run.sh` before calling `resolve_scenario_path`, then use the
-resolved path for rendering and all later reads or modifications:
-
-```bash
+source "$ROOT_FOLDER/main_env.sh"
 source "$ROOT_FOLDER/env.sh"
 source "$ROOT_FOLDER/common_run.sh"
-SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER")"
+SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$ROOT_FOLDER")"
+# the krkn config template references $SCENARIO_FILE: hand it the absolute path
+export SCENARIO_FILE="$SCENARIO_PATH"
 
-envsubst < "$KRAKEN_FOLDER/scenarios/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_PATH"
+envsubst < "$ROOT_FOLDER/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_PATH"
+envsubst < "$ROOT_FOLDER/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/<scenario>_config.yaml"
 ```
+
+`CONFIG_FILE_TEMPLATE` is a global default (`config.yaml.template`, set in
+`main_env.sh`); its rendered output stays under `$KRAKEN_FOLDER/config/`
+because that is where `run_kraken.py` reads it from.
 
 If a scenario uses different templates based on another variable, select the
 default in `env.sh` while preserving an explicit `SCENARIO_TEMPLATE_FILE`
@@ -45,7 +79,7 @@ else
 fi
 ```
 
-Keep configuration template/output paths specific to the scenario, and quote
+Keep configuration output paths specific to the scenario, and quote
 `ROOT_FOLDER` and `KRAKEN_FOLDER` whenever they are used as paths.
 
 <!-- ### Supported chaos scenarios

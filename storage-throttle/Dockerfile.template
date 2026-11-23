@@ -2,15 +2,16 @@
 
 FROM quay.io/krkn-chaos/krkn:latest
 
-ENV KUBECONFIG /home/krkn/.kube/config
+ENV ROOT_FOLDER /home/krkn
+ENV KUBECONFIG ${ROOT_FOLDER}/.kube/config
 
 # Copy configurations
-COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
-COPY storage-throttle/env.sh /home/krkn/env.sh
-COPY env.sh /home/krkn/main_env.sh
-COPY storage-throttle/run.sh /home/krkn/run.sh
-COPY common_run.sh /home/krkn/common_run.sh
-COPY storage-throttle/storage_throttle.yaml.template /home/krkn/kraken/scenarios/storage_throttle.yaml.template
+COPY config.yaml.template ${ROOT_FOLDER}/config.yaml.template
+COPY storage-throttle/env.sh ${ROOT_FOLDER}/env.sh
+COPY env.sh ${ROOT_FOLDER}/main_env.sh
+COPY storage-throttle/run.sh ${ROOT_FOLDER}/run.sh
+COPY common_run.sh ${ROOT_FOLDER}/common_run.sh
+COPY storage-throttle/storage_throttle.yaml.template ${ROOT_FOLDER}/storage_throttle.yaml.template
 
 LABEL krknctl.is_a_scenario="true"
 LABEL krknctl.has_rollback="true"
@@ -20,4 +21,4 @@ LABEL krknctl.description="This scenario applies read/write IOPS and bandwidth t
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
-ENTRYPOINT /home/krkn/kraken/containers/setup-ssh.sh && /home/krkn/run.sh
+ENTRYPOINT /home/krkn/kraken/containers/setup-ssh.sh && ${ROOT_FOLDER}/run.sh

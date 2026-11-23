@@ -22,5 +22,5 @@ export GUEST_PING_IMAGE=${GUEST_PING_IMAGE:="quay.io/krkn-chaos/krkn-hub-multiar
 # Seconds to sleep after probe pod is Ready, before VMI delete
 export GUEST_PING_SETTLE_SECONDS=${GUEST_PING_SETTLE_SECONDS:=5}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=vmi_outage}
-export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/vmi_scenario.yaml}
+export SCENARIO_FILE=${SCENARIO_FILE:=vmi_scenario.yaml}
 export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=vmi_scenario.yaml.template}
