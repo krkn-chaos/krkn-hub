@@ -9,7 +9,7 @@ export INTERFACES=${INTERFACES:="[]"}
 export EXECUTION=${EXECUTION:="parallel"}
 export EGRESS=${EGRESS:="{bandwidth: 100mbit}"}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=network_chaos_scenarios}
-export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/network_chaos.yaml}
+export SCENARIO_FILE=${SCENARIO_FILE:=network_chaos.yaml}
 export TRAFFIC_TYPE=${TRAFFIC_TYPE:=egress}
 export IMAGE=${IMAGE:="quay.io/krkn-chaos/krkn-hub-multiarch:workload-krkn-tools"}
 

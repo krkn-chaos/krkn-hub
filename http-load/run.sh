@@ -1,13 +1,14 @@
 #!/bin/bash
 ROOT_FOLDER="${ROOT_FOLDER:-/home/krkn}"
 KRAKEN_FOLDER="${KRAKEN_FOLDER:-$ROOT_FOLDER/kraken}"
-SCENARIO_FOLDER="$KRAKEN_FOLDER/scenarios/http-load"
 
 # Source env.sh to read all the vars
 source "$ROOT_FOLDER/main_env.sh"
 source "$ROOT_FOLDER/env.sh"
 source "$ROOT_FOLDER/common_run.sh"
-SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER")"
+SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER/scenarios")"
+# the config template references $SCENARIO_FILE: hand it the absolute path
+export SCENARIO_FILE="$SCENARIO_PATH"
 extra_var=""
 if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
@@ -16,7 +17,7 @@ fi
 
 # Build scenario config from environment variables
 python3.11 "$ROOT_FOLDER/build_config_file.py" --outconfig "$SCENARIO_PATH"
-envsubst < "$KRAKEN_FOLDER/config/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/http_load_config.yaml"
+envsubst < "$ROOT_FOLDER/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/http_load_config.yaml"
 
 cat "$KRAKEN_FOLDER/config/http_load_config.yaml"
 cat "$SCENARIO_PATH"

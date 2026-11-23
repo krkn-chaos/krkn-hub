@@ -8,5 +8,5 @@ export OBJECT_NAME=${OBJECT_NAME:="[]"}
 export NAMESPACE=${NAMESPACE:=""}
 export CONTAINER_NAME=${CONTAINER_NAME:=""}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=time_scenarios}
-export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/time_scenario.yaml}
+export SCENARIO_FILE=${SCENARIO_FILE:=time_scenario.yaml}
 export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=time_scenario.yaml.template}

@@ -2,17 +2,18 @@
 
 FROM quay.io/krkn-chaos/krkn:latest
 
-ENV KUBECONFIG /home/krkn/.kube/config
+ENV ROOT_FOLDER /home/krkn
+ENV KUBECONFIG ${ROOT_FOLDER}/.kube/config
 
 # Copy configurations
 
-COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
-COPY syn-flood/env.sh /home/krkn/env.sh
-COPY syn-flood/build_config_file.py /home/krkn/build_config_file.py
-COPY syn-flood/syn-flood.yaml.template /home/krkn/kraken/scenarios/syn-flood.yaml.template
-COPY env.sh /home/krkn/main_env.sh
-COPY syn-flood/run.sh /home/krkn/run.sh
-COPY common_run.sh /home/krkn/common_run.sh
+COPY config.yaml.template ${ROOT_FOLDER}/config.yaml.template
+COPY syn-flood/env.sh ${ROOT_FOLDER}/env.sh
+COPY syn-flood/build_config_file.py ${ROOT_FOLDER}/build_config_file.py
+COPY syn-flood/syn-flood.yaml.template ${ROOT_FOLDER}/syn-flood.yaml.template
+COPY env.sh ${ROOT_FOLDER}/main_env.sh
+COPY syn-flood/run.sh ${ROOT_FOLDER}/run.sh
+COPY common_run.sh ${ROOT_FOLDER}/common_run.sh
 
 LABEL krknctl.is_a_scenario="true"
 LABEL krknctl.privileged="false"
@@ -26,4 +27,4 @@ the following documentation (https://krkn-chaos.dev/docs/scenarios/syn-flood/)."
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
-ENTRYPOINT /home/krkn/kraken/containers/setup-ssh.sh && /home/krkn/run.sh
+ENTRYPOINT /home/krkn/kraken/containers/setup-ssh.sh && ${ROOT_FOLDER}/run.sh

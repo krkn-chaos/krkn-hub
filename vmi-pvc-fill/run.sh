@@ -5,7 +5,9 @@ KRAKEN_FOLDER="${KRAKEN_FOLDER:-$ROOT_FOLDER/kraken}"
 source "$ROOT_FOLDER/main_env.sh"
 source "$ROOT_FOLDER/env.sh"
 source "$ROOT_FOLDER/common_run.sh"
-SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER")"
+SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER/scenarios")"
+# the config template references $SCENARIO_FILE: hand it the absolute path
+export SCENARIO_FILE="$SCENARIO_PATH"
 
 if [[ $KRKN_DEBUG == "True" ]]; then
   set -ex
@@ -13,8 +15,8 @@ fi
 
 checks
 
-envsubst < "$KRAKEN_FOLDER/scenarios/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_PATH"
-envsubst < "$KRAKEN_FOLDER/config/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/vmi_pvc_fill_config.yaml"
+envsubst < "$ROOT_FOLDER/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_PATH"
+envsubst < "$ROOT_FOLDER/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/vmi_pvc_fill_config.yaml"
 
 cd "$KRAKEN_FOLDER"
 extra_var=""

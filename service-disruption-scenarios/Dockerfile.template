@@ -2,15 +2,16 @@
 
 FROM quay.io/krkn-chaos/krkn:latest
 
-ENV KUBECONFIG /home/krkn/.kube/config
+ENV ROOT_FOLDER /home/krkn
+ENV KUBECONFIG ${ROOT_FOLDER}/.kube/config
 
 # Copy configurations
-COPY config.yaml.template /home/krkn/kraken/config/config.yaml.template
-COPY service-disruption-scenarios/env.sh /home/krkn/env.sh
-COPY env.sh /home/krkn/main_env.sh
-COPY service-disruption-scenarios/run.sh /home/krkn/run.sh
-COPY service-disruption-scenarios/namespace_scenario.yaml.template /home/krkn/kraken/scenarios/namespace_scenario.yaml.template
-COPY common_run.sh /home/krkn/common_run.sh
+COPY config.yaml.template ${ROOT_FOLDER}/config.yaml.template
+COPY service-disruption-scenarios/env.sh ${ROOT_FOLDER}/env.sh
+COPY env.sh ${ROOT_FOLDER}/main_env.sh
+COPY service-disruption-scenarios/run.sh ${ROOT_FOLDER}/run.sh
+COPY service-disruption-scenarios/namespace_scenario.yaml.template ${ROOT_FOLDER}/namespace_scenario.yaml.template
+COPY common_run.sh ${ROOT_FOLDER}/common_run.sh
 
 LABEL krknctl.is_a_scenario="true"
 LABEL krknctl.privileged="false"
@@ -23,4 +24,4 @@ https://krkn-chaos.dev/docs/scenarios/service-disruption-scenarios/"
 
 LABEL krknctl.input_fields='$KRKNCTL_INPUT'
 
-ENTRYPOINT /home/krkn/kraken/containers/setup-ssh.sh && /home/krkn/run.sh
+ENTRYPOINT /home/krkn/kraken/containers/setup-ssh.sh && ${ROOT_FOLDER}/run.sh

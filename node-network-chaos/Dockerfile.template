@@ -1,14 +1,15 @@
 FROM quay.io/krkn-chaos/krkn:latest
 
-ENV KUBECONFIG /home/krkn/.kube/config
+ENV ROOT_FOLDER /home/krkn
+ENV KUBECONFIG ${ROOT_FOLDER}/.kube/config
 
-COPY config.yaml.template         /home/krkn/kraken/config/config.yaml.template
+COPY config.yaml.template ${ROOT_FOLDER}/config.yaml.template
 
-COPY node-network-chaos/env.sh                 /home/krkn/env.sh
-COPY env.sh                                    /home/krkn/main_env.sh
-COPY node-network-chaos/run.sh                 /home/krkn/run.sh
-COPY common_run.sh                             /home/krkn/common_run.sh
-COPY node-network-chaos/node-network-chaos.yml.template /home/krkn/kraken/scenarios/kube/node-network-chaos.yml.template
+COPY node-network-chaos/env.sh                 ${ROOT_FOLDER}/env.sh
+COPY env.sh                                    ${ROOT_FOLDER}/main_env.sh
+COPY node-network-chaos/run.sh                 ${ROOT_FOLDER}/run.sh
+COPY common_run.sh                             ${ROOT_FOLDER}/common_run.sh
+COPY node-network-chaos/node-network-chaos.yml.template ${ROOT_FOLDER}/node-network-chaos.yml.template
 
 # krknctl reads these labels to populate `krknctl list` and `krknctl run --help`.
 # $KRKNCTL_INPUT is substituted at build time with the minified JSON from

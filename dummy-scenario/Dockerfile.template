@@ -1,8 +1,10 @@
 FROM quay.io/krkn-chaos/krkn:latest
 
+ENV ROOT_FOLDER /home/krkn
+
 # Global input fields (cerberus, telemetry, ES, health-checks, ...) are inherited
 # from the krkn base image, so they don't need to be redeclared here.
-COPY dummy-scenario/run.sh /home/krkn/run.sh
+COPY dummy-scenario/run.sh ${ROOT_FOLDER}/run.sh
 
 LABEL krknctl.is_a_scenario="true"
 LABEL krknctl.privileged="false"

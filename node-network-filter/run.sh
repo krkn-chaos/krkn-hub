@@ -7,7 +7,9 @@ source "$ROOT_FOLDER/main_env.sh"
 source "$ROOT_FOLDER/env.sh"
 source "$ROOT_FOLDER/common_run.sh"
 
-SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER")"
+SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER/scenarios")"
+# the config template references $SCENARIO_FILE: hand it the absolute path
+export SCENARIO_FILE="$SCENARIO_PATH"
 CONFIG_FILE="$KRAKEN_FOLDER/config/network-filter-config.yaml"
 
 export_csv_yaml_sequence INTERFACES_YAML "$INTERFACES" || exit 1
@@ -19,8 +21,8 @@ if [[ "$KRKN_DEBUG" == "True" ]]; then
   set -ex
 fi
 
-envsubst < "$KRAKEN_FOLDER/scenarios/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_PATH"
-envsubst < "$KRAKEN_FOLDER/config/$CONFIG_FILE_TEMPLATE" > "$CONFIG_FILE"
+envsubst < "$ROOT_FOLDER/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_PATH"
+envsubst < "$ROOT_FOLDER/$CONFIG_FILE_TEMPLATE" > "$CONFIG_FILE"
 checks
 
 cd "$KRAKEN_FOLDER"

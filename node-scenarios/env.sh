@@ -12,7 +12,7 @@ export TIMEOUT=${TIMEOUT:=180}
 export DURATION=${DURATION:=120}
 export PARALLEL=${PARALLEL:=false}
 export SCENARIO_TYPE=${SCENARIO_TYPE:=node_scenarios}
-export SCENARIO_FILE=${SCENARIO_FILE:=scenarios/node_scenario.yaml}
+export SCENARIO_FILE=${SCENARIO_FILE:=node_scenario.yaml}
 export VERIFY_SESSION=${VERIFY_SESSION:="false"}
 export SKIP_OPENSHIFT_CHECKS=${SKIP_OPENSHIFT_CHECKS:="false"}
 export KUBE_CHECK=${KUBE_CHECK:=True}

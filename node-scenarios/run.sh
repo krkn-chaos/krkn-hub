@@ -13,11 +13,13 @@ fi
 checks
 
 # Substitute config with environment vars defined
-SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER")"
-envsubst < "$KRAKEN_FOLDER/scenarios/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_PATH"
+SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER/scenarios")"
+# the config template references $SCENARIO_FILE: hand it the absolute path
+export SCENARIO_FILE="$SCENARIO_PATH"
+envsubst < "$ROOT_FOLDER/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_PATH"
 
 # Setup config
-envsubst < "$KRAKEN_FOLDER/config/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/node_scenario_config.yaml"
+envsubst < "$ROOT_FOLDER/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/node_scenario_config.yaml"
 
 # Run Kraken
 cd "$KRAKEN_FOLDER"
