@@ -1,6 +1,8 @@
 #!/bin/bash
 ROOT_FOLDER="${ROOT_FOLDER:-/home/krkn}"
 KRAKEN_FOLDER="${KRAKEN_FOLDER:-$ROOT_FOLDER/kraken}"
+# prep.sh runs as a child process: the folders must be exported for it
+export ROOT_FOLDER KRAKEN_FOLDER
 # Source env.sh to read all the vars
 source "$ROOT_FOLDER/main_env.sh"
 source "$ROOT_FOLDER/env.sh" || exit $?
@@ -11,28 +13,14 @@ SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER/scenario
 export SCENARIO_FILE="$SCENARIO_PATH"
 export SCENARIO_PATH
 
+# Scenario-specific preparation, if the scenario ships one
+if [ -f "$ROOT_FOLDER/prep.sh" ]; then "$ROOT_FOLDER/prep.sh" || exit $?; fi
+
 if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
 fi
 
 checks
-
-# check if SCENARIO_BASE64 is set
-
-if [ "$SCENARIO_BASE64" == "1" ]; then
-  echo "[ERROR] please set SCENARIO_BASE64 variable with a valid base64 encoded bare metal node scenario eg. podman run -e SCENARIO_BASE64=\$(base64 -w0 ~/krkn/scenarios/openshift/baremetal_node_scenarios.yml) [...] "
-  exit 1
-fi
-
-
-# Substitute config with environment vars defined
-if ! echo "$SCENARIO_BASE64" | base64 -d >> "$SCENARIO_PATH"; then
-  echo -e "[ERROR] Unable to decode SCENARIO_BASE64, bad base64 format please refer to documentation"
-  exit 1
-fi
-
-python3.11 "$ROOT_FOLDER/validate_config.py" -y "$SCENARIO_PATH" \
-                             -s "$ROOT_FOLDER/node-scenarios-bm.json"
 
 # replace env variables
 

@@ -11,7 +11,7 @@ COPY application-outages/env.sh ${ROOT_FOLDER}/env.sh
 COPY env.sh ${ROOT_FOLDER}/main_env.sh
 COPY application-outages/run.sh ${ROOT_FOLDER}/run.sh
 COPY common_run.sh ${ROOT_FOLDER}/common_run.sh
-COPY application-outages/app_outages.yaml.template ${ROOT_FOLDER}/app_outage.yaml.template
+COPY application-outages/app_outages.yaml.template ${ROOT_FOLDER}/app_outages.yaml.template
 
 LABEL krknctl.is_a_scenario="true"
 LABEL krknctl.privileged="false"

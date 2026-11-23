@@ -11,6 +11,7 @@ COPY config.yaml.template ${ROOT_FOLDER}/config.yaml.template
 COPY http-load/env.sh ${ROOT_FOLDER}/env.sh
 COPY http-load/build_config_file.py ${ROOT_FOLDER}/build_config_file.py
 COPY env.sh ${ROOT_FOLDER}/main_env.sh
+COPY http-load/prep.sh ${ROOT_FOLDER}/prep.sh
 COPY http-load/run.sh ${ROOT_FOLDER}/run.sh
 COPY common_run.sh ${ROOT_FOLDER}/common_run.sh
 

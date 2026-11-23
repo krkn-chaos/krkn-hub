@@ -1,6 +1,8 @@
 #!/bin/bash
 ROOT_FOLDER="${ROOT_FOLDER:-/home/krkn}"
 KRAKEN_FOLDER="${KRAKEN_FOLDER:-$ROOT_FOLDER/kraken}"
+# prep.sh runs as a child process: the folders must be exported for it
+export ROOT_FOLDER KRAKEN_FOLDER
 
 # Source env.sh to read all the vars
 source "$ROOT_FOLDER/main_env.sh"
@@ -11,14 +13,16 @@ SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER/scenario
 # SCENARIO_PATH is exported for steps that create the scenario file themselves.
 export SCENARIO_FILE="$SCENARIO_PATH"
 export SCENARIO_PATH
+
+# Scenario-specific preparation, if the scenario ships one
+if [ -f "$ROOT_FOLDER/prep.sh" ]; then "$ROOT_FOLDER/prep.sh" || exit $?; fi
+
 extra_var=""
 if [[ $KRKN_DEBUG == "True" ]];then
   set -ex
   extra_var="--debug True"
 fi
 
-# Build scenario config from environment variables
-python3.11 "$ROOT_FOLDER/build_config_file.py" --outconfig "$SCENARIO_PATH"
 envsubst < "$ROOT_FOLDER/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/http_load_config.yaml"
 
 cat "$KRAKEN_FOLDER/config/http_load_config.yaml"
