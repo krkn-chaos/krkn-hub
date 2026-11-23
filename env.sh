@@ -80,6 +80,40 @@ export HEALTH_CHECK_VERIFY=${HEALTH_CHECK_VERIFY:=False}
 export HEALTH_CHECK_RUN_DURING=${HEALTH_CHECK_RUN_DURING:=during}
 export HEALTH_CHECK_ONLY_FAILURES=${HEALTH_CHECK_ONLY_FAILURES:=False}
 
+# HEALTH_CHECK_URL accepts one URL or a comma-separated list of URLs.
+# Each URL becomes its own entry under health_checks.config and shares the
+# bearer token, auth, exit_on_failure and verify settings above.
+build_health_check_config_block() {
+  local block="" url
+  local -a raw urls=()
+  IFS=',' read -r -a raw <<< "$HEALTH_CHECK_URL"
+  for url in "${raw[@]}"; do
+    # trim surrounding whitespace and skip empty items ("a,,b" or "a,")
+    url="${url#"${url%%[![:space:]]*}"}"
+    url="${url%"${url##*[![:space:]]}"}"
+    [[ -n "$url" ]] && urls+=("$url")
+  done
+  # keep a single empty entry when no URL is set (same as before)
+  [[ ${#urls[@]} -eq 0 ]] && urls=("")
+  for url in "${urls[@]}"; do
+    block+="        - url: \"$url\""$'\n'
+    block+="          bearer_token: \"$HEALTH_CHECK_BEARER_TOKEN\""$'\n'
+    block+="          auth: \"$HEALTH_CHECK_AUTH\""$'\n'
+    block+="          exit_on_failure: $HEALTH_CHECK_EXIT_ON_FAILURE"$'\n'
+    block+="          verify_url: $HEALTH_CHECK_VERIFY"$'\n'
+  done
+  printf '%s' "${block%$'\n'}"
+}
+export HEALTH_CHECK_CONFIG_BLOCK="$(build_health_check_config_block)"
+# Krkn reads exit_on_failure at the section level for pre/post checks and
+# treats a missing value as true, so also set it there when the user sets it.
+# Left unset, the section keeps Krkn's default (same as before).
+if [[ -n "$HEALTH_CHECK_EXIT_ON_FAILURE" ]]; then
+  export HEALTH_CHECK_SECTION_EXIT_ON_FAILURE="    exit_on_failure: $HEALTH_CHECK_EXIT_ON_FAILURE"
+else
+  export HEALTH_CHECK_SECTION_EXIT_ON_FAILURE=""
+fi
+
 # Kubernetes object state health check configuration
 export OBJECT_STATE_CHECK_INTERVAL=${OBJECT_STATE_CHECK_INTERVAL:=2}
 export OBJECT_STATE_CHECK_RUN_DURING=${OBJECT_STATE_CHECK_RUN_DURING:=during}

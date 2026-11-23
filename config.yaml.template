@@ -69,12 +69,9 @@ health_checks:                                                  # Utilizing heal
     interval: $HEALTH_CHECK_INTERVAL
     run_during: $HEALTH_CHECK_RUN_DURING                         # pre, during, post, or a list of phases
     only_failures: $HEALTH_CHECK_ONLY_FAILURES
+$HEALTH_CHECK_SECTION_EXIT_ON_FAILURE
     config:
-        - url: "$HEALTH_CHECK_URL"
-          bearer_token: "$HEALTH_CHECK_BEARER_TOKEN"
-          auth: "$HEALTH_CHECK_AUTH"
-          exit_on_failure: $HEALTH_CHECK_EXIT_ON_FAILURE
-          verify_url: $HEALTH_CHECK_VERIFY
+$HEALTH_CHECK_CONFIG_BLOCK
 
 object_state_checks:                                             # Monitor Kubernetes object conditions during chaos injection.
     interval: $OBJECT_STATE_CHECK_INTERVAL
