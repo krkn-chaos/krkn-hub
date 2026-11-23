@@ -44,6 +44,7 @@ else
     export HDD_WORKERS=${WORKERS:=1}
     export HDD_BYTES=${HDD_BYTES:="10m"}
     export HDD_WRITE_SIZE=${HDD_WRITE_SIZE:="1m"}
+    export HDD_OPTS=${HDD_OPTS:="dsync"}
 
     [ ! -d $STRESS_PATH ] && echo "path $STRESS_PATH does not exist" && exit 1
     [ ! -w $STRESS_PATH ] && echo "path $STRESS_PATH cannot be written" && exit 1
@@ -52,6 +53,7 @@ else
     echo "number of hdd workers: $HDD_WORKERS"
     echo "bytes per worker: $HDD_BYTES"
     echo "size of each write: $HDD_WRITE_SIZE"
+    echo "hdd write options: $HDD_OPTS"
 
     envsubst < io-hog.conf.template > $STRESS_PATH/hog-jobfile.conf
     cd $STRESS_PATH
