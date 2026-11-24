@@ -8,11 +8,12 @@ ENV KUBECONFIG ${ROOT_FOLDER}/.kube/config
 # Copy configurations
 COPY config.yaml.template ${ROOT_FOLDER}/config.yaml.template
 COPY service-hijacking/env.sh ${ROOT_FOLDER}/env.sh
+COPY service-hijacking/prep.sh ${ROOT_FOLDER}/prep.sh
 COPY service-hijacking/run.sh ${ROOT_FOLDER}/run.sh
 COPY env.sh ${ROOT_FOLDER}/main_env.sh
 
 
-COPY service-hijacking/config-schema.json ${ROOT_FOLDER}/service-hijacking-schema.json
+COPY service-hijacking/config-schema.json ${ROOT_FOLDER}/config-schema.json
 COPY service-hijacking/validate_config.py ${ROOT_FOLDER}/validate_config.py
 
 COPY common_run.sh ${ROOT_FOLDER}/common_run.sh

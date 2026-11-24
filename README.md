@@ -18,21 +18,23 @@ convention now is:
 - `ROOT_FOLDER` (default `/home/krkn`, declared as `ENV ROOT_FOLDER` in every
   scenario Dockerfile) is the home for everything kraken-hub copies into the
   image: `run.sh`, `env.sh` (scenario defaults), `main_env.sh` (global
-  defaults), `common_run.sh` (shared helpers), the scenario template(s) and
-  `config.yaml.template`. Dockerfile `COPY` destinations use
-  `${ROOT_FOLDER}/...` so the layout stays consistent and overridable.
+  defaults), `common_run.sh` (shared helpers), the scenario template(s),
+  `config.yaml.template` and, when present, `prep.sh`. Dockerfile `COPY`
+  destinations use `${ROOT_FOLDER}/...` and keep the source file names so the
+  image contents match the repository.
 - `KRAKEN_FOLDER` (default `$ROOT_FOLDER/kraken`) is the kraken checkout that
-  comes from the base image. Only files krkn itself consumes at runtime are
-  written there — the rendered krkn config (`$KRAKEN_FOLDER/config/`). The
-  rendered scenario file lives at `ROOT_FOLDER` too, and krkn receives its
-  absolute path via the config.
+  comes from the base image. Files krkn itself consumes at runtime are written
+  there — the rendered krkn config (`$KRAKEN_FOLDER/config/`) and the rendered
+  scenario file (`$KRAKEN_FOLDER/scenarios/`), which keeps krkn's own
+  directory convention.
 - `env.sh` files keep defaults as bare filenames (no paths). `SCENARIO_FILE`
-  names the rendered scenario file, `SCENARIO_TEMPLATE_FILE` the input
-  template; both resolve under `ROOT_FOLDER`:
+  names the rendered scenario file (resolved under `$KRAKEN_FOLDER/scenarios/`
+  by the runner), `SCENARIO_TEMPLATE_FILE` the input template (resolved under
+  `ROOT_FOLDER`):
 
 ```bash
 export SCENARIO_FILE=${SCENARIO_FILE:=app_outage.yaml}
-export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=app_outage.yaml.template}
+export SCENARIO_TEMPLATE_FILE=${SCENARIO_TEMPLATE_FILE:=app_outages.yaml.template}
 ```
 
 If your group builds its own images or runner scripts on top of kraken-hub,
@@ -49,15 +51,18 @@ Keep the defaults overridable (see above).
 Source `main_env.sh`, the scenario `env.sh` and `common_run.sh` before calling
 `resolve_scenario_path`, then use the resolved path for rendering and all
 later reads or modifications. `resolve_scenario_path` joins relative names
-under `ROOT_FOLDER` and preserves absolute paths:
+under the base folder it is given and preserves absolute paths. run.sh then
+exports the resolved path both ways — `SCENARIO_FILE` (what the krkn config
+template references) and `SCENARIO_PATH` — and renders the templates:
 
 ```bash
+export ROOT_FOLDER KRAKEN_FOLDER   # prep.sh runs as a child process
 source "$ROOT_FOLDER/main_env.sh"
-source "$ROOT_FOLDER/env.sh"
+source "$ROOT_FOLDER/env.sh" || exit $?
 source "$ROOT_FOLDER/common_run.sh"
-SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$ROOT_FOLDER")"
-# the krkn config template references $SCENARIO_FILE: hand it the absolute path
+SCENARIO_PATH="$(resolve_scenario_path "$SCENARIO_FILE" "$KRAKEN_FOLDER/scenarios")"
 export SCENARIO_FILE="$SCENARIO_PATH"
+export SCENARIO_PATH
 
 envsubst < "$ROOT_FOLDER/$SCENARIO_TEMPLATE_FILE" > "$SCENARIO_PATH"
 envsubst < "$ROOT_FOLDER/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/<scenario>_config.yaml"
@@ -66,6 +71,35 @@ envsubst < "$ROOT_FOLDER/$CONFIG_FILE_TEMPLATE" > "$KRAKEN_FOLDER/config/<scenar
 `CONFIG_FILE_TEMPLATE` is a global default (`config.yaml.template`, set in
 `main_env.sh`); its rendered output stays under `$KRAKEN_FOLDER/config/`
 because that is where `run_kraken.py` reads it from.
+
+### Scenario-specific preparation: prep.sh
+
+A scenario whose setup goes beyond rendering a template ships a `prep.sh`,
+copied to `${ROOT_FOLDER}/prep.sh`. run.sh executes it (it is **not** sourced)
+right after the paths are resolved, guarded so scenarios without one are
+unaffected, and aborts the run if it fails:
+
+```bash
+if [ -f "$ROOT_FOLDER/prep.sh" ]; then "$ROOT_FOLDER/prep.sh" || exit $?; fi
+```
+
+prep.sh is where the final scenario file is *created* for scenarios that do
+not use a template — decoding a base64-provided scenario and validating it
+against a schema (node-scenarios-bm, service-hijacking) or building it from
+environment variables (http-load). Because it runs as a child process, it
+cannot set variables back in the runner — it works through files, and relies
+on the runner having exported the variables it needs:
+
+| Variable | Value |
+|---|---|
+| `ROOT_FOLDER` | kraken-hub file root (`/home/krkn`) |
+| `KRAKEN_FOLDER` | the kraken checkout from the base image |
+| `SCENARIO_PATH` | absolute path of the scenario file to create |
+| `SCENARIO_FILE` | same path, as referenced by the krkn config |
+
+Variable *derivation* (for example converting CSV inputs into YAML sequences)
+stays in `env.sh`, not prep.sh — those results must land in the runner's own
+shell for `envsubst` to see them.
 
 If a scenario uses different templates based on another variable, select the
 default in `env.sh` while preserving an explicit `SCENARIO_TEMPLATE_FILE`
